@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSRA Medical Exam Practice Platform</title>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Font Awesome Icons (Loaded asynchronously for speed) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  
+  <div class="app-container">
+    
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="logo-section">
+        <div class="logo-icon">M</div>
+        <div class="logo-text">
+          <h1 id="app-title-text">MedBank Studio</h1>
+          <p>Medical Examination Portal</p>
+        </div>
+      </div>
+      
+      <div class="header-controls">
+        <div class="exam-select-wrapper">
+          <select id="exam-selector" title="Select Active Examination">
+            <option value="MSRA">MSRA (Multi-Specialty)</option>
+          </select>
+        </div>
+        
+        <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs" aria-label="Main Navigation">
+      <button id="tab-dashboard" class="tab-btn active" data-tab="dashboard-panel">
+        <i class="fa-solid fa-chart-line"></i> Dashboard
+      </button>
+      <button id="tab-practice" class="tab-btn" data-tab="practice-panel">
+        <i class="fa-solid fa-pen-to-square"></i> Practice
+      </button>
+      <button id="tab-exam" class="tab-btn" data-tab="exam-panel">
+        <i class="fa-solid fa-clock"></i> Exam Simulator
+      </button>
+      <button id="tab-bookmarks" class="tab-btn" data-tab="bookmarks-panel">
+        <i class="fa-solid fa-bookmark"></i> Bookmarks
+      </button>
+      <button id="tab-creator" class="tab-btn" data-tab="creator-panel">
+        <i class="fa-solid fa-circle-plus"></i> Question Creator
+      </button>
+    </nav>
+    
+    <!-- Main Panels -->
+    <main class="main-content">
+      
+      <!-- Panel 1: Dashboard -->
+      <section id="dashboard-panel" class="tab-panel active">
+        <div class="dashboard-grid">
+          <div class="glass-panel stat-card">
+            <div class="stat-icon total"><i class="fa-solid fa-database"></i></div>
+            <div class="stat-details">
+              <h3 id="stat-total-questions">0</h3>
+              <p>Total Questions</p>
+            </div>
+          </div>
+          <div class="glass-panel stat-card">
+            <div class="stat-icon solved"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="stat-details">
+              <h3 id="stat-answered-questions">0</h3>
+              <p>Answered</p>
+            </div>
+          </div>
+          <div class="glass-panel stat-card">
+            <div class="stat-icon score"><i class="fa-solid fa-percent"></i></div>
+            <div class="stat-details">
+              <h3 id="stat-average-score">0%</h3>
+              <p>Average Accuracy</p>
+            </div>
+          </div>
+          <div class="glass-panel stat-card">
+            <div class="stat-icon bookmarks"><i class="fa-solid fa-bookmark"></i></div>
+            <div class="stat-details">
+              <h3 id="stat-bookmarked-count">0</h3>
+              <p>Bookmarked</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-sections">
+          <!-- Left: Specialty performance -->
+          <div class="glass-panel">
+            <div class="section-title">
+              <h2>Performance by Domain</h2>
+              <button id="reset-stats-btn" class="btn btn-secondary btn-sm" style="padding: 6px 12px; font-size: 0.8rem;">Reset Stats</button>
+            </div>
+            <div id="specialty-performance-list" class="perf-grid">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+          
+          <!-- Right: Quick Actions & Database Controls -->
+          <div class="glass-panel quick-action-card">
+            <h2>Quick Actions</h2>
+            <button id="quick-start-practice" class="btn"><i class="fa-solid fa-bolt"></i> Quick Practice (10 Qs)</button>
+            <button id="quick-start-mock" class="btn btn-secondary"><i class="fa-solid fa-stopwatch"></i> Run Mock Exam</button>
+            
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 10px 0;">
+            
+            <h3>Data Management</h3>
+            <button id="open-import-modal" class="btn btn-secondary"><i class="fa-solid fa-file-import"></i> Import Questions JSON</button>
+            <button id="export-questions-btn" class="btn btn-secondary"><i class="fa-solid fa-file-export"></i> Export Current Database</button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Panel 2: Practice Room -->
+      <section id="practice-panel" class="tab-panel">
+        <div class="glass-panel practice-config">
+          <h2>Practice Configuration</h2>
+          <div class="config-row">
+            <div class="form-group">
+              <label for="practice-category-select">Clinical Specialty</label>
+              <select id="practice-category-select" class="form-control">
+                <option value="all">All Domains / Specialties</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="practice-type-select">Question Type</label>
+              <select id="practice-type-select" class="form-control">
+                <option value="all">All Formats</option>
+                <option value="sba">Single Best Answer (SBA)</option>
+                <option value="emq">Extended Matching (EMQ)</option>
+                <option value="ranking">Professional Dilemma - Ranking</option>
+                <option value="selection">Professional Dilemma - Selection (3 of 8)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="practice-count-select">Number of Questions</label>
+              <select id="practice-count-select" class="form-control">
+                <option value="10">10 Questions</option>
+                <option value="20">20 Questions</option>
+                <option value="50">50 Questions</option>
+                <option value="all">All Available</option>
+              </select>
+            </div>
+            <button id="start-practice-btn" class="btn"><i class="fa-solid fa-play"></i> Start Session</button>
+          </div>
+        </div>
+        
+        <!-- Practice Exam Room (Hidden until started) -->
+        <div id="practice-room" class="exam-layout" style="display: none;">
+          <div class="glass-panel question-block">
+            <div class="question-meta">
+              <span id="question-index-display">Question 1 of 10</span>
+              <span id="question-category-display" class="question-category">Cardiovascular</span>
+              <button id="bookmark-question-btn" class="question-bookmark" title="Bookmark Question">
+                <i class="fa-solid fa-bookmark"></i>
+              </button>
+            </div>
+            
+            <!-- EMQ Theme Banner (Only visible for EMQs) -->
+            <div id="emq-theme-banner" style="display: none; background-color: var(--info-light); border-left: 4px solid var(--info); padding: 12px 16px; border-radius: var(--border-radius-sm);">
+              <h4 id="emq-theme-title" style="color: var(--info); font-weight: 700; margin-bottom: 4px;">Theme: Chest Pain</h4>
+              <p id="emq-theme-desc" style="font-size: 0.85rem; color: var(--text-secondary);">Select the single best matching option for the clinical scenario below.</p>
+            </div>
+            
+            <!-- Scenario Text -->
+            <div id="question-scenario-display" class="question-scenario">
+              A 65-year-old male presents with acute central chest pain...
+            </div>
+            
+            <!-- Question Inputs (Options, Rankers, Checkboxes) -->
+            <div id="question-inputs-container">
+              <!-- Loaded Dynamically -->
+            </div>
+            
+            <!-- Feedback explanation panel -->
+            <div id="question-explanation-display" class="glass-panel explanation-panel">
+              <div class="explanation-title">
+                <i class="fa-solid fa-circle-info"></i> Explanation & Learning Points
+              </div>
+              <p id="question-explanation-text">
+                Detailed physiological and clinical reasons why the answer is correct...
+              </p>
+            </div>
+            
+            <!-- Controls -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+              <button id="prev-question-btn" class="btn btn-secondary"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <div>
+                <button id="submit-answer-btn" class="btn"><i class="fa-solid fa-check"></i> Submit Answer</button>
+                <button id="next-question-btn" class="btn" style="display: none;">Next <i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Sticky side progress -->
+          <div class="exam-side-panel">
+            <div class="glass-panel">
+              <h3 style="font-size: 1rem; margin-bottom: 12px;">Session Progress</h3>
+              <div class="progress-bar-bg" style="margin-bottom: 16px;">
+                <div id="session-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+              </div>
+              
+              <div id="session-nav-grid" class="question-nav-grid">
+                <!-- Dot navigation dynamically loaded -->
+              </div>
+              
+              <button id="end-practice-session" class="btn btn-secondary btn-danger" style="width: 100%; margin-top: 20px;">
+                <i class="fa-solid fa-circle-xmark"></i> End Practice
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Panel 3: Exam Simulator -->
+      <section id="exam-panel" class="tab-panel">
+        <div id="exam-intro-screen" class="glass-panel" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+          <h2>MSRA Exam Simulator</h2>
+          <p>
+            Simulate a timed MSRA exam. The tool features realistic question weightings and scoring models, including situational judgment partial credit calculations.
+          </p>
+          
+          <div style="background-color: var(--bg-tertiary); padding: 16px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color);">
+            <h4 style="font-weight: 700; margin-bottom: 8px;">Standard MSRA Sub-papers:</h4>
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 0.9rem;">
+              <li><strong>Clinical Problem Solving (CPS) Mock</strong>: 97 clinical questions in 75 minutes. Tests diagnosis, investigation, prescribing, and treatment.</li>
+              <li><strong>Professional Dilemmas (PD) Mock</strong>: 50 Situational Judgement Scenarios (ranking & selection) in 95 minutes.</li>
+              <li><strong>Full Combined MSRA Mock</strong>: Combined 147 questions in 170 minutes.</li>
+            </ul>
+          </div>
+          
+          <div class="form-group" style="max-width: 400px;">
+            <label for="exam-mode-select">Select Simulation Mode</label>
+            <select id="exam-mode-select" class="form-control">
+              <option value="pd">Professional Dilemmas (50 Questions - 95 mins)</option>
+              <option value="cps">Clinical Problem Solving (97 Questions - 75 mins)</option>
+              <option value="full">Full Combined Mock (147 Questions - 170 mins)</option>
+            </select>
+          </div>
+          
+          <button id="start-exam-sim-btn" class="btn" style="width: max-content;"><i class="fa-solid fa-stopwatch"></i> Start Timed Exam</button>
+        </div>
+        
+        <!-- Live Simulation Screen (Hidden until started) -->
+        <div id="exam-simulation-screen" class="exam-layout" style="display: none;">
+          <div class="glass-panel question-block">
+            <div class="question-meta">
+              <span id="sim-question-index-display">Question 1 of 50</span>
+              <span id="sim-question-category-display" class="question-category">Professional Dilemmas</span>
+              <button id="sim-bookmark-question-btn" class="question-bookmark" title="Bookmark Question">
+                <i class="fa-solid fa-bookmark"></i>
+              </button>
+            </div>
+            
+            <!-- EMQ Theme Banner (Only visible for EMQs) -->
+            <div id="sim-emq-theme-banner" style="display: none; background-color: var(--info-light); border-left: 4px solid var(--info); padding: 12px 16px; border-radius: var(--border-radius-sm);">
+              <h4 id="sim-emq-theme-title" style="color: var(--info); font-weight: 700; margin-bottom: 4px;">Theme: Chest Pain</h4>
+              <p id="sim-emq-theme-desc" style="font-size: 0.85rem; color: var(--text-secondary);">Select the single best matching option.</p>
+            </div>
+            
+            <div id="sim-question-scenario-display" class="question-scenario">
+              Loading question...
+            </div>
+            
+            <div id="sim-question-inputs-container">
+              <!-- Loaded Dynamically -->
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+              <button id="sim-prev-question-btn" class="btn btn-secondary"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <button id="sim-next-question-btn" class="btn">Next Question <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+          
+          <div class="exam-side-panel">
+            <div class="glass-panel timer-box" id="sim-timer-display">
+              <i class="fa-solid fa-clock"></i> <span id="sim-timer-value">95:00</span>
+            </div>
+            
+            <div class="glass-panel">
+              <h3 style="font-size: 1rem; margin-bottom: 12px;">Exam Navigator</h3>
+              <div class="progress-bar-bg" style="margin-bottom: 16px;">
+                <div id="sim-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+              </div>
+              
+              <div id="sim-nav-grid" class="question-nav-grid" style="max-height: 250px; overflow-y: auto; padding-right: 4px;">
+                <!-- Dots populated dynamically -->
+              </div>
+              
+              <button id="submit-exam-sim-btn" class="btn" style="width: 100%; margin-top: 20px; background-color: var(--success);">
+                <i class="fa-solid fa-circle-check"></i> Submit Exam
+              </button>
+              <button id="abandon-exam-sim-btn" class="btn btn-secondary btn-danger" style="width: 100%; margin-top: 10px;">
+                <i class="fa-solid fa-trash-can"></i> Abandon Exam
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Simulation Results Screen (Hidden until submitted) -->
+        <div id="exam-results-screen" class="glass-panel" style="display: none; max-width: 800px; margin: 0 auto; flex-direction: column; gap: 24px;">
+          <h2>Exam Summary & Score</h2>
+          <div style="display: flex; gap: 24px; align-items: center; justify-content: space-around; padding: 24px; background-color: var(--bg-tertiary); border-radius: var(--border-radius-md);">
+            <div style="text-align: center;">
+              <h3 id="result-score-percent" style="font-size: 3rem; font-weight: 800; color: var(--primary);">0%</h3>
+              <p style="font-weight: 600; color: var(--text-secondary);">Overall Score</p>
+            </div>
+            <div style="text-align: center; border-left: 1px solid var(--border-color); padding-left: 24px;">
+              <h4 id="result-answered-ratio" style="font-size: 1.5rem; font-weight: 700;">0 / 0</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">Questions Answered</p>
+            </div>
+            <div style="text-align: center; border-left: 1px solid var(--border-color); padding-left: 24px;">
+              <h4 id="result-time-taken" style="font-size: 1.5rem; font-weight: 700;">00:00</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">Time Taken</p>
+            </div>
+          </div>
+          
+          <div id="exam-score-breakdown">
+            <!-- Dynamically populated breakdown -->
+          </div>
+          
+          <button id="close-results-btn" class="btn"><i class="fa-solid fa-house"></i> Back to Dashboard</button>
+        </div>
+      </section>
+      
+      <!-- Panel 4: Bookmarked Questions -->
+      <section id="bookmarks-panel" class="tab-panel">
+        <div class="glass-panel">
+          <h2>Bookmarked Practice Questions</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 20px;">Review and practice your saved questions below.</p>
+          
+          <div id="bookmark-list-container" class="options-list">
+            <!-- Dynamically loaded bookmarks -->
+          </div>
+        </div>
+      </section>
+      
+      <!-- Panel 5: Question Creator -->
+      <section id="creator-panel" class="tab-panel">
+        <div class="glass-panel">
+          <h2>Create New Practice Question</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 20px;">Use this graphical creator to append custom questions for the active exam or other examinations.</p>
+          
+          <form id="question-creator-form" style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="creator-form-grid">
+              <div class="form-group">
+                <label for="creator-exam-name">Target Examination</label>
+                <input type="text" id="creator-exam-name" class="form-control" placeholder="e.g. MSRA, PLAB, USMLE" required value="MSRA">
+              </div>
+              <div class="form-group">
+                <label for="creator-category">Specialty / Category</label>
+                <input type="text" id="creator-category" class="form-control" placeholder="e.g. Cardiovascular, Professional Dilemmas" required>
+              </div>
+              <div class="form-group">
+                <label for="creator-type">Question Format</label>
+                <select id="creator-type" class="form-control" required>
+                  <option value="sba">Single Best Answer (SBA)</option>
+                  <option value="ranking">Professional Dilemma - Ranking</option>
+                  <option value="selection">Professional Dilemma - Selection (3 of 8)</option>
+                </select>
+              </div>
+              <div class="form-group" id="creator-theme-group" style="display: none;">
+                <label for="creator-theme">EMQ Theme Title (Optional)</label>
+                <input type="text" id="creator-theme" class="form-control" placeholder="e.g. Management of Pleural Effusion">
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="creator-scenario">Clinical Scenario or Professional Dilemma Situation</label>
+                <textarea id="creator-scenario" class="form-control" rows="5" placeholder="Write details about patient, lab findings, vitals..." required></textarea>
+              </div>
+            </div>
+            
+            <div class="glass-panel" style="padding: 20px; background-color: var(--bg-tertiary);">
+              <h3>Options & Model Answers</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">Add options and mark which ones are correct. For Ranking questions, arrange options in correct rank order from top (1st) to bottom.</p>
+              
+              <div id="creator-options-container" class="options-builder">
+                <!-- Dynamically configured by selected question type -->
+              </div>
+              
+              <button type="button" id="creator-add-option-btn" class="btn btn-secondary" style="margin-top: 12px; font-size: 0.85rem;">
+                <i class="fa-solid fa-plus"></i> Add Option
+              </button>
+            </div>
+            
+            <div class="form-group">
+              <label for="creator-explanation">Clinical Rationale & Explanation</label>
+              <textarea id="creator-explanation" class="form-control" rows="4" placeholder="Explain why the answers are correct and rule out distractors..." required></textarea>
+            </div>
+            
+            <div style="display: flex; gap: 16px; justify-content: flex-end;">
+              <button type="button" id="clear-creator-form-btn" class="btn btn-secondary">Clear Form</button>
+              <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> Save Question to Database</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      
+    </main>
+    
+    <!-- Modal: Import Database -->
+    <div id="import-modal" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Import Questions File</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+          Upload a custom JSON question bank file. The file should match the standard database schema (keys: id, exam, type, category, scenario, options, correct_answer, explanation).
+        </p>
+        
+        <div class="form-group" style="border: 2px dashed var(--border-color); padding: 30px; text-align: center; border-radius: var(--border-radius-sm); background-color: var(--bg-tertiary);">
+          <input type="file" id="import-json-file" accept=".json" style="display: none;">
+          <label for="import-json-file" style="cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 2.5rem; color: var(--primary);"></i>
+            <span style="font-weight: 600;">Click to browse JSON file</span>
+            <span id="import-filename-display" style="font-size: 0.8rem; color: var(--text-tertiary);">No file selected</span>
+          </label>
+        </div>
+        
+        <div style="display: flex; gap: 12px; justify-content: flex-end;">
+          <button id="close-import-modal" class="btn btn-secondary">Cancel</button>
+          <button id="confirm-import-btn" class="btn" disabled><i class="fa-solid fa-file-import"></i> Import & Load</button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Main Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
