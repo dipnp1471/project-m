@@ -834,3 +834,137 @@ a {
     padding: 24px 20px;
   }
 }
+
+/* --- ADMIN PANEL & QUESTION FLAGGING STYLES --- */
+
+/* Flag Question Button */
+.question-flag {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.question-flag:hover {
+  color: var(--warning);
+  transform: scale(1.1);
+}
+
+.question-flag.active {
+  color: var(--warning);
+  animation: pulse 1s ease;
+}
+
+/* Admin Sub-navigation */
+.admin-sub-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+}
+
+.admin-sub-tabs .tab-btn {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-sm);
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+}
+
+.admin-sub-tabs .tab-btn:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
+}
+
+.admin-sub-tabs .tab-btn.active {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--primary);
+}
+
+/* Question Manager Cards */
+.admin-question-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 4px solid var(--primary);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--border-radius-sm);
+  padding: 16px;
+}
+
+.admin-question-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.admin-question-text {
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-question-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.admin-question-badge {
+  background-color: var(--bg-tertiary);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  font-size: 0.75rem;
+}
+
+.admin-question-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Flagged Log Items */
+.admin-flagged-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 4px solid var(--warning);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--border-radius-sm);
+  padding: 16px;
+}
+
+.flagged-reason-box {
+  background-color: var(--warning-light);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: #b45309;
+  padding: 10px 14px;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.flagged-reason-box i {
+  margin-top: 2px;
+}
+

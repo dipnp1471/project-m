@@ -13,6 +13,7 @@ const state = {
   answeredQuestionIds: [], // List of IDs that have been solved
   questionAttempts: {},   // Map of ID -> { attempts: count, correct: boolean }
   bookmarkedIds: [],      // Bookmarked question IDs
+  flaggedQuestions: {},   // Map of ID -> reason string (reported questions)
   mockHistory: [],        // Records of completed mock exams
   
   // Active Practice Session State
@@ -80,6 +81,7 @@ function loadProgressFromStorage() {
     state.answeredQuestionIds = JSON.parse(localStorage.getItem("answered_question_ids")) || [];
     state.questionAttempts = JSON.parse(localStorage.getItem("question_attempts")) || {};
     state.bookmarkedIds = JSON.parse(localStorage.getItem("bookmarked_ids")) || [];
+    state.flaggedQuestions = JSON.parse(localStorage.getItem("flagged_questions")) || {};
     state.mockHistory = JSON.parse(localStorage.getItem("mock_history")) || [];
     state.activeExam = localStorage.getItem("active_exam") || "MSRA";
   } catch (e) {
@@ -94,6 +96,7 @@ function saveStateToStorage(key) {
     if (key === "answered_question_ids") localStorage.setItem("answered_question_ids", JSON.stringify(state.answeredQuestionIds));
     if (key === "question_attempts") localStorage.setItem("question_attempts", JSON.stringify(state.questionAttempts));
     if (key === "bookmarked_ids") localStorage.setItem("bookmarked_ids", JSON.stringify(state.bookmarkedIds));
+    if (key === "flagged_questions") localStorage.setItem("flagged_questions", JSON.stringify(state.flaggedQuestions));
     if (key === "mock_history") localStorage.setItem("mock_history", JSON.stringify(state.mockHistory));
     if (key === "active_exam") localStorage.setItem("active_exam", state.activeExam);
   } catch (e) {
@@ -101,13 +104,22 @@ function saveStateToStorage(key) {
   }
 }
 
-// Fetch base questions and merge with custom questions
+// Fetch base questions and merge with custom questions, letting custom overrides take priority
 async function loadQuestionsDatabase() {
   try {
     const response = await fetch("questions.json");
     if (!response.ok) throw new Error("Could not fetch base questions database.");
     const baseQuestions = await response.json();
-    state.questions = [...baseQuestions, ...state.customQuestions];
+    
+    // Filter base questions that have custom overrides or have been deleted
+    const customIds = state.customQuestions.map(q => q.id);
+    const deletedBaseIds = JSON.parse(localStorage.getItem("deleted_base_ids")) || [];
+    
+    const uniqueBase = baseQuestions.filter(q => 
+      !customIds.includes(q.id) && !deletedBaseIds.includes(q.id)
+    );
+    
+    state.questions = [...uniqueBase, ...state.customQuestions];
   } catch (e) {
     console.warn("Base questions.json not found or empty. Relying on custom questions:", e);
     state.questions = [...state.customQuestions];
@@ -115,6 +127,7 @@ async function loadQuestionsDatabase() {
   
   populateExamSelector();
   populateSpecialtyFilters();
+  populateAdminFilters();
 }
 
 // Populate the Exam drop-down in the header
@@ -185,7 +198,12 @@ function initEventListeners() {
       // Refresh views on switch
       if (targetPanelId === "dashboard-panel") renderDashboard();
       if (targetPanelId === "bookmarks-panel") renderBookmarks();
-      if (targetPanelId === "creator-panel") setupCreatorFormOptions();
+      if (targetPanelId === "admin-panel") {
+        setupCreatorFormOptions();
+        setupAdminTabPanelNavigation();
+        renderAdminManageQuestionsList();
+        renderAdminFlaggedQuestionsList();
+      }
     });
   });
   
@@ -235,6 +253,7 @@ function initEventListeners() {
   document.getElementById("next-question-btn").addEventListener("click", showNextPracticeQuestion);
   document.getElementById("submit-answer-btn").addEventListener("click", submitPracticeAnswer);
   document.getElementById("bookmark-question-btn").addEventListener("click", toggleActiveQuestionBookmark);
+  document.getElementById("flag-question-btn").addEventListener("click", toggleActiveQuestionFlag);
   document.getElementById("end-practice-session").addEventListener("click", endPracticeSession);
   
   // Exam Simulator controls
@@ -244,6 +263,7 @@ function initEventListeners() {
   document.getElementById("submit-exam-sim-btn").addEventListener("click", confirmSubmitExamSim);
   document.getElementById("abandon-exam-sim-btn").addEventListener("click", abandonExamSim);
   document.getElementById("sim-bookmark-question-btn").addEventListener("click", toggleSimQuestionBookmark);
+  document.getElementById("sim-flag-question-btn").addEventListener("click", toggleSimQuestionFlag);
   document.getElementById("close-results-btn").addEventListener("click", () => {
     document.getElementById("exam-results-screen").style.display = "none";
     document.getElementById("exam-intro-screen").style.display = "flex";
@@ -435,7 +455,12 @@ function startPracticeSession() {
   filtered = [...filtered].sort(() => 0.5 - Math.random());
   
   const limit = countFilter === "all" ? filtered.length : parseInt(countFilter);
-  state.activePractice.questions = filtered.slice(0, limit);
+  state.activePractice.questions = filtered.slice(0, limit).map(q => {
+    return {
+      ...q,
+      options: [...q.options].sort(() => 0.5 - Math.random())
+    };
+  });
   state.activePractice.currentIndex = 0;
   state.activePractice.answers = {};
   state.activePractice.submitted = {};
@@ -457,11 +482,10 @@ function renderPracticeQuestion() {
   document.getElementById("question-category-display").textContent = q.category;
   
   const bookmarkBtn = document.getElementById("bookmark-question-btn");
-  if (state.bookmarkedIds.includes(q.id)) {
-    bookmarkBtn.classList.add("active");
-  } else {
-    bookmarkBtn.classList.remove("active");
-  }
+  bookmarkBtn.className = state.bookmarkedIds.includes(q.id) ? "question-bookmark active" : "question-bookmark";
+  
+  const flagBtn = document.getElementById("flag-question-btn");
+  flagBtn.className = state.flaggedQuestions[q.id] ? "question-flag active" : "question-flag";
   
   // EMQ specific elements
   const emqThemeBanner = document.getElementById("emq-theme-banner");
@@ -940,7 +964,12 @@ function startExamSimulation() {
   
   // Cap questions to match actual numbers if database size permits, else use all
   const qCap = mode === "pd" ? 50 : (mode === "cps" ? 97 : 147);
-  state.activeExamSim.questions = examQuestions.slice(0, qCap);
+  state.activeExamSim.questions = examQuestions.slice(0, qCap).map(q => {
+    return {
+      ...q,
+      options: [...q.options].sort(() => 0.5 - Math.random())
+    };
+  });
   state.activeExamSim.mode = mode;
   state.activeExamSim.currentIndex = 0;
   state.activeExamSim.answers = {};
@@ -996,6 +1025,9 @@ function renderSimQuestion() {
   // Bookmark button
   const bookmarkBtn = document.getElementById("sim-bookmark-question-btn");
   bookmarkBtn.className = state.bookmarkedIds.includes(q.id) ? "question-bookmark active" : "question-bookmark";
+  
+  const flagBtn = document.getElementById("sim-flag-question-btn");
+  flagBtn.className = state.flaggedQuestions[q.id] ? "question-flag active" : "question-flag";
   
   // EMQ
   const emqThemeBanner = document.getElementById("sim-emq-theme-banner");
@@ -1512,25 +1544,398 @@ function saveCreatedQuestion(e) {
     // Shuffled version for options display
     options.sort(() => 0.5 - Math.random());
   }
+
+  const editingId = document.getElementById("creator-editing-id").value;
   
-  const newQuestion = {
-    id: `q_custom_${Date.now()}`,
-    exam,
-    type,
-    category,
-    scenario,
-    options,
-    correct_answer,
-    explanation
-  };
+  if (editingId) {
+    // Update existing question
+    const updatedQuestion = {
+      id: editingId,
+      exam,
+      type,
+      category,
+      scenario,
+      options,
+      correct_answer,
+      explanation
+    };
+    
+    // Check if it's in customQuestions
+    const customIdx = state.customQuestions.findIndex(q => q.id === editingId);
+    if (customIdx > -1) {
+      state.customQuestions[customIdx] = updatedQuestion;
+      saveStateToStorage("custom_questions");
+    } else {
+      // It's a base question from questions.json! Save custom overrides in LocalStorage.
+      state.customQuestions.push(updatedQuestion);
+      saveStateToStorage("custom_questions");
+    }
+    
+    // Clear flag if editing a flagged question
+    if (state.flaggedQuestions[editingId]) {
+      delete state.flaggedQuestions[editingId];
+      saveStateToStorage("flagged_questions");
+    }
+    
+    alert(`Successfully updated question ${editingId}!`);
+    document.getElementById("creator-editing-id").value = "";
+    document.getElementById("creator-panel-title").textContent = "Create New Practice Question";
+    document.getElementById("creator-submit-btn").innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Save Question to Database';
+  } else {
+    // Save new question
+    const newQuestion = {
+      id: `q_custom_${Date.now()}`,
+      exam,
+      type,
+      category,
+      scenario,
+      options,
+      correct_answer,
+      explanation
+    };
+    
+    state.customQuestions.push(newQuestion);
+    saveStateToStorage("custom_questions");
+    alert(`Successfully added question to database for ${exam}!`);
+  }
   
-  state.customQuestions.push(newQuestion);
+  // Reload database
+  loadQuestionsDatabase();
+  clearCreatorForm();
+  document.getElementById("tab-dashboard").click();
+}
+
+// --- USER FLAGGING SYSTEM ---
+function toggleActiveQuestionFlag() {
+  const pState = state.activePractice;
+  const q = pState.questions[pState.currentIndex];
+  if (!q) return;
+  toggleFlag(q.id);
+  renderPracticeQuestion();
+}
+
+function toggleSimQuestionFlag() {
+  const sim = state.activeExamSim;
+  const q = sim.questions[sim.currentIndex];
+  if (!q) return;
+  toggleFlag(q.id);
+  renderSimQuestion();
+}
+
+function toggleFlag(qId) {
+  if (state.flaggedQuestions[qId]) {
+    // Already flagged, resolve/remove flag
+    delete state.flaggedQuestions[qId];
+    alert("Question unflagged.");
+  } else {
+    // Prompt for flagging reason
+    const reason = prompt("Please describe the issue with this question (e.g. spelling error, incorrect answer, confusing explanation):");
+    if (reason === null) return; // User cancelled
+    state.flaggedQuestions[qId] = reason.trim() || "Flagged for review (no reason provided).";
+    alert("Question flagged for admin review. Thank you!");
+  }
+  saveStateToStorage("flagged_questions");
+  updateAdminFlaggedBadge();
+}
+
+function updateAdminFlaggedBadge() {
+  const flaggedCount = Object.keys(state.flaggedQuestions).length;
+  const badge = document.getElementById("admin-flagged-badge");
+  if (badge) badge.textContent = flaggedCount;
+}
+
+// --- ADMIN PORTAL SUB-TABS & NAV ---
+function setupAdminTabPanelNavigation() {
+  const subTabs = document.querySelectorAll(".admin-sub-tabs button");
+  subTabs.forEach(btn => {
+    // Clean and replace listener
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+  });
+  
+  const freshSubTabs = document.querySelectorAll(".admin-sub-tabs button");
+  freshSubTabs.forEach(btn => {
+    btn.addEventListener("click", () => {
+      freshSubTabs.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      
+      const targetSectionId = btn.getAttribute("data-admin-tab");
+      document.querySelectorAll(".admin-tab-panel").forEach(panel => {
+        panel.style.display = "none";
+      });
+      document.getElementById(targetSectionId).style.display = "block";
+      
+      if (targetSectionId === "admin-manage-section") renderAdminManageQuestionsList();
+      if (targetSectionId === "admin-flagged-section") renderAdminFlaggedQuestionsList();
+    });
+  });
+  
+  // Search and filter listeners
+  const searchInput = document.getElementById("admin-search-input");
+  const catFilter = document.getElementById("admin-category-filter");
+  const typeFilter = document.getElementById("admin-type-filter");
+  
+  searchInput.oninput = renderAdminManageQuestionsList;
+  catFilter.onchange = renderAdminManageQuestionsList;
+  typeFilter.onchange = renderAdminManageQuestionsList;
+  
+  updateAdminFlaggedBadge();
+}
+
+function populateAdminFilters() {
+  const catFilter = document.getElementById("admin-category-filter");
+  if (!catFilter) return;
+  
+  const currentExamQuestions = state.questions.filter(q => q.exam === state.activeExam);
+  const categories = [...new Set(currentExamQuestions.map(q => q.category))];
+  
+  catFilter.innerHTML = '<option value="all">All Categories</option>';
+  categories.forEach(cat => {
+    const option = document.createElement("option");
+    option.value = cat;
+    option.textContent = cat;
+    catFilter.appendChild(option);
+  });
+}
+
+// --- ADMIN QUESTION INVENTORY MANAGER ---
+function renderAdminManageQuestionsList() {
+  const container = document.getElementById("admin-questions-list-container");
+  if (!container) return;
+  
+  container.innerHTML = "";
+  
+  const query = document.getElementById("admin-search-input").value.toLowerCase();
+  const catVal = document.getElementById("admin-category-filter").value;
+  const typeVal = document.getElementById("admin-type-filter").value;
+  
+  let filtered = state.questions.filter(q => q.exam === state.activeExam);
+  
+  if (catVal !== "all") filtered = filtered.filter(q => q.category === catVal);
+  if (typeVal !== "all") filtered = filtered.filter(q => q.type === typeVal);
+  
+  if (query) {
+    filtered = filtered.filter(q => 
+      q.scenario.toLowerCase().includes(query) || 
+      q.explanation.toLowerCase().includes(query) ||
+      q.id.toLowerCase().includes(query)
+    );
+  }
+  
+  if (filtered.length === 0) {
+    container.innerHTML = '<p style="text-align: center; padding: 40px 0; color: var(--text-tertiary);">No questions match the current filters.</p>';
+    return;
+  }
+  
+  // Render list (latest first)
+  const sorted = [...filtered].reverse();
+  
+  sorted.forEach(q => {
+    const card = document.createElement("div");
+    card.className = "admin-question-card";
+    
+    const isCustom = q.id.startsWith("q_custom_");
+    const badgeText = isCustom ? "Custom" : "Base";
+    
+    card.innerHTML = `
+      <div class="admin-question-card-header">
+        <div style="flex: 1;">
+          <div class="admin-question-info" style="margin-bottom: 6px;">
+            <span class="admin-question-badge" style="background-color: var(--primary-light); color: var(--primary);">${q.id}</span>
+            <span class="admin-question-badge">${q.category}</span>
+            <span class="admin-question-badge" style="text-transform: uppercase;">${q.type}</span>
+            <span class="admin-question-badge" style="background-color: var(--success-light); color: var(--success);">${badgeText}</span>
+          </div>
+          <div class="admin-question-text">${q.scenario}</div>
+        </div>
+        <div class="admin-question-actions">
+          <button class="btn btn-secondary btn-sm edit-q-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;">
+            <i class="fa-solid fa-pen"></i> Edit
+          </button>
+          <button class="btn btn-secondary btn-danger btn-sm delete-q-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;">
+            <i class="fa-solid fa-trash-can"></i> Delete
+          </button>
+        </div>
+      </div>
+    `;
+    
+    card.querySelector(".edit-q-btn").addEventListener("click", () => editQuestion(q.id));
+    card.querySelector(".delete-q-btn").addEventListener("click", () => deleteQuestion(q.id));
+    
+    container.appendChild(card);
+  });
+}
+
+// --- ADMIN FLAGGED SCENARIOS REVIEW ---
+function renderAdminFlaggedQuestionsList() {
+  const container = document.getElementById("admin-flagged-list-container");
+  if (!container) return;
+  
+  container.innerHTML = "";
+  
+  const flaggedIds = Object.keys(state.flaggedQuestions);
+  
+  if (flaggedIds.length === 0) {
+    container.innerHTML = '<p style="text-align: center; padding: 40px 0; color: var(--text-tertiary);">No flagged questions currently reported by users.</p>';
+    return;
+  }
+  
+  flaggedIds.forEach(id => {
+    const q = state.questions.find(item => item.id === id);
+    if (!q) return; // In case question was deleted
+    
+    const reason = state.flaggedQuestions[id];
+    const card = document.createElement("div");
+    card.className = "admin-flagged-card";
+    
+    card.innerHTML = `
+      <div class="admin-question-card-header">
+        <div style="flex: 1;">
+          <div class="admin-question-info" style="margin-bottom: 6px;">
+            <span class="admin-question-badge" style="background-color: var(--warning-light); color: #b45309; border-color: rgba(245,158,11,0.2);">${q.id}</span>
+            <span class="admin-question-badge">${q.category}</span>
+            <span class="admin-question-badge" style="text-transform: uppercase;">${q.type}</span>
+          </div>
+          <div style="font-weight: 600; line-height: 1.5; color: var(--text-primary); margin-bottom: 8px;">${q.scenario}</div>
+          
+          <div class="flagged-reason-box">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div><strong>Flag Reason:</strong> ${reason}</div>
+          </div>
+        </div>
+        
+        <div class="admin-question-actions" style="flex-direction: column;">
+          <button class="btn btn-secondary btn-sm resolve-flag-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem; background-color: var(--success-light); color: var(--success); border-color: var(--success);">
+            <i class="fa-solid fa-circle-check"></i> Resolve Flag
+          </button>
+          <button class="btn btn-secondary btn-sm edit-flagged-q-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;">
+            <i class="fa-solid fa-pen"></i> Edit Question
+          </button>
+          <button class="btn btn-secondary btn-danger btn-sm delete-flagged-q-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;">
+            <i class="fa-solid fa-trash-can"></i> Delete
+          </button>
+        </div>
+      </div>
+    `;
+    
+    card.querySelector(".resolve-flag-btn").addEventListener("click", () => resolveFlag(q.id));
+    card.querySelector(".edit-flagged-q-btn").addEventListener("click", () => editQuestion(q.id));
+    card.querySelector(".delete-flagged-q-btn").addEventListener("click", () => deleteQuestion(q.id));
+    
+    container.appendChild(card);
+  });
+}
+
+function resolveFlag(qId) {
+  if (state.flaggedQuestions[qId]) {
+    delete state.flaggedQuestions[qId];
+    saveStateToStorage("flagged_questions");
+    updateAdminFlaggedBadge();
+    renderAdminFlaggedQuestionsList();
+    alert(`Resolved flag for question ${qId}.`);
+  }
+}
+
+// Delete question completely from database
+function deleteQuestion(qId) {
+  if (!confirm(`Are you sure you want to delete question ${qId}? This will remove it from the active question bank.`)) {
+    return;
+  }
+  
+  // Remove from customQuestions
+  state.customQuestions = state.customQuestions.filter(q => q.id !== qId);
   saveStateToStorage("custom_questions");
+  
+  // Exclusions track for base questions
+  let deletedBaseIds = JSON.parse(localStorage.getItem("deleted_base_ids")) || [];
+  if (!qId.startsWith("q_custom_") && !deletedBaseIds.includes(qId)) {
+    deletedBaseIds.push(qId);
+    localStorage.setItem("deleted_base_ids", JSON.stringify(deletedBaseIds));
+  }
+  
+  // If flagged, clear flag
+  if (state.flaggedQuestions[qId]) {
+    delete state.flaggedQuestions[qId];
+    saveStateToStorage("flagged_questions");
+  }
   
   // Reload database
   loadQuestionsDatabase();
   
-  alert(`Successfully added question to database for ${exam}!`);
-  clearCreatorForm();
-  document.getElementById("tab-dashboard").click();
+  // Refresh lists
+  renderAdminManageQuestionsList();
+  renderAdminFlaggedQuestionsList();
+  updateAdminFlaggedBadge();
+  renderDashboard();
+  
+  alert(`Question ${qId} deleted successfully! Click 'Export Current Database' on the Dashboard if you want to download the updated JSON file.`);
+}
+
+// Edit Question - Pre-fills the form and focuses it
+function editQuestion(qId) {
+  const q = state.questions.find(item => item.id === qId);
+  if (!q) return;
+  
+  // Click the Admin Panel tab
+  const adminTabBtn = document.getElementById("tab-admin");
+  if (adminTabBtn) adminTabBtn.click();
+  
+  // Switch to "Add Question" sub-tab in Admin Panel
+  const createSubTabBtn = document.querySelector('[data-admin-tab="admin-create-section"]');
+  if (createSubTabBtn) createSubTabBtn.click();
+  
+  // Pre-fill Form fields
+  document.getElementById("creator-editing-id").value = q.id;
+  document.getElementById("creator-exam-name").value = q.exam;
+  document.getElementById("creator-category").value = q.category;
+  document.getElementById("creator-type").value = q.type;
+  document.getElementById("creator-scenario").value = q.scenario;
+  document.getElementById("creator-explanation").value = q.explanation;
+  
+  // Configure options builder
+  setupCreatorFormOptions();
+  
+  // Pre-fill Options
+  const container = document.getElementById("creator-options-container");
+  const textInputs = container.querySelectorAll(".option-text-input");
+  const markers = container.querySelectorAll(".correct-marker-input");
+  
+  if (q.type === "sba") {
+    while (q.options.length > textInputs.length) {
+      addNewCreatorOptionRow("sba");
+    }
+    const freshInputs = container.querySelectorAll(".option-text-input");
+    const freshMarkers = container.querySelectorAll(".correct-marker-input");
+    
+    q.options.forEach((opt, idx) => {
+      freshInputs[idx].value = opt;
+      freshMarkers[idx].checked = (opt === q.correct_answer);
+    });
+  } else if (q.type === "selection") {
+    while (q.options.length > textInputs.length) {
+      addNewCreatorOptionRow("selection");
+    }
+    const freshInputs = container.querySelectorAll(".option-text-input");
+    const freshMarkers = container.querySelectorAll(".correct-marker-input");
+    
+    q.options.forEach((opt, idx) => {
+      freshInputs[idx].value = opt;
+      freshMarkers[idx].checked = q.correct_answer.includes(opt);
+    });
+  } else if (q.type === "ranking") {
+    while (q.correct_answer.length > textInputs.length) {
+      addNewCreatorOptionRow("ranking");
+    }
+    const freshInputs = container.querySelectorAll(".option-text-input");
+    q.correct_answer.forEach((opt, idx) => {
+      freshInputs[idx].value = opt;
+    });
+  }
+  
+  // Change form header and submit button
+  document.getElementById("creator-panel-title").textContent = `Editing Question ${qId}`;
+  document.getElementById("creator-submit-btn").innerHTML = '<i class="fa-solid fa-circle-check"></i> Update Question Details';
+  
+  // Scroll to form
+  document.getElementById("admin-panel").scrollIntoView({ behavior: "smooth" });
 }
