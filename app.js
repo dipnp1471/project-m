@@ -479,6 +479,10 @@ function renderPracticeQuestion() {
   
   // Meta
   document.getElementById("question-index-display").textContent = `Question ${pState.currentIndex + 1} of ${pState.questions.length}`;
+  const examDisplay = document.getElementById("question-exam-display");
+  if (examDisplay) {
+    examDisplay.textContent = q.exam || "MSRA";
+  }
   document.getElementById("question-category-display").textContent = q.category;
   
   const bookmarkBtn = document.getElementById("bookmark-question-btn");
@@ -908,7 +912,10 @@ function renderBookmarks() {
     
     card.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="question-category">${q.category} (${q.type.toUpperCase()})</span>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <span class="question-category" style="background-color: var(--info-light); color: var(--info); border-color: rgba(96,165,250,0.2);">${q.exam || "MSRA"}</span>
+          <span class="question-category">${q.category} (${q.type.toUpperCase()})</span>
+        </div>
         <button class="btn btn-secondary btn-danger btn-sm remove-bookmark-btn" data-id="${q.id}" style="padding: 4px 8px; font-size: 0.8rem;">
           <i class="fa-solid fa-trash-can"></i> Remove
         </button>
@@ -1020,6 +1027,10 @@ function renderSimQuestion() {
   const q = sim.questions[sim.currentIndex];
   
   document.getElementById("sim-question-index-display").textContent = `Question ${sim.currentIndex + 1} of ${sim.questions.length}`;
+  const simExamDisplay = document.getElementById("sim-question-exam-display");
+  if (simExamDisplay) {
+    simExamDisplay.textContent = q.exam || "MSRA";
+  }
   document.getElementById("sim-question-category-display").textContent = q.category;
   
   // Bookmark button
@@ -1742,6 +1753,7 @@ function renderAdminManageQuestionsList() {
         <div style="flex: 1;">
           <div class="admin-question-info" style="margin-bottom: 6px;">
             <span class="admin-question-badge" style="background-color: var(--primary-light); color: var(--primary);">${q.id}</span>
+            <span class="admin-question-badge" style="background-color: var(--info-light); color: var(--info); border-color: rgba(96,165,250,0.2); font-weight: bold;">${q.exam || "MSRA"}</span>
             <span class="admin-question-badge">${q.category}</span>
             <span class="admin-question-badge" style="text-transform: uppercase;">${q.type}</span>
             <span class="admin-question-badge" style="background-color: var(--success-light); color: var(--success);">${badgeText}</span>
@@ -1793,6 +1805,7 @@ function renderAdminFlaggedQuestionsList() {
         <div style="flex: 1;">
           <div class="admin-question-info" style="margin-bottom: 6px;">
             <span class="admin-question-badge" style="background-color: var(--warning-light); color: #b45309; border-color: rgba(245,158,11,0.2);">${q.id}</span>
+            <span class="admin-question-badge" style="background-color: var(--info-light); color: var(--info); border-color: rgba(96,165,250,0.2); font-weight: bold;">${q.exam || "MSRA"}</span>
             <span class="admin-question-badge">${q.category}</span>
             <span class="admin-question-badge" style="text-transform: uppercase;">${q.type}</span>
           </div>
