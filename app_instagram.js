@@ -469,10 +469,18 @@ async function downloadSlide(slideNumber) {
   const q = instaState.activeQuestion;
   const filename = `${(q.exam || "msra").toLowerCase()}_${q.type}_slide_${slideNumber}.png`;
 
+  const exportContainer = document.getElementById("instagram-export-container");
+
   try {
-    // Temporarily show the export container on-screen for html2canvas
-    const exportContainer = document.getElementById("instagram-export-container");
-    exportContainer.style.left = "-9999px";
+    // Move the export container into visible layout so html2canvas can measure
+    // and paint it. Keep it visually hidden with opacity:0 and behind everything.
+    exportContainer.style.left = "0";
+    exportContainer.style.opacity = "0";
+    exportContainer.style.zIndex = "-1";
+    exportContainer.style.pointerEvents = "none";
+
+    // Allow a brief tick for the browser to reflow / fonts to apply
+    await new Promise(resolve => setTimeout(resolve, 150));
 
     const canvas = await html2canvas(slideEl, {
       scale: 2,
@@ -501,6 +509,11 @@ async function downloadSlide(slideNumber) {
   } catch (err) {
     console.error("Download error:", err);
     alert("Failed to export slide. Check console for details.");
+  } finally {
+    // Always restore the container to its off-screen position
+    exportContainer.style.left = "-9999px";
+    exportContainer.style.opacity = "";
+    exportContainer.style.zIndex = "";
   }
 }
 
