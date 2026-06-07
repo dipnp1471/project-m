@@ -256,6 +256,16 @@ function initEventListeners() {
   document.getElementById("flag-question-btn").addEventListener("click", toggleActiveQuestionFlag);
   document.getElementById("end-practice-session").addEventListener("click", endPracticeSession);
   
+  // Instagram Carousel Generator (practice room)
+  document.getElementById("generate-carousel-btn").addEventListener("click", () => {
+    const pState = state.activePractice;
+    if (pState.questions.length > 0 && pState.questions[pState.currentIndex]) {
+      openInstagramModal(pState.questions[pState.currentIndex].id);
+    } else {
+      alert("No active question to generate a carousel from. Start a practice session first.");
+    }
+  });
+  
   // Exam Simulator controls
   document.getElementById("start-exam-sim-btn").addEventListener("click", startExamSimulation);
   document.getElementById("sim-prev-question-btn").addEventListener("click", showPrevSimQuestion);
@@ -916,9 +926,14 @@ function renderBookmarks() {
           <span class="question-category" style="background-color: var(--info-light); color: var(--info); border-color: rgba(96,165,250,0.2);">${q.exam || "MSRA"}</span>
           <span class="question-category">${q.category} (${q.type.toUpperCase()})</span>
         </div>
-        <button class="btn btn-secondary btn-danger btn-sm remove-bookmark-btn" data-id="${q.id}" style="padding: 4px 8px; font-size: 0.8rem;">
-          <i class="fa-solid fa-trash-can"></i> Remove
-        </button>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-secondary btn-sm generate-post-btn" data-id="${q.id}" style="padding: 4px 8px; font-size: 0.8rem;">
+            <i class="fa-brands fa-instagram"></i> Share
+          </button>
+          <button class="btn btn-secondary btn-danger btn-sm remove-bookmark-btn" data-id="${q.id}" style="padding: 4px 8px; font-size: 0.8rem;">
+            <i class="fa-solid fa-trash-can"></i> Remove
+          </button>
+        </div>
       </div>
       <div style="font-weight: 600; line-height: 1.5; color: var(--text-primary);">${q.scenario}</div>
       ${optionsText}
@@ -930,6 +945,7 @@ function renderBookmarks() {
       </div>
     `;
     
+    card.querySelector(".generate-post-btn").addEventListener("click", () => openInstagramModal(q.id));
     card.querySelector(".remove-bookmark-btn").addEventListener("click", () => {
       toggleBookmark(q.id);
       renderBookmarks();
@@ -1761,6 +1777,9 @@ function renderAdminManageQuestionsList() {
           <div class="admin-question-text">${q.scenario}</div>
         </div>
         <div class="admin-question-actions">
+          <button class="btn btn-secondary btn-sm admin-share-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;">
+            <i class="fa-brands fa-instagram"></i> Share
+          </button>
           <button class="btn btn-secondary btn-sm edit-q-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;">
             <i class="fa-solid fa-pen"></i> Edit
           </button>
@@ -1771,6 +1790,7 @@ function renderAdminManageQuestionsList() {
       </div>
     `;
     
+    card.querySelector(".admin-share-btn").addEventListener("click", () => openInstagramModal(q.id));
     card.querySelector(".edit-q-btn").addEventListener("click", () => editQuestion(q.id));
     card.querySelector(".delete-q-btn").addEventListener("click", () => deleteQuestion(q.id));
     

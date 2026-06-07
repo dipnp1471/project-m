@@ -1,5 +1,6 @@
 import json
 import random
+import additional_questions
 
 # Seed for deterministic generation of questions
 random.seed(42)
@@ -1214,6 +1215,8 @@ def generate_questions():
         }
     ]
 
+    emq_themes.extend(additional_questions.NEW_EMQ_THEMES)
+
     # Unpack EMQs
     for t in emq_themes:
         for s in t["scenarios"]:
@@ -1439,6 +1442,33 @@ def generate_questions():
         tmpl = pd_ranking_templates[tmpl_idx]
         var_idx = i // len(pd_ranking_templates)
         var_params = pd_ranking_vars[tmpl_idx][var_idx]
+        
+        scenario_text = tmpl["scenario"].format(**var_params)
+        formatted_options = [opt.format(**var_params) for opt in tmpl["options"]]
+        
+        # correct_answer must contain the formatted options in correct order
+        correct_answer = [formatted_options[idx] for idx in tmpl["correct_order"]]
+        
+        shuffled_options = list(formatted_options)
+        random.shuffle(shuffled_options)
+        
+        questions.append({
+            "id": f"q_{q_id}",
+            "exam": "MSRA",
+            "type": "ranking",
+            "category": "Professional Dilemmas",
+            "scenario": scenario_text,
+            "options": shuffled_options,
+            "correct_answer": correct_answer,
+            "explanation": tmpl["explanation"]
+        })
+        q_id += 1
+
+    for i in range(35):
+        tmpl_idx = i % len(additional_questions.NEW_PD_RANKING_TEMPLATES)
+        tmpl = additional_questions.NEW_PD_RANKING_TEMPLATES[tmpl_idx]
+        var_idx = i // len(additional_questions.NEW_PD_RANKING_TEMPLATES)
+        var_params = additional_questions.NEW_PD_RANKING_VARS[tmpl_idx][var_idx]
         
         scenario_text = tmpl["scenario"].format(**var_params)
         formatted_options = [opt.format(**var_params) for opt in tmpl["options"]]
@@ -1716,6 +1746,33 @@ def generate_questions():
         tmpl = pd_selection_templates[tmpl_idx]
         var_idx = i // len(pd_selection_templates)
         var_params = pd_selection_vars[tmpl_idx][var_idx]
+        
+        scenario_text = tmpl["scenario"].format(**var_params)
+        formatted_options = [opt.format(**var_params) for opt in tmpl["options"]]
+        
+        # correct_answer must contain the formatted options at correct indices
+        correct_answer = [formatted_options[idx] for idx in tmpl["correct_answers"]]
+        
+        shuffled_options = list(formatted_options)
+        random.shuffle(shuffled_options)
+        
+        questions.append({
+            "id": f"q_{q_id}",
+            "exam": "MSRA",
+            "type": "selection",
+            "category": "Professional Dilemmas",
+            "scenario": scenario_text,
+            "options": shuffled_options,
+            "correct_answer": correct_answer,
+            "explanation": tmpl["explanation"]
+        })
+        q_id += 1
+
+    for i in range(35):
+        tmpl_idx = i % len(additional_questions.NEW_PD_SELECTION_TEMPLATES)
+        tmpl = additional_questions.NEW_PD_SELECTION_TEMPLATES[tmpl_idx]
+        var_idx = i // len(additional_questions.NEW_PD_SELECTION_TEMPLATES)
+        var_params = additional_questions.NEW_PD_SELECTION_VARS[tmpl_idx][var_idx]
         
         scenario_text = tmpl["scenario"].format(**var_params)
         formatted_options = [opt.format(**var_params) for opt in tmpl["options"]]

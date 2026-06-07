@@ -163,7 +163,10 @@
                 <span id="question-exam-display" class="question-category" style="background-color: var(--info-light); color: var(--info); border-color: rgba(96,165,250,0.2);">MSRA</span>
                 <span id="question-category-display" class="question-category">Cardiovascular</span>
               </div>
-              <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="display: flex; gap: 14px; align-items: center;">
+                <button id="generate-carousel-btn" class="question-carousel-btn" title="Generate Instagram Carousel" style="background: none; border: none; font-size: 1.25rem; color: var(--text-tertiary); cursor: pointer; transition: color var(--transition-fast);">
+                  <i class="fa-brands fa-instagram"></i>
+                </button>
                 <button id="flag-question-btn" class="question-flag" title="Flag Question for Review" style="background: none; border: none; font-size: 1.25rem; color: var(--text-tertiary); cursor: pointer; transition: color var(--transition-fast);">
                   <i class="fa-solid fa-flag"></i>
                 </button>
@@ -483,6 +486,120 @@
       
     </main>
     
+    <!-- Modal: Instagram Carousel Generator -->
+    <div id="instagram-modal" class="modal-overlay">
+      <div class="modal-content instagram-modal-content">
+        <div class="instagram-modal-header">
+          <h2><i class="fa-brands fa-instagram"></i> Instagram Carousel Generator</h2>
+          <button id="close-instagram-modal" class="close-modal-btn" title="Close Modal">&times;</button>
+        </div>
+        
+        <div class="instagram-modal-body">
+          <!-- Left: Live Preview -->
+          <div class="instagram-preview-section">
+            <div class="preview-header-label">
+              <span>Preview: Slide <span id="insta-preview-slide-num">1</span> of 3</span>
+              <span id="insta-preview-ratio-label" class="badge">1:1 Square</span>
+            </div>
+            
+            <div class="preview-container-wrapper">
+              <div id="insta-preview-viewport" class="preview-viewport ratio-1-1">
+                <!-- The 1080px slide is rendered here, scaled down via CSS transform -->
+                <div id="insta-preview-slide-container" class="preview-slide-container">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+            
+            <div class="preview-navigation">
+              <button id="insta-prev-slide-btn" class="btn btn-secondary btn-sm" title="Previous Slide"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+              <div class="slide-dots">
+                <span class="slide-dot active" data-index="0"></span>
+                <span class="slide-dot" data-index="1"></span>
+                <span class="slide-dot" data-index="2"></span>
+              </div>
+              <button id="insta-next-slide-btn" class="btn btn-secondary btn-sm" title="Next Slide">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="ratio-selectors" style="display: flex; gap: 12px; margin-top: 16px; justify-content: center;">
+              <button id="insta-ratio-square" class="btn btn-secondary btn-sm active" data-ratio="1-1"><i class="fa-solid fa-border-all"></i> Square (1:1)</button>
+              <button id="insta-ratio-portrait" class="btn btn-secondary btn-sm" data-ratio="4-5"><i class="fa-solid fa-mobile-screen"></i> Portrait (4:5)</button>
+            </div>
+          </div>
+          
+          <!-- Right: Customization Controls -->
+          <div class="instagram-controls-section">
+            <h3>Customization</h3>
+            
+            <div class="form-group">
+              <label>Background Theme</label>
+              <div class="theme-grid" id="insta-theme-grid">
+                <!-- Theme options populated dynamically -->
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="insta-font-select">Typography Font</label>
+              <select id="insta-font-select" class="form-control">
+                <option value="Outfit">Outfit (Modern Sans)</option>
+                <option value="Inter">Inter (Clean Sans)</option>
+                <option value="Playfair">Playfair Display (Serif)</option>
+                <option value="Mono">Roboto Mono (Monospace)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="insta-handle-input">Instagram Handle</label>
+              <input type="text" id="insta-handle-input" class="form-control" value="@medbank.studio" placeholder="@yourhandle">
+            </div>
+            
+            <div class="form-group">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);">
+                <input type="checkbox" id="insta-logo-toggle" checked style="width: 16px; height: 16px; cursor: pointer;">
+                Show MedBank Logo Icon
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <label for="insta-cta-input">Slide 3 Footer CTA</label>
+              <input type="text" id="insta-cta-input" class="form-control" value="Save this post for later!" placeholder="e.g. Save this post for later!">
+            </div>
+            
+            <div class="form-group font-sliders">
+              <div class="slider-row">
+                <label for="insta-size-scenario">Scenario Font Size (<span id="val-size-scenario">26</span>px)</label>
+                <input type="range" id="insta-size-scenario" min="18" max="36" value="26" class="insta-slider">
+              </div>
+              <div class="slider-row">
+                <label for="insta-size-options">Options Font Size (<span id="val-size-options">20</span>px)</label>
+                <input type="range" id="insta-size-options" min="14" max="28" value="20" class="insta-slider">
+              </div>
+              <div class="slider-row">
+                <label for="insta-size-explanation">Explanation Font Size (<span id="val-size-explanation">18</span>px)</label>
+                <input type="range" id="insta-size-explanation" min="12" max="24" value="18" class="insta-slider">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="instagram-modal-footer">
+          <div class="download-group">
+            <button id="insta-download-all" class="btn"><i class="fa-solid fa-circle-arrow-down"></i> Download All Slides</button>
+            <div class="individual-downloads" style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm download-single-btn" data-slide="1" title="Download Slide 1 Only">Slide 1</button>
+              <button class="btn btn-secondary btn-sm download-single-btn" data-slide="2" title="Download Slide 2 Only">Slide 2</button>
+              <button class="btn btn-secondary btn-sm download-single-btn" data-slide="3" title="Download Slide 3 Only">Slide 3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offscreen Container for High-Resolution exports -->
+    <div id="instagram-export-container" style="position: absolute; left: -9999px; top: 0; width: 1080px; height: 1080px; overflow: hidden; pointer-events: none;">
+      <!-- Hidden full size slides are generated here for capture -->
+    </div>
+
     <!-- Modal: Import Database -->
     <div id="import-modal" class="modal-overlay">
       <div class="modal-content">
@@ -509,7 +626,11 @@
     
   </div>
   
+  <!-- Html2Canvas Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfYLjYyisLoDKtEtElWXyZxcGoAARPMUJddecCOmsvrKC5BrchJN5qvQFgJXuxg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Main Application Script -->
   <script src="app.js"></script>
+  <!-- Instagram Carousel Generator Script -->
+  <script src="app_instagram.js"></script>
 </body>
 </html>
