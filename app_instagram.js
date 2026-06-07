@@ -508,7 +508,7 @@ async function downloadSlide(slideNumber) {
     }, "image/png", 1.0);
   } catch (err) {
     console.error("Download error:", err);
-    alert("Failed to export slide. Check console for details.");
+    alert("Failed to export slide.\n\nError: " + (err.message || err));
   } finally {
     // Always restore the container to its off-screen position
     exportContainer.style.left = "-9999px";
