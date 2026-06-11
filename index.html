@@ -529,6 +529,7 @@
             <div class="ratio-selectors" style="display: flex; gap: 12px; margin-top: 16px; justify-content: center;">
               <button id="insta-ratio-square" class="btn btn-secondary btn-sm active" data-ratio="1-1"><i class="fa-solid fa-border-all"></i> Square (1:1)</button>
               <button id="insta-ratio-portrait" class="btn btn-secondary btn-sm" data-ratio="4-5"><i class="fa-solid fa-mobile-screen"></i> Portrait (4:5)</button>
+              <button id="insta-ratio-reels" class="btn btn-secondary btn-sm" data-ratio="9-16"><i class="fa-solid fa-film"></i> Reels (9:16)</button>
             </div>
           </div>
           
@@ -555,7 +556,7 @@
             
             <div class="form-group">
               <label for="insta-handle-input">Instagram Handle</label>
-              <input type="text" id="insta-handle-input" class="form-control" value="@medbank.studio" placeholder="@yourhandle">
+              <input type="text" id="insta-handle-input" class="form-control" value="@medqstudios" placeholder="@yourhandle">
             </div>
             
             <div class="form-group">
@@ -594,6 +595,22 @@
               <button class="btn btn-secondary btn-sm download-single-btn" data-slide="1" title="Download Slide 1 Only">Slide 1</button>
               <button class="btn btn-secondary btn-sm download-single-btn" data-slide="2" title="Download Slide 2 Only">Slide 2</button>
               <button class="btn btn-secondary btn-sm download-single-btn" data-slide="3" title="Download Slide 3 Only">Slide 3</button>
+            </div>
+          </div>
+          
+          <div class="canva-export-group">
+            <div class="canva-header-info">
+              <h4>
+                <img src="https://www.canva.com/favicon.ico" alt="Canva logo" class="canva-icon-small"> 
+                Export to Canva
+              </h4>
+              <p>Copy slide to clipboard, then paste (Ctrl+V) directly into Canva.</p>
+            </div>
+            <div class="canva-actions">
+              <button id="insta-copy-slide-1" class="btn btn-secondary btn-sm copy-canva-btn" data-slide="1"><i class="fa-solid fa-copy"></i> Copy Slide 1</button>
+              <button id="insta-copy-slide-2" class="btn btn-secondary btn-sm copy-canva-btn" data-slide="2"><i class="fa-solid fa-copy"></i> Copy Slide 2</button>
+              <button id="insta-copy-slide-3" class="btn btn-secondary btn-sm copy-canva-btn" data-slide="3"><i class="fa-solid fa-copy"></i> Copy Slide 3</button>
+              <button id="insta-open-canva-btn" class="btn btn-sm btn-canva-brand"><i class="fa-solid fa-up-right-from-square"></i> Open Canva</button>
             </div>
           </div>
         </div>

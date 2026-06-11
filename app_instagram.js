@@ -10,10 +10,10 @@ const instaState = {
   activeSlideIndex: 0, // 0, 1, 2
   theme: "indigo-dusk",
   font: "Outfit",
-  handle: "@medbank.studio",
+  handle: "@medqstudios",
   showLogo: true,
   ctaText: "Save this post for later!",
-  ratio: "1-1", // "1-1" or "4-5"
+  ratio: "1-1", // "1-1", "4-5", or "9-16"
   scenarioFontSize: 26,
   optionsFontSize: 20,
   explanationFontSize: 18,
@@ -96,11 +96,13 @@ function initInstaEventListeners() {
   // Aspect ratio buttons
   const squareBtn = document.getElementById("insta-ratio-square");
   const portraitBtn = document.getElementById("insta-ratio-portrait");
+  const reelsBtn = document.getElementById("insta-ratio-reels");
   if (squareBtn) {
     squareBtn.addEventListener("click", () => {
       instaState.ratio = "1-1";
       squareBtn.classList.add("active");
-      portraitBtn.classList.remove("active");
+      if (portraitBtn) portraitBtn.classList.remove("active");
+      if (reelsBtn) reelsBtn.classList.remove("active");
       document.getElementById("insta-preview-ratio-label").textContent = "1:1 Square";
       updateViewportRatio();
       rebuildAllSlides();
@@ -110,10 +112,37 @@ function initInstaEventListeners() {
     portraitBtn.addEventListener("click", () => {
       instaState.ratio = "4-5";
       portraitBtn.classList.add("active");
-      squareBtn.classList.remove("active");
+      if (squareBtn) squareBtn.classList.remove("active");
+      if (reelsBtn) reelsBtn.classList.remove("active");
       document.getElementById("insta-preview-ratio-label").textContent = "4:5 Portrait";
       updateViewportRatio();
       rebuildAllSlides();
+    });
+  }
+  if (reelsBtn) {
+    reelsBtn.addEventListener("click", () => {
+      instaState.ratio = "9-16";
+      reelsBtn.classList.add("active");
+      if (squareBtn) squareBtn.classList.remove("active");
+      if (portraitBtn) portraitBtn.classList.remove("active");
+      document.getElementById("insta-preview-ratio-label").textContent = "9:16 Reels";
+      updateViewportRatio();
+      rebuildAllSlides();
+    });
+  }
+
+  // Canva Export Handlers
+  document.querySelectorAll(".copy-canva-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const slideNum = parseInt(btn.dataset.slide);
+      copySlideToClipboard(slideNum);
+    });
+  });
+
+  const openCanvaBtn = document.getElementById("insta-open-canva-btn");
+  if (openCanvaBtn) {
+    openCanvaBtn.addEventListener("click", () => {
+      window.open("https://www.canva.com", "_blank");
     });
   }
 
@@ -130,7 +159,7 @@ function initInstaEventListeners() {
   const handleInput = document.getElementById("insta-handle-input");
   if (handleInput) {
     handleInput.addEventListener("input", () => {
-      instaState.handle = handleInput.value || "@medbank.studio";
+      instaState.handle = handleInput.value || "@medqstudios";
       rebuildAllSlides();
     });
   }
@@ -215,6 +244,19 @@ function openInstagramModal(questionId) {
   document.getElementById("insta-size-explanation").value = instaState.explanationFontSize;
   document.getElementById("val-size-explanation").textContent = instaState.explanationFontSize;
 
+  // Reset active classes on ratio buttons
+  const squareBtn = document.getElementById("insta-ratio-square");
+  const portraitBtn = document.getElementById("insta-ratio-portrait");
+  const reelsBtn = document.getElementById("insta-ratio-reels");
+  if (squareBtn) squareBtn.classList.toggle("active", instaState.ratio === "1-1");
+  if (portraitBtn) portraitBtn.classList.toggle("active", instaState.ratio === "4-5");
+  if (reelsBtn) reelsBtn.classList.toggle("active", instaState.ratio === "9-16");
+  
+  const ratioLabel = document.getElementById("insta-preview-ratio-label");
+  if (ratioLabel) {
+    ratioLabel.textContent = instaState.ratio === "1-1" ? "1:1 Square" : (instaState.ratio === "4-5" ? "4:5 Portrait" : "9:16 Reels");
+  }
+
   // Build slides
   updateViewportRatio();
   rebuildAllSlides();
@@ -240,9 +282,41 @@ function updateViewportRatio() {
   if (instaState.ratio === "4-5") {
     exportContainer.style.height = "1350px";
     previewContainer.style.transform = `scale(${360 / 1080})`;
+  } else if (instaState.ratio === "9-16") {
+    exportContainer.style.height = "1920px";
+    previewContainer.style.transform = `scale(${360 / 1080})`;
   } else {
     exportContainer.style.height = "1080px";
     previewContainer.style.transform = `scale(${360 / 1080})`;
+  }
+
+  updateSlideControls();
+}
+
+function updateSlideControls() {
+  const isReels = instaState.ratio === "9-16";
+  
+  // Update dots display
+  const dots = document.querySelectorAll(".slide-dot");
+  if (dots.length >= 3) {
+    dots[2].style.display = isReels ? "none" : "block";
+  }
+  
+  // If active index was 2, reset it
+  if (isReels && instaState.activeSlideIndex > 1) {
+    instaState.activeSlideIndex = 0;
+  }
+  
+  // Update single download button for Slide 3
+  const downloadBtn3 = document.querySelector(".download-single-btn[data-slide='3']");
+  if (downloadBtn3) {
+    downloadBtn3.style.display = isReels ? "none" : "inline-block";
+  }
+
+  // Update Canva copy button for Slide 3
+  const copyBtn3 = document.getElementById("insta-copy-slide-3");
+  if (copyBtn3) {
+    copyBtn3.style.display = isReels ? "none" : "inline-block";
   }
 }
 
@@ -254,8 +328,10 @@ function rebuildAllSlides() {
   const exportContainer = document.getElementById("instagram-export-container");
   exportContainer.innerHTML = "";
 
-  // Build 3 slides into export container
-  for (let i = 1; i <= 3; i++) {
+  const totalSlides = instaState.ratio === "9-16" ? 2 : 3;
+
+  // Build slides into export container
+  for (let i = 1; i <= totalSlides; i++) {
     const slideEl = buildSlideHTML(q, i);
     exportContainer.appendChild(slideEl);
   }
@@ -267,7 +343,7 @@ function rebuildAllSlides() {
 function buildSlideHTML(q, slideNumber) {
   const themeClass = `theme-${instaState.theme}`;
   const fontClass = `font-${instaState.font}`;
-  const ratioClass = instaState.ratio === "4-5" ? "ratio-4-5" : "";
+  const ratioClass = instaState.ratio === "4-5" ? "ratio-4-5" : (instaState.ratio === "9-16" ? "ratio-9-16" : "");
   const fontFamily = FONT_MAP[instaState.font] || "'Outfit', sans-serif";
 
   const slide = document.createElement("div");
@@ -296,11 +372,12 @@ function buildSlideHTML(q, slideNumber) {
          <span class="slide-logo-text">${escapeHtml(instaState.handle)}</span>
        </div>`;
 
+  const totalSlidesCount = instaState.ratio === "9-16" ? 2 : 3;
   const headerHTML = `
     <div class="slide-header">
       <div class="slide-header-top">
         ${logoHTML}
-        <span class="slide-badge">${slideNumber}/3</span>
+        <span class="slide-badge">${slideNumber}/${totalSlidesCount}</span>
       </div>
       <div class="slide-header-tags">
         <span class="slide-tag">${escapeHtml(q.exam || "MSRA")}</span>
@@ -310,117 +387,223 @@ function buildSlideHTML(q, slideNumber) {
     </div>
   `;
 
-  if (slideNumber === 1) {
-    // --- SLIDE 1: HOOK / SCENARIO ---
-    const footerText = `Slide 1 of 3`;
-    slide.innerHTML = `
-      ${headerHTML}
-      <div class="slide-content">
-        <div class="slide-scenario" style="font-size: ${instaState.scenarioFontSize}px;">
-          ${escapeHtml(q.scenario)}
+  if (instaState.ratio === "9-16") {
+    // --- 9:16 REELS RATIO LAYOUT (2 Slides Total) ---
+    if (slideNumber === 1) {
+      // --- REELS SLIDE 1: QUESTION & OPTIONS ON SAME PAGE ---
+      let optionsHTML = "";
+
+      if (q.type === "sba" || q.type === "emq") {
+        optionsHTML = q.options.map((opt, idx) => {
+          const letter = String.fromCharCode(65 + idx);
+          return `
+            <div class="slide-option-card">
+              <div class="slide-option-badge">${letter}</div>
+              <div style="flex: 1; font-size: ${instaState.optionsFontSize}px;">${escapeHtml(opt)}</div>
+            </div>`;
+        }).join("");
+      } else if (q.type === "ranking") {
+        optionsHTML = q.options.map((opt, idx) => {
+          return `
+            <div class="slide-option-card">
+              <div class="slide-option-badge">${idx + 1}</div>
+              <div style="flex: 1; font-size: ${instaState.optionsFontSize}px;">${escapeHtml(opt)}</div>
+            </div>`;
+        }).join("");
+      } else if (q.type === "selection") {
+        optionsHTML = q.options.map((opt, idx) => {
+          const letter = String.fromCharCode(65 + idx);
+          return `
+            <div class="slide-option-card">
+              <div class="slide-option-badge">${letter}</div>
+              <div style="flex: 1; font-size: ${instaState.optionsFontSize}px;">${escapeHtml(opt)}</div>
+            </div>`;
+        }).join("");
+      }
+
+      const questionPrompt = q.type === "ranking"
+        ? "Rank the options:"
+        : q.type === "selection"
+        ? "Select the THREE most appropriate options:"
+        : "Select the single best answer:";
+
+      slide.innerHTML = `
+        ${headerHTML}
+        <div class="slide-content" style="gap: 24px; justify-content: flex-start; padding: 10px 0;">
+          <div class="slide-scenario" style="font-size: ${instaState.scenarioFontSize}px; line-height: 1.5; margin-bottom: 5px;">
+            ${escapeHtml(q.scenario)}
+          </div>
+          <div style="width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 20px; margin-top: 5px;">
+            <div class="slide-answer-title" style="margin-bottom: 12px; font-size: 0.85rem;">${escapeHtml(questionPrompt)}</div>
+            <div class="slide-options-list" style="gap: 12px;">
+              ${optionsHTML}
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="slide-footer">
-        <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
-        <div class="slide-footer-right">Swipe for options <i class="fa-solid fa-chevron-right"></i></div>
-      </div>
-    `;
-  } else if (slideNumber === 2) {
-    // --- SLIDE 2: OPTIONS ---
-    let optionsHTML = "";
-
-    if (q.type === "sba" || q.type === "emq") {
-      optionsHTML = q.options.map((opt, idx) => {
-        const letter = String.fromCharCode(65 + idx);
-        return `
-          <div class="slide-option-card">
-            <div class="slide-option-badge">${letter}</div>
-            <div style="flex: 1; font-size: ${instaState.optionsFontSize}px;">${escapeHtml(opt)}</div>
-          </div>`;
-      }).join("");
-    } else if (q.type === "ranking") {
-      optionsHTML = q.options.map((opt, idx) => {
-        return `
-          <div class="slide-option-card">
-            <div class="slide-option-badge">${idx + 1}</div>
-            <div style="flex: 1; font-size: ${instaState.optionsFontSize}px;">${escapeHtml(opt)}</div>
-          </div>`;
-      }).join("");
-    } else if (q.type === "selection") {
-      optionsHTML = q.options.map((opt, idx) => {
-        const letter = String.fromCharCode(65 + idx);
-        return `
-          <div class="slide-option-card">
-            <div class="slide-option-badge">${letter}</div>
-            <div style="flex: 1; font-size: ${instaState.optionsFontSize}px;">${escapeHtml(opt)}</div>
-          </div>`;
-      }).join("");
-    }
-
-    const questionPrompt = q.type === "ranking"
-      ? "Rank the following options from most to least appropriate:"
-      : q.type === "selection"
-      ? "Select the THREE most appropriate options:"
-      : "Which of the following is the single best answer?";
-
-    slide.innerHTML = `
-      ${headerHTML}
-      <div class="slide-content">
-        <div class="slide-answer-title" style="margin-bottom: 16px;">${escapeHtml(questionPrompt)}</div>
-        <div class="slide-options-list">
-          ${optionsHTML}
+        <div class="slide-footer">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+          <div class="slide-footer-right">Swipe for answer <i class="fa-solid fa-chevron-right"></i></div>
         </div>
-      </div>
-      <div class="slide-footer">
-        <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
-        <div class="slide-footer-right">Swipe for answer <i class="fa-solid fa-chevron-right"></i></div>
-      </div>
-    `;
-  } else if (slideNumber === 3) {
-    // --- SLIDE 3: ANSWER + EXPLANATION ---
-    let answerBannerHTML = "";
+      `;
+    } else if (slideNumber === 2) {
+      // --- REELS SLIDE 2: ANSWER + EXPLANATION ---
+      let answerBannerHTML = "";
 
-    if (q.type === "sba" || q.type === "emq") {
-      // Find letter for the correct answer
-      const correctIdx = q.options.indexOf(q.correct_answer);
-      const correctLetter = correctIdx >= 0 ? String.fromCharCode(65 + correctIdx) : "✓";
-      answerBannerHTML = `
-        <div class="slide-answer-banner" style="font-size: ${instaState.optionsFontSize}px;">
-          <i class="fa-solid fa-circle-check"></i>
-          <div><strong>${correctLetter}.</strong> ${escapeHtml(q.correct_answer)}</div>
+      if (q.type === "sba" || q.type === "emq") {
+        const correctIdx = q.options.indexOf(q.correct_answer);
+        const correctLetter = correctIdx >= 0 ? String.fromCharCode(65 + correctIdx) : "✓";
+        answerBannerHTML = `
+          <div class="slide-answer-banner" style="font-size: ${instaState.optionsFontSize}px; margin-bottom: 20px; padding: 16px 20px;">
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>${correctLetter}.</strong> ${escapeHtml(q.correct_answer)}</div>
+          </div>`;
+      } else if (q.type === "ranking") {
+        answerBannerHTML = `<div class="slide-answer-banner" style="font-size: ${instaState.optionsFontSize - 2}px; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 20px; padding: 16px 20px;">
+          <div style="display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-circle-check"></i> <strong>Correct Ranking Order:</strong></div>
+          ${q.correct_answer.map((opt, idx) => `<div style="padding-left: 36px;">${idx + 1}. ${escapeHtml(opt)}</div>`).join("")}
         </div>`;
-    } else if (q.type === "ranking") {
-      answerBannerHTML = `<div class="slide-answer-banner" style="font-size: ${instaState.optionsFontSize - 2}px; flex-direction: column; align-items: flex-start; gap: 8px;">
-        <div style="display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-circle-check"></i> <strong>Correct Ranking Order:</strong></div>
-        ${q.correct_answer.map((opt, idx) => `<div style="padding-left: 36px;">${idx + 1}. ${escapeHtml(opt)}</div>`).join("")}
-      </div>`;
-    } else if (q.type === "selection") {
-      answerBannerHTML = `<div class="slide-answer-banner" style="font-size: ${instaState.optionsFontSize - 2}px; flex-direction: column; align-items: flex-start; gap: 8px;">
-        <div style="display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-circle-check"></i> <strong>Correct Selections:</strong></div>
-        ${q.correct_answer.map(opt => `<div style="padding-left: 36px;">• ${escapeHtml(opt)}</div>`).join("")}
-      </div>`;
-    }
+      } else if (q.type === "selection") {
+        answerBannerHTML = `<div class="slide-answer-banner" style="font-size: ${instaState.optionsFontSize - 2}px; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 20px; padding: 16px 20px;">
+          <div style="display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-circle-check"></i> <strong>Correct Selections:</strong></div>
+          ${q.correct_answer.map(opt => `<div style="padding-left: 36px;">• ${escapeHtml(opt)}</div>`).join("")}
+        </div>`;
+      }
 
-    const ctaHTML = instaState.ctaText
-      ? `<div style="text-align: center; font-size: 0.85rem; opacity: 0.7; margin-top: 8px; font-style: italic;">💡 ${escapeHtml(instaState.ctaText)}</div>`
-      : "";
+      const ctaHTML = instaState.ctaText
+        ? `<div style="text-align: center; font-size: 0.85rem; opacity: 0.7; margin-top: 8px; font-style: italic;">💡 ${escapeHtml(instaState.ctaText)}</div>`
+        : "";
 
-    slide.innerHTML = `
-      ${headerHTML}
-      <div class="slide-content">
-        <div class="slide-answer-title">Correct Answer</div>
-        ${answerBannerHTML}
-        <div class="slide-explanation-title">Key Learning Points</div>
-        <div class="slide-explanation-box" style="font-size: ${instaState.explanationFontSize}px;">
-          ${escapeHtml(q.explanation)}
+      slide.innerHTML = `
+        ${headerHTML}
+        <div class="slide-content">
+          <div class="slide-answer-title">Correct Answer</div>
+          ${answerBannerHTML}
+          <div class="slide-explanation-title">Key Learning Points</div>
+          <div class="slide-explanation-box" style="font-size: ${instaState.explanationFontSize}px;">
+            ${escapeHtml(q.explanation)}
+          </div>
+          ${ctaHTML}
         </div>
-        ${ctaHTML}
-      </div>
-      <div class="slide-footer">
-        <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
-        <div class="slide-footer-right">Follow for more <i class="fa-solid fa-heart" style="animation: none; color: #ef4444;"></i></div>
-      </div>
-    `;
+        <div class="slide-footer">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+          <div class="slide-footer-right">Follow for more <i class="fa-solid fa-heart" style="animation: none; color: #ef4444;"></i></div>
+        </div>
+      `;
+    }
+  } else {
+    // --- STANDARD 1:1 OR 4:5 LAYOUT (3 Slides Total) ---
+    if (slideNumber === 1) {
+      // --- SLIDE 1: HOOK / SCENARIO ---
+      const footerText = `Slide 1 of 3`;
+      slide.innerHTML = `
+        ${headerHTML}
+        <div class="slide-content">
+          <div class="slide-scenario" style="font-size: ${instaState.scenarioFontSize}px;">
+            ${escapeHtml(q.scenario)}
+          </div>
+        </div>
+        <div class="slide-footer">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+          <div class="slide-footer-right">Swipe for options <i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+      `;
+    } else if (slideNumber === 2) {
+      // --- SLIDE 2: OPTIONS ---
+      let optionsHTML = "";
+
+      if (q.type === "sba" || q.type === "emq") {
+        optionsHTML = q.options.map((opt, idx) => {
+          const letter = String.fromCharCode(65 + idx);
+          return `
+            <div class="slide-option-card">
+              <div class="slide-option-badge">${letter}</div>
+              <div style="flex: 1; font-size: ${instaState.optionsFontSize}px;">${escapeHtml(opt)}</div>
+            </div>`;
+        }).join("");
+      } else if (q.type === "ranking") {
+        optionsHTML = q.options.map((opt, idx) => {
+          return `
+            <div class="slide-option-card">
+              <div class="slide-option-badge">${idx + 1}</div>
+              <div style="flex: 1; font-size: ${instaState.optionsFontSize}px;">${escapeHtml(opt)}</div>
+            </div>`;
+        }).join("");
+      } else if (q.type === "selection") {
+        optionsHTML = q.options.map((opt, idx) => {
+          const letter = String.fromCharCode(65 + idx);
+          return `
+            <div class="slide-option-card">
+              <div class="slide-option-badge">${letter}</div>
+              <div style="flex: 1; font-size: ${instaState.optionsFontSize}px;">${escapeHtml(opt)}</div>
+            </div>`;
+        }).join("");
+      }
+
+      const questionPrompt = q.type === "ranking"
+        ? "Rank the following options from most to least appropriate:"
+        : q.type === "selection"
+        ? "Select the THREE most appropriate options:"
+        : "Which of the following is the single best answer?";
+
+      slide.innerHTML = `
+        ${headerHTML}
+        <div class="slide-content">
+          <div class="slide-answer-title" style="margin-bottom: 16px;">${escapeHtml(questionPrompt)}</div>
+          <div class="slide-options-list">
+            ${optionsHTML}
+          </div>
+        </div>
+        <div class="slide-footer">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+          <div class="slide-footer-right">Swipe for answer <i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+      `;
+    } else if (slideNumber === 3) {
+      // --- SLIDE 3: ANSWER + EXPLANATION ---
+      let answerBannerHTML = "";
+
+      if (q.type === "sba" || q.type === "emq") {
+        // Find letter for the correct answer
+        const correctIdx = q.options.indexOf(q.correct_answer);
+        const correctLetter = correctIdx >= 0 ? String.fromCharCode(65 + correctIdx) : "✓";
+        answerBannerHTML = `
+          <div class="slide-answer-banner" style="font-size: ${instaState.optionsFontSize}px;">
+            <i class="fa-solid fa-circle-check"></i>
+            <div><strong>${correctLetter}.</strong> ${escapeHtml(q.correct_answer)}</div>
+          </div>`;
+      } else if (q.type === "ranking") {
+        answerBannerHTML = `<div class="slide-answer-banner" style="font-size: ${instaState.optionsFontSize - 2}px; flex-direction: column; align-items: flex-start; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-circle-check"></i> <strong>Correct Ranking Order:</strong></div>
+          ${q.correct_answer.map((opt, idx) => `<div style="padding-left: 36px;">${idx + 1}. ${escapeHtml(opt)}</div>`).join("")}
+        </div>`;
+      } else if (q.type === "selection") {
+        answerBannerHTML = `<div class="slide-answer-banner" style="font-size: ${instaState.optionsFontSize - 2}px; flex-direction: column; align-items: flex-start; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-circle-check"></i> <strong>Correct Selections:</strong></div>
+          ${q.correct_answer.map(opt => `<div style="padding-left: 36px;">• ${escapeHtml(opt)}</div>`).join("")}
+        </div>`;
+      }
+
+      const ctaHTML = instaState.ctaText
+        ? `<div style="text-align: center; font-size: 0.85rem; opacity: 0.7; margin-top: 8px; font-style: italic;">💡 ${escapeHtml(instaState.ctaText)}</div>`
+        : "";
+
+      slide.innerHTML = `
+        ${headerHTML}
+        <div class="slide-content">
+          <div class="slide-answer-title">Correct Answer</div>
+          ${answerBannerHTML}
+          <div class="slide-explanation-title">Key Learning Points</div>
+          <div class="slide-explanation-box" style="font-size: ${instaState.explanationFontSize}px;">
+            ${escapeHtml(q.explanation)}
+          </div>
+          ${ctaHTML}
+        </div>
+        <div class="slide-footer">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+          <div class="slide-footer-right">Follow for more <i class="fa-solid fa-heart" style="animation: none; color: #ef4444;"></i></div>
+        </div>
+      `;
+    }
   }
 
   return slide;
@@ -429,8 +612,9 @@ function buildSlideHTML(q, slideNumber) {
 // --- Preview Navigation ---
 function navigatePreview(direction) {
   let next = instaState.activeSlideIndex + direction;
-  if (next < 0) next = 2;
-  if (next > 2) next = 0;
+  const maxIndex = instaState.ratio === "9-16" ? 1 : 2;
+  if (next < 0) next = maxIndex;
+  if (next > maxIndex) next = 0;
   instaState.activeSlideIndex = next;
   showPreviewSlide();
 }
@@ -488,7 +672,7 @@ async function downloadSlide(slideNumber) {
       allowTaint: true,
       backgroundColor: null,
       width: 1080,
-      height: instaState.ratio === "4-5" ? 1350 : 1080,
+      height: instaState.ratio === "4-5" ? 1350 : (instaState.ratio === "9-16" ? 1920 : 1080),
       logging: false,
     });
 
@@ -523,11 +707,13 @@ async function downloadAllSlides() {
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
   btn.disabled = true;
 
+  const totalSlides = instaState.ratio === "9-16" ? 2 : 3;
+
   try {
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= totalSlides; i++) {
       await downloadSlide(i);
       // Small delay between downloads to prevent browser blocking
-      if (i < 3) {
+      if (i < totalSlides) {
         await new Promise(resolve => setTimeout(resolve, 600));
       }
     }
@@ -536,6 +722,93 @@ async function downloadAllSlides() {
   } finally {
     btn.innerHTML = originalText;
     btn.disabled = false;
+  }
+}
+
+// --- Canva Export (Copy to Clipboard) Logic ---
+async function copySlideToClipboard(slideNumber) {
+  const slideEl = document.getElementById(`insta-export-slide-${slideNumber}`);
+  if (!slideEl) {
+    alert("Slide not found. Please try regenerating.");
+    return;
+  }
+
+  const btn = document.getElementById(`insta-copy-slide-${slideNumber}`);
+  const originalHTML = btn ? btn.innerHTML : "";
+  if (btn) {
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Copying...';
+    btn.disabled = true;
+  }
+
+  const exportContainer = document.getElementById("instagram-export-container");
+
+  try {
+    // Move the export container into visible layout so html2canvas can measure
+    exportContainer.style.left = "0";
+    exportContainer.style.opacity = "0";
+    exportContainer.style.zIndex = "-1";
+    exportContainer.style.pointerEvents = "none";
+
+    // Allow a brief tick for browser to reflow
+    await new Promise(resolve => setTimeout(resolve, 150));
+
+    let height = 1080;
+    if (instaState.ratio === "4-5") {
+      height = 1350;
+    } else if (instaState.ratio === "9-16") {
+      height = 1920;
+    }
+
+    const canvas = await html2canvas(slideEl, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: null,
+      width: 1080,
+      height: height,
+      logging: false,
+    });
+
+    canvas.toBlob(async (blob) => {
+      if (!blob) {
+        alert("Failed to generate image.");
+        if (btn) {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+        }
+        return;
+      }
+
+      try {
+        // Write the blob to the system clipboard
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            [blob.type]: blob
+          })
+        ]);
+        alert(`Slide ${slideNumber} copied to clipboard! You can now paste it directly into Canva (Ctrl+V) or any other tool.`);
+      } catch (err) {
+        console.error("Clipboard write failed:", err);
+        alert("Failed to copy automatically. Please ensure clipboard permissions are enabled for this tab, or download the slide and upload it manually.");
+      } finally {
+        if (btn) {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+        }
+      }
+    }, "image/png");
+
+  } catch (err) {
+    console.error("Copy error:", err);
+    alert("Failed to copy slide.\n\nError: " + (err.message || err));
+    if (btn) {
+      btn.innerHTML = originalHTML;
+      btn.disabled = false;
+    }
+  } finally {
+    exportContainer.style.left = "-9999px";
+    exportContainer.style.opacity = "";
+    exportContainer.style.zIndex = "";
   }
 }
 

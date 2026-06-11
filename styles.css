@@ -973,6 +973,8 @@ a {
 .instagram-modal-content {
   max-width: 1000px !important;
   width: 95% !important;
+  max-height: 95vh;
+  overflow-y: auto;
 }
 
 .instagram-modal-header {
@@ -1064,6 +1066,11 @@ a {
   height: 450px;
 }
 
+.preview-viewport.ratio-9-16 {
+  width: 360px;
+  height: 640px;
+}
+
 .preview-slide-container {
   position: absolute;
   top: 0;
@@ -1079,6 +1086,10 @@ a {
 
 .preview-slide-container.ratio-4-5 {
   height: 1350px;
+}
+
+.preview-slide-container.ratio-9-16 {
+  height: 1920px;
 }
 
 .preview-navigation {
@@ -1243,6 +1254,11 @@ a {
   padding: 100px 80px;
 }
 
+.instagram-slide.ratio-9-16 {
+  height: 1920px;
+  padding: 140px 80px;
+}
+
 /* Background Gradients */
 .theme-indigo-dusk {
   background: linear-gradient(135deg, #110c2c 0%, #1e1b4b 40%, #312e81 80%, #4338ca 100%);
@@ -1287,6 +1303,13 @@ a {
   left: 40px;
   right: 40px;
   bottom: 40px;
+}
+
+.instagram-slide.ratio-9-16::before {
+  top: 50px;
+  left: 40px;
+  right: 40px;
+  bottom: 50px;
 }
 
 /* Slide Header */
@@ -1524,4 +1547,62 @@ a {
     max-height: 350px;
   }
 }
+
+/* --- CANVA EXPORT SECTION --- */
+.canva-export-group {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.canva-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.canva-header-info h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.canva-icon-small {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.canva-header-info p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.canva-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-canva-brand {
+  background: linear-gradient(135deg, #7d2ae8 0%, #00c4cc 100%) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(125, 42, 232, 0.2) !important;
+}
+
+.btn-canva-brand:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(125, 42, 232, 0.35) !important;
+}
+
 
