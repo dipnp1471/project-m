@@ -1,6 +1,7 @@
 import json
 import random
 import additional_questions
+import thought_out_questions
 
 # Seed for deterministic generation of questions
 random.seed(42)
@@ -1792,6 +1793,22 @@ def generate_questions():
             "options": shuffled_options,
             "correct_answer": correct_answer,
             "explanation": tmpl["explanation"]
+        })
+        q_id += 1
+
+    # Add the extra thought-out SBA questions
+    for tq in thought_out_questions.THOUGHT_OUT_QUESTIONS:
+        shuffled_options = list(tq["options"])
+        random.shuffle(shuffled_options)
+        questions.append({
+            "id": f"q_{q_id}",
+            "exam": "MSRA",
+            "type": "sba",
+            "category": tq["category"],
+            "scenario": tq["scenario"],
+            "options": shuffled_options,
+            "correct_answer": tq["correct_answer"],
+            "explanation": tq["explanation"]
         })
         q_id += 1
 
