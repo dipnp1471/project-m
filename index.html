@@ -558,6 +558,38 @@
               <label for="insta-handle-input">Instagram Handle</label>
               <input type="text" id="insta-handle-input" class="form-control" value="@medqstudios" placeholder="@yourhandle">
             </div>
+
+            <!-- Website & Traffic Drivers Group -->
+            <div class="form-group" style="background: rgba(99, 102, 241, 0.08); padding: 14px; border-radius: var(--border-radius-sm); border: 1px solid rgba(99, 102, 241, 0.2);">
+              <label style="font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 6px; margin-bottom: 10px;">
+                <i class="fa-solid fa-globe"></i> Website & Reel Promotion
+              </label>
+              
+              <div style="margin-bottom: 10px;">
+                <label for="insta-website-input" style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">Website URL</label>
+                <input type="text" id="insta-website-input" class="form-control" value="www.medqstudios.com" placeholder="www.yourwebsite.com">
+              </div>
+
+              <div style="margin-bottom: 10px;">
+                <label for="insta-website-style-select" style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">Footer Style</label>
+                <select id="insta-website-style-select" class="form-control">
+                  <option value="pill">Pill Badge (High Contrast)</option>
+                  <option value="banner">Full Bottom Banner Bar</option>
+                  <option value="subfooter">Sub-footer Inline Link</option>
+                </select>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">
+                  <input type="checkbox" id="insta-website-toggle" checked style="width: 16px; height: 16px; cursor: pointer;">
+                  Show Website Footer (Reels & Carousels)
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">
+                  <input type="checkbox" id="insta-header-domain-toggle" checked style="width: 16px; height: 16px; cursor: pointer;">
+                  Show Website Domain in Header Badge
+                </label>
+              </div>
+            </div>
             
             <div class="form-group">
               <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);">
@@ -567,22 +599,43 @@
             </div>
             
             <div class="form-group">
-              <label for="insta-cta-input">Slide 3 Footer CTA</label>
-              <input type="text" id="insta-cta-input" class="form-control" value="Save this post for later!" placeholder="e.g. Save this post for later!">
+              <label for="insta-cta-input">Slide 3 / Reel CTA Text</label>
+              <input type="text" id="insta-cta-input" class="form-control" value="Save this post & practice 1000+ questions on medqstudios.com" placeholder="e.g. Practice more on www.yourwebsite.com">
             </div>
             
             <div class="form-group font-sliders">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label style="font-weight: 700; font-size: 0.9rem;">Font Size Controls</label>
+              </div>
+
+              <!-- Quick Font Size Presets -->
+              <div class="font-presets-row" style="display: flex; gap: 6px; margin-bottom: 10px;">
+                <button type="button" class="btn btn-secondary btn-sm font-preset-btn" data-preset="compact" style="flex: 1; padding: 4px 6px; font-size: 0.75rem;">Compact</button>
+                <button type="button" class="btn btn-secondary btn-sm font-preset-btn active" data-preset="default" style="flex: 1; padding: 4px 6px; font-size: 0.75rem;">Default</button>
+                <button type="button" class="btn btn-secondary btn-sm font-preset-btn" data-preset="large" style="flex: 1; padding: 4px 6px; font-size: 0.75rem;">Large</button>
+                <button type="button" class="btn btn-secondary btn-sm font-preset-btn" data-preset="xlarge" style="flex: 1; padding: 4px 6px; font-size: 0.75rem;">X-Large</button>
+                <button type="button" class="btn btn-secondary btn-sm font-preset-btn" data-preset="max" style="flex: 1; padding: 4px 6px; font-size: 0.75rem; font-weight: 800; color: var(--primary);">Max</button>
+              </div>
+
               <div class="slider-row">
                 <label for="insta-size-scenario">Scenario Font Size (<span id="val-size-scenario">26</span>px)</label>
-                <input type="range" id="insta-size-scenario" min="18" max="36" value="26" class="insta-slider">
+                <input type="range" id="insta-size-scenario" min="16" max="64" value="26" class="insta-slider">
               </div>
               <div class="slider-row">
                 <label for="insta-size-options">Options Font Size (<span id="val-size-options">20</span>px)</label>
-                <input type="range" id="insta-size-options" min="14" max="28" value="20" class="insta-slider">
+                <input type="range" id="insta-size-options" min="12" max="50" value="20" class="insta-slider">
               </div>
               <div class="slider-row">
                 <label for="insta-size-explanation">Explanation Font Size (<span id="val-size-explanation">18</span>px)</label>
-                <input type="range" id="insta-size-explanation" min="12" max="24" value="18" class="insta-slider">
+                <input type="range" id="insta-size-explanation" min="10" max="44" value="18" class="insta-slider">
+              </div>
+              <div class="slider-row">
+                <label for="insta-size-website">Website Footer Font Size (<span id="val-size-website">20</span>px)</label>
+                <input type="range" id="insta-size-website" min="14" max="40" value="20" class="insta-slider">
+              </div>
+              <div class="slider-row">
+                <label for="insta-size-header">Header & Handle Font Size (<span id="val-size-header">18</span>px)</label>
+                <input type="range" id="insta-size-header" min="12" max="36" value="18" class="insta-slider">
               </div>
             </div>
           </div>
@@ -591,10 +644,11 @@
         <div class="instagram-modal-footer">
           <div class="download-group">
             <button id="insta-download-all" class="btn"><i class="fa-solid fa-circle-arrow-down"></i> Download All Slides</button>
-            <div class="individual-downloads" style="display: flex; gap: 8px;">
+            <div class="individual-downloads" style="display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn btn-secondary btn-sm download-single-btn" data-slide="1" title="Download Slide 1 Only">Slide 1</button>
               <button class="btn btn-secondary btn-sm download-single-btn" data-slide="2" title="Download Slide 2 Only">Slide 2</button>
               <button class="btn btn-secondary btn-sm download-single-btn" data-slide="3" title="Download Slide 3 Only">Slide 3</button>
+              <button id="insta-copy-caption-btn" class="btn btn-secondary btn-sm" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: white; border: none;" title="Copy Instagram Caption with Website Link"><i class="fa-solid fa-copy"></i> Copy Caption & Bio Link</button>
             </div>
           </div>
           

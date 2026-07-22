@@ -11,12 +11,27 @@ const instaState = {
   theme: "indigo-dusk",
   font: "Outfit",
   handle: "@medqstudios",
+  websiteUrl: "www.medqstudios.com",
+  showWebsiteFooter: true,
+  websiteFooterStyle: "pill", // "pill", "banner", "subfooter"
+  showHeaderDomain: true,
   showLogo: true,
-  ctaText: "Save this post for later!",
+  ctaText: "Save this post & practice 1000+ questions on medqstudios.com",
   ratio: "1-1", // "1-1", "4-5", or "9-16"
   scenarioFontSize: 26,
   optionsFontSize: 20,
   explanationFontSize: 18,
+  websiteFontSize: 20,
+  headerFontSize: 18,
+};
+
+// Font Presets Mapping
+const FONT_PRESETS = {
+  compact: { scenario: 20, options: 16, explanation: 14, website: 16, header: 14 },
+  default: { scenario: 26, options: 20, explanation: 18, website: 20, header: 18 },
+  large: { scenario: 34, options: 26, explanation: 22, website: 24, header: 22 },
+  xlarge: { scenario: 44, options: 32, explanation: 26, website: 28, header: 26 },
+  max: { scenario: 56, options: 40, explanation: 32, website: 34, header: 30 },
 };
 
 // Theme Definitions
@@ -164,6 +179,42 @@ function initInstaEventListeners() {
     });
   }
 
+  // Website Input
+  const websiteInput = document.getElementById("insta-website-input");
+  if (websiteInput) {
+    websiteInput.addEventListener("input", () => {
+      instaState.websiteUrl = websiteInput.value.trim() || "www.medqstudios.com";
+      rebuildAllSlides();
+    });
+  }
+
+  // Website Footer Style Select
+  const styleSelect = document.getElementById("insta-website-style-select");
+  if (styleSelect) {
+    styleSelect.addEventListener("change", () => {
+      instaState.websiteFooterStyle = styleSelect.value;
+      rebuildAllSlides();
+    });
+  }
+
+  // Website Footer Toggle
+  const websiteToggle = document.getElementById("insta-website-toggle");
+  if (websiteToggle) {
+    websiteToggle.addEventListener("change", () => {
+      instaState.showWebsiteFooter = websiteToggle.checked;
+      rebuildAllSlides();
+    });
+  }
+
+  // Header Domain Tag Toggle
+  const headerDomainToggle = document.getElementById("insta-header-domain-toggle");
+  if (headerDomainToggle) {
+    headerDomainToggle.addEventListener("change", () => {
+      instaState.showHeaderDomain = headerDomainToggle.checked;
+      rebuildAllSlides();
+    });
+  }
+
   // Logo toggle
   const logoToggle = document.getElementById("insta-logo-toggle");
   if (logoToggle) {
@@ -185,16 +236,43 @@ function initInstaEventListeners() {
   // Font size sliders
   setupSlider("insta-size-scenario", "val-size-scenario", (val) => {
     instaState.scenarioFontSize = val;
+    clearPresetButtons();
     rebuildAllSlides();
   });
   setupSlider("insta-size-options", "val-size-options", (val) => {
     instaState.optionsFontSize = val;
+    clearPresetButtons();
     rebuildAllSlides();
   });
   setupSlider("insta-size-explanation", "val-size-explanation", (val) => {
     instaState.explanationFontSize = val;
+    clearPresetButtons();
     rebuildAllSlides();
   });
+  setupSlider("insta-size-website", "val-size-website", (val) => {
+    instaState.websiteFontSize = val;
+    clearPresetButtons();
+    rebuildAllSlides();
+  });
+  setupSlider("insta-size-header", "val-size-header", (val) => {
+    instaState.headerFontSize = val;
+    clearPresetButtons();
+    rebuildAllSlides();
+  });
+
+  // Font Size Preset Buttons
+  document.querySelectorAll(".font-preset-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const presetKey = btn.dataset.preset;
+      applyFontPreset(presetKey);
+    });
+  });
+
+  // Copy Instagram Caption Button
+  const copyCaptionBtn = document.getElementById("insta-copy-caption-btn");
+  if (copyCaptionBtn) {
+    copyCaptionBtn.addEventListener("click", copyInstagramCaption);
+  }
 
   // Download buttons
   const downloadAllBtn = document.getElementById("insta-download-all");
@@ -207,6 +285,42 @@ function initInstaEventListeners() {
       downloadSlide(slideNum);
     });
   });
+}
+
+function clearPresetButtons() {
+  document.querySelectorAll(".font-preset-btn").forEach(btn => btn.classList.remove("active"));
+}
+
+function applyFontPreset(presetKey) {
+  const preset = FONT_PRESETS[presetKey];
+  if (!preset) return;
+
+  instaState.scenarioFontSize = preset.scenario;
+  instaState.optionsFontSize = preset.options;
+  instaState.explanationFontSize = preset.explanation;
+  instaState.websiteFontSize = preset.website;
+  instaState.headerFontSize = preset.header;
+
+  // Update slider inputs and labels
+  updateSliderDOM("insta-size-scenario", "val-size-scenario", preset.scenario);
+  updateSliderDOM("insta-size-options", "val-size-options", preset.options);
+  updateSliderDOM("insta-size-explanation", "val-size-explanation", preset.explanation);
+  updateSliderDOM("insta-size-website", "val-size-website", preset.website);
+  updateSliderDOM("insta-size-header", "val-size-header", preset.header);
+
+  // Update active preset button
+  document.querySelectorAll(".font-preset-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.preset === presetKey);
+  });
+
+  rebuildAllSlides();
+}
+
+function updateSliderDOM(sliderId, labelId, val) {
+  const slider = document.getElementById(sliderId);
+  const label = document.getElementById(labelId);
+  if (slider) slider.value = val;
+  if (label) label.textContent = val;
 }
 
 function setupSlider(sliderId, labelId, onChange) {
@@ -235,14 +349,23 @@ function openInstagramModal(questionId) {
   // Reset controls to match current state
   document.getElementById("insta-font-select").value = instaState.font;
   document.getElementById("insta-handle-input").value = instaState.handle;
+  const webInput = document.getElementById("insta-website-input");
+  if (webInput) webInput.value = instaState.websiteUrl;
+  const styleSelect = document.getElementById("insta-website-style-select");
+  if (styleSelect) styleSelect.value = instaState.websiteFooterStyle;
+  const webToggle = document.getElementById("insta-website-toggle");
+  if (webToggle) webToggle.checked = instaState.showWebsiteFooter;
+  const domainToggle = document.getElementById("insta-header-domain-toggle");
+  if (domainToggle) domainToggle.checked = instaState.showHeaderDomain;
+
   document.getElementById("insta-logo-toggle").checked = instaState.showLogo;
   document.getElementById("insta-cta-input").value = instaState.ctaText;
-  document.getElementById("insta-size-scenario").value = instaState.scenarioFontSize;
-  document.getElementById("val-size-scenario").textContent = instaState.scenarioFontSize;
-  document.getElementById("insta-size-options").value = instaState.optionsFontSize;
-  document.getElementById("val-size-options").textContent = instaState.optionsFontSize;
-  document.getElementById("insta-size-explanation").value = instaState.explanationFontSize;
-  document.getElementById("val-size-explanation").textContent = instaState.explanationFontSize;
+
+  updateSliderDOM("insta-size-scenario", "val-size-scenario", instaState.scenarioFontSize);
+  updateSliderDOM("insta-size-options", "val-size-options", instaState.optionsFontSize);
+  updateSliderDOM("insta-size-explanation", "val-size-explanation", instaState.explanationFontSize);
+  updateSliderDOM("insta-size-website", "val-size-website", instaState.websiteFontSize);
+  updateSliderDOM("insta-size-header", "val-size-header", instaState.headerFontSize);
 
   // Reset active classes on ratio buttons
   const squareBtn = document.getElementById("insta-ratio-square");
@@ -357,19 +480,19 @@ function buildSlideHTML(q, slideNumber) {
                     q.type === "ranking" ? "Ranking" :
                     q.type === "selection" ? "Selection" : q.type.toUpperCase();
 
-  // Correct answer text (handles arrays)
-  const correctText = Array.isArray(q.correct_answer)
-    ? q.correct_answer.join(" → ")
-    : q.correct_answer;
+  // Domain Tag in Header
+  const domainTagHTML = (instaState.showHeaderDomain && instaState.websiteUrl)
+    ? `<span class="slide-tag domain"><i class="fa-solid fa-globe"></i> ${escapeHtml(instaState.websiteUrl)}</span>`
+    : "";
 
   // --- Slide Header (shared across all slides) ---
   const logoHTML = instaState.showLogo
     ? `<div class="slide-logo">
-         <div class="slide-logo-icon">M</div>
-         <span class="slide-logo-text">${escapeHtml(instaState.handle)}</span>
+         <div class="slide-logo-icon" style="width: ${Math.round(instaState.headerFontSize * 2.2)}px; height: ${Math.round(instaState.headerFontSize * 2.2)}px; font-size: ${Math.round(instaState.headerFontSize * 1.1)}px;">M</div>
+         <span class="slide-logo-text" style="font-size: ${instaState.headerFontSize}px;">${escapeHtml(instaState.handle)}</span>
        </div>`
     : `<div class="slide-logo">
-         <span class="slide-logo-text">${escapeHtml(instaState.handle)}</span>
+         <span class="slide-logo-text" style="font-size: ${instaState.headerFontSize}px;">${escapeHtml(instaState.handle)}</span>
        </div>`;
 
   const totalSlidesCount = instaState.ratio === "9-16" ? 2 : 3;
@@ -377,20 +500,45 @@ function buildSlideHTML(q, slideNumber) {
     <div class="slide-header">
       <div class="slide-header-top">
         ${logoHTML}
-        <span class="slide-badge">${slideNumber}/${totalSlidesCount}</span>
+        <span class="slide-badge" style="font-size: ${Math.max(12, Math.round(instaState.headerFontSize * 0.7))}px;">${slideNumber}/${totalSlidesCount}</span>
       </div>
       <div class="slide-header-tags">
         <span class="slide-tag">${escapeHtml(q.exam || "MSRA")}</span>
         <span class="slide-tag specialty">${escapeHtml(q.category)}</span>
         <span class="slide-tag">${typeLabel}</span>
+        ${domainTagHTML}
       </div>
     </div>
   `;
 
+  // Website Footer Elements
+  let websitePillHTML = "";
+  let websiteBannerHTML = "";
+  let subfooterLinkHTML = "";
+
+  if (instaState.showWebsiteFooter && instaState.websiteUrl) {
+    if (instaState.websiteFooterStyle === "pill") {
+      websitePillHTML = `
+        <div class="slide-website-pill" style="font-size: ${instaState.websiteFontSize}px;">
+          <i class="fa-solid fa-globe"></i> ${escapeHtml(instaState.websiteUrl)}
+        </div>`;
+    } else if (instaState.websiteFooterStyle === "banner") {
+      websiteBannerHTML = `
+        <div class="slide-website-banner" style="font-size: ${instaState.websiteFontSize}px;">
+          <i class="fa-solid fa-rocket"></i> Practice 1,000+ MSRA Questions at ${escapeHtml(instaState.websiteUrl)}
+        </div>`;
+    } else if (instaState.websiteFooterStyle === "subfooter") {
+      subfooterLinkHTML = `
+        <span class="slide-subfooter-link" style="font-size: ${Math.max(14, Math.round(instaState.websiteFontSize * 0.9))}px; margin-left: 10px;">
+          <i class="fa-solid fa-link"></i> ${escapeHtml(instaState.websiteUrl)}
+        </span>`;
+    }
+  }
+
   if (instaState.ratio === "9-16") {
     // --- 9:16 REELS RATIO LAYOUT (2 Slides Total) ---
     if (slideNumber === 1) {
-      // --- REELS SLIDE 1: QUESTION & OPTIONS ON SAME PAGE ---
+      // --- REELS SLIDE 1: QUESTION & OPTIONS ---
       let optionsHTML = "";
 
       if (q.type === "sba" || q.type === "emq") {
@@ -439,11 +587,13 @@ function buildSlideHTML(q, slideNumber) {
               ${optionsHTML}
             </div>
           </div>
+          ${websitePillHTML ? `<div style="text-align: center; margin-top: 15px;">${websitePillHTML}</div>` : ""}
         </div>
-        <div class="slide-footer">
-          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+        <div class="slide-footer" style="font-size: ${instaState.headerFontSize}px;">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}${subfooterLinkHTML}</div>
           <div class="slide-footer-right">Swipe for answer <i class="fa-solid fa-chevron-right"></i></div>
         </div>
+        ${websiteBannerHTML}
       `;
     } else if (slideNumber === 2) {
       // --- REELS SLIDE 2: ANSWER + EXPLANATION ---
@@ -470,7 +620,7 @@ function buildSlideHTML(q, slideNumber) {
       }
 
       const ctaHTML = instaState.ctaText
-        ? `<div style="text-align: center; font-size: 0.85rem; opacity: 0.7; margin-top: 8px; font-style: italic;">💡 ${escapeHtml(instaState.ctaText)}</div>`
+        ? `<div style="text-align: center; font-size: ${Math.max(14, Math.round(instaState.explanationFontSize * 0.9))}px; opacity: 0.95; margin-top: 14px; font-style: italic; background: rgba(255,255,255,0.08); padding: 10px 16px; border-radius: 12px;">💡 ${escapeHtml(instaState.ctaText)}</div>`
         : "";
 
       slide.innerHTML = `
@@ -483,29 +633,32 @@ function buildSlideHTML(q, slideNumber) {
             ${escapeHtml(q.explanation)}
           </div>
           ${ctaHTML}
+          ${websitePillHTML ? `<div style="text-align: center; margin-top: 18px;">${websitePillHTML}</div>` : ""}
         </div>
-        <div class="slide-footer">
-          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+        <div class="slide-footer" style="font-size: ${instaState.headerFontSize}px;">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}${subfooterLinkHTML}</div>
           <div class="slide-footer-right">Follow for more <i class="fa-solid fa-heart" style="animation: none; color: #ef4444;"></i></div>
         </div>
+        ${websiteBannerHTML}
       `;
     }
   } else {
     // --- STANDARD 1:1 OR 4:5 LAYOUT (3 Slides Total) ---
     if (slideNumber === 1) {
       // --- SLIDE 1: HOOK / SCENARIO ---
-      const footerText = `Slide 1 of 3`;
       slide.innerHTML = `
         ${headerHTML}
         <div class="slide-content">
           <div class="slide-scenario" style="font-size: ${instaState.scenarioFontSize}px;">
             ${escapeHtml(q.scenario)}
           </div>
+          ${websitePillHTML ? `<div style="text-align: center; margin-top: 24px;">${websitePillHTML}</div>` : ""}
         </div>
-        <div class="slide-footer">
-          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+        <div class="slide-footer" style="font-size: ${instaState.headerFontSize}px;">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}${subfooterLinkHTML}</div>
           <div class="slide-footer-right">Swipe for options <i class="fa-solid fa-chevron-right"></i></div>
         </div>
+        ${websiteBannerHTML}
       `;
     } else if (slideNumber === 2) {
       // --- SLIDE 2: OPTIONS ---
@@ -552,18 +705,19 @@ function buildSlideHTML(q, slideNumber) {
           <div class="slide-options-list">
             ${optionsHTML}
           </div>
+          ${websitePillHTML ? `<div style="text-align: center; margin-top: 24px;">${websitePillHTML}</div>` : ""}
         </div>
-        <div class="slide-footer">
-          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+        <div class="slide-footer" style="font-size: ${instaState.headerFontSize}px;">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}${subfooterLinkHTML}</div>
           <div class="slide-footer-right">Swipe for answer <i class="fa-solid fa-chevron-right"></i></div>
         </div>
+        ${websiteBannerHTML}
       `;
     } else if (slideNumber === 3) {
       // --- SLIDE 3: ANSWER + EXPLANATION ---
       let answerBannerHTML = "";
 
       if (q.type === "sba" || q.type === "emq") {
-        // Find letter for the correct answer
         const correctIdx = q.options.indexOf(q.correct_answer);
         const correctLetter = correctIdx >= 0 ? String.fromCharCode(65 + correctIdx) : "✓";
         answerBannerHTML = `
@@ -584,7 +738,7 @@ function buildSlideHTML(q, slideNumber) {
       }
 
       const ctaHTML = instaState.ctaText
-        ? `<div style="text-align: center; font-size: 0.85rem; opacity: 0.7; margin-top: 8px; font-style: italic;">💡 ${escapeHtml(instaState.ctaText)}</div>`
+        ? `<div style="text-align: center; font-size: ${Math.max(14, Math.round(instaState.explanationFontSize * 0.9))}px; opacity: 0.95; margin-top: 14px; font-style: italic; background: rgba(255,255,255,0.08); padding: 10px 16px; border-radius: 12px;">💡 ${escapeHtml(instaState.ctaText)}</div>`
         : "";
 
       slide.innerHTML = `
@@ -597,16 +751,59 @@ function buildSlideHTML(q, slideNumber) {
             ${escapeHtml(q.explanation)}
           </div>
           ${ctaHTML}
+          ${websitePillHTML ? `<div style="text-align: center; margin-top: 18px;">${websitePillHTML}</div>` : ""}
         </div>
-        <div class="slide-footer">
-          <div class="slide-footer-left">${escapeHtml(instaState.handle)}</div>
+        <div class="slide-footer" style="font-size: ${instaState.headerFontSize}px;">
+          <div class="slide-footer-left">${escapeHtml(instaState.handle)}${subfooterLinkHTML}</div>
           <div class="slide-footer-right">Follow for more <i class="fa-solid fa-heart" style="animation: none; color: #ef4444;"></i></div>
         </div>
+        ${websiteBannerHTML}
       `;
     }
   }
 
   return slide;
+}
+
+// --- Instagram Caption Copier with Website Link ---
+function copyInstagramCaption() {
+  const q = instaState.activeQuestion;
+  if (!q) {
+    alert("No active question found.");
+    return;
+  }
+
+  const typeLabel = q.type === "sba" ? "SBA" :
+                    q.type === "emq" ? "EMQ" :
+                    q.type === "ranking" ? "Ranking" :
+                    q.type === "selection" ? "Selection" : q.type.toUpperCase();
+
+  const optionsList = (q.options || []).map((opt, idx) => {
+    const letter = String.fromCharCode(65 + idx);
+    return `${letter}) ${opt}`;
+  }).join("\n");
+
+  const captionText = `🎯 MSRA Practice Question (${typeLabel}) - ${q.category || "General Medical"}
+
+${q.scenario}
+
+👇 Options:
+${optionsList}
+
+---
+💡 Swipe left to see the correct answer & key learning points!
+
+🌐 Practice 1,000+ exam-standard MSRA questions with detailed explanations at:
+👉 https://${instaState.websiteUrl} (Link in bio!)
+
+#MSRA #MedicalExam #MedEd #NHS #JuniorDoctor #GPST #Revision ${instaState.handle}`;
+
+  navigator.clipboard.writeText(captionText).then(() => {
+    alert("Instagram Caption copied to clipboard!\n\nIncludes your question scenario, options, website link (https://" + instaState.websiteUrl + "), and bio CTA.");
+  }).catch(err => {
+    console.error("Failed to copy caption:", err);
+    alert("Could not copy caption to clipboard. Please allow clipboard permissions.");
+  });
 }
 
 // --- Preview Navigation ---
