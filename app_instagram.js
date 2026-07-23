@@ -525,7 +525,7 @@ function buildSlideHTML(q, slideNumber) {
     } else if (instaState.websiteFooterStyle === "banner") {
       websiteBannerHTML = `
         <div class="slide-website-banner" style="font-size: ${instaState.websiteFontSize}px;">
-          <i class="fa-solid fa-rocket"></i> Practice 1,000+ MSRA Questions at ${escapeHtml(instaState.websiteUrl)}
+          <i class="fa-solid fa-rocket"></i> Practice & track questions for free at ${escapeHtml(instaState.websiteUrl)}
         </div>`;
     } else if (instaState.websiteFooterStyle === "subfooter") {
       subfooterLinkHTML = `
@@ -783,6 +783,29 @@ function copyInstagramCaption() {
     return `${letter}) ${opt}`;
   }).join("\n");
 
+  // Format Correct Answer Text
+  let answerText = "";
+  if (q.type === "sba" || q.type === "emq") {
+    const correctIdx = (q.options || []).indexOf(q.correct_answer);
+    const correctLetter = correctIdx >= 0 ? String.fromCharCode(65 + correctIdx) + ". " : "";
+    answerText = `✅ Correct Answer:\n${correctLetter}${q.correct_answer}`;
+  } else if (q.type === "ranking") {
+    const rankingFormatted = Array.isArray(q.correct_answer)
+      ? q.correct_answer.map((opt, i) => `${i + 1}. ${opt}`).join("\n")
+      : q.correct_answer;
+    answerText = `✅ Correct Answer (Ranking Order):\n${rankingFormatted}`;
+  } else if (q.type === "selection") {
+    const selectionFormatted = Array.isArray(q.correct_answer)
+      ? q.correct_answer.map(opt => `• ${opt}`).join("\n")
+      : q.correct_answer;
+    answerText = `✅ Correct Answer (Selections):\n${selectionFormatted}`;
+  } else {
+    answerText = `✅ Correct Answer:\n${q.correct_answer}`;
+  }
+
+  // Format Explanation Text
+  const explanationText = q.explanation ? `📖 Explanation:\n${q.explanation}` : "";
+
   const captionText = `🎯 MSRA Practice Question (${typeLabel}) - ${q.category || "General Medical"}
 
 ${q.scenario}
@@ -791,15 +814,18 @@ ${q.scenario}
 ${optionsList}
 
 ---
-💡 Swipe left to see the correct answer & key learning points!
+${answerText}
 
-🌐 Practice 1,000+ exam-standard MSRA questions with detailed explanations at:
+${explanationText}
+
+---
+🌐 Practice and track questions for free on our companion question bank website at:
 👉 https://${instaState.websiteUrl} (Link in bio!)
 
 #MSRA #MedicalExam #MedEd #NHS #JuniorDoctor #GPST #Revision ${instaState.handle}`;
 
   navigator.clipboard.writeText(captionText).then(() => {
-    alert("Instagram Caption copied to clipboard!\n\nIncludes your question scenario, options, website link (https://" + instaState.websiteUrl + "), and bio CTA.");
+    alert("Instagram Caption copied to clipboard!\n\nIncludes your question scenario, options, correct answer, explanation, website link (https://" + instaState.websiteUrl + "), and bio CTA.");
   }).catch(err => {
     console.error("Failed to copy caption:", err);
     alert("Could not copy caption to clipboard. Please allow clipboard permissions.");
