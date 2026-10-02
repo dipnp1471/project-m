@@ -53,11 +53,8 @@ project-m/
 ├── app_instagram.js            # Instagram carousel generator module
 ├── questions.json              # Curated question bank
 ├── generate_questions.py       # Master script to assemble and output questions.json
-├── part1_questions.py          # Cardiovascular, Derm/Eye/ENT, Endo, Gastro
-├── part2_questions.py          # Infectious/Haem, Musculoskeletal, Paeds, Psych/Neuro
-├── part3_questions.py          # Renal/Urology, Reproductive/O&G, Respiratory, Pharmacology
-├── part4_questions.py          # High-Yield Pathognomonic Questions (60 questions)
-├── pd_questions.py             # Professional Dilemmas (Ranking & Selection)
+├── clinical_questions.py       # High-Yield Pathognomonic Clinical Questions (60 questions)
+├── additional_questions.py     # Additional Clinical & Professional Dilemmas (40 questions)
 ├── verify_questions.py         # Validation script for question schema
 ├── .gitignore
 └── README.md
@@ -98,23 +95,23 @@ project-m/
 
 ## 🧪 Question Bank
 
-The curated question bank contains **266 verified MSRA-format questions** across 12 clinical domains, Pharmacology, and Professional Dilemmas:
+The curated question bank contains **100 verified MSRA-format questions** across 12 clinical domains and Professional Dilemmas (zero category duplication):
 
 | Domain / Category | Question Types | Questions |
 |-------------------|----------------|-----------|
-| Cardiovascular | SBA, EMQ | 18 |
-| Dermatology / Ophthalmology / ENT | SBA, EMQ | 18 |
-| Endocrinology / Metabolic | SBA, EMQ | 18 |
-| Gastroenterology / Clinical Nutrition | SBA, EMQ | 18 |
-| Infectious Diseases / Haematology / Immunology / Allergies / Genetics | SBA, EMQ | 18 |
-| Musculoskeletal | SBA, EMQ | 18 |
-| Paediatrics | SBA, EMQ | 18 |
-| Psychiatry / Neurology | SBA, EMQ | 18 |
-| Renal / Urology | SBA, EMQ | 18 |
-| Reproductive / Obstetrics & Gynaecology | SBA, EMQ | 18 |
-| Respiratory | SBA, EMQ | 18 |
-| Pharmacology | SBA, EMQ | 18 |
-| Professional Dilemmas | Ranking, Selection | 50 |
+| Cardiovascular | SBA | 7 |
+| Dermatology / Ophthalmology / ENT | SBA | 7 |
+| Endocrinology / Metabolic | SBA | 7 |
+| Gastroenterology / Clinical Nutrition | SBA | 7 |
+| Infectious Diseases / Haematology / Immunology / Allergies / Genetics | SBA | 7 |
+| Musculoskeletal | SBA | 7 |
+| Paediatrics | SBA | 7 |
+| Psychiatry / Neurology | SBA | 7 |
+| Renal / Urology | SBA | 7 |
+| Reproductive / Obstetrics & Gynaecology | SBA | 7 |
+| Respiratory | SBA | 7 |
+| Pharmacology | SBA | 7 |
+| Professional Dilemmas | Ranking, Selection | 16 |
 
 ### Regenerating the Question Bank
 
@@ -124,7 +121,7 @@ If you want to modify or regenerate the base question bank:
 python generate_questions.py
 ```
 
-This outputs a fresh `questions.json` by assembling the questions from `part1_questions.py`, `part2_questions.py`, `part3_questions.py`, `part4_questions.py`, and `pd_questions.py`.
+This outputs a fresh `questions.json` by assembling the questions from `clinical_questions.py` and `additional_questions.py`.
 
 ### Validating Questions
 

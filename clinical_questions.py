@@ -5,7 +5,7 @@ Part 4: High-Yield Pathognomonic Questions
 5 questions for each of the 12 clinical domains.
 """
 
-PART4_QUESTIONS = [
+CLINICAL_QUESTIONS = [
     # =========================================================================
     # 1. CARDIOVASCULAR
     # =========================================================================
@@ -85,7 +85,7 @@ PART4_QUESTIONS = [
     # =========================================================================
     {
         "type": "sba",
-        "category": "Dermatology / ENT / Ophthalmology",
+        "category": "Dermatology / Ophthalmology / ENT",
         "scenario": "A 25-year-old man presents with a mild pruritic rash. It began 10 days ago as a single 3 cm oval, salmon-coloured scaly patch on his chest. Yesterday, a widespread eruption of smaller scaly macules appeared on his trunk along the lines of cleavage, giving a 'Christmas tree' distribution. What is the most likely diagnosis?",
         "options": [
             "Pityriasis rosea",
@@ -99,7 +99,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Dermatology / ENT / Ophthalmology",
+        "category": "Dermatology / Ophthalmology / ENT",
         "scenario": "A 70-year-old man presents with sudden, painless, profound loss of vision in his right eye. Examination of the fundus reveals a pale, opaque retina with a distinct 'cherry-red spot' at the macula. What is the most likely diagnosis?",
         "options": [
             "Central retinal artery occlusion",
@@ -113,7 +113,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Dermatology / ENT / Ophthalmology",
+        "category": "Dermatology / Ophthalmology / ENT",
         "scenario": "A 4-year-old unimmunised boy is brought to the GP with a 3-day history of high fever, coryza, cough, and conjunctivitis. On examination of the oral mucosa, tiny white spots resembling grains of salt on a red background are seen on the buccal mucosa opposite the molars. What are these spots called?",
         "options": [
             "Koplik spots",
@@ -127,7 +127,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Dermatology / ENT / Ophthalmology",
+        "category": "Dermatology / Ophthalmology / ENT",
         "scenario": "A 65-year-old man with long-standing poorly controlled hypertension attends for a routine eye check. Fundoscopy shows thickening of the retinal arterioles causing compression of the venules where they cross. What is this specific finding known as?",
         "options": [
             "AV nipping (nipping/nicking)",
@@ -141,7 +141,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Dermatology / ENT / Ophthalmology",
+        "category": "Dermatology / Ophthalmology / ENT",
         "scenario": "A 55-year-old farmer presents with a slowly growing nodule on his upper lip. On examination, it is a 1 cm nodule with a 'pearly, rolled edge' and visible fine telangiectasia across its surface. The centre is slightly ulcerated. What is the most likely diagnosis?",
         "options": [
             "Basal cell carcinoma",
@@ -233,7 +233,7 @@ PART4_QUESTIONS = [
     # =========================================================================
     {
         "type": "sba",
-        "category": "Gastroenterology / Nutrition",
+        "category": "Gastroenterology / Clinical Nutrition",
         "scenario": "A 24-year-old man presents with chronic bloody diarrhoea. A barium enema reveals complete loss of haustral markings throughout the descending and sigmoid colon, giving it the appearance of a smooth, rigid tube. What is the classical name for this radiological finding?",
         "options": [
             "Lead pipe colon",
@@ -247,7 +247,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Gastroenterology / Nutrition",
+        "category": "Gastroenterology / Clinical Nutrition",
         "scenario": "A 28-year-old woman presents with abdominal pain and weight loss. Colonoscopy reveals transmural inflammation with deep fissuring ulcers interspersed with normal mucosa, giving a 'cobblestone' appearance. A barium follow-through shows severe stricturing of the terminal ileum. What is the stricture known as?",
         "options": [
             "String sign of Kantor",
@@ -261,7 +261,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Gastroenterology / Nutrition",
+        "category": "Gastroenterology / Clinical Nutrition",
         "scenario": "A 68-year-old man presents with iron deficiency anaemia and altered bowel habit. A barium enema demonstrates a short segment of severe, circumferential irregular narrowing in the descending colon with overhanging edges. What is the classic term for this appearance?",
         "options": [
             "Apple core lesion",
@@ -275,7 +275,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Gastroenterology / Nutrition",
+        "category": "Gastroenterology / Clinical Nutrition",
         "scenario": "A 19-year-old man presents with tremors and signs of chronic liver disease. Slit-lamp examination of the eyes reveals golden-brown rings at the periphery of the cornea in Descemet's membrane. What are these rings called?",
         "options": [
             "Kayser-Fleischer rings",
@@ -289,7 +289,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Gastroenterology / Nutrition",
+        "category": "Gastroenterology / Clinical Nutrition",
         "scenario": "A 45-year-old woman presents with intermittent dysphagia for both solids and liquids, along with retrosternal chest pain. A barium swallow reveals multiple uncoordinated contractions, giving the oesophagus a 'corkscrew' or 'rosary bead' appearance. What is the diagnosis?",
         "options": [
             "Diffuse oesophageal spasm",
@@ -307,7 +307,7 @@ PART4_QUESTIONS = [
     # =========================================================================
     {
         "type": "sba",
-        "category": "Infectious disease / Haematology / Immunology / Genetics",
+        "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
         "scenario": "A 65-year-old man presents with fatigue and bleeding gums. A full blood count shows a low haemoglobin, thrombocytopenia, and leukocytosis. A blood film reveals large blast cells with prominent nucleoli and distinct, needle-like eosinophilic inclusions in the cytoplasm. What are these inclusions called?",
         "options": [
             "Auer rods",
@@ -321,7 +321,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Infectious disease / Haematology / Immunology / Genetics",
+        "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
         "scenario": "A 25-year-old woman presents with a painless, enlarged cervical lymph node and night sweats. A lymph node biopsy demonstrates large, binucleate cells with prominent eosinophilic nucleoli giving an 'owl-eye' appearance. What is the specific name of these cells?",
         "options": [
             "Reed-Sternberg cells",
@@ -335,7 +335,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Infectious disease / Haematology / Immunology / Genetics",
+        "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
         "scenario": "An asymptomatic 70-year-old man is found to have a significantly elevated lymphocyte count on a routine blood test. A peripheral blood smear shows many mature-appearing small lymphocytes alongside fragile, disrupted lymphocytes. What is the term for these disrupted cells?",
         "options": [
             "Smudge cells",
@@ -349,7 +349,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Infectious disease / Haematology / Immunology / Genetics",
+        "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
         "scenario": "A 68-year-old man presents with severe back pain and lethargy. Investigations reveal hypercalcaemia and impaired renal function. Urine electrophoresis identifies monoclonal free light chains. What is the eponymous name for these light chains?",
         "options": [
             "Bence Jones proteins",
@@ -363,7 +363,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Infectious disease / Haematology / Immunology / Genetics",
+        "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
         "scenario": "A 22-year-old man of Mediterranean descent develops jaundice and dark urine after starting nitrofurantoin for a UTI. A peripheral blood smear shows 'bite cells' and special staining reveals denatured haemoglobin aggregates within red blood cells. What are these aggregates called?",
         "options": [
             "Heinz bodies",
@@ -529,7 +529,7 @@ PART4_QUESTIONS = [
     # =========================================================================
     {
         "type": "sba",
-        "category": "Pharmacology / Therapeutics",
+        "category": "Pharmacology",
         "scenario": "A 78-year-old woman with atrial fibrillation is admitted with nausea, vomiting, and visual disturbances, specifically yellow-green halos around objects. Her ECG shows scooped, 'reverse tick' ST-segment depression. What drug toxicity is most likely?",
         "options": [
             "Digoxin",
@@ -543,7 +543,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Pharmacology / Therapeutics",
+        "category": "Pharmacology",
         "scenario": "A 40-year-old man with bipolar disorder is admitted with confusion, ataxia, and a severe coarse tremor. He recently developed a diarrhoeal illness and became dehydrated. Which medication is most likely responsible for his symptoms?",
         "options": [
             "Lithium",
@@ -557,7 +557,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Pharmacology / Therapeutics",
+        "category": "Pharmacology",
         "scenario": "A 30-year-old woman with epilepsy presents for a routine check. On examination, you note significant overgrowth of her gums. She also has coarse facial features and mild hirsutism. Which anti-epileptic drug is the likely cause?",
         "options": [
             "Phenytoin",
@@ -571,7 +571,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Pharmacology / Therapeutics",
+        "category": "Pharmacology",
         "scenario": "A 65-year-old man presents with worsening breathlessness. He has a history of ventricular arrhythmias. Examination reveals a slate-grey discoloration of his skin in sun-exposed areas. A slit-lamp eye examination shows corneal microdeposits. Which medication is he taking?",
         "options": [
             "Amiodarone",
@@ -585,7 +585,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Pharmacology / Therapeutics",
+        "category": "Pharmacology",
         "scenario": "A 55-year-old diabetic man is started on a new antihypertensive medication. Two weeks later, he develops a persistent, dry, tickly cough that is worse at night. What is the mechanism behind this side effect?",
         "options": [
             "Accumulation of bradykinin",
@@ -751,7 +751,7 @@ PART4_QUESTIONS = [
     # =========================================================================
     {
         "type": "sba",
-        "category": "Reproductive / O&G",
+        "category": "Reproductive / Obstetrics & Gynaecology",
         "scenario": "A 28-year-old pregnant woman presents at 10 weeks gestation with severe hyperemesis, a uterus large for dates, and vaginal bleeding. Transvaginal ultrasound demonstrates a heterogeneous mass with multiple cystic spaces, and an absence of fetal parts. What is the classic term for this ultrasound appearance?",
         "options": [
             "Snowstorm appearance",
@@ -765,7 +765,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Reproductive / O&G",
+        "category": "Reproductive / Obstetrics & Gynaecology",
         "scenario": "A 32-year-old woman presents with severe secondary dysmenorrhoea and deep dyspareunia. A laparoscopy is performed, revealing an ovarian cyst filled with thick, dark, old blood. What is the common name for this pathognomonic finding of endometriosis?",
         "options": [
             "Chocolate cyst",
@@ -779,7 +779,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Reproductive / O&G",
+        "category": "Reproductive / Obstetrics & Gynaecology",
         "scenario": "A 24-year-old woman presents with an offensive, thin, grey-white vaginal discharge. The pH is >4.5 and a 'whiff test' with potassium hydroxide produces a fishy odour. Microscopy of the discharge reveals vaginal squamous epithelial cells covered in bacteria, obscuring their borders. What are these cells called?",
         "options": [
             "Clue cells",
@@ -793,7 +793,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Reproductive / O&G",
+        "category": "Reproductive / Obstetrics & Gynaecology",
         "scenario": "A 27-year-old woman presents with a frothy, yellow-green vaginal discharge and vulval itch. On speculum examination, the cervix has multiple punctate haemorrhages. What is this classic clinical sign called?",
         "options": [
             "Strawberry cervix",
@@ -807,7 +807,7 @@ PART4_QUESTIONS = [
     },
     {
         "type": "sba",
-        "category": "Reproductive / O&G",
+        "category": "Reproductive / Obstetrics & Gynaecology",
         "scenario": "A 29-year-old woman presents with oligomenorrhoea, hirsutism, and infertility. A pelvic ultrasound shows enlarged ovaries with multiple small peripherally arranged follicles (typically 12 or more per ovary). What is the classic term for this ultrasound appearance?",
         "options": [
             "String of pearls sign",
