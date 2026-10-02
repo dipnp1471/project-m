@@ -2678,14 +2678,974 @@
   {
     "id": "q_157",
     "exam": "MSRA",
+    "type": "sba",
+    "category": "Cardiovascular",
+    "scenario": "A 3-week-old infant is brought in with poor feeding, sweating during feeds, and cyanosis that worsens with crying. A chest X-ray reveals a 'boot-shaped heart' with upturned cardiac apex and decreased pulmonary vascular markings. What is the most likely diagnosis?",
+    "options": [
+      "Tetralogy of Fallot",
+      "Transposition of the Great Arteries",
+      "Truncus Arteriosus",
+      "Atrial Septal Defect",
+      "Coarctation of the Aorta"
+    ],
+    "correct_answer": "Tetralogy of Fallot",
+    "explanation": "A 'boot-shaped heart' (coeur en sabot) on a chest X-ray is classic for Tetralogy of Fallot, caused by right ventricular hypertrophy and a small main pulmonary artery segment. Symptoms of 'tet spells' (cyanosis during crying/feeding) support this."
+  },
+  {
+    "id": "q_158",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Cardiovascular",
+    "scenario": "A 45-year-old woman presents with severe dyspnoea. She recently had a viral upper respiratory infection. Her blood pressure is 85/55 mmHg, heart rate is 120 bpm, and neck veins are distended. An ECG shows sinus tachycardia with alternating amplitude of the QRS complexes in consecutive beats. What is the most definitive immediate treatment?",
+    "options": [
+      "High-dose oral Ibuprofen",
+      "Intravenous Furosemide",
+      "Synchronised DC Cardioversion",
+      "Pericardiocentesis",
+      "Intravenous Amiodarone"
+    ],
+    "correct_answer": "Pericardiocentesis",
+    "explanation": "The patient has Beck's triad (hypotension, distended neck veins, muffled heart sounds—implied) and 'electrical alternans' on ECG, which is pathognomonic for cardiac tamponade. The immediate definitive treatment is pericardiocentesis."
+  },
+  {
+    "id": "q_159",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Cardiovascular",
+    "scenario": "A 22-year-old man presents with headaches and leg cramps after running. Examination reveals a blood pressure of 170/100 mmHg in the right arm and 110/70 mmHg in the left leg. Palpation of pulses reveals radio-femoral delay. Chest X-ray shows 'notching' of the inferior aspect of the posterior ribs. What is the diagnosis?",
+    "options": [
+      "Aortic Dissection",
+      "Patent Ductus Arteriosus",
+      "Coarctation of the Aorta",
+      "Fibromuscular Dysplasia",
+      "Takayasu Arteritis"
+    ],
+    "correct_answer": "Coarctation of the Aorta",
+    "explanation": "Radio-femoral delay, upper limb hypertension with lower limb hypotension, and rib notching on CXR (due to collateral flow through dilated intercostal arteries) are classic pathognomonic signs of coarctation of the aorta."
+  },
+  {
+    "id": "q_160",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Cardiovascular",
+    "scenario": "A 60-year-old man presents with sharp pleuritic chest pain. He had a myocardial infarction 4 weeks ago. An echocardiogram shows a large accumulation of fluid in the pericardial sac. A chest X-ray demonstrates an enlarged globular cardiac silhouette, often described as a 'water bottle' heart. What is the underlying immunological process?",
+    "options": [
+      "Uraemic pericarditis",
+      "Dressler's syndrome",
+      "Systemic lupus erythematosus",
+      "Acute viral pericarditis",
+      "Rheumatic fever"
+    ],
+    "correct_answer": "Dressler's syndrome",
+    "explanation": "Post-myocardial infarction syndrome (Dressler's syndrome) is an autoimmune fibrinous pericarditis that typically occurs 2-10 weeks post-MI. A 'water bottle' heart on CXR indicates a large pericardial effusion."
+  },
+  {
+    "id": "q_161",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Cardiovascular",
+    "scenario": "A 35-year-old woman from South America presents with progressive dysphagia and constipation. She recently developed right bundle branch block on ECG and signs of dilated cardiomyopathy. She reports being bitten by a 'kissing bug' in childhood. What is the most likely causative organism?",
+    "options": [
+      "Leishmania donovani",
+      "Trypanosoma cruzi",
+      "Plasmodium falciparum",
+      "Borrelia burgdorferi",
+      "Toxoplasma gondii"
+    ],
+    "correct_answer": "Trypanosoma cruzi",
+    "explanation": "Trypanosoma cruzi causes Chagas disease. It presents years after infection with dilated cardiomyopathy (often with RBBB or apical aneurysm), megaoesophagus, and megacolon."
+  },
+  {
+    "id": "q_162",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Dermatology / ENT / Ophthalmology",
+    "scenario": "A 25-year-old man presents with a mild pruritic rash. It began 10 days ago as a single 3 cm oval, salmon-coloured scaly patch on his chest. Yesterday, a widespread eruption of smaller scaly macules appeared on his trunk along the lines of cleavage, giving a 'Christmas tree' distribution. What is the most likely diagnosis?",
+    "options": [
+      "Secondary syphilis",
+      "Nummular eczema",
+      "Pityriasis rosea",
+      "Guttate psoriasis",
+      "Tinea corporis"
+    ],
+    "correct_answer": "Pityriasis rosea",
+    "explanation": "A 'herald patch' followed by a 'Christmas tree' distribution of oval, scaly plaques is pathognomonic for Pityriasis rosea. It is self-limiting."
+  },
+  {
+    "id": "q_163",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Dermatology / ENT / Ophthalmology",
+    "scenario": "A 70-year-old man presents with sudden, painless, profound loss of vision in his right eye. Examination of the fundus reveals a pale, opaque retina with a distinct 'cherry-red spot' at the macula. What is the most likely diagnosis?",
+    "options": [
+      "Central retinal artery occlusion",
+      "Amaurosis fugax",
+      "Macular degeneration",
+      "Retinal detachment",
+      "Central retinal vein occlusion"
+    ],
+    "correct_answer": "Central retinal artery occlusion",
+    "explanation": "A pale, infarcted retina with a 'cherry-red spot' (the fovea receiving its blood supply from the underlying choroid) is the classic pathognomonic finding of Central Retinal Artery Occlusion (CRAO)."
+  },
+  {
+    "id": "q_164",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Dermatology / ENT / Ophthalmology",
+    "scenario": "A 4-year-old unimmunised boy is brought to the GP with a 3-day history of high fever, coryza, cough, and conjunctivitis. On examination of the oral mucosa, tiny white spots resembling grains of salt on a red background are seen on the buccal mucosa opposite the molars. What are these spots called?",
+    "options": [
+      "Strawberry tongue",
+      "Pastia's lines",
+      "Forchheimer spots",
+      "Koplik spots",
+      "Slapped cheek"
+    ],
+    "correct_answer": "Koplik spots",
+    "explanation": "Koplik spots are pathognomonic for the prodromal phase of Measles. They appear 1-2 days before the onset of the maculopapular rash."
+  },
+  {
+    "id": "q_165",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Dermatology / ENT / Ophthalmology",
+    "scenario": "A 65-year-old man with long-standing poorly controlled hypertension attends for a routine eye check. Fundoscopy shows thickening of the retinal arterioles causing compression of the venules where they cross. What is this specific finding known as?",
+    "options": [
+      "AV nipping (nipping/nicking)",
+      "Cotton wool spots",
+      "Drusen",
+      "Hard exudates",
+      "Flame haemorrhages"
+    ],
+    "correct_answer": "AV nipping (nipping/nicking)",
+    "explanation": "Arteriovenous (AV) nipping is a classic sign of hypertensive retinopathy. It occurs because the thickened arteriole compresses the underlying venule."
+  },
+  {
+    "id": "q_166",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Dermatology / ENT / Ophthalmology",
+    "scenario": "A 55-year-old farmer presents with a slowly growing nodule on his upper lip. On examination, it is a 1 cm nodule with a 'pearly, rolled edge' and visible fine telangiectasia across its surface. The centre is slightly ulcerated. What is the most likely diagnosis?",
+    "options": [
+      "Squamous cell carcinoma",
+      "Actinic keratosis",
+      "Malignant melanoma",
+      "Basal cell carcinoma",
+      "Keratoacanthoma"
+    ],
+    "correct_answer": "Basal cell carcinoma",
+    "explanation": "A nodule with a 'pearly, rolled edge' and arborising telangiectasia, typically on sun-exposed areas, is the classic pathognomonic description of a nodular Basal Cell Carcinoma."
+  },
+  {
+    "id": "q_167",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Endocrinology / Metabolic",
+    "scenario": "A 42-year-old woman undergoes a fine needle aspiration (FNA) of a solitary thyroid nodule. Histology reports large cells with 'empty' appearing nuclei, described as 'Orphan Annie eye' nuclei, and calcified structures known as psammoma bodies. What is the diagnosis?",
+    "options": [
+      "Papillary thyroid carcinoma",
+      "Follicular thyroid carcinoma",
+      "Hashimoto's thyroiditis",
+      "Medullary thyroid carcinoma",
+      "Anaplastic thyroid carcinoma"
+    ],
+    "correct_answer": "Papillary thyroid carcinoma",
+    "explanation": "'Orphan Annie eye' nuclei (optically clear nuclei) and psammoma bodies (concentrically calcified structures) are pathognomonic histological features of Papillary thyroid carcinoma, the most common type of thyroid cancer."
+  },
+  {
+    "id": "q_168",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Endocrinology / Metabolic",
+    "scenario": "A 35-year-old woman presents with palpitations, weight loss, and heat intolerance. On examination, she has bilateral exophthalmos and a raised, thickened, non-pitting, red plaque on her shins. What is the specific term for the finding on her shins?",
+    "options": [
+      "Erythema nodosum",
+      "Necrobiosis lipoidica",
+      "Pyoderma gangrenosum",
+      "Acanthosis nigricans",
+      "Pretibial myxoedema"
+    ],
+    "correct_answer": "Pretibial myxoedema",
+    "explanation": "Pretibial myxoedema (thyroid dermopathy) is an infiltrative dermopathy pathognomonic for Graves' disease, almost always occurring in association with Graves' ophthalmopathy."
+  },
+  {
+    "id": "q_169",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Endocrinology / Metabolic",
+    "scenario": "A 55-year-old man presents with fatigue, joint pains, and erectile dysfunction. On examination, he has a slate-grey hyperpigmentation of his skin. Blood tests show significantly elevated ferritin and fasting blood glucose is 14 mmol/L. This presentation is classically referred to as 'bronze diabetes'. What is the underlying condition?",
+    "options": [
+      "Acromegaly",
+      "Addison's disease",
+      "Wilson's disease",
+      "Haemochromatosis",
+      "Cushing's syndrome"
+    ],
+    "correct_answer": "Haemochromatosis",
+    "explanation": "The triad of skin hyperpigmentation, diabetes mellitus ('bronze diabetes'), and liver cirrhosis (or other end-organ damage like arthropathy or hypogonadism) is classic for late-stage Haemochromatosis due to iron deposition."
+  },
+  {
+    "id": "q_170",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Endocrinology / Metabolic",
+    "scenario": "A 28-year-old woman undergoes a total thyroidectomy. On post-operative day 2, she complains of tingling around her mouth and in her fingers. When taking her blood pressure, inflation of the cuff above systolic pressure causes carpal spasm. What is this sign called?",
+    "options": [
+      "Homan's sign",
+      "Trousseau's sign",
+      "Chvostek's sign",
+      "Phalen's sign",
+      "Tinel's sign"
+    ],
+    "correct_answer": "Trousseau's sign",
+    "explanation": "Trousseau's sign is carpopedal spasm induced by ischaemia (inflating a BP cuff), and is a highly specific, classic sign of latent hypocalcaemia, which here is likely due to inadvertent parathyroid injury during thyroidectomy."
+  },
+  {
+    "id": "q_171",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Endocrinology / Metabolic",
+    "scenario": "A 60-year-old woman presents with bone pain, renal colic, and constipation. She reports feeling increasingly depressed and lethargic. Serum biochemistry shows hypercalcaemia. Her constellation of symptoms is historically described as 'moans, groans, stones, and bones'. What is the most likely diagnosis?",
+    "options": [
+      "Primary hyperparathyroidism",
+      "Multiple myeloma",
+      "Vitamin D deficiency",
+      "Paget's disease",
+      "Osteoporosis"
+    ],
+    "correct_answer": "Primary hyperparathyroidism",
+    "explanation": "The mnemonic 'bones, stones, abdominal groans, and psychiatric moans' is classic for hypercalcaemia. In a community setting, the most common cause is Primary hyperparathyroidism."
+  },
+  {
+    "id": "q_172",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Gastroenterology / Nutrition",
+    "scenario": "A 24-year-old man presents with chronic bloody diarrhoea. A barium enema reveals complete loss of haustral markings throughout the descending and sigmoid colon, giving it the appearance of a smooth, rigid tube. What is the classical name for this radiological finding?",
+    "options": [
+      "Bird's beak sign",
+      "Thumbprinting",
+      "String sign",
+      "Apple core lesion",
+      "Lead pipe colon"
+    ],
+    "correct_answer": "Lead pipe colon",
+    "explanation": "A 'lead pipe' appearance on contrast enema is pathognomonic for chronic Ulcerative Colitis, resulting from long-standing inflammation causing fibrosis and loss of haustra."
+  },
+  {
+    "id": "q_173",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Gastroenterology / Nutrition",
+    "scenario": "A 28-year-old woman presents with abdominal pain and weight loss. Colonoscopy reveals transmural inflammation with deep fissuring ulcers interspersed with normal mucosa, giving a 'cobblestone' appearance. A barium follow-through shows severe stricturing of the terminal ileum. What is the stricture known as?",
+    "options": [
+      "Lead pipe sign",
+      "String sign of Kantor",
+      "Rigler's sign",
+      "Coffee bean sign",
+      "Whirlpool sign"
+    ],
+    "correct_answer": "String sign of Kantor",
+    "explanation": "The 'string sign' on a barium series indicates severe narrowing of a bowel loop, classically seen in the terminal ileum in Crohn's disease due to spasm and transmural fibrosis. 'Cobblestoning' is also classic."
+  },
+  {
+    "id": "q_174",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Gastroenterology / Nutrition",
+    "scenario": "A 68-year-old man presents with iron deficiency anaemia and altered bowel habit. A barium enema demonstrates a short segment of severe, circumferential irregular narrowing in the descending colon with overhanging edges. What is the classic term for this appearance?",
+    "options": [
+      "Apple core lesion",
+      "Stack of coins sign",
+      "Target sign",
+      "Corkscrew appearance",
+      "Bird's beak deformity"
+    ],
+    "correct_answer": "Apple core lesion",
+    "explanation": "An 'apple core' lesion on a barium enema is a pathognomonic sign of a circumferential, stenosing colorectal carcinoma."
+  },
+  {
+    "id": "q_175",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Gastroenterology / Nutrition",
+    "scenario": "A 19-year-old man presents with tremors and signs of chronic liver disease. Slit-lamp examination of the eyes reveals golden-brown rings at the periphery of the cornea in Descemet's membrane. What are these rings called?",
+    "options": [
+      "Lisch nodules",
+      "Kayser-Fleischer rings",
+      "Band keratopathy",
+      "Brushfield spots",
+      "Arcus senilis"
+    ],
+    "correct_answer": "Kayser-Fleischer rings",
+    "explanation": "Kayser-Fleischer rings are a pathognomonic sign of Wilson's disease, caused by copper deposition in Descemet's membrane of the cornea."
+  },
+  {
+    "id": "q_176",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Gastroenterology / Nutrition",
+    "scenario": "A 45-year-old woman presents with intermittent dysphagia for both solids and liquids, along with retrosternal chest pain. A barium swallow reveals multiple uncoordinated contractions, giving the oesophagus a 'corkscrew' or 'rosary bead' appearance. What is the diagnosis?",
+    "options": [
+      "Myasthenia gravis",
+      "Oesophageal web",
+      "Achalasia",
+      "Diffuse oesophageal spasm",
+      "Systemic sclerosis"
+    ],
+    "correct_answer": "Diffuse oesophageal spasm",
+    "explanation": "A 'corkscrew' or 'rosary bead' oesophagus on barium swallow is pathognomonic for Diffuse Oesophageal Spasm (DOS), caused by uncoordinated, simultaneous contractions."
+  },
+  {
+    "id": "q_177",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Infectious disease / Haematology / Immunology / Genetics",
+    "scenario": "A 65-year-old man presents with fatigue and bleeding gums. A full blood count shows a low haemoglobin, thrombocytopenia, and leukocytosis. A blood film reveals large blast cells with prominent nucleoli and distinct, needle-like eosinophilic inclusions in the cytoplasm. What are these inclusions called?",
+    "options": [
+      "Basophilic stippling",
+      "Döhle bodies",
+      "Howell-Jolly bodies",
+      "Auer rods",
+      "Heinz bodies"
+    ],
+    "correct_answer": "Auer rods",
+    "explanation": "Auer rods are needle-like crystallised azurophilic granules found in the cytoplasm of myeloblasts, pathognomonic for Acute Myeloid Leukaemia (AML)."
+  },
+  {
+    "id": "q_178",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Infectious disease / Haematology / Immunology / Genetics",
+    "scenario": "A 25-year-old woman presents with a painless, enlarged cervical lymph node and night sweats. A lymph node biopsy demonstrates large, binucleate cells with prominent eosinophilic nucleoli giving an 'owl-eye' appearance. What is the specific name of these cells?",
+    "options": [
+      "Aschoff cells",
+      "Reed-Sternberg cells",
+      "Langhans giant cells",
+      "Kupffer cells",
+      "Gaucher cells"
+    ],
+    "correct_answer": "Reed-Sternberg cells",
+    "explanation": "Reed-Sternberg cells ('owl-eye' cells) are the hallmark, pathognomonic malignant cells found in Hodgkin's lymphoma."
+  },
+  {
+    "id": "q_179",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Infectious disease / Haematology / Immunology / Genetics",
+    "scenario": "An asymptomatic 70-year-old man is found to have a significantly elevated lymphocyte count on a routine blood test. A peripheral blood smear shows many mature-appearing small lymphocytes alongside fragile, disrupted lymphocytes. What is the term for these disrupted cells?",
+    "options": [
+      "Smudge cells",
+      "Schistocytes",
+      "Teardrop cells",
+      "Target cells",
+      "Bite cells"
+    ],
+    "correct_answer": "Smudge cells",
+    "explanation": "Smudge cells (or smear cells) are fragile lymphocytes disrupted during the making of the blood film. They are classically associated with Chronic Lymphocytic Leukaemia (CLL)."
+  },
+  {
+    "id": "q_180",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Infectious disease / Haematology / Immunology / Genetics",
+    "scenario": "A 68-year-old man presents with severe back pain and lethargy. Investigations reveal hypercalcaemia and impaired renal function. Urine electrophoresis identifies monoclonal free light chains. What is the eponymous name for these light chains?",
+    "options": [
+      "Cryoglobulins",
+      "Tamm-Horsfall proteins",
+      "Alpha-fetoprotein",
+      "Bence Jones proteins",
+      "B2-microglobulin"
+    ],
+    "correct_answer": "Bence Jones proteins",
+    "explanation": "Bence Jones proteins are monoclonal free light chains found in the urine, classic for Multiple Myeloma."
+  },
+  {
+    "id": "q_181",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Infectious disease / Haematology / Immunology / Genetics",
+    "scenario": "A 22-year-old man of Mediterranean descent develops jaundice and dark urine after starting nitrofurantoin for a UTI. A peripheral blood smear shows 'bite cells' and special staining reveals denatured haemoglobin aggregates within red blood cells. What are these aggregates called?",
+    "options": [
+      "Heinz bodies",
+      "Pappenheimer bodies",
+      "Cabot rings",
+      "Howell-Jolly bodies",
+      "Schüffner's dots"
+    ],
+    "correct_answer": "Heinz bodies",
+    "explanation": "Heinz bodies (oxidised, denatured haemoglobin) and 'bite cells' (where the spleen has taken a 'bite' to remove the Heinz body) are pathognomonic for G6PD deficiency undergoing oxidative stress."
+  },
+  {
+    "id": "q_182",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Musculoskeletal",
+    "scenario": "A 30-year-old man presents with chronic lower back pain that is worse in the morning and improves with exercise. A radiograph of his lumbar spine reveals fusion of the vertebral bodies, ossification of the longitudinal ligaments, and squaring of the vertebrae. What is the classic term for this appearance?",
+    "options": [
+      "Rugger jersey spine",
+      "Picture frame vertebra",
+      "Codfish vertebrae",
+      "Bamboo spine",
+      "Ivory vertebra"
+    ],
+    "correct_answer": "Bamboo spine",
+    "explanation": "'Bamboo spine' is the pathognomonic radiographic sign of advanced Ankylosing Spondylitis, due to syndesmophyte formation and fusion of the spine."
+  },
+  {
+    "id": "q_183",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Musculoskeletal",
+    "scenario": "A 55-year-old woman with chronic joint pain presents for a review. Examination of her hands reveals flexion of the proximal interphalangeal (PIP) joints and hyperextension of the distal interphalangeal (DIP) joints. What is this deformity called?",
+    "options": [
+      "Heberden's nodes",
+      "Boutonniere deformity",
+      "Z-thumb deformity",
+      "Mallet finger",
+      "Swan neck deformity"
+    ],
+    "correct_answer": "Boutonniere deformity",
+    "explanation": "A Boutonniere (buttonhole) deformity is flexion at the PIP and hyperextension at the DIP, a classic advanced sign of Rheumatoid Arthritis. (Swan neck is the reverse: hyperextension at PIP, flexion at DIP)."
+  },
+  {
+    "id": "q_184",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Musculoskeletal",
+    "scenario": "A 70-year-old woman complains of pain at the base of her thumbs. Examination shows hard, bony swellings on the distal interphalangeal (DIP) joints. What are these specific swellings called?",
+    "options": [
+      "Bouchard's nodes",
+      "Osler's nodes",
+      "Heberden's nodes",
+      "Rheumatoid nodules",
+      "Tophi"
+    ],
+    "correct_answer": "Heberden's nodes",
+    "explanation": "Heberden's nodes are osteophytes at the DIP joints, classic for Osteoarthritis. Bouchard's nodes occur at the PIP joints."
+  },
+  {
+    "id": "q_185",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Musculoskeletal",
+    "scenario": "A 60-year-old man presents with an exquisitely painful, red, swollen first metatarsophalangeal joint. Aspiration of the joint reveals fluid that, under polarised light microscopy, shows strongly negatively birefringent, needle-shaped crystals. What is the diagnosis?",
+    "options": [
+      "Pseudogout",
+      "Septic arthritis",
+      "Osteoarthritis",
+      "Rheumatoid arthritis",
+      "Gout"
+    ],
+    "correct_answer": "Gout",
+    "explanation": "Negatively birefringent, needle-shaped monosodium urate crystals are pathognomonic for Gout. Pseudogout features positively birefringent, rhomboid-shaped CPPD crystals."
+  },
+  {
+    "id": "q_186",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Musculoskeletal",
+    "scenario": "A 75-year-old woman presents with an acutely swollen and painful right knee. A radiograph shows a thin layer of calcification within the articular cartilage. Joint aspiration reveals weakly positive birefringent, rhomboid-shaped crystals. What is the diagnosis?",
+    "options": [
+      "Pseudogout",
+      "Gout",
+      "Osteoarthritis",
+      "Septic arthritis",
+      "Reactive arthritis"
+    ],
+    "correct_answer": "Pseudogout",
+    "explanation": "Weakly positively birefringent, rhomboid-shaped calcium pyrophosphate dihydrate (CPPD) crystals, alongside chondrocalcinosis on X-ray, are pathognomonic for Pseudogout."
+  },
+  {
+    "id": "q_187",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Paediatrics",
+    "scenario": "A newborn with Down's syndrome develops bilious vomiting shortly after birth. An abdominal radiograph reveals two large air-filled spaces in the upper abdomen and an absence of distal bowel gas. What is the classic name for this sign?",
+    "options": [
+      "String sign",
+      "Double bubble sign",
+      "Target sign",
+      "Rigler's sign",
+      "Coffee bean sign"
+    ],
+    "correct_answer": "Double bubble sign",
+    "explanation": "The 'double bubble' sign on an abdominal X-ray indicates Duodenal Atresia. The bubbles represent air in the stomach and the dilated proximal duodenum."
+  },
+  {
+    "id": "q_188",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Paediatrics",
+    "scenario": "A 2-year-old boy presents with a barking cough and stridor. An AP neck radiograph is performed to rule out other conditions, and it shows subglottic narrowing. What is the name of this radiological sign?",
+    "options": [
+      "Sail sign",
+      "Steeple sign",
+      "Silhouette sign",
+      "Thumbprint sign",
+      "Water bottle sign"
+    ],
+    "correct_answer": "Steeple sign",
+    "explanation": "The 'steeple sign' (subglottic tracheal narrowing) on an AP neck X-ray is classic for Croup (laryngotracheobronchitis)."
+  },
+  {
+    "id": "q_189",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Paediatrics",
+    "scenario": "A 4-year-old unimmunised girl presents with a high fever, drooling, and leaning forward in a 'tripod' position. She looks toxic. A lateral neck radiograph is taken cautiously and shows an enlarged epiglottis. What is the name of this sign?",
+    "options": [
+      "Sail sign",
+      "Double bubble sign",
+      "Thumbprint sign",
+      "Steeple sign",
+      "Lead pipe sign"
+    ],
+    "correct_answer": "Thumbprint sign",
+    "explanation": "An enlarged epiglottis protruding into the airway on a lateral neck X-ray is called the 'thumbprint sign', classic for acute Epiglottitis (typically Haemophilus influenzae type B)."
+  },
+  {
+    "id": "q_190",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Paediatrics",
+    "scenario": "A 7-month-old infant presents with episodic inconsolable crying, drawing his legs up to his chest, followed by lethargy. He has passed stool that looks like 'red currant jelly'. An abdominal ultrasound shows a 'target' or 'doughnut' sign. What is the diagnosis?",
+    "options": [
+      "Intussusception",
+      "Volvulus",
+      "Hirschsprung's disease",
+      "Meckel's diverticulum",
+      "Necrotising enterocolitis"
+    ],
+    "correct_answer": "Intussusception",
+    "explanation": "'Red currant jelly' stool (blood mixed with mucus) and a 'target/doughnut/bullseye' sign on ultrasound (representing bowel telescoped into bowel) are pathognomonic for Intussusception."
+  },
+  {
+    "id": "q_191",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Paediatrics",
+    "scenario": "A 6-year-old girl is brought in with mild fever and a bright red macular rash on both cheeks. Two days later, a lacy, reticular rash appears on her arms and trunk. What is the name of the appearance on her face?",
+    "options": [
+      "Pastia's lines",
+      "Koplik spots",
+      "Dewdrops on a rose petal",
+      "Strawberry tongue",
+      "Slapped cheek appearance"
+    ],
+    "correct_answer": "Slapped cheek appearance",
+    "explanation": "A 'slapped cheek' appearance followed by a lacy, maculopapular rash on the body is classic for Erythema Infectiosum (Fifth disease), caused by Parvovirus B19."
+  },
+  {
+    "id": "q_192",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Pharmacology / Therapeutics",
+    "scenario": "A 78-year-old woman with atrial fibrillation is admitted with nausea, vomiting, and visual disturbances, specifically yellow-green halos around objects. Her ECG shows scooped, 'reverse tick' ST-segment depression. What drug toxicity is most likely?",
+    "options": [
+      "Flecainide",
+      "Amiodarone",
+      "Digoxin",
+      "Sotalol",
+      "Verapamil"
+    ],
+    "correct_answer": "Digoxin",
+    "explanation": "Xanthopsia (yellow-green vision) and the 'reverse tick' (scooped) ST depression on ECG are classic signs of Digoxin toxicity or digoxin effect."
+  },
+  {
+    "id": "q_193",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Pharmacology / Therapeutics",
+    "scenario": "A 40-year-old man with bipolar disorder is admitted with confusion, ataxia, and a severe coarse tremor. He recently developed a diarrhoeal illness and became dehydrated. Which medication is most likely responsible for his symptoms?",
+    "options": [
+      "Lithium",
+      "Lamotrigine",
+      "Sodium valproate",
+      "Olanzapine",
+      "Carbamazepine"
+    ],
+    "correct_answer": "Lithium",
+    "explanation": "A coarse tremor (as opposed to fine tremor seen at therapeutic levels), ataxia, and confusion, particularly precipitated by dehydration or renal impairment, are classic for Lithium toxicity."
+  },
+  {
+    "id": "q_194",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Pharmacology / Therapeutics",
+    "scenario": "A 30-year-old woman with epilepsy presents for a routine check. On examination, you note significant overgrowth of her gums. She also has coarse facial features and mild hirsutism. Which anti-epileptic drug is the likely cause?",
+    "options": [
+      "Phenytoin",
+      "Levetiracetam",
+      "Carbamazepine",
+      "Sodium valproate",
+      "Ethosuximide"
+    ],
+    "correct_answer": "Phenytoin",
+    "explanation": "Gingival hyperplasia, coarse facial features, hirsutism, and nystagmus (in toxicity) are classic side effects pathognomonic of chronic Phenytoin use."
+  },
+  {
+    "id": "q_195",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Pharmacology / Therapeutics",
+    "scenario": "A 65-year-old man presents with worsening breathlessness. He has a history of ventricular arrhythmias. Examination reveals a slate-grey discoloration of his skin in sun-exposed areas. A slit-lamp eye examination shows corneal microdeposits. Which medication is he taking?",
+    "options": [
+      "Amiodarone",
+      "Methotrexate",
+      "Flecainide",
+      "Bleomycin",
+      "Sotalol"
+    ],
+    "correct_answer": "Amiodarone",
+    "explanation": "Slate-grey skin discoloration, corneal microdeposits, and pulmonary fibrosis are highly specific, classic side effects of Amiodarone."
+  },
+  {
+    "id": "q_196",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Pharmacology / Therapeutics",
+    "scenario": "A 55-year-old diabetic man is started on a new antihypertensive medication. Two weeks later, he develops a persistent, dry, tickly cough that is worse at night. What is the mechanism behind this side effect?",
+    "options": [
+      "Bronchoconstriction via beta-2 antagonism",
+      "Vagal nerve stimulation",
+      "Accumulation of bradykinin",
+      "Histamine release",
+      "Blockade of substance P"
+    ],
+    "correct_answer": "Accumulation of bradykinin",
+    "explanation": "A dry cough is a classic side effect of ACE inhibitors. ACE normally breaks down bradykinin in the lungs; inhibiting ACE leads to bradykinin accumulation, which stimulates cough receptors."
+  },
+  {
+    "id": "q_197",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Psychiatry / Neurology",
+    "scenario": "A 35-year-old man presents with ascending, symmetrical, flaccid weakness of his legs that developed over 3 days, following a Campylobacter jejuni gastroenteritis. A lumbar puncture is performed. What is the classic cerebrospinal fluid (CSF) finding?",
+    "options": [
+      "Xanthochromia",
+      "Albuminocytologic dissociation",
+      "Oligoclonal bands",
+      "Presence of 14-3-3 protein",
+      "High neutrophils with low glucose"
+    ],
+    "correct_answer": "Albuminocytologic dissociation",
+    "explanation": "Albuminocytologic dissociation (highly elevated protein with a normal or mildly elevated white blood cell count) is the pathognomonic CSF finding in Guillain-Barré Syndrome."
+  },
+  {
+    "id": "q_198",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Psychiatry / Neurology",
+    "scenario": "A 28-year-old woman presents with sudden unilateral visual loss and pain on eye movement. She had a similar episode of right leg weakness 2 years ago that resolved. A lumbar puncture and serum protein electrophoresis are performed. What is the expected pathognomonic finding?",
+    "options": [
+      "Monoclonal gammopathy in serum",
+      "Albuminocytologic dissociation",
+      "Acellular fluid with low glucose",
+      "Oligoclonal bands in CSF but not in serum",
+      "Presence of tau proteins"
+    ],
+    "correct_answer": "Oligoclonal bands in CSF but not in serum",
+    "explanation": "Oligoclonal bands of IgG present in the CSF but absent in the blood indicate intrathecal antibody synthesis and are a classic immunological hallmark of Multiple Sclerosis."
+  },
+  {
+    "id": "q_199",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Psychiatry / Neurology",
+    "scenario": "An autopsy is performed on a 75-year-old man who had a history of resting tremor, rigidity, bradykinesia, and visual hallucinations. Histology of the substantia nigra reveals eosinophilic intracytoplasmic inclusions within neurons. What are these inclusions called?",
+    "options": [
+      "Neurofibrillary tangles",
+      "Negri bodies",
+      "Rosenthal fibres",
+      "Pick bodies",
+      "Lewy bodies"
+    ],
+    "correct_answer": "Lewy bodies",
+    "explanation": "Lewy bodies (aggregates of alpha-synuclein) are the pathognomonic histological hallmark of Parkinson's disease and Lewy Body Dementia."
+  },
+  {
+    "id": "q_200",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Psychiatry / Neurology",
+    "scenario": "A 45-year-old patient with severe depression is admitted to the psychiatric ward. They are mute, immobile, and hold unusual, awkward postures for hours without showing fatigue. When the doctor lifts the patient's arm, it remains exactly where it was placed. What is this sign called?",
+    "options": [
+      "Lead-pipe rigidity",
+      "Spasticity",
+      "Echopraxia",
+      "Cogwheel rigidity",
+      "Waxy flexibility (Catalepsy)"
+    ],
+    "correct_answer": "Waxy flexibility (Catalepsy)",
+    "explanation": "Waxy flexibility (catalepsy), where a patient's limbs maintain any posture they are placed in, is a classic pathognomonic sign of Catatonia."
+  },
+  {
+    "id": "q_201",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Psychiatry / Neurology",
+    "scenario": "A patient dies from progressive encephalitis characterized by hydrophobia, hypersalivation, and pharyngeal spasms after an animal bite in a developing country. Brain biopsy shows eosinophilic cytoplasmic inclusions in the Purkinje cells of the cerebellum and hippocampal neurons. What are they?",
+    "options": [
+      "Bunina bodies",
+      "Cowdry type A bodies",
+      "Lewy bodies",
+      "Hirano bodies",
+      "Negri bodies"
+    ],
+    "correct_answer": "Negri bodies",
+    "explanation": "Negri bodies are pathognomonic for Rabies virus infection."
+  },
+  {
+    "id": "q_202",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Renal / Urology",
+    "scenario": "A 60-year-old man undergoes major abdominal surgery complicated by severe hypotension. Three days later, his creatinine rises from 80 to 450 umol/L. Urine microscopy is performed. What pathognomonic finding confirms Acute Tubular Necrosis (ATN)?",
+    "options": [
+      "Red blood cell casts",
+      "Muddy brown casts",
+      "White blood cell casts",
+      "Hyaline casts",
+      "Waxy casts"
+    ],
+    "correct_answer": "Muddy brown casts",
+    "explanation": "Muddy brown granular casts in the urine sediment are pathognomonic for Acute Tubular Necrosis (ATN), often caused by ischaemia or nephrotoxins."
+  },
+  {
+    "id": "q_203",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Renal / Urology",
+    "scenario": "A 25-year-old man presents with macroscopic haematuria and hypertension 2 weeks after a severe sore throat. Urine microscopy reveals distorted erythrocytes and cylindrical structures. What type of casts are pathognomonic for a nephritic syndrome (glomerulonephritis)?",
+    "options": [
+      "Red blood cell casts",
+      "Hyaline casts",
+      "White blood cell casts",
+      "Fatty casts",
+      "Muddy brown casts"
+    ],
+    "correct_answer": "Red blood cell casts",
+    "explanation": "Red blood cell casts indicate bleeding from the glomerulus and are pathognomonic for glomerulonephritis (nephritic syndrome), such as post-streptococcal glomerulonephritis."
+  },
+  {
+    "id": "q_204",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Renal / Urology",
+    "scenario": "A 45-year-old woman with nephrotic syndrome undergoes a renal biopsy. Silver staining and electron microscopy show thickening of the glomerular basement membrane with subepithelial immune complex deposits, forming a characteristic 'spike and dome' appearance. What is the diagnosis?",
+    "options": [
+      "Minimal change disease",
+      "Focal segmental glomerulosclerosis",
+      "Membranoproliferative glomerulonephritis",
+      "Membranous nephropathy",
+      "IgA nephropathy"
+    ],
+    "correct_answer": "Membranous nephropathy",
+    "explanation": "A 'spike and dome' appearance on electron microscopy is pathognomonic for Membranous nephropathy, a common cause of nephrotic syndrome in adults."
+  },
+  {
+    "id": "q_205",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Renal / Urology",
+    "scenario": "A 30-year-old man with Hepatitis C presents with mixed nephritic/nephrotic syndrome. A renal biopsy shows mesangial interposition into the capillary wall, causing a 'tram-track' or double-contour appearance of the glomerular basement membrane on light microscopy. What is the diagnosis?",
+    "options": [
+      "Minimal change disease",
+      "Lupus nephritis",
+      "Membranoproliferative glomerulonephritis (MPGN)",
+      "Diabetic nephropathy",
+      "Membranous nephropathy"
+    ],
+    "correct_answer": "Membranoproliferative glomerulonephritis (MPGN)",
+    "explanation": "A 'tram-track' appearance (splitting of the GBM) is pathognomonic for Membranoproliferative glomerulonephritis (MPGN)."
+  },
+  {
+    "id": "q_206",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Renal / Urology",
+    "scenario": "A 65-year-old man with a 25-year history of poorly controlled type 2 diabetes presents with proteinuria. A renal biopsy reveals nodular glomerulosclerosis with eosinophilic nodules at the periphery of the glomerulus. What are these classic nodules called?",
+    "options": [
+      "Aschoff bodies",
+      "Lisch nodules",
+      "Ghon complexes",
+      "Kimmelstiel-Wilson nodules",
+      "Schiller-Duval bodies"
+    ],
+    "correct_answer": "Kimmelstiel-Wilson nodules",
+    "explanation": "Kimmelstiel-Wilson nodules (nodular glomerulosclerosis) are pathognomonic histological lesions seen in advanced Diabetic Nephropathy."
+  },
+  {
+    "id": "q_207",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Reproductive / O&G",
+    "scenario": "A 28-year-old pregnant woman presents at 10 weeks gestation with severe hyperemesis, a uterus large for dates, and vaginal bleeding. Transvaginal ultrasound demonstrates a heterogeneous mass with multiple cystic spaces, and an absence of fetal parts. What is the classic term for this ultrasound appearance?",
+    "options": [
+      "Snowstorm appearance",
+      "Target sign",
+      "Lemon sign",
+      "String of pearls appearance",
+      "Banana sign"
+    ],
+    "correct_answer": "Snowstorm appearance",
+    "explanation": "A 'snowstorm' or 'bunch of grapes' appearance on ultrasound is pathognomonic for a complete hydatidiform mole (molar pregnancy)."
+  },
+  {
+    "id": "q_208",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Reproductive / O&G",
+    "scenario": "A 32-year-old woman presents with severe secondary dysmenorrhoea and deep dyspareunia. A laparoscopy is performed, revealing an ovarian cyst filled with thick, dark, old blood. What is the common name for this pathognomonic finding of endometriosis?",
+    "options": [
+      "Corpus luteum cyst",
+      "Follicular cyst",
+      "Dermoid cyst",
+      "Theca lutein cyst",
+      "Chocolate cyst"
+    ],
+    "correct_answer": "Chocolate cyst",
+    "explanation": "An endometrioma containing old, dark brown blood is classically called a 'chocolate cyst'. It is highly indicative of endometriosis involving the ovaries."
+  },
+  {
+    "id": "q_209",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Reproductive / O&G",
+    "scenario": "A 24-year-old woman presents with an offensive, thin, grey-white vaginal discharge. The pH is >4.5 and a 'whiff test' with potassium hydroxide produces a fishy odour. Microscopy of the discharge reveals vaginal squamous epithelial cells covered in bacteria, obscuring their borders. What are these cells called?",
+    "options": [
+      "Clue cells",
+      "Navicular cells",
+      "Koilocytes",
+      "Decidual cells",
+      "Tzanck cells"
+    ],
+    "correct_answer": "Clue cells",
+    "explanation": "Clue cells (epithelial cells stippled with bacteria, obscuring the margins) are a pathognomonic finding on wet mount microscopy for Bacterial Vaginosis."
+  },
+  {
+    "id": "q_210",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Reproductive / O&G",
+    "scenario": "A 27-year-old woman presents with a frothy, yellow-green vaginal discharge and vulval itch. On speculum examination, the cervix has multiple punctate haemorrhages. What is this classic clinical sign called?",
+    "options": [
+      "Strawberry cervix",
+      "Cervical polyp",
+      "Nabothian cyst",
+      "Blue cervix (Chadwick's sign)",
+      "Cervical ectropion"
+    ],
+    "correct_answer": "Strawberry cervix",
+    "explanation": "A 'strawberry cervix' (colpitis macularis)—punctate haemorrhages on the cervix—is a classic sign of Trichomonas vaginalis infection."
+  },
+  {
+    "id": "q_211",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Reproductive / O&G",
+    "scenario": "A 29-year-old woman presents with oligomenorrhoea, hirsutism, and infertility. A pelvic ultrasound shows enlarged ovaries with multiple small peripherally arranged follicles (typically 12 or more per ovary). What is the classic term for this ultrasound appearance?",
+    "options": [
+      "Ground glass appearance",
+      "Whirlpool sign",
+      "String of pearls sign",
+      "Snowstorm sign",
+      "Double decidual sign"
+    ],
+    "correct_answer": "String of pearls sign",
+    "explanation": "The 'string of pearls' appearance on ultrasound describes the peripheral arrangement of multiple small follicles, characteristic of Polycystic Ovary Syndrome (PCOS)."
+  },
+  {
+    "id": "q_212",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Respiratory",
+    "scenario": "A 60-year-old woman with chronic cough and copious purulent sputum production undergoes a high-resolution CT of the chest. It demonstrates dilated, thick-walled bronchi that are larger than their accompanying pulmonary artery. What is the classic term for this CT finding?",
+    "options": [
+      "Honeycomb lung",
+      "Water lily sign",
+      "Ground glass opacification",
+      "Tree-in-bud pattern",
+      "Signet ring sign"
+    ],
+    "correct_answer": "Signet ring sign",
+    "explanation": "The 'signet ring' sign on HRCT (a dilated airway adjacent to a smaller accompanying pulmonary artery) and 'tram lines' (thickened parallel bronchial walls) are pathognomonic for Bronchiectasis."
+  },
+  {
+    "id": "q_213",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Respiratory",
+    "scenario": "A 70-year-old man presents with progressive exertional dyspnoea and a dry cough. Auscultation reveals fine, end-inspiratory 'Velcro-like' crackles at the lung bases. HRCT demonstrates subpleural, basal predominant reticular opacities with clustered cystic air spaces. What is the term for this advanced cystic change?",
+    "options": [
+      "Consolidation",
+      "Crazy paving pattern",
+      "Honeycomb lung",
+      "Signet ring sign",
+      "Air bronchogram"
+    ],
+    "correct_answer": "Honeycomb lung",
+    "explanation": "Honeycombing (clustered cystic air spaces with thick walls, predominantly subpleural and basal) is the classic pathognomonic HRCT feature of usual interstitial pneumonia (UIP) / Idiopathic Pulmonary Fibrosis (IPF)."
+  },
+  {
+    "id": "q_214",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Respiratory",
+    "scenario": "A 35-year-old woman of Afro-Caribbean descent presents with erythema nodosum, uveitis, and a dry cough. A chest X-ray shows bilateral hilar lymphadenopathy. A transbronchial biopsy is performed. What pathognomonic histological feature confirms the diagnosis?",
+    "options": [
+      "Asbestos bodies",
+      "Non-caseating granulomas",
+      "Caseating granulomas",
+      "Curschmann spirals",
+      "Charcot-Leyden crystals"
+    ],
+    "correct_answer": "Non-caseating granulomas",
+    "explanation": "Non-caseating (non-necrotising) epithelioid granulomas are the hallmark histological finding in Sarcoidosis."
+  },
+  {
+    "id": "q_215",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Respiratory",
+    "scenario": "A 12-year-old boy with a known history of severe asthma provides a sputum sample during an exacerbation. Microscopy reveals spiral-shaped mucus plugs and hexagonal, double-pointed crystals derived from eosinophil breakdown. What are these crystals called?",
+    "options": [
+      "Cholesterol crystals",
+      "Charcot-Leyden crystals",
+      "Struvite crystals",
+      "Urate crystals",
+      "Birefringent crystals"
+    ],
+    "correct_answer": "Charcot-Leyden crystals",
+    "explanation": "Charcot-Leyden crystals (formed from the breakdown of eosinophils) and Curschmann spirals (mucus plugs) are classic pathognomonic sputum findings in bronchial Asthma."
+  },
+  {
+    "id": "q_216",
+    "exam": "MSRA",
+    "type": "sba",
+    "category": "Respiratory",
+    "scenario": "A 45-year-old woman presents with sudden onset pleuritic chest pain, haemoptysis, and shortness of breath following a long-haul flight. A chest X-ray shows a wedge-shaped opacity in the right lower lobe with its base against the pleura. What is this sign known as?",
+    "options": [
+      "Silhouette sign",
+      "Fleischner sign",
+      "Westermark sign",
+      "Golden S sign",
+      "Hampton's hump"
+    ],
+    "correct_answer": "Hampton's hump",
+    "explanation": "Hampton's hump is a wedge-shaped pleural-based opacity on a chest X-ray indicative of pulmonary infarction, a classic but rare pathognomonic sign of a Pulmonary Embolism."
+  },
+  {
+    "id": "q_217",
+    "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "You are an FY2 doctor on a busy medical ward. At 09:00, you notice your FY1 colleague slurring their speech, walking unsteadily, and smelling strongly of alcohol. They are about to cannulate a patient and prescribe intravenous fluids. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
       "Immediately intervene to stop the FY1 from carrying out the procedure, explain your concern privately, and escort them away from clinical areas",
+      "Ignore the situation as it is their personal responsibility and you do not want to damage their career",
       "Urgent escalation to the supervising consultant or clinical lead informing them that the FY1 appears impaired and unfit for duty",
       "Offer to take over the FY1's immediate urgent clinical tasks so that patient care is not compromised",
-      "Ignore the situation as it is their personal responsibility and you do not want to damage their career",
       "Advise the FY1 to drink some coffee and take a short nap in the doctors' mess before resuming duties"
     ],
     "correct_answer": [
@@ -2698,17 +3658,17 @@
     "explanation": "GMC guidance states that patient safety is the paramount priority. The most appropriate immediate step is to prevent the colleague from treating patients and remove them from clinical duties. The consultant must then be notified urgently so formal support and coverage can be arranged. Taking over urgent tasks ensures continuity of care. Advising them to sleep it off and return compromises safety, and ignoring it completely breaches professional duty."
   },
   {
-    "id": "q_158",
+    "id": "q_218",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "You realize that you inadvertently prescribed a tenfold overdose of intravenous Gentamicin to an elderly patient with sepsis 2 hours ago. The infusion was administered by the nursing staff. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Alter the prescription chart to the correct dose to avoid disciplinary consequences",
-      "Explain the error openly and honestly to the patient (and family if appropriate), apologize, and explain what monitoring and treatment will be undertaken (Duty of Candour)",
-      "Discuss the incident with your educational supervisor at your end-of-placement review in 3 months",
+      "Complete an internal electronic clinical incident report (e.g. Datix) and document the event and management objectively in the patient's medical record",
       "Immediately assess the patient, check vital signs, and liaise with senior medical staff and pharmacy/poisons service for monitoring and management",
-      "Complete an internal electronic clinical incident report (e.g. Datix) and document the event and management objectively in the patient's medical record"
+      "Alter the prescription chart to the correct dose to avoid disciplinary consequences",
+      "Discuss the incident with your educational supervisor at your end-of-placement review in 3 months",
+      "Explain the error openly and honestly to the patient (and family if appropriate), apologize, and explain what monitoring and treatment will be undertaken (Duty of Candour)"
     ],
     "correct_answer": [
       "Immediately assess the patient, check vital signs, and liaise with senior medical staff and pharmacy/poisons service for monitoring and management",
@@ -2720,17 +3680,17 @@
     "explanation": "Immediate clinical assessment and senior involvement to mitigate harm is the top priority. Under the statutory Duty of Candour, the doctor must promptly and openly inform the patient and apologize. Documenting and filing an incident report promotes institutional learning. Delaying discussion for 3 months misses early reflection, and falsifying records is fraudulent, dishonest, and a gross breach of GMC standards."
   },
   {
-    "id": "q_159",
+    "id": "q_219",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "You are assessing a 3-year-old child brought to the ED by their mother's new partner. The child has multiple circular burn marks on their back that resemble cigarette burns, which the partner claims were caused by 'brushing against a hot radiator'. The partner is impatient and demands immediate discharge. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Contact the hospital safeguarding children team and initiate a multi-agency safeguarding referral (MASH)",
-      "Discharge the child as requested by the partner and arrange routine GP follow-up in 2 weeks",
       "Discuss your safeguarding concerns urgently with the on-duty paediatric registrar or consultant and admit the child to the paediatric ward for a place of safety",
+      "Discharge the child as requested by the partner and arrange routine GP follow-up in 2 weeks",
+      "Perform a thorough, documented top-to-toe examination of the child, looking for other injuries or signs of neglect",
       "Accuse the partner directly of child abuse in front of the child and threaten to call the police immediately",
-      "Perform a thorough, documented top-to-toe examination of the child, looking for other injuries or signs of neglect"
+      "Contact the hospital safeguarding children team and initiate a multi-agency safeguarding referral (MASH)"
     ],
     "correct_answer": [
       "Discuss your safeguarding concerns urgently with the on-duty paediatric registrar or consultant and admit the child to the paediatric ward for a place of safety",
@@ -2742,17 +3702,17 @@
     "explanation": "In suspected non-accidental injury, child protection is paramount. Admitting the child under paediatric supervision ensures immediate physical safety. Initiating safeguarding procedures through hospital safeguarding/MASH ensures multi-agency assessment. Full clinical documentation is essential. Confrontational accusations may escalate danger or cause the carer to abscond with the child. Discharging the child places them at extreme risk of serious harm."
   },
   {
-    "id": "q_160",
+    "id": "q_220",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A 28-year-old man attends your GP clinic and tests positive for acute hepatitis B. He explicitly forbids you from telling his long-term live-in partner, with whom he is sexually active, stating that he fears she will leave him. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Agree unconditionally to keep the diagnosis secret and take no further action to protect the partner",
       "Explain the transmission risk to his partner, explore his fears, and counsel him extensively on the ethical and health necessity of notifying and testing his partner",
-      "Immediately telephone the partner without warning the patient to inform her of the diagnosis",
       "Advise the patient that if he continues to refuse, you have a professional duty to protect third parties from serious communicable harm and may disclose to his partner after seeking Caldicott guidance",
-      "Seek confidential advice from your medical defence organisation (MDO) or the trust Caldicott Guardian regarding breaching confidentiality in the public interest"
+      "Immediately telephone the partner without warning the patient to inform her of the diagnosis",
+      "Seek confidential advice from your medical defence organisation (MDO) or the trust Caldicott Guardian regarding breaching confidentiality in the public interest",
+      "Agree unconditionally to keep the diagnosis secret and take no further action to protect the partner"
     ],
     "correct_answer": [
       "Explain the transmission risk to his partner, explore his fears, and counsel him extensively on the ethical and health necessity of notifying and testing his partner",
@@ -2764,17 +3724,17 @@
     "explanation": "The initial step is to work with the patient to understand his concerns and encourage voluntary disclosure. If he refuses, GMC guidance allows disclosure to protect individuals from risk of death or serious harm, but the patient must first be informed of your intention to disclose unless doing so creates danger. Seeking MDO/Caldicott advice ensures legal alignment. Immediate unauthorized phone calls breach trust, and doing nothing leaves the partner at severe risk."
   },
   {
-    "id": "q_161",
+    "id": "q_221",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A consultant physician instructs you, an FY1, to rewrite an electronic discharge summary to omit a medication error that resulted in a patient staying an extra 3 days in hospital, telling you: 'It will only upset the patient and trigger an unnecessary complaint'. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Agree to omit the error from the discharge summary but report the consultant anonymously online",
-      "Politely decline to falsify or omit the information, explaining that discharge summaries must be an accurate clinical record",
       "Document the true clinical events, including the error and its management, objectively in the patient's records",
+      "Comply fully with the consultant's instruction without questioning because they are your senior assessor",
       "Seek advice from your clinical supervisor, educational supervisor, or clinical director regarding the consultant's instruction",
-      "Comply fully with the consultant's instruction without questioning because they are your senior assessor"
+      "Agree to omit the error from the discharge summary but report the consultant anonymously online",
+      "Politely decline to falsify or omit the information, explaining that discharge summaries must be an accurate clinical record"
     ],
     "correct_answer": [
       "Politely decline to falsify or omit the information, explaining that discharge summaries must be an accurate clinical record",
@@ -2786,17 +3746,17 @@
     "explanation": "Doctors must maintain integrity and honesty in all medical documentation. Declining to falsify records is the primary professional action. Escalating to educational leadership provides support in dealing with senior pressure. Documenting facts truthfully ensures accurate care. Participating in a cover-up while posting anonymously online breaches GMC standards, and blind compliance in falsification is dishonest and unacceptable."
   },
   {
-    "id": "q_162",
+    "id": "q_222",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "The grateful family of an elderly patient whom you cared for during a prolonged admission presents you with an expensive luxury watch valued at approximately £800 as a personal thank-you gift. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
       "Accept the watch but only wear it outside of work hours so colleagues do not see it",
-      "Accept the watch and offer to provide the family with your personal mobile number for priority medical advice",
-      "Politely decline the watch, thanking the family warmly and explaining that professional standards and hospital policy prohibit accepting high-value personal gifts",
       "Suggest that if they wish to express gratitude, they could write a thank-you letter or make a modest donation to the ward charitable fund",
-      "Inform your clinical supervisor or line manager about the offer and your decision to decline it"
+      "Inform your clinical supervisor or line manager about the offer and your decision to decline it",
+      "Politely decline the watch, thanking the family warmly and explaining that professional standards and hospital policy prohibit accepting high-value personal gifts",
+      "Accept the watch and offer to provide the family with your personal mobile number for priority medical advice"
     ],
     "correct_answer": [
       "Politely decline the watch, thanking the family warmly and explaining that professional standards and hospital policy prohibit accepting high-value personal gifts",
@@ -2808,17 +3768,17 @@
     "explanation": "GMC Good Medical Practice guidance states that doctors must not accept gifts that could be seen as affecting their professional judgment or exceeding a token value. An £800 watch is high-value and must be declined politely. Redirecting gratitude to the ward team or a charity is constructive. Informing a supervisor provides transparency. Hiding the gift is deceitful, and trading personal access for gifts is a severe conflict of interest."
   },
   {
-    "id": "q_163",
+    "id": "q_223",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "You see a public post on Instagram by a fellow FY1 doctor containing a photo of an unusual surgical specimen on a theatre tray. The caption mentions the patient's age, hospital name, and specific rare diagnosis, stating: 'Craziest case of my shift!'. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
       "Contact your colleague privately and immediately, advising them that the post contains identifiable patient details and must be taken down at once",
-      "Like and share the post to your own medical followers because the case is educational",
       "Post a public critical comment under their photo accusing them of violating patient rights",
-      "If the colleague refuses or fails to remove the post promptly, escalate the matter to their educational supervisor or the hospital Caldicott Guardian",
-      "Remind your colleague of the GMC guidance on social media and patient confidentiality"
+      "Like and share the post to your own medical followers because the case is educational",
+      "Remind your colleague of the GMC guidance on social media and patient confidentiality",
+      "If the colleague refuses or fails to remove the post promptly, escalate the matter to their educational supervisor or the hospital Caldicott Guardian"
     ],
     "correct_answer": [
       "Contact your colleague privately and immediately, advising them that the post contains identifiable patient details and must be taken down at once",
@@ -2830,17 +3790,17 @@
     "explanation": "GMC social media guidance warns that combining clinical details can lead to patient identification, breaching confidentiality. Contacting the colleague privately to remove the post immediately mitigates ongoing harm. Pointing to guidance helps them understand the breach. Escalating is necessary if they do not comply. Public shaming is unprofessional and amplifies attention to the breach, and sharing it makes you complicit in the violation."
   },
   {
-    "id": "q_164",
+    "id": "q_224",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "While suturing a laceration on an acutely confused intravenous drug user with suspected blood-borne viruses, you accidentally sustain a deep needlestick puncture through your glove. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Squeeze the puncture wound aggressively, apply neat bleach, and finish your 8-hour shift before seeking advice",
-      "Hand over the patient's care safely to a colleague so that the patient's wound can be completed",
-      "Cover the puncture site with a waterproof dressing and immediately report to Occupational Health or the ED for post-exposure prophylaxis (PEP) assessment",
       "Immediately encourage free bleeding of the puncture site under warm running water and wash with soap and water without scrubbing",
-      "Complete an electronic incident report (Datix) once medical management is underway"
+      "Complete an electronic incident report (Datix) once medical management is underway",
+      "Hand over the patient's care safely to a colleague so that the patient's wound can be completed",
+      "Squeeze the puncture wound aggressively, apply neat bleach, and finish your 8-hour shift before seeking advice",
+      "Cover the puncture site with a waterproof dressing and immediately report to Occupational Health or the ED for post-exposure prophylaxis (PEP) assessment"
     ],
     "correct_answer": [
       "Immediately encourage free bleeding of the puncture site under warm running water and wash with soap and water without scrubbing",
@@ -2852,17 +3812,17 @@
     "explanation": "Immediate first aid (washing gently with soap and warm water, encouraging free bleeding) is the proven first step. Prompt assessment for HIV/HBV/HCV PEP (ideally within 1 hour) is critical. Handing over the patient ensures their care is not compromised. Submitting a Datix aids reporting. Caustic chemicals like bleach and aggressive squeezing damage tissue and increase transmission risk, and delaying PEP assessment for hours diminishes its effectiveness."
   },
   {
-    "id": "q_165",
+    "id": "q_225",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A 42-year-old Jehovah's Witness is admitted with severe bleeding from a duodenal ulcer. His haemoglobin is 48 g/L. He is fully conscious, alert, and demonstrates full mental capacity. He carries a valid, signed Advance Decision refusing all blood and blood products under any circumstances. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Respect the patient's autonomous decision, verify the validity and applicability of the Advance Decision, and document the discussion clearly",
-      "Explore alternative non-blood management options such as intravenous iron, tranexamic acid, cell salvage, and endoscopic haemostasis",
       "Wait until the patient loses consciousness from hypovolaemia and immediately transfuse blood products against their documented wishes",
+      "Attempt to persuade the patient by informing them repeatedly that their religious beliefs are irrational",
       "Discuss the situation urgently with your consultant and involve the hospital transfusion liaison team / hospital legal team",
-      "Attempt to persuade the patient by informing them repeatedly that their religious beliefs are irrational"
+      "Respect the patient's autonomous decision, verify the validity and applicability of the Advance Decision, and document the discussion clearly",
+      "Explore alternative non-blood management options such as intravenous iron, tranexamic acid, cell salvage, and endoscopic haemostasis"
     ],
     "correct_answer": [
       "Respect the patient's autonomous decision, verify the validity and applicability of the Advance Decision, and document the discussion clearly",
@@ -2874,17 +3834,17 @@
     "explanation": "Under the Mental Capacity Act 2005, an adult with capacity has the absolute legal and ethical right to refuse any medical treatment, including life-sustaining blood transfusions. Valid Advance Decisions must be respected. Maximizing non-blood medical options is standard. Involving seniors and transfusion specialists ensures safe supportive care. Insulting religious beliefs is coercive and unprofessional, and transfusing an incapacitated patient against a valid advance refusal is battery and unlawful."
   },
   {
-    "id": "q_166",
+    "id": "q_226",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "You are the sole FY1 on a 30-bed surgical ward at 02:00. Two patients are acutely deteriorating with NEWS scores of 7 and 8, three surgical post-op patients require urgent analgesia, and the ward sister informs you that nursing staffing is 50% below safe minimum levels. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Escalate the acute ward staffing crisis and workload to the hospital site coordinator / clinical night lead for emergency redeployment of staff",
       "Leave the ward to sit in the mess because the workload is impossible to manage alone",
-      "Briefly triage remaining tasks with the nursing team, ensuring urgent analgesia is delegated or prioritized once acutely unwell patients are stable",
+      "Escalate the acute ward staffing crisis and workload to the hospital site coordinator / clinical night lead for emergency redeployment of staff",
       "Immediately assess and stabilize the two deteriorating patients while calling the surgical registrar and hospital resuscitation / critical care outreach team",
-      "Submit a formal clinical incident report (Datix) and exception report at the end of the shift"
+      "Submit a formal clinical incident report (Datix) and exception report at the end of the shift",
+      "Briefly triage remaining tasks with the nursing team, ensuring urgent analgesia is delegated or prioritized once acutely unwell patients are stable"
     ],
     "correct_answer": [
       "Immediately assess and stabilize the two deteriorating patients while calling the surgical registrar and hospital resuscitation / critical care outreach team",
@@ -2896,17 +3856,17 @@
     "explanation": "Clinical prioritization must put the most critically unwell patients first with immediate outreach/senior help. Escalating staffing to the site coordinator enables hospital-wide resource allocation. Team communication and task triaging ensures urgent patient needs are tracked. Incident reporting flags systemic unsafe conditions for institutional review. Abandoning deteriorating patients is patient abandonment and severe misconduct."
   },
   {
-    "id": "q_167",
+    "id": "q_227",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A 72-year-old man has just been diagnosed with metastatic pancreatic cancer. His daughter intercepts you in the corridor and tearfully begs you: 'Please do not tell my father he has cancer, the shock will kill him'. The patient is alert, orientated, and currently waiting for his scan results. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Explain empathetically to the daughter that her father has the legal and ethical right to know his diagnosis if he wishes, but you will deliver the news sensitively",
-      "Invite the daughter into a private room to understand her fears and explore how the family would like to support him during the consultation",
-      "Bluntly tell the daughter in the corridor that it is none of her business and dismiss her concerns",
+      "Comply with the daughter's request and lie to the patient by telling him his scan showed benign inflammation",
       "Ask the patient directly in the presence of the daughter how much information he would like to receive about his investigations and condition",
-      "Comply with the daughter's request and lie to the patient by telling him his scan showed benign inflammation"
+      "Bluntly tell the daughter in the corridor that it is none of her business and dismiss her concerns",
+      "Explain empathetically to the daughter that her father has the legal and ethical right to know his diagnosis if he wishes, but you will deliver the news sensitively",
+      "Invite the daughter into a private room to understand her fears and explore how the family would like to support him during the consultation"
     ],
     "correct_answer": [
       "Explain empathetically to the daughter that her father has the legal and ethical right to know his diagnosis if he wishes, but you will deliver the news sensitively",
@@ -2918,17 +3878,17 @@
     "explanation": "GMC guidance on confidentiality and consent affirms that patients with capacity have an intrinsic right to information about their condition. Explaining this gently to relatives while validating their distress is essential. Establishing the patient's own preference for information delivery respects autonomy. Lying to the patient violates honesty and duty of care, and dismissive rudeness damages trust and causes unnecessary distress."
   },
   {
-    "id": "q_168",
+    "id": "q_228",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "While passing a ward treatment room, you observe a 4th-year medical student about to perform an arterial puncture (ABG) on an elderly confused patient. The student admits they have never performed an ABG before and that the patient has not given informed consent. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Take the student aside into a private room to explain why performing an invasive procedure without competence or valid consent is unacceptable",
-      "Assess the patient yourself, explain the procedure if indicated, and perform the ABG under appropriate supervision with the student observing",
-      "Report the medical student to the university medical school dean immediately without speaking to the student",
       "Allow the student to attempt the procedure on their own to see how well they do",
-      "Intervene immediately and calmly to prevent the student from proceeding, prioritizing patient safety and dignity"
+      "Assess the patient yourself, explain the procedure if indicated, and perform the ABG under appropriate supervision with the student observing",
+      "Intervene immediately and calmly to prevent the student from proceeding, prioritizing patient safety and dignity",
+      "Take the student aside into a private room to explain why performing an invasive procedure without competence or valid consent is unacceptable",
+      "Report the medical student to the university medical school dean immediately without speaking to the student"
     ],
     "correct_answer": [
       "Intervene immediately and calmly to prevent the student from proceeding, prioritizing patient safety and dignity",
@@ -2940,17 +3900,17 @@
     "explanation": "Patient safety must come first: stopping an unconsented, unsupervised invasive procedure by an untrained student prevents harm. Giving immediate private educational feedback explains the gravity of consent and competence. Demonstrating the procedure correctly turns the event into a safe learning opportunity. Immediate reporting without local discussion bypasses formative learning, and allowing an unsafe procedure to continue is negligence."
   },
   {
-    "id": "q_169",
+    "id": "q_229",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "You notice that your fellow FY2 colleague has become increasingly withdrawn, exhausted, and tearful over the past month. Today they made two near-miss medication errors and confided in you that they feel completely overwhelmed and 'cannot cope anymore'. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Tell them to 'toughen up' because junior doctor training is naturally stressful for everyone",
+      "Listen compassionately in private, express your support, and gently encourage them to speak with their educational supervisor or GP",
       "Signpost them to confidential support services such as the BMA Wellbeing Support Service, NHS Practitioner Health, or hospital Occupational Health",
       "Inform their clinical supervisor confidentially if they continue to make errors and refuse to seek help",
-      "Listen compassionately in private, express your support, and gently encourage them to speak with their educational supervisor or GP",
-      "Offer to assist them with their immediate clinical workload for the rest of the shift so they are not working in an unsafe state"
+      "Offer to assist them with their immediate clinical workload for the rest of the shift so they are not working in an unsafe state",
+      "Tell them to 'toughen up' because junior doctor training is naturally stressful for everyone"
     ],
     "correct_answer": [
       "Listen compassionately in private, express your support, and gently encourage them to speak with their educational supervisor or GP",
@@ -2962,17 +3922,17 @@
     "explanation": "Supporting a struggling colleague with empathy and encouraging them to seek formal guidance is the best first step. Providing access to professional support services (Practitioner Health, BMA) addresses root causes. Assisting with workload protects immediate patient care. Escalating confidentially is necessary if patient safety is endangered and the colleague does not seek help. Dismissive comments are harmful, unprofessional, and stigmatize mental health."
   },
   {
-    "id": "q_170",
+    "id": "q_230",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A 68-year-old patient with severe abdominal pain and signs of peritonitis is in the Emergency Department. The medical registrar states the patient has a medical abdomen and should be admitted under surgery. The surgical registrar refuses to admit, stating the patient has diverticulitis which should be managed medically. The patient is clinically deteriorating. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Ensure the patient is actively resuscitated, prescribed analgesia, and closely monitored in the ED resuscitation area during the discussion",
       "Request an immediate joint bedside review between the medical registrar and surgical registrar to agree on a clinical stabilization and admission plan",
-      "If disagreement persists, escalate immediately to the on-call medical and surgical consultants for a definitive consultant-to-consultant decision",
       "Advise the patient's family to submit a formal complaint against the surgical team",
-      "Discharge the patient home with oral analgesia since neither team will accept them"
+      "Discharge the patient home with oral analgesia since neither team will accept them",
+      "Ensure the patient is actively resuscitated, prescribed analgesia, and closely monitored in the ED resuscitation area during the discussion",
+      "If disagreement persists, escalate immediately to the on-call medical and surgical consultants for a definitive consultant-to-consultant decision"
     ],
     "correct_answer": [
       "Request an immediate joint bedside review between the medical registrar and surgical registrar to agree on a clinical stabilization and admission plan",
@@ -2984,17 +3944,17 @@
     "explanation": "In inter-specialty admission disputes involving an unstable patient, collaborative joint bedside review is the fastest way to resolve clinical ambiguity. Escalating to duty consultants resolves impasses definitively. Ongoing resuscitation and monitoring in the ED protects the patient. Inciting family complaints detracts from immediate care, and discharging a deteriorating patient with peritonitis is life-threatening malpractice."
   },
   {
-    "id": "q_171",
+    "id": "q_231",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A 50-year-old lorry driver is admitted with a first unprovoked generalized tonic-clonic seizure. You explain the mandatory DVLA regulations requiring him to cease driving immediately. The patient becomes furious and states: 'I will lose my job and mortgage. I am driving home from hospital and will never tell the DVLA'. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Explain the strict legal obligation not to drive, the medical reasons for this, and warn him that if he continues to drive you have a professional duty to notify the DVLA directly",
-      "Explore his social and financial concerns empathetically and involve hospital social work or occupational health support",
-      "If he still refuses to stop driving, discuss the case with the trust Caldicott Guardian or MDO, and notify the DVLA medical adviser in the public interest",
+      "Agree not to report him to the DVLA because doctor-patient confidentiality is absolute",
       "Call the police immediately without warning the patient while he is still on the ward",
-      "Agree not to report him to the DVLA because doctor-patient confidentiality is absolute"
+      "Explore his social and financial concerns empathetically and involve hospital social work or occupational health support",
+      "Explain the strict legal obligation not to drive, the medical reasons for this, and warn him that if he continues to drive you have a professional duty to notify the DVLA directly",
+      "If he still refuses to stop driving, discuss the case with the trust Caldicott Guardian or MDO, and notify the DVLA medical adviser in the public interest"
     ],
     "correct_answer": [
       "Explain the strict legal obligation not to drive, the medical reasons for this, and warn him that if he continues to drive you have a professional duty to notify the DVLA directly",
@@ -3006,17 +3966,17 @@
     "explanation": "GMC guidance on disclosing information about fitness to drive states that doctors must first explain the legal duty to the patient and warn them of the duty to disclose if they refuse. Exploring concerns helps engagement. If the patient persists in driving, disclosing to the DVLA to protect the public from serious harm is permitted and expected. Calling police without prior discussion is premature unless imminent driving occurs, and ignoring the threat breaches public protection duties."
   },
   {
-    "id": "q_172",
+    "id": "q_232",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A staff nurse administers an incorrect antibiotic to a patient because your handwriting on the paper drug chart was unclear. The patient suffers no adverse reaction. The nurse approaches you visibly upset, asking if you can rewrite the chart so that she does not face disciplinary action. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Report the nurse immediately to the Nursing and Midwifery Council (NMC) without discussing it with her",
-      "Complete an incident report (Datix) together, noting both the unclear handwriting and the administration error as contributory factors",
-      "Explain kindly to the nurse that you cannot falsify or backdate records, but reassure her that clinical incidents are treated with a learning culture rather than blame",
+      "Assess the patient immediately to confirm they remain clinically well and have suffered no harm",
       "Rewrite the chart as requested to protect the nurse's career since no harm occurred",
-      "Assess the patient immediately to confirm they remain clinically well and have suffered no harm"
+      "Complete an incident report (Datix) together, noting both the unclear handwriting and the administration error as contributory factors",
+      "Report the nurse immediately to the Nursing and Midwifery Council (NMC) without discussing it with her",
+      "Explain kindly to the nurse that you cannot falsify or backdate records, but reassure her that clinical incidents are treated with a learning culture rather than blame"
     ],
     "correct_answer": [
       "Assess the patient immediately to confirm they remain clinically well and have suffered no harm",
@@ -3028,17 +3988,17 @@
     "explanation": "Patient safety check comes first. Honesty in clinical documentation is non-negotiable; explaining why falsification is illegal while offering reassurance supports a just culture. Joint incident reporting addresses systemic factors (poor handwriting, verification checks). Falsifying charts is fraudulent, and reporting a single error directly to the NMC without local process is disproportionate and punitive."
   },
   {
-    "id": "q_173",
+    "id": "q_233",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "You observe a senior surgical trainee pocketing several ampoules of Morphine from the ward controlled drugs cabinet without entering them in the CD register. When asked, the trainee claims they are for an acute trauma patient in theatre, but you know that theatre has its own separate drug supply. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
+      "Confront the trainee aggressively in front of patients and staff on the ward",
       "Check the controlled drugs register with the ward sister to confirm the discrepancy and document it formally",
       "Immediately inform the ward sister and the duty clinical manager/consultant about the unaccounted controlled drugs",
-      "Confront the trainee aggressively in front of patients and staff on the ward",
-      "Do nothing because controlled drugs are the sole responsibility of the nursing staff",
-      "Ensure the trainee does not administer uncontrolled medications to patients while the situation is investigated"
+      "Ensure the trainee does not administer uncontrolled medications to patients while the situation is investigated",
+      "Do nothing because controlled drugs are the sole responsibility of the nursing staff"
     ],
     "correct_answer": [
       "Immediately inform the ward sister and the duty clinical manager/consultant about the unaccounted controlled drugs",
@@ -3050,17 +4010,17 @@
     "explanation": "Controlled drugs legislation and GMC guidance require strict accountability; immediate senior escalation is essential to protect patients and the trainee. Formal auditing with the ward sister establishes the evidence base. Ensuring patient safety during investigation is vital. Public aggressive confrontation escalates conflict and breaches confidentiality, and ignoring CD diversion compromises patient safety and the law."
   },
   {
-    "id": "q_174",
+    "id": "q_234",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A 55-year-old male patient admitted with chest pain refuses to be examined by you because of your ethnic background, loudly demanding: 'I only want a white British doctor treating me'. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Remain calm and professional, explain that all hospital doctors are fully qualified, and assess whether the patient has acute life-threatening instability",
-      "Refuse to arrange any medical care for the patient and demand security immediately evict them from the hospital",
+      "If the patient is stable, inform the ward sister and supervising consultant of the patient's refusal and discriminatory behaviour",
       "Engage in a shouting match with the patient to defend your professional honour",
+      "Refuse to arrange any medical care for the patient and demand security immediately evict them from the hospital",
       "Offer the patient the option to be seen by another team member if clinically feasible and safe, while reinforcing the hospital's zero-tolerance policy on discrimination",
-      "If the patient is stable, inform the ward sister and supervising consultant of the patient's refusal and discriminatory behaviour"
+      "Remain calm and professional, explain that all hospital doctors are fully qualified, and assess whether the patient has acute life-threatening instability"
     ],
     "correct_answer": [
       "Remain calm and professional, explain that all hospital doctors are fully qualified, and assess whether the patient has acute life-threatening instability",
@@ -3072,17 +4032,17 @@
     "explanation": "Maintaining professional composure while triaging acute clinical stability is primary. Escalating discriminatory behavior to seniors ensures trust support and policy enforcement. Accommodating care while setting boundaries protects the doctor and ensures patient safety. Evicting a potentially unstable chest pain patient risks death, and shouting is completely unprofessional."
   },
   {
-    "id": "q_175",
+    "id": "q_235",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "Your brother-in-law calls you on a Sunday evening asking you to write a private prescription for a course of oral Amoxicillin for his recurrent dental abscess, saying his dentist is closed until Tuesday. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Direct him to contact NHS 111 or the local emergency out-of-hours dental service for proper dental assessment and treatment",
       "Politely decline to prescribe, explaining that GMC guidance strictly advises against prescribing for family members except in life-threatening emergencies",
+      "Direct him to contact NHS 111 or the local emergency out-of-hours dental service for proper dental assessment and treatment",
       "Take prescription pads from the hospital ward without authorization to write the prescription",
-      "Prescribe the amoxicillin this once on the condition that he promises not to ask again",
-      "Advise him on appropriate over-the-counter analgesia (such as paracetamol or ibuprofen) in the interim"
+      "Advise him on appropriate over-the-counter analgesia (such as paracetamol or ibuprofen) in the interim",
+      "Prescribe the amoxicillin this once on the condition that he promises not to ask again"
     ],
     "correct_answer": [
       "Politely decline to prescribe, explaining that GMC guidance strictly advises against prescribing for family members except in life-threatening emergencies",
@@ -3094,17 +4054,17 @@
     "explanation": "GMC Good Medical Practice guidance states that doctors must not prescribe for themselves or anyone with whom they have a close personal relationship unless no other doctor is available in an emergency. Directing to emergency dental services (NHS 111) is the safe clinical route. Advising standard OTC pain relief is helpful. Prescribing casually breaches guidelines, and stealing hospital prescription stationery is a criminal offense."
   },
   {
-    "id": "q_176",
+    "id": "q_236",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "During a private consultation in the GP surgery, a 35-year-old patient makes repeated romantic comments towards you, holds your hand, and asks you out on a dinner date. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Mock the patient and humiliate them in the waiting room",
-      "Document the interaction and the boundary explanation objectively in the patient's medical records immediately afterwards",
-      "Offer to rearrange the consultation with a chaperone present or transfer their care to another doctor in the practice",
       "Politely, firmly, and clearly explain that you are their doctor and that professional boundaries prohibit any personal or romantic relationship",
-      "Agree to the dinner date provided it takes place in a town far away from the surgery"
+      "Offer to rearrange the consultation with a chaperone present or transfer their care to another doctor in the practice",
+      "Document the interaction and the boundary explanation objectively in the patient's medical records immediately afterwards",
+      "Agree to the dinner date provided it takes place in a town far away from the surgery",
+      "Mock the patient and humiliate them in the waiting room"
     ],
     "correct_answer": [
       "Politely, firmly, and clearly explain that you are their doctor and that professional boundaries prohibit any personal or romantic relationship",
@@ -3116,17 +4076,17 @@
     "explanation": "GMC guidance on maintaining professional boundaries mandates that doctors must establish and maintain clear professional boundaries with patients. Offering a chaperone or transfer of care protects both parties. Contemporaneous factual documentation provides transparency. Accepting romantic advances from a patient is an abuse of professional position that leads to erasure from the medical register, and public humiliation is abusive."
   },
   {
-    "id": "q_177",
+    "id": "q_237",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A surgical registrar asks you, an FY1, to insert a central venous line (CVC) in an acutely ill septic patient on the ward. You have observed two CVC insertions previously on a course but have never performed one on a live patient and do not feel competent to do so unsupervised. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
+      "If the registrar refuses to supervise and insists you do it alone, escalate to the duty consultant or critical care team",
       "Pretend you have already inserted the line and forge the procedure note",
       "Attempt the central line insertion independently hoping you will remember the steps from the course",
       "Offer to prepare the equipment and ultrasound machine and assist the registrar so that they perform it while supervising you",
-      "Explain clearly and politely to the registrar that you have never performed this procedure on a patient and do not feel competent to do so unsupervised",
-      "If the registrar refuses to supervise and insists you do it alone, escalate to the duty consultant or critical care team"
+      "Explain clearly and politely to the registrar that you have never performed this procedure on a patient and do not feel competent to do so unsupervised"
     ],
     "correct_answer": [
       "Explain clearly and politely to the registrar that you have never performed this procedure on a patient and do not feel competent to do so unsupervised",
@@ -3138,16 +4098,16 @@
     "explanation": "Doctors must recognize and work within the limits of their professional competence (GMC Good Medical Practice). Stating non-competence transparently protects the patient. Assisting and seeking supervision turns it into safe clinical training. Escalating to consultants is essential if seniors pressurize juniors into unsafe practice. Performing high-risk procedures beyond competence risks pneumothorax/arterial puncture, and falsifying procedure notes is fraudulent and dangerous."
   },
   {
-    "id": "q_178",
+    "id": "q_238",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "An 18-year-old man presents to the Emergency Department with a stab wound to his forearm. The wound is actively bleeding and requires formal closure. The patient is terrified and begs you not to call the police, claiming he was an innocent bystander. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Inform the on-duty ED consultant and contact the police liaison team as per hospital trust policy",
-      "Immediately control the haemorrhage, provide appropriate analgesia, and treat the physical injury as your primary priority",
       "Explain to the patient that under GMC guidance, doctors are required to notify the police of knife and gun wounds to protect public safety",
+      "Immediately control the haemorrhage, provide appropriate analgesia, and treat the physical injury as your primary priority",
       "Delay treating the bleeding wound until the police arrive and question the patient",
+      "Inform the on-duty ED consultant and contact the police liaison team as per hospital trust policy",
       "Refuse to treat the patient because knife crime involves criminal activity"
     ],
     "correct_answer": [
@@ -3160,17 +4120,17 @@
     "explanation": "Immediate clinical resuscitation and wound care must always take priority over administrative or legal duties. GMC guidance on reporting gunshot and knife wounds states that police must usually be notified in the public interest, and the patient should be informed of this disclosure. Senior consultation ensures compliance with policy. Delaying urgent treatment is unacceptable, and refusing care breaches the fundamental duty of a doctor."
   },
   {
-    "id": "q_179",
+    "id": "q_239",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "While having lunch in a busy hospital public restaurant surrounded by visitors and patients, you hear two senior registrars loudly discussing a complex patient on ward 4, mentioning the patient's full name, room number, and sensitive psychiatric diagnosis. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Approach the registrars immediately and discreetly remind them that they are in a public area and their conversation is breaching patient confidentiality",
       "Join in the conversation to share your own experience with that patient",
-      "Loudly berate them in front of the entire cafeteria to make an example of them",
+      "Suggest that they continue their clinical handover or case discussion in a private clinical office",
       "If they ignore you or respond dismissively, report the confidentiality breach to the hospital Caldicott Guardian or clinical director",
-      "Suggest that they continue their clinical handover or case discussion in a private clinical office"
+      "Loudly berate them in front of the entire cafeteria to make an example of them",
+      "Approach the registrars immediately and discreetly remind them that they are in a public area and their conversation is breaching patient confidentiality"
     ],
     "correct_answer": [
       "Approach the registrars immediately and discreetly remind them that they are in a public area and their conversation is breaching patient confidentiality",
@@ -3182,14 +4142,14 @@
     "explanation": "Immediate discreet intervention halts the ongoing breach of patient privacy without creating an unprofessional public scene. Directing colleagues to a private space supports legitimate clinical communication. Escalating to the Caldicott Guardian is appropriate if disregarded. Aggressive public confrontation is unprofessional, and joining in compounds the confidentiality breach."
   },
   {
-    "id": "q_180",
+    "id": "q_240",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "A 45-year-old woman with a significant head injury following a fall is brought to the ED smelling of alcohol. She is confused, disorientated, and has retrograde amnesia. A CT brain scan is strongly indicated. She becomes agitated, states 'I am going home right now', and attempts to walk out into traffic. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "If she lacks capacity to refuse urgent treatment, act in her best interests under the Mental Capacity Act 2005 and detain her safely to perform the CT scan",
       "Explain in simple terms the serious risks of intracranial haemorrhage and death if she leaves without a scan",
+      "If she lacks capacity to refuse urgent treatment, act in her best interests under the Mental Capacity Act 2005 and detain her safely to perform the CT scan",
       "Allow her to leave immediately because adults are legally allowed to make their own choices",
       "Assess her mental capacity specifically regarding her decision to leave hospital against medical advice",
       "Immediately administer high-dose intravenous Haloperidol without attempting any de-escalation"
@@ -3204,17 +4164,17 @@
     "explanation": "Capacity is decision-specific; assessing whether she can understand, retain, weigh information, and communicate a decision is the essential first step. Providing clear risk explanations supports capacity. If she lacks capacity (due to intoxication/head injury), treating in her best interests under the MCA 2005 to prevent serious harm or death is legal and mandatory. Chemical restraint without verbal de-escalation is excessive, and allowing an incapacitated head injury patient to walk into traffic is gross negligence."
   },
   {
-    "id": "q_181",
+    "id": "q_241",
     "exam": "MSRA",
     "type": "ranking",
     "category": "Professional Dilemmas",
     "scenario": "You are collaborating on a departmental quality improvement project with a fellow trainee. You discover that your colleague has fabricated 40 data entries on the spreadsheet to make the audit results appear statistically significant for an upcoming national conference presentation. Rank the following actions in order of appropriateness (1 = Most appropriate, 5 = Least appropriate).",
     "options": [
-      "Confront your colleague privately, state that fabricating scientific data is scientific fraud, and insist that the falsified data be withdrawn immediately",
-      "Withdraw your name from the abstract and presentation if the falsified data is not removed",
       "Agree to present the poster at the conference anyway because it will boost your portfolio for specialty applications",
+      "Help the colleague fabricate additional data to make the conclusions look even more impressive",
       "Inform the project supervising consultant and the departmental audit lead of the data fabrication",
-      "Help the colleague fabricate additional data to make the conclusions look even more impressive"
+      "Withdraw your name from the abstract and presentation if the falsified data is not removed",
+      "Confront your colleague privately, state that fabricating scientific data is scientific fraud, and insist that the falsified data be withdrawn immediately"
     ],
     "correct_answer": [
       "Confront your colleague privately, state that fabricating scientific data is scientific fraud, and insist that the falsified data be withdrawn immediately",
@@ -3226,20 +4186,20 @@
     "explanation": "Research integrity is an absolute duty under GMC Good Medical Practice. Addressing the colleague directly and demanding withdrawal is the immediate professional course. Escalating to the supervising consultant protects scientific validity and clinical governance. Disassociating yourself prevents complicity. Knowingly presenting fabricated data is professional misconduct, and actively participating in fabrication is fraudulent."
   },
   {
-    "id": "q_182",
+    "id": "q_242",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "You are called to the hospital outpatient waiting area where an angry, agitated relative of a patient is shouting at the receptionist, slamming fists on the desk, and demanding immediate access to the consultant. Other patients and children are becoming frightened. Choose the THREE most appropriate initial actions.",
     "options": [
-      "Shout back at the relative to demonstrate authority and establish control",
-      "Physically restrain the relative yourself before they touch the desk again",
-      "Ask hospital security to attend or be on standby in case the situation turns physically violent",
-      "Invite the relative calmly into a nearby quiet, private room away from other patients to de-escalate the situation",
-      "Threaten to cancel the patient's upcoming surgery if the relative does not leave immediately",
-      "Advise the receptionist to call the local newspaper to report the disruption",
       "Ensure your personal safety and that of colleagues by maintaining a safe physical distance and a clear exit route",
-      "Instruct all clinic staff to abandon the clinic and go home"
+      "Ask hospital security to attend or be on standby in case the situation turns physically violent",
+      "Physically restrain the relative yourself before they touch the desk again",
+      "Shout back at the relative to demonstrate authority and establish control",
+      "Advise the receptionist to call the local newspaper to report the disruption",
+      "Threaten to cancel the patient's upcoming surgery if the relative does not leave immediately",
+      "Instruct all clinic staff to abandon the clinic and go home",
+      "Invite the relative calmly into a nearby quiet, private room away from other patients to de-escalate the situation"
     ],
     "correct_answer": [
       "Ensure your personal safety and that of colleagues by maintaining a safe physical distance and a clear exit route",
@@ -3249,20 +4209,20 @@
     "explanation": "When managing agitated individuals, staff safety is paramount (maintaining distance and exit routes). Verbal de-escalation in a quiet, private space protects other patients and helps listen to grievances constructively. Alerting security ensures immediate backup if physical violence threatens. Shouting back, making punitive threats, physical grappling, and abandoning clinical duties are unsafe and unprofessional."
   },
   {
-    "id": "q_183",
+    "id": "q_243",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "The daughter of an inpatient who died on your ward 2 days ago submits an urgent formal complaint stating that the medical team communicated poorly, delayed pain relief, and acted insensitively. Choose the THREE most appropriate actions for the ward team.",
     "options": [
-      "Review the patient's medical and nursing notes thoroughly prior to the meeting to establish an accurate chronology of events",
-      "Offer a sincere apology for the family's distress and explain the findings of the review openly under the Duty of Candour",
-      "Alter the nursing drug administration records to show timely analgesia delivery",
-      "Refuse to speak with the daughter because formal complaints must only be handled through court proceedings",
-      "Instruct the family that complaining about NHS staff is unacceptable",
-      "Acknowledge the complaint promptly and arrange a face-to-face meeting with the consultant and senior nursing staff to listen to their concerns",
       "Discard the patient's records to prevent further investigation",
-      "Blame the junior doctor on night shift directly in the written response"
+      "Acknowledge the complaint promptly and arrange a face-to-face meeting with the consultant and senior nursing staff to listen to their concerns",
+      "Offer a sincere apology for the family's distress and explain the findings of the review openly under the Duty of Candour",
+      "Refuse to speak with the daughter because formal complaints must only be handled through court proceedings",
+      "Review the patient's medical and nursing notes thoroughly prior to the meeting to establish an accurate chronology of events",
+      "Alter the nursing drug administration records to show timely analgesia delivery",
+      "Blame the junior doctor on night shift directly in the written response",
+      "Instruct the family that complaining about NHS staff is unacceptable"
     ],
     "correct_answer": [
       "Acknowledge the complaint promptly and arrange a face-to-face meeting with the consultant and senior nursing staff to listen to their concerns",
@@ -3272,20 +4232,20 @@
     "explanation": "Complaints should be handled constructively and empathetically. Reviewing factual records establishes the clinical reality. A senior face-to-face meeting demonstrates accountability and listening. Acknowledging distress and apologizing under the Duty of Candour is ethical practice. Blaming colleagues, refusing communication, altering charts, and destroying records are unethical and illegal."
   },
   {
-    "id": "q_184",
+    "id": "q_244",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "An inpatient with severe penicillin allergy is accidentally administered intravenous Co-amoxiclav due to a failure to check allergy wristbands. Within 3 minutes, the patient develops facial swelling, severe wheeze, and hypotension. Choose the THREE most immediate and appropriate actions.",
     "options": [
       "Quietly dispose of the infusion bag and deny that any medication was given",
-      "Administer oral paracetamol and discharge the patient home",
-      "Once the patient is stabilized, explain the error openly and apologize to the patient under the statutory Duty of Candour",
+      "Administer intramuscular Adrenaline (500 micrograms 1:1,000) and call the resuscitation emergency team (2222)",
       "Advise the nurse not to log an incident report so that the ward does not get penalized",
-      "Tell the patient they must have developed a new allergy that was never documented",
       "Stop the antibiotic infusion immediately",
+      "Once the patient is stabilized, explain the error openly and apologize to the patient under the statutory Duty of Candour",
       "Wait 30 minutes to see if the wheeze resolves spontaneously before intervening",
-      "Administer intramuscular Adrenaline (500 micrograms 1:1,000) and call the resuscitation emergency team (2222)"
+      "Administer oral paracetamol and discharge the patient home",
+      "Tell the patient they must have developed a new allergy that was never documented"
     ],
     "correct_answer": [
       "Stop the antibiotic infusion immediately",
@@ -3295,20 +4255,20 @@
     "explanation": "Immediate cessation of the offending allergen and emergency resuscitation with IM adrenaline are life-saving emergency priorities. Open disclosure, apology, and incident reporting under the Duty of Candour are mandatory once stable. Delaying therapy, covering up errors, and lying to patients are gross violations of medical duty."
   },
   {
-    "id": "q_185",
+    "id": "q_245",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "You are working an intense acute medical rotation. For the third time this week, you have worked 3 hours past your scheduled shift end without a meal or rest break, and your rota coordinator asks you to cover an extra weekend night shift. Choose the THREE most appropriate professional actions.",
     "options": [
-      "Politely decline the additional locum shift, explaining that your current fatigue would compromise safe patient care",
-      "Submit electronic Exception Reports for the additional hours worked and missed rest breaks according to your junior doctor contract",
-      "Instruct all medical students on the ward to take over doctor prescribing tasks",
-      "Discuss your current workload, fatigue, and burnout concerns with your Educational Supervisor or Guardian of Safe Working Hours",
       "Accept the extra shift and take sedatives during the day and stimulants on duty",
+      "Vent your anger by posting identifying complaints about your hospital rota on social media",
+      "Submit electronic Exception Reports for the additional hours worked and missed rest breaks according to your junior doctor contract",
+      "Politely decline the additional locum shift, explaining that your current fatigue would compromise safe patient care",
+      "Discuss your current workload, fatigue, and burnout concerns with your Educational Supervisor or Guardian of Safe Working Hours",
       "Walk out halfway through your next shift without handing over to demonstrate your frustration",
-      "Falsify your time sheets to claim double locum rates for your contracted hours",
-      "Vent your anger by posting identifying complaints about your hospital rota on social media"
+      "Instruct all medical students on the ward to take over doctor prescribing tasks",
+      "Falsify your time sheets to claim double locum rates for your contracted hours"
     ],
     "correct_answer": [
       "Submit electronic Exception Reports for the additional hours worked and missed rest breaks according to your junior doctor contract",
@@ -3318,20 +4278,20 @@
     "explanation": "Exception reporting is the contractual mechanism to highlight unsafe hours and trigger rota reviews. Raising concerns with the Guardian of Safe Working Hours ensures systemic governance. Declining voluntary extra shifts when fatigued upholds patient safety. Falsification, unprofessional social media venting, drug misuse, and abandoning shifts without handover are dangerous and unethical."
   },
   {
-    "id": "q_186",
+    "id": "q_246",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "Two police officers arrive at the ward reception demanding to view the medical notes and take blood samples from an admitted patient whom they suspect was involved in an assault earlier that evening. The patient is asleep. Choose the THREE most appropriate actions.",
     "options": [
+      "Take the blood sample from the sleeping patient without their knowledge or consent",
+      "Delete the patient's electronic records so that the police cannot access them",
+      "Wake the patient and force them to speak to the police against their will",
+      "Contact the hospital Caldicott Guardian or on-call trust legal adviser for guidance on disclosure in the public interest",
       "Ask the police officers to explain the statutory legal basis of their request and whether an immediate threat to public safety exists",
       "Hand over the paper notes immediately because police requests always override medical confidentiality",
       "Explain politely to the officers that patient medical records are confidential and cannot be disclosed without the patient's informed consent or a formal court warrant",
-      "Delete the patient's electronic records so that the police cannot access them",
-      "Order the police officers to leave the hospital premises immediately under threat of arrest",
-      "Take the blood sample from the sleeping patient without their knowledge or consent",
-      "Contact the hospital Caldicott Guardian or on-call trust legal adviser for guidance on disclosure in the public interest",
-      "Wake the patient and force them to speak to the police against their will"
+      "Order the police officers to leave the hospital premises immediately under threat of arrest"
     ],
     "correct_answer": [
       "Explain politely to the officers that patient medical records are confidential and cannot be disclosed without the patient's informed consent or a formal court warrant",
@@ -3341,20 +4301,20 @@
     "explanation": "Confidentiality is a fundamental legal and ethical principle. Police requests do not automatically override confidentiality unless authorized by statute (e.g., Road Traffic Act, Terrorism Act), a court order, or when disclosure is essential to prevent death or serious crime. Involving the Caldicott Guardian ensures legal compliance. Taking unconsented blood or releasing records without authority is unlawful."
   },
   {
-    "id": "q_187",
+    "id": "q_247",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "You are conducting the morning medical handover at 08:30 following a hectic night shift. Choose the THREE most essential components of a safe, structured clinical handover according to Royal College of Physicians (RCP) guidelines.",
     "options": [
-      "Rely exclusively on informal corridor conversations without written or electronic task tracking",
-      "Leave handover sheets containing identifiable patient data on the reception desk",
-      "Highlight and prioritize acutely deteriorating patients, outstanding urgent tasks, and results pending review",
-      "Use a standardized communication framework (such as SBAR: Situation, Background, Assessment, Recommendation)",
-      "Discuss personal social gossip about colleagues before reviewing sick patients",
-      "Skip the handover if the night shift was busy to allow night staff to leave immediately",
       "Ensure a designated, protected quiet environment with minimal interruptions and clear leadership from both day and night teams",
-      "Hand over only patients who were admitted during the last 2 hours of the shift"
+      "Hand over only patients who were admitted during the last 2 hours of the shift",
+      "Rely exclusively on informal corridor conversations without written or electronic task tracking",
+      "Use a standardized communication framework (such as SBAR: Situation, Background, Assessment, Recommendation)",
+      "Skip the handover if the night shift was busy to allow night staff to leave immediately",
+      "Discuss personal social gossip about colleagues before reviewing sick patients",
+      "Leave handover sheets containing identifiable patient data on the reception desk",
+      "Highlight and prioritize acutely deteriorating patients, outstanding urgent tasks, and results pending review"
     ],
     "correct_answer": [
       "Use a standardized communication framework (such as SBAR: Situation, Background, Assessment, Recommendation)",
@@ -3364,20 +4324,20 @@
     "explanation": "RCP and GMC guidelines emphasize that high-quality clinical handover requires structured frameworks (SBAR), clear prioritization of sick/unstable patients and pending investigations, and a protected environment with minimal distractions. Informal handovers, skipping handover, and leaving patient sheets in public spaces cause clinical errors and breach confidentiality."
   },
   {
-    "id": "q_188",
+    "id": "q_248",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "An 82-year-old man with severe vascular dementia presents with a ruptured abdominal aortic aneurysm (AAA) and haemodynamic collapse. He is confused and unable to understand or weigh treatment decisions. His vascular consultant indicates that emergency endovascular repair offers a reasonable chance of survival. Choose the THREE most appropriate actions under the Mental Capacity Act 2005.",
     "options": [
-      "Assess and document that the patient lacks mental capacity to consent to or refuse the emergency surgical intervention",
-      "Consult the patient's next-of-kin or lasting power of attorney (if available) to ascertain the patient's prior beliefs, values, and wishes",
       "Require the family to sign an agreement accepting personal financial liability for the surgery",
-      "Assume that all patients with dementia should automatically be made DNR and refused surgery",
-      "Delay the emergency surgery for 48 hours while awaiting a formal Court of Protection ruling",
-      "Act in the patient's best interests to provide emergency life-saving treatment",
+      "Wait for the patient to regain capacity before performing any intervention",
+      "Consult the patient's next-of-kin or lasting power of attorney (if available) to ascertain the patient's prior beliefs, values, and wishes",
+      "Assess and document that the patient lacks mental capacity to consent to or refuse the emergency surgical intervention",
       "Ignore the emergency and discharge the patient to a care home",
-      "Wait for the patient to regain capacity before performing any intervention"
+      "Assume that all patients with dementia should automatically be made DNR and refused surgery",
+      "Act in the patient's best interests to provide emergency life-saving treatment",
+      "Delay the emergency surgery for 48 hours while awaiting a formal Court of Protection ruling"
     ],
     "correct_answer": [
       "Assess and document that the patient lacks mental capacity to consent to or refuse the emergency surgical intervention",
@@ -3387,20 +4347,20 @@
     "explanation": "Under the Mental Capacity Act 2005, when an incapacitated patient requires emergency life-saving intervention, clinicians have a legal duty to assess and document capacity, consult family/attorneys regarding known prior wishes and values, and proceed with treatment in the patient's best interests. Waiting days for court orders in acute rupture causes death, and blanket discrimination based on dementia is unethical."
   },
   {
-    "id": "q_189",
+    "id": "q_249",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "You spent 4 months designing, collecting data for, and analyzing a departmental audit on sepsis bundle compliance. At a regional meeting, you discover that your senior colleague has submitted the abstract and presented the work with themselves as sole author, completely omitting your name and contribution. Choose the THREE most constructive and appropriate initial actions.",
     "options": [
-      "Arrange a private, professional meeting with the colleague to discuss the omission and review the original project documentation",
       "Drop out of medicine entirely without discussing the issue",
-      "Vandalize the colleague's presentation poster at the conference",
+      "Arrange a private, professional meeting with the colleague to discuss the omission and review the original project documentation",
       "Post allegations of intellectual theft on public social media forums",
-      "Gather your dated project proposals, spreadsheets, and communications to establish clear evidence of your contribution",
+      "Vandalize the colleague's presentation poster at the conference",
       "Raise the issue with the departmental audit lead or clinical director if the colleague refuses to acknowledge your contribution",
-      "Send an abusive email to all consultants in the hospital denouncing the colleague",
-      "Delete all master audit databases from the trust servers to prevent anyone from using them"
+      "Gather your dated project proposals, spreadsheets, and communications to establish clear evidence of your contribution",
+      "Delete all master audit databases from the trust servers to prevent anyone from using them",
+      "Send an abusive email to all consultants in the hospital denouncing the colleague"
     ],
     "correct_answer": [
       "Arrange a private, professional meeting with the colleague to discuss the omission and review the original project documentation",
@@ -3410,20 +4370,20 @@
     "explanation": "Professional disputes regarding authorship should be handled calmly through direct communication backed by documentary evidence. If informal resolution fails, escalation to departmental leadership (audit lead, clinical director) provides objective mediation. Defamatory emails, public social media attacks, and sabotage of hospital files are unprofessional and actionable misconduct."
   },
   {
-    "id": "q_190",
+    "id": "q_250",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "You observe a senior orthopaedic consultant repeatedly entering the surgical ward and examining patient wounds without washing their hands, wearing long-sleeved suit jackets, and refusing to adhere to the hospital's 'bare below the elbows' policy. Choose the THREE most appropriate professional actions.",
     "options": [
-      "Stop washing your own hands to fit in with the consultant's practice",
-      "Consistently lead by example by practicing exemplary hand hygiene and infection control yourself",
-      "Physically push the consultant away from the patient's bedside",
-      "Discuss the persistent infection control breach with the ward sister or hospital infection prevention and control (IPC) lead",
-      "Politely and tactfully remind the consultant of the trust's 'bare below the elbows' and hand hygiene policy prior to them touching a patient",
       "Ignore the behavior completely because senior consultants are exempt from infection control rules",
+      "Take surreptitious photos of the consultant and post them online to shame them publicly",
+      "Politely and tactfully remind the consultant of the trust's 'bare below the elbows' and hand hygiene policy prior to them touching a patient",
+      "Discuss the persistent infection control breach with the ward sister or hospital infection prevention and control (IPC) lead",
+      "Physically push the consultant away from the patient's bedside",
+      "Consistently lead by example by practicing exemplary hand hygiene and infection control yourself",
       "Tell the patient that the consultant is dangerous and advise them to self-discharge",
-      "Take surreptitious photos of the consultant and post them online to shame them publicly"
+      "Stop washing your own hands to fit in with the consultant's practice"
     ],
     "correct_answer": [
       "Politely and tactfully remind the consultant of the trust's 'bare below the elbows' and hand hygiene policy prior to them touching a patient",
@@ -3433,20 +4393,20 @@
     "explanation": "GMC guidance states that all doctors have a duty to challenge unsafe practice regardless of the seniority of the person involved. Tactful direct reminders at the bedside uphold safety. Exemplary personal practice reinforces standards. Escalating to IPC leads addresses recurrent systemic non-compliance. Secret photography, physical aggression, and copying bad practice are unprofessional."
   },
   {
-    "id": "q_191",
+    "id": "q_251",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "A distressed son contacts the bereavement office demanding immediate access to the complete medical records of his late father who died 3 weeks ago, suspecting medical negligence. Choose the THREE most appropriate actions.",
     "options": [
-      "Refuse all assistance and tell the son that dead patients have no records",
-      "Direct the son to the hospital's Patient Advice and Liaison Service (PALS) and the Information Governance / Medical Records team",
-      "Express sincere condolences and handle the family's request with empathy and professionalism",
-      "Tell the son that only a high court judge can ever view medical notes",
-      "Explain the formal legal process under the Access to Health Records Act 1990 for accessing deceased patients' records",
       "Shred the deceased patient's notes to prevent litigation against the hospital",
       "Hand over the original physical medical notes directly across the counter",
-      "Demand payment in cash directly to yourself before releasing any papers"
+      "Refuse all assistance and tell the son that dead patients have no records",
+      "Demand payment in cash directly to yourself before releasing any papers",
+      "Direct the son to the hospital's Patient Advice and Liaison Service (PALS) and the Information Governance / Medical Records team",
+      "Tell the son that only a high court judge can ever view medical notes",
+      "Explain the formal legal process under the Access to Health Records Act 1990 for accessing deceased patients' records",
+      "Express sincere condolences and handle the family's request with empathy and professionalism"
     ],
     "correct_answer": [
       "Express sincere condolences and handle the family's request with empathy and professionalism",
@@ -3456,20 +4416,20 @@
     "explanation": "Under the Access to Health Records Act 1990, personal representatives and individuals with a claim arising from a patient's death have a right to apply for access. Compassionate communication and directing relatives through proper legal channels (PALS, Information Governance) is correct practice. Handing over original notes risks loss/tampering, and destroying notes is criminal."
   },
   {
-    "id": "q_192",
+    "id": "q_252",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "A 22-year-old woman attends the GP practice requesting a referral for an elective termination of pregnancy at 8 weeks gestation. The consulting doctor holds a strong personal conscientious objection to abortion. Choose the THREE most appropriate professional actions according to GMC guidance.",
     "options": [
       "Refuse to refer the patient or provide any information about alternative clinics",
-      "Inform the patient promptly and sensitively of the conscientious objection to providing this service",
-      "Ensure the patient is promptly and seamlessly referred to another healthcare professional who can facilitate the service without delay",
-      "Tell the patient she must wait until 24 weeks before making a decision",
       "Attempt to persuade the patient that abortion is morally wrong and show them graphic anti-abortion pictures",
-      "Treat the patient with respect, compassion, and without expressing moral judgment or disapproval",
+      "Inform the patient's parents of her pregnancy without her consent",
       "Prescribe medication designed to induce medical complications",
-      "Inform the patient's parents of her pregnancy without her consent"
+      "Tell the patient she must wait until 24 weeks before making a decision",
+      "Ensure the patient is promptly and seamlessly referred to another healthcare professional who can facilitate the service without delay",
+      "Inform the patient promptly and sensitively of the conscientious objection to providing this service",
+      "Treat the patient with respect, compassion, and without expressing moral judgment or disapproval"
     ],
     "correct_answer": [
       "Treat the patient with respect, compassion, and without expressing moral judgment or disapproval",
@@ -3479,20 +4439,20 @@
     "explanation": "GMC guidance on personal beliefs and medical practice permits conscientious objection to abortion, but doctors MUST treat patients with respect, declare their objection promptly without judgment, and ensure immediate referral to another willing clinician so patient care is not delayed. Preaching, refusing referral, and breaching confidentiality are gross misconduct."
   },
   {
-    "id": "q_193",
+    "id": "q_253",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "During a routine cervical smear consultation, a 30-year-old woman breaks down in tears and discloses that her partner is physically and emotionally abusive, has isolated her from family, and threatened to kill her if she leaves. Choose the THREE most appropriate initial professional responses.",
     "options": [
       "Offer immediate confidential signposting and referral to specialized domestic abuse services (e.g. hospital IDVA, National Domestic Abuse Helpline)",
-      "Instruct the patient to pack her bags and leave her partner this afternoon without a safety plan",
-      "Document the abuse in a letter sent to the shared home address",
       "Force the patient to report the matter to the police immediately against her will when no children are involved",
+      "Document the abuse in a letter sent to the shared home address",
+      "Instruct the patient to pack her bags and leave her partner this afternoon without a safety plan",
       "Call the partner immediately to demand an explanation for his abusive behaviour",
-      "Assess her immediate physical safety, whether she has children at home, and if she feels safe returning home today",
+      "Validate her disclosure, listen supportively in private, and reassure her that she is not to blame",
       "Tell the patient that domestic arguments are normal in relationships and dismiss her concerns",
-      "Validate her disclosure, listen supportively in private, and reassure her that she is not to blame"
+      "Assess her immediate physical safety, whether she has children at home, and if she feels safe returning home today"
     ],
     "correct_answer": [
       "Validate her disclosure, listen supportively in private, and reassure her that she is not to blame",
@@ -3502,20 +4462,20 @@
     "explanation": "Supportive listening, validating disclosure, assessing immediate safety (and safeguarding of children), and linking with specialist domestic abuse advocates (IDVA) are essential. Contacting the abuser endangers the patient's life, forcing unplanned departures without safety planning is hazardous, and sending written letters home puts victims at extreme risk of violence."
   },
   {
-    "id": "q_194",
+    "id": "q_254",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "During an emergency resuscitation of a patient in cardiac arrest, the team leader charges the defibrillator to deliver a shock for ventricular fibrillation, but the device displays a 'battery depleted' error and powers down. Choose the THREE most appropriate immediate actions.",
     "options": [
+      "Stop chest compressions and wait for the medical equipment maintenance engineer to arrive",
       "Begin arguing loudly with the ward nurse about who forgot to charge the machine",
+      "Connect the failed defibrillator to mains power immediately while checking connections",
+      "Continue high-quality chest compressions and manual bag-valve-mask ventilation without interruption",
       "Hit the defibrillator repeatedly with your fists to restart the battery",
       "Immediately dispatch a team member to fetch the backup defibrillator from the adjacent resuscitation bay or ward",
-      "Continue high-quality chest compressions and manual bag-valve-mask ventilation without interruption",
-      "Stop chest compressions and wait for the medical equipment maintenance engineer to arrive",
-      "Evacuate the resuscitation room",
-      "Connect the failed defibrillator to mains power immediately while checking connections",
-      "Declare death immediately because equipment failure cannot be overcome"
+      "Declare death immediately because equipment failure cannot be overcome",
+      "Evacuate the resuscitation room"
     ],
     "correct_answer": [
       "Continue high-quality chest compressions and manual bag-valve-mask ventilation without interruption",
@@ -3525,20 +4485,20 @@
     "explanation": "In Resuscitation Council guidelines, minimizing interruptions to high-quality chest compressions is paramount for coronary and cerebral perfusion. Rapidly retrieving a secondary defibrillator from nearby clinical areas and connecting the primary unit to mains electricity provides rapid problem resolution. Stopping CPR, arguing, or premature termination of resuscitation costs lives."
   },
   {
-    "id": "q_195",
+    "id": "q_255",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "Following the traumatic, unsuccessful resuscitation of an 8-year-old child in the ED, you find your junior FY1 colleague sobbing alone in the staff changing room, visibly distressed and stating: 'I feel like a terrible doctor and can't go on'. Choose the THREE most supportive and professional actions.",
     "options": [
-      "Ensure they are relieved of clinical duties for the immediate remainder of the shift to recover and debrief",
       "Assign them to clerk the next three waiting room patients to distract them from their feelings",
       "Encourage participation in the multidisciplinary team debrief and signpost to NHS Practitioner Health or staff counselling services",
-      "Sit with the colleague in private, offer immediate emotional support, and listen without judgment",
+      "Ensure they are relieved of clinical duties for the immediate remainder of the shift to recover and debrief",
       "Tell them to stop crying because doctors must never show emotion in front of others",
       "Record their crying on your phone to show their supervisor as evidence of unfitness to practice",
-      "Advise them to drink alcohol heavily when they get home",
-      "Inform all staff in the handover that the FY1 is emotionally unstable"
+      "Sit with the colleague in private, offer immediate emotional support, and listen without judgment",
+      "Inform all staff in the handover that the FY1 is emotionally unstable",
+      "Advise them to drink alcohol heavily when they get home"
     ],
     "correct_answer": [
       "Sit with the colleague in private, offer immediate emotional support, and listen without judgment",
@@ -3548,20 +4508,20 @@
     "explanation": "Critical incident debriefing and compassionate peer support are vital following traumatic deaths. Relieving the colleague from immediate duties prevents compounded distress and protects patient safety. Encouraging structured team debriefs and signposting to wellbeing support facilitates healthy coping. Repressing emotions, forcing immediate work, and shaming are harmful."
   },
   {
-    "id": "q_196",
+    "id": "q_256",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "A 48-year-old man admitted with acute diverticulitis insists on discharging himself against medical advice (DAMA) at 23:00 because he needs to feed his pets. He has full mental capacity and understands the risks. Choose the THREE most appropriate professional actions.",
     "options": [
-      "Refuse to prescribe any oral antibiotics or provide advice because he is non-compliant",
-      "Clearly explain the specific clinical risks of self-discharge, including risk of perforation, sepsis, and death",
-      "Withhold his belongings, coat, and wallet to coerce him into staying",
-      "Provide appropriate discharge medications (e.g. oral antibiotics), clear safety-netting instructions, and advise him he can return at any time",
       "Document the capacity assessment, discussion of risks, and self-discharge objectively in the medical record",
+      "Refuse to prescribe any oral antibiotics or provide advice because he is non-compliant",
+      "Withhold his belongings, coat, and wallet to coerce him into staying",
+      "Clearly explain the specific clinical risks of self-discharge, including risk of perforation, sepsis, and death",
       "Sedate him against his will to prevent him from leaving",
       "Tell him that if he discharges himself, he will be permanently banned from the NHS",
-      "Refuse to let him leave the hospital building and instruct security to lock the ward doors"
+      "Refuse to let him leave the hospital building and instruct security to lock the ward doors",
+      "Provide appropriate discharge medications (e.g. oral antibiotics), clear safety-netting instructions, and advise him he can return at any time"
     ],
     "correct_answer": [
       "Clearly explain the specific clinical risks of self-discharge, including risk of perforation, sepsis, and death",
@@ -3571,20 +4531,20 @@
     "explanation": "Competent adults have the legal right to discharge themselves against medical advice. Clinicians must explain risks clearly, mitigate harm by providing discharge medication and safety-netting (harm reduction), reassure them they can return without penalty, and document the encounter thoroughly. Detention, coercion, threats, and withholding treatment are unlawful and punitive."
   },
   {
-    "id": "q_197",
+    "id": "q_257",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "While reviewing a patient admitted overnight with pneumonia, you notice on the admission chest X-ray that a prominent 3 cm lung mass was overlooked by the admitting doctor, who only reported consolidation. Choose the THREE most appropriate professional actions.",
     "options": [
-      "Discuss the missed finding constructively and privately with the admitting doctor as a learning opportunity, completing an incident report (Datix)",
-      "Commence appropriate investigation pathways (such as an urgent contrast CT chest) and explain the new finding sensitively to the patient",
-      "Publicly humiliate the admitting doctor during grand rounds",
+      "Crop the chest X-ray digital image to hide the mass",
       "Conceal the missed mass in the notes to protect your colleague from criticism",
-      "Discharge the patient without mentioning the mass",
       "Tell the patient that the night doctor was incompetent and advise them to sue",
+      "Publicly humiliate the admitting doctor during grand rounds",
+      "Discharge the patient without mentioning the mass",
+      "Commence appropriate investigation pathways (such as an urgent contrast CT chest) and explain the new finding sensitively to the patient",
       "Discuss the X-ray findings promptly with your supervising consultant or a radiologist for formal review",
-      "Crop the chest X-ray digital image to hide the mass"
+      "Discuss the missed finding constructively and privately with the admitting doctor as a learning opportunity, completing an incident report (Datix)"
     ],
     "correct_answer": [
       "Discuss the X-ray findings promptly with your supervising consultant or a radiologist for formal review",
@@ -3594,20 +4554,20 @@
     "explanation": "Patient care and diagnostic safety come first: getting formal senior/radiological review and initiating appropriate investigation (CT chest) protects the patient. Transparent communication under duty of candour is required. Feeding back constructively to the colleague promotes learning. Concealing diagnostic errors, public shaming, or destroying images is dangerous misconduct."
   },
   {
-    "id": "q_198",
+    "id": "q_258",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "A patient you treated for an uncomplicated ankle injury in the ED writes you a letter expressing intense romantic feelings towards you and asks to meet for a drink. Choose the THREE most appropriate professional actions according to GMC guidance.",
     "options": [
-      "Send an affectionate reply from your personal email account",
-      "Accept the invitation to meet for a drink to see if you are compatible",
       "Discuss the letter promptly with your educational supervisor or clinical lead for guidance and support",
       "Mock the patient on your social media accounts",
-      "Threaten the patient with legal action and police arrest",
       "Document the receipt of the letter and your response objectively in the patient's record or discuss with senior staff",
-      "Give the patient's letter to other patients in the waiting room",
-      "Do not accept the invitation and maintain strictly professional boundaries"
+      "Do not accept the invitation and maintain strictly professional boundaries",
+      "Accept the invitation to meet for a drink to see if you are compatible",
+      "Threaten the patient with legal action and police arrest",
+      "Send an affectionate reply from your personal email account",
+      "Give the patient's letter to other patients in the waiting room"
     ],
     "correct_answer": [
       "Do not accept the invitation and maintain strictly professional boundaries",
@@ -3617,20 +4577,20 @@
     "explanation": "GMC guidance on maintaining professional boundaries explicitly prohibits pursuing or accepting romantic relationships with patients. Seeking senior guidance and documenting the event provides transparency and protection. Accepting romantic approaches, sharing personal contact details, or mocking patients breaches professional ethics."
   },
   {
-    "id": "q_199",
+    "id": "q_259",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "During an emergency caesarean section, you sustain a sharps injury when a suture needle slips and punctures your glove and skin. The patient's HIV and hepatitis status is unknown. Choose the THREE most appropriate immediate actions.",
     "options": [
-      "Refuse to report the injury because sharps injuries are embarrassing",
       "Stop assisting immediately and step away from the operative field safely to prevent patient contamination",
       "Report immediately to Occupational Health or the ED for risk assessment and consideration of post-exposure prophylaxis (PEP)",
-      "Continue operating for another hour until the surgery is completely finished",
       "Scrub the puncture site vigorously with a sterile wire brush and neat iodine",
-      "Advise the surgical team to ignore the incident",
+      "Refuse to report the injury because sharps injuries are embarrassing",
       "Gently encourage bleeding under warm running water and wash with soap and water without scrubbing",
-      "Take a confidential blood sample from the patient without consent while they are anaesthetized"
+      "Take a confidential blood sample from the patient without consent while they are anaesthetized",
+      "Advise the surgical team to ignore the incident",
+      "Continue operating for another hour until the surgery is completely finished"
     ],
     "correct_answer": [
       "Stop assisting immediately and step away from the operative field safely to prevent patient contamination",
@@ -3640,20 +4600,20 @@
     "explanation": "Stepping back safely protects the patient from blood exposure. Immediate wound washing without harsh abrasives reduces viral inoculate. Rapid Occupational Health assessment ensures PEP can be initiated within the 1-hour window if indicated. Continuing to operate risks patient contamination, abrasive scrubbing increases tissue vulnerability, and taking unconsented blood from an anaesthetized patient is unlawful."
   },
   {
-    "id": "q_200",
+    "id": "q_260",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "While on a commercial passenger flight, the cabin crew make an urgent announcement asking if there is a doctor on board to assist an acutely unwell passenger who is breathless and clutching their chest. Choose the THREE most appropriate actions.",
     "options": [
-      "Insist the pilot immediately divert the aircraft before you have even assessed the patient",
-      "Perform an emergency thoracotomy in the aircraft aisle with butter knives",
-      "Administer all medications in the aircraft kit simultaneously",
-      "Pretend to be asleep so that you do not have to get involved",
       "Demand upfront payment in cash from the passenger before providing emergency medical assistance",
-      "Identify yourself to the cabin crew, show your medical identification, and volunteer your assistance",
+      "Administer all medications in the aircraft kit simultaneously",
       "Assess the passenger systematically using an ABCDE approach and liaise with the flight crew to access the on-board emergency medical kit",
-      "Recognize and work within the limits of your competence in the aviation environment, consulting the airline's ground-based medical support team if available"
+      "Recognize and work within the limits of your competence in the aviation environment, consulting the airline's ground-based medical support team if available",
+      "Identify yourself to the cabin crew, show your medical identification, and volunteer your assistance",
+      "Perform an emergency thoracotomy in the aircraft aisle with butter knives",
+      "Pretend to be asleep so that you do not have to get involved",
+      "Insist the pilot immediately divert the aircraft before you have even assessed the patient"
     ],
     "correct_answer": [
       "Identify yourself to the cabin crew, show your medical identification, and volunteer your assistance",
@@ -3663,20 +4623,20 @@
     "explanation": "GMC guidance states that doctors have a professional obligation to offer assistance in emergencies wherever they occur (Good Samaritan principle). Systematic ABCDE evaluation with available aircraft resources is the standard of care. Working within competence and collaborating with ground tele-medical support assists diversion decisions. Feigning sleep, demanding cash, and extreme interventions are dangerous and unethical."
   },
   {
-    "id": "q_201",
+    "id": "q_261",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "A surgical colleague stops you in the hospital corridor and asks if you can quickly examine a persistent pigmented lesion on their back and write them a prescription for strong topical steroids. Choose the THREE most appropriate professional actions.",
     "options": [
-      "Politely explain that corridor consultations are unsafe and that you cannot provide informal medical care or prescriptions for colleagues",
-      "Inform the colleague's department that they are unfit to work",
-      "Offer support in helping them arrange time off to attend a GP appointment if workload is a barrier",
-      "Write the prescription on a hospital scrap paper without taking a history",
       "Prescribe oral systemic chemotherapy informally",
+      "Inform the colleague's department that they are unfit to work",
+      "Ignore the colleague and walk away without responding",
+      "Politely explain that corridor consultations are unsafe and that you cannot provide informal medical care or prescriptions for colleagues",
+      "Write the prescription on a hospital scrap paper without taking a history",
       "Advise your colleague to register with and consult their own General Practitioner for an objective assessment and referral if indicated",
-      "Examine the lesion in the public corridor in front of visitors",
-      "Ignore the colleague and walk away without responding"
+      "Offer support in helping them arrange time off to attend a GP appointment if workload is a barrier",
+      "Examine the lesion in the public corridor in front of visitors"
     ],
     "correct_answer": [
       "Politely explain that corridor consultations are unsafe and that you cannot provide informal medical care or prescriptions for colleagues",
@@ -3686,20 +4646,20 @@
     "explanation": "GMC guidance explicitly states that doctors must not treat colleagues informally or prescribe outside a formal clinical setting, as objectivity and safety are compromised. Advising them to consult their independent GP ensures proper records and clinical safety. Supporting them to take time for medical appointments encourages wellbeing. Informal prescriptions and public examinations breach standards."
   },
   {
-    "id": "q_202",
+    "id": "q_262",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "You notice that a new FY1 on your team has been arriving 45 minutes late every day, appears exhausted and unkempt, and has omitted several critical routine blood tests on ward patients. Choose the THREE most constructive and supportive initial actions.",
     "options": [
       "Post comments on social media about how incompetent modern FY1 doctors are",
-      "File a formal complaint to the GMC immediately without speaking to them",
-      "Offer practical assistance and guidance on time management, task prioritization, and ward routines",
-      "Reprimand the FY1 loudly in front of the nursing staff and patients during ward rounds",
-      "Arrange a private, supportive conversation to ask how they are settling in and whether they are experiencing personal or professional difficulties",
       "Do all their work for them secretly so no one notices their difficulties",
+      "File a formal complaint to the GMC immediately without speaking to them",
+      "Demand that they resign from the training programme immediately",
       "Encourage them to discuss their situation with their educational supervisor or clinical tutor for structured support",
-      "Demand that they resign from the training programme immediately"
+      "Arrange a private, supportive conversation to ask how they are settling in and whether they are experiencing personal or professional difficulties",
+      "Reprimand the FY1 loudly in front of the nursing staff and patients during ward rounds",
+      "Offer practical assistance and guidance on time management, task prioritization, and ward routines"
     ],
     "correct_answer": [
       "Arrange a private, supportive conversation to ask how they are settling in and whether they are experiencing personal or professional difficulties",
@@ -3709,20 +4669,20 @@
     "explanation": "Approaching a struggling junior colleague with empathy and constructive inquiry identifies underlying struggles early. Practical mentoring and task organization provides immediate workplace support. Involving educational supervisors ensures formal developmental resources. Public shaming, premature GMC referrals, and social media mocking are toxic and unhelpful."
   },
   {
-    "id": "q_203",
+    "id": "q_263",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "During a consultation in the outpatient clinic, you notice that the patient has placed their smartphone on the desk and is openly video-recording your conversation. Choose the THREE most appropriate professional actions.",
     "options": [
-      "Acknowledge the recording calmly and ask the patient about their reasons for recording the consultation",
-      "Pretend you did not notice and deliver substandard care intentionally",
       "Snatch the phone from the desk and smash it on the floor",
-      "Call hospital security to have the patient forcefully searched and evicted",
+      "Reassure the patient that you want them to feel comfortable and that recording can be helpful for remembering complex medical discussions",
       "Refuse to provide any medical care and storm out of the consultation room",
       "Ensure that any recording does not breach the privacy or confidentiality of other patients or staff in the clinic",
       "Demand that the patient hand over their smartphone immediately so you can delete the recording",
-      "Reassure the patient that you want them to feel comfortable and that recording can be helpful for remembering complex medical discussions"
+      "Acknowledge the recording calmly and ask the patient about their reasons for recording the consultation",
+      "Pretend you did not notice and deliver substandard care intentionally",
+      "Call hospital security to have the patient forcefully searched and evicted"
     ],
     "correct_answer": [
       "Acknowledge the recording calmly and ask the patient about their reasons for recording the consultation",
@@ -3732,20 +4692,20 @@
     "explanation": "Patients have a legal right to record their own consultations for personal use. Acknowledging this openly and exploring reasons (e.g. anxiety, memory aid) builds trust and rapport. Ensuring other patients' privacy is protected is reasonable. Confiscating property, physical confrontation, and refusing care are aggressive and completely unlawful."
   },
   {
-    "id": "q_204",
+    "id": "q_264",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "An 85-year-old frail woman with polypharmacy is admitted with recurrent falls. On reviewing her chart, you note she is prescribed 12 different regular medications, including sedatives, antihypertensives, and anticholinergics. Choose the THREE most appropriate pharmacological safety actions.",
     "options": [
-      "Add three new antihypertensive agents simultaneously without checking blood pressure",
-      "Conduct a structured medication review using validated criteria (such as STOPP/START) to identify inappropriate medications and fall-risk drugs",
-      "Refuse to review the medication chart because prescribing was done by her GP",
-      "Advise the family that elderly patients should never take any medications",
       "Deprescribe non-essential medications (e.g. sedatives, anticholinergics) in a planned, gradual, and monitored manner with the patient's agreement",
-      "Check for postural hypotension by measuring both lying and standing blood pressure",
       "Double the doses of all sedatives to prevent her from attempting to get out of bed",
-      "Stop all 12 medications abruptly without clinical justification or monitoring"
+      "Refuse to review the medication chart because prescribing was done by her GP",
+      "Add three new antihypertensive agents simultaneously without checking blood pressure",
+      "Advise the family that elderly patients should never take any medications",
+      "Stop all 12 medications abruptly without clinical justification or monitoring",
+      "Check for postural hypotension by measuring both lying and standing blood pressure",
+      "Conduct a structured medication review using validated criteria (such as STOPP/START) to identify inappropriate medications and fall-risk drugs"
     ],
     "correct_answer": [
       "Conduct a structured medication review using validated criteria (such as STOPP/START) to identify inappropriate medications and fall-risk drugs",
@@ -3755,20 +4715,20 @@
     "explanation": "Structured medication review using STOPP/START criteria reduces adverse drug events and fall risk in the frail elderly. Deprescribing sedatives and anticholinergics with patient involvement promotes safety. Measuring lying and standing BP identifies orthostatic hypotension. Over-sedation increases falls, stopping all drugs abruptly causes withdrawal crises, and failing to review charts is negligence."
   },
   {
-    "id": "q_205",
+    "id": "q_265",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "A 35-year-old man presents to the GP surgery with a 3-day history of clear rhinorrhoea, mild sore throat, and a dry cough. His vitals are normal and chest examination is completely clear. He aggressively demands an immediate prescription for oral Amoxicillin, stating: 'I need antibiotics to get back to work tomorrow'. Choose the THREE most appropriate professional actions.",
     "options": [
+      "Refuse to speak with the patient ever again",
+      "Prescribe oral steroids and strong opioids for mild coryza",
+      "Give him a course of intravenous antibiotics in the surgery",
       "Explain clearly and empathetically that his symptoms indicate a self-limiting viral infection for which antibiotics are ineffective and cause harm",
       "Offer evidence-based symptomatic advice on self-care, hydration, paracetamol, and honey for cough",
-      "Refuse to speak with the patient ever again",
+      "Prescribe a 14-day course of broad-spectrum antibiotics to end the consultation quickly",
       "Shout at the patient for contributing to global antimicrobial resistance",
-      "Provide clear, documented safety-netting advice on red-flag symptoms that should prompt reassessment (such as high fever, hemoptysis, or severe dyspnoea)",
-      "Give him a course of intravenous antibiotics in the surgery",
-      "Prescribe oral steroids and strong opioids for mild coryza",
-      "Prescribe a 14-day course of broad-spectrum antibiotics to end the consultation quickly"
+      "Provide clear, documented safety-netting advice on red-flag symptoms that should prompt reassessment (such as high fever, hemoptysis, or severe dyspnoea)"
     ],
     "correct_answer": [
       "Explain clearly and empathetically that his symptoms indicate a self-limiting viral infection for which antibiotics are ineffective and cause harm",
@@ -3778,20 +4738,20 @@
     "explanation": "Antimicrobial stewardship guidelines mandate not prescribing antibiotics for uncomplicated viral upper respiratory infections. Patient education explaining viral etiology, recommending symptom relief, and providing robust safety netting empowers patients safely. Inappropriate prescribing fuels resistance and side effects, and verbal aggression is unprofessional."
   },
   {
-    "id": "q_206",
+    "id": "q_266",
     "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
     "scenario": "In the operating theatre, just as the scrub nurse is about to hand the scalpel to the consultant surgeon to begin an elective right total hip replacement, you notice that the surgical site marked on the skin is the LEFT hip, which contradicts the signed consent form and theatre list. Choose the THREE most immediate and appropriate professional actions.",
     "options": [
-      "Instigate an immediate repeat 'Time-Out' safety check with the entire theatre team to verify the correct surgical site against the consent form and imaging",
-      "Wait until the surgeon makes the incision before mentioning the discrepancy",
-      "Leave the operating theatre quietly without saying anything",
-      "Log a clinical near-miss incident report (Datix) following the procedure to investigate how the incorrect marking occurred",
-      "Stay silent because the consultant surgeon has 25 years of experience and knows best",
       "Secretly scrub in and mark the other hip without telling anyone",
+      "Speak up immediately and assertively to halt the surgery before the skin incision is made",
+      "Stay silent because the consultant surgeon has 25 years of experience and knows best",
+      "Leave the operating theatre quietly without saying anything",
+      "Wait until the surgeon makes the incision before mentioning the discrepancy",
+      "Log a clinical near-miss incident report (Datix) following the procedure to investigate how the incorrect marking occurred",
       "Blame the junior nurse loudly during the operation",
-      "Speak up immediately and assertively to halt the surgery before the skin incision is made"
+      "Instigate an immediate repeat 'Time-Out' safety check with the entire theatre team to verify the correct surgical site against the consent form and imaging"
     ],
     "correct_answer": [
       "Speak up immediately and assertively to halt the surgery before the skin incision is made",

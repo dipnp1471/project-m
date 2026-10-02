@@ -12,12 +12,13 @@ from part1_questions import PART1_QUESTIONS
 from part2_questions import PART2_QUESTIONS
 from part3_questions import PART3_QUESTIONS
 from pd_questions import PD_QUESTIONS
+from part4_questions import PART4_QUESTIONS
 
 # Fixed seed for deterministic generation
 random.seed(42)
 
 def generate_questions():
-    all_raw_questions = PART1_QUESTIONS + PART2_QUESTIONS + PART3_QUESTIONS + PD_QUESTIONS
+    all_raw_questions = PART1_QUESTIONS + PART2_QUESTIONS + PART3_QUESTIONS + PART4_QUESTIONS + PD_QUESTIONS
     
     questions = []
     q_id = 1

@@ -56,6 +56,7 @@ project-m/
 ├── part1_questions.py          # Cardiovascular, Derm/Eye/ENT, Endo, Gastro
 ├── part2_questions.py          # Infectious/Haem, Musculoskeletal, Paeds, Psych/Neuro
 ├── part3_questions.py          # Renal/Urology, Reproductive/O&G, Respiratory, Pharmacology
+├── part4_questions.py          # High-Yield Pathognomonic Questions (60 questions)
 ├── pd_questions.py             # Professional Dilemmas (Ranking & Selection)
 ├── verify_questions.py         # Validation script for question schema
 ├── .gitignore
@@ -97,22 +98,22 @@ project-m/
 
 ## 🧪 Question Bank
 
-The curated question bank contains **206 verified MSRA-format questions** across 12 clinical domains, Pharmacology, and Professional Dilemmas:
+The curated question bank contains **266 verified MSRA-format questions** across 12 clinical domains, Pharmacology, and Professional Dilemmas:
 
 | Domain / Category | Question Types | Questions |
 |-------------------|----------------|-----------|
-| Cardiovascular | SBA, EMQ | 13 |
-| Dermatology / Ophthalmology / ENT | SBA, EMQ | 13 |
-| Endocrinology / Metabolic | SBA, EMQ | 13 |
-| Gastroenterology / Clinical Nutrition | SBA, EMQ | 13 |
-| Infectious Diseases / Haematology / Immunology / Allergies / Genetics | SBA, EMQ | 13 |
-| Musculoskeletal | SBA, EMQ | 13 |
-| Paediatrics | SBA, EMQ | 13 |
-| Psychiatry / Neurology | SBA, EMQ | 13 |
-| Renal / Urology | SBA, EMQ | 13 |
-| Reproductive / Obstetrics & Gynaecology | SBA, EMQ | 13 |
-| Respiratory | SBA, EMQ | 13 |
-| Pharmacology | SBA, EMQ | 13 |
+| Cardiovascular | SBA, EMQ | 18 |
+| Dermatology / Ophthalmology / ENT | SBA, EMQ | 18 |
+| Endocrinology / Metabolic | SBA, EMQ | 18 |
+| Gastroenterology / Clinical Nutrition | SBA, EMQ | 18 |
+| Infectious Diseases / Haematology / Immunology / Allergies / Genetics | SBA, EMQ | 18 |
+| Musculoskeletal | SBA, EMQ | 18 |
+| Paediatrics | SBA, EMQ | 18 |
+| Psychiatry / Neurology | SBA, EMQ | 18 |
+| Renal / Urology | SBA, EMQ | 18 |
+| Reproductive / Obstetrics & Gynaecology | SBA, EMQ | 18 |
+| Respiratory | SBA, EMQ | 18 |
+| Pharmacology | SBA, EMQ | 18 |
 | Professional Dilemmas | Ranking, Selection | 50 |
 
 ### Regenerating the Question Bank
@@ -123,7 +124,7 @@ If you want to modify or regenerate the base question bank:
 python generate_questions.py
 ```
 
-This outputs a fresh `questions.json` by assembling the questions from `part1_questions.py`, `part2_questions.py`, `part3_questions.py`, and `pd_questions.py`.
+This outputs a fresh `questions.json` by assembling the questions from `part1_questions.py`, `part2_questions.py`, `part3_questions.py`, `part4_questions.py`, and `pd_questions.py`.
 
 ### Validating Questions
 

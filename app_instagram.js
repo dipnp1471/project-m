@@ -16,6 +16,7 @@ const instaState = {
   websiteFooterStyle: "pill", // "pill", "banner", "subfooter"
   showHeaderDomain: true,
   showLogo: true,
+  captionTitle: "🎯 Clinical Case Challenge",
   ctaText: "Save this post & practice 1000+ questions on medqstudios.com",
   ratio: "1-1", // "1-1", "4-5", or "9-16"
   scenarioFontSize: 26,
@@ -221,6 +222,14 @@ function initInstaEventListeners() {
     logoToggle.addEventListener("change", () => {
       instaState.showLogo = logoToggle.checked;
       rebuildAllSlides();
+    });
+  }
+
+  // Caption Title Input
+  const captionTitleInput = document.getElementById("insta-caption-title-input");
+  if (captionTitleInput) {
+    captionTitleInput.addEventListener("input", () => {
+      instaState.captionTitle = captionTitleInput.value.trim() || "🎯 Clinical Case Challenge";
     });
   }
 
@@ -806,7 +815,8 @@ function copyInstagramCaption() {
   // Format Explanation Text
   const explanationText = q.explanation ? `📖 Explanation:\n${q.explanation}` : "";
 
-  const captionText = `🎯 MSRA Practice Question (${typeLabel}) - ${q.category || "General Medical"}
+  const captionTitle = instaState.captionTitle || "🎯 Clinical Case Challenge";
+  const captionText = `${captionTitle} (${typeLabel})
 
 ${q.scenario}
 
