@@ -18,7 +18,7 @@ ADDITIONAL_QUESTIONS = [
             "CFTR (Cystic fibrosis transmembrane conductance regulator)"
         ],
         "correct_answer": "FBN1 (Fibrillin-1)",
-        "explanation": "The patient has Marfan syndrome, characterised by a tall stature, arachnodactyly, pectus excavatum, and aortic root dilation/dissection. It is caused by an autosomal dominant mutation in the FBN1 gene."
+        "explanation": "This patient exhibits the classic phenotype of Marfan syndrome, including tall stature, arachnodactyly, hypermobility, pectus deformities, and aortic root dilatation (which predisposes to aortic regurgitation and dissection). Marfan syndrome is inherited in an autosomal dominant fashion and results from mutations in the FBN1 gene on chromosome 15, which encodes the extracellular matrix glycoprotein fibrillin-1."
     },
     {
         "type": "sba",
@@ -32,7 +32,7 @@ ADDITIONAL_QUESTIONS = [
             "Hypertrophic obstructive cardiomyopathy"
         ],
         "correct_answer": "Aortic stenosis",
-        "explanation": "A slow-rising pulse (pulsus parvus et tardus), narrow pulse pressure, and an ejection systolic murmur radiating to the carotids are classic pathognomonic signs of Aortic Stenosis."
+        "explanation": "The combination of a slow-rising, low-volume pulse (pulsus parvus et tardus), narrow pulse pressure, soft S2, and a crescendo-decrescendo ejection systolic murmur radiating to the carotid arteries is the hallmark clinical presentation of severe aortic stenosis. Syncope on exertion occurs because cardiac output cannot rise across the fixed mechanical obstruction to meet peripheral metabolic demand. Transthoracic echocardiography is the definitive diagnostic modality."
     },
 
     # 2. Dermatology / Ophthalmology / ENT
@@ -48,7 +48,7 @@ ADDITIONAL_QUESTIONS = [
             "Avoidance of sunlight"
         ],
         "correct_answer": "Gluten-free diet and Dapsone",
-        "explanation": "Grouped vesicles on extensor surfaces with granular IgA in the dermal papillae is pathognomonic for Dermatitis Herpetiformis, which is strongly associated with Coeliac disease. Treatment is a gluten-free diet and Dapsone for symptom relief."
+        "explanation": "Intensely pruritic, polymorphic vesicular lesions distributed symmetrically over extensor surfaces (elbows, knees, buttocks) showing granular IgA deposits within the dermal papillae on direct immunofluorescence is the hallmark of dermatitis herpetiformis. It is the cutaneous manifestation of coeliac disease (gluten-sensitive enteropathy). A strict lifelong gluten-free diet is the definitive treatment, while dapsone provides rapid symptomatic control during initial management."
     },
     {
         "type": "sba",
@@ -62,7 +62,7 @@ ADDITIONAL_QUESTIONS = [
             "Holmes-Adie pupil"
         ],
         "correct_answer": "Marcus Gunn pupil",
-        "explanation": "A relative afferent pupillary defect (RAPD) is also known as a Marcus Gunn pupil. In the swinging flashlight test, the affected pupil appears to dilate when light is shone directly into it, classic for Optic Neuritis."
+        "explanation": "A Marcus Gunn pupil, or relative afferent pupillary defect (RAPD), occurs when direct light shone into the affected eye elicits a weaker pupillary constriction response than when shone into the contralateral normal eye, causing paradoxical bilateral pupillary dilatation during the swinging flashlight test. It indicates asymmetrical dysfunction of the afferent visual pathway anterior to the optic chiasm, most frequently encountered in acute optic neuritis (a common initial presentation of multiple sclerosis)."
     },
 
     # 3. Endocrinology / Metabolic
@@ -78,7 +78,7 @@ ADDITIONAL_QUESTIONS = [
             "Thyroid adenoma"
         ],
         "correct_answer": "Pituitary adenoma",
-        "explanation": "Purple striae and buffalo hump indicate Cushing's syndrome. Suppression of cortisol on a high-dose (but not low-dose) dexamethasone test is pathognomonic for Cushing's disease (a pituitary adenoma secreting ACTH). Ectopic ACTH and adrenal sources do not suppress."
+        "explanation": "Suppression of cortisol production by greater than 50% following a high-dose (8 mg) dexamethasone suppression test characteristically distinguishes Cushing's disease (an ACTH-secreting pituitary adenoma) from ectopic ACTH secretion (such as small cell lung carcinoma) or autonomous adrenal cortisol production, both of which fail to suppress. In pituitary adenomas, the corticotroph cells retain partially intact, albeit reset, negative feedback sensitivity to high levels of glucocorticoids."
     },
     {
         "type": "sba",
@@ -92,7 +92,7 @@ ADDITIONAL_QUESTIONS = [
             "Thiazide diuretic"
         ],
         "correct_answer": "Alpha-blocker (e.g., Phenoxybenzamine)",
-        "explanation": "The patient has a Phaeochromocytoma. Alpha-blockade MUST be initiated before beta-blockade to prevent an unopposed alpha-adrenergic crisis, which could cause a catastrophic hypertensive emergency."
+        "explanation": "In the pharmacological preparation of a patient with phaeochromocytoma prior to adrenalectomy, irreversible non-selective alpha-adrenergic blockade (e.g. phenoxybenzamine) must be initiated and established for at least 7–14 days before introducing any beta-blockers. Administering a beta-blocker first inhibits vasodilatory beta-2 receptors while leaving alpha-1 vasoconstriction unopposed, precipitating severe peripheral vasoconstriction and a hypertensive crisis."
     },
 
     # 4. Gastroenterology / Clinical Nutrition
@@ -108,7 +108,7 @@ ADDITIONAL_QUESTIONS = [
             "Haemochromatosis"
         ],
         "correct_answer": "Chronic pancreatitis",
-        "explanation": "The classic triad of steatorrhoea, diabetes mellitus, and pancreatic calcification on X-ray is pathognomonic for late-stage Chronic Pancreatitis."
+        "explanation": "The triad of chronic abdominal pain, pancreatic exocrine insufficiency (steatorrhoea and malabsorption), and diffuse intraductal calcifications across the transpyloric plane on plain radiography confirms late-stage chronic pancreatitis. Alcohol excess accounts for roughly 70–80% of cases in the UK. Management focuses on total alcohol abstinence, pancreatic enzyme replacement therapy (Creon) taken with meals, and multimodal analgesia."
     },
     {
         "type": "sba",
@@ -122,7 +122,7 @@ ADDITIONAL_QUESTIONS = [
             "Alpha-1 antitrypsin deficiency"
         ],
         "correct_answer": "Primary Biliary Cholangitis (PBC)",
-        "explanation": "Positive antimitochondrial antibodies (AMA) in the context of cholestasis (raised ALP, pruritus) in a middle-aged woman is pathognomonic for Primary Biliary Cholangitis (PBC)."
+        "explanation": "The combination of marked cholestatic liver enzymes (significantly elevated alkaline phosphatase) and high-titre anti-mitochondrial antibodies (AMA, positive in >95% of cases) in a middle-aged woman presenting with pruritus and fatigue is virtually diagnostic of Primary Biliary Cholangitis (PBC). PBC is an autoimmune destruction of interlobular intrahepatic bile ducts. First-line medical therapy to retard disease progression is ursodeoxycholic acid (UDCA)."
     },
 
     # 5. Infectious Diseases / Haematology / Immunology / Allergies / Genetics
@@ -138,7 +138,7 @@ ADDITIONAL_QUESTIONS = [
             "G6PD deficiency"
         ],
         "correct_answer": "Hyposplenism / Autosplenectomy",
-        "explanation": "Howell-Jolly bodies are nuclear remnants normally removed by the spleen. Their presence in Sickle Cell Disease is a pathognomonic sign of functional hyposplenism (autosplenectomy) due to repeated splenic infarctions."
+        "explanation": "Howell-Jolly bodies are basophilic DNA remnants normally culled from circulating erythrocytes by the reticuloendothelial system of the spleen. Their appearance on a blood film is a reliable haematological indicator of hyposplenism or asplenia. In children with sickle cell anaemia, recurrent microvascular vaso-occlusion causes sequential splenic infarctions, culminating in autosplenectomy by early childhood and necessitating lifelong prophylactic penicillin and encapsulated organism vaccination."
     },
     {
         "type": "sba",
@@ -152,7 +152,7 @@ ADDITIONAL_QUESTIONS = [
             "Systemic sclerosis"
         ],
         "correct_answer": "Systemic Lupus Erythematosus (SLE)",
-        "explanation": "A malar 'butterfly' rash sparing the nasolabial folds, along with anti-dsDNA and anti-Smith antibodies, is highly specific and pathognomonic for Systemic Lupus Erythematosus (SLE)."
+        "explanation": "A photosensitive malar (butterfly) rash typically sparing the nasolabial folds, combined with inflammatory polyarthritis and high-titre anti-double-stranded DNA (anti-dsDNA) antibodies, provides definitive clinical and serological evidence of Systemic Lupus Erythematosus (SLE). While antinuclear antibodies (ANA) are sensitive (>95%) but non-specific, anti-dsDNA and anti-Smith antibodies are highly specific for SLE, with anti-dsDNA titres also correlating with disease activity and lupus nephritis flares."
     },
 
     # 6. Musculoskeletal
@@ -168,7 +168,7 @@ ADDITIONAL_QUESTIONS = [
             "Mumps"
         ],
         "correct_answer": "Sjögren's syndrome",
-        "explanation": "The triad of keratoconjunctivitis sicca (dry eyes), xerostomia (dry mouth), and positive anti-Ro/La antibodies is the classic presentation of Sjögren's syndrome."
+        "explanation": "The combination of keratoconjunctivitis sicca (dry eyes confirmed by a positive Schirmer's test showing <5 mm wetting), xerostomia (dry mouth), salivary gland tumefaction, and circulating anti-Ro (SSA) and anti-La (SSB) antibodies defines primary Sjögren's syndrome. This autoimmune exocrinopathy features lymphocytic infiltration of lacrimal and salivary glands. Patients carry an approximately 20-fold increased lifetime risk of developing non-Hodgkin B-cell lymphoma (especially MALT lymphoma)."
     },
     {
         "type": "sba",
@@ -182,7 +182,7 @@ ADDITIONAL_QUESTIONS = [
             "Aortic root dilation"
         ],
         "correct_answer": "Pulmonary arterial hypertension",
-        "explanation": "The patient has Limited Cutaneous Systemic Sclerosis (CREST syndrome), marked by anti-centromere antibodies. This specific subtype is strongly associated with a high risk of developing Pulmonary Arterial Hypertension."
+        "explanation": "This patient has limited cutaneous systemic sclerosis (historically referred to as CREST syndrome: Calcinosis, Raynaud's, Oesophageal dysmotility, Sclerodactyly, Telangiectasia), characterised serologically by anti-centromere antibodies. In contrast to diffuse systemic sclerosis (associated with anti-Scl-70 antibodies and interstitial lung disease), limited cutaneous disease carries a high long-term predisposition to isolated pulmonary arterial hypertension (PAH), mandating annual transthoracic echocardiographic screening."
     },
 
     # 7. Paediatrics
@@ -198,7 +198,7 @@ ADDITIONAL_QUESTIONS = [
             "Normal acid-base balance"
         ],
         "correct_answer": "Hypochloraemic, hypokalaemic metabolic alkalosis",
-        "explanation": "An 'olive' mass and projectile non-bilious vomiting are pathognomonic for Pyloric Stenosis. The loss of gastric hydrochloric acid leads to the classic hypochloraemic, hypokalaemic metabolic alkalosis."
+        "explanation": "Palpation of a firm, mobile 'olive-like' mass in the epigastrium/right upper quadrant combined with vigorous, non-bilious projectile vomiting in a hungry young infant is characteristic of hypertrophic pyloric stenosis. Persistent loss of gastric hydrochloric acid leads to severe dehydration and the classic metabolic derangement: hypochloraemic, hypokalaemic metabolic alkalosis with paradoxical aciduria. Electrolyte abnormalities and dehydration must be fully corrected with intravenous fluids before performing pyloromyotomy."
     },
     {
         "type": "sba",
@@ -212,7 +212,7 @@ ADDITIONAL_QUESTIONS = [
             "Renal ultrasound"
         ],
         "correct_answer": "Echocardiogram",
-        "explanation": "A 'strawberry tongue' and prolonged fever with these mucocutaneous signs is classic for Kawasaki disease. An echocardiogram is critical to check for the pathognomonic and dangerous complication: coronary artery aneurysms."
+        "explanation": "Kawasaki disease is an acute, self-limiting medium-vessel vasculitis of childhood diagnosed by persistent fever (>=5 days) alongside at least four diagnostic mucocutaneous criteria (conjunctivitis, mucosal changes such as strawberry tongue, polymorphic rash, extremity changes, and cervical lymphadenopathy). Baseline and serial echocardiography is mandatory to detect coronary artery dilatation or aneurysms, the principal source of morbidity and mortality. Early administration of high-dose intravenous immunoglobulin (IVIG) and aspirin within the first 10 days significantly reduces this aneurysm risk."
     },
 
     # 8. Psychiatry / Neurology
@@ -228,7 +228,7 @@ ADDITIONAL_QUESTIONS = [
             "Serotonin receptor"
         ],
         "correct_answer": "Acetylcholine receptor (AChR)",
-        "explanation": "Fatigable weakness (worse at the end of the day) that improves with an acetylcholinesterase inhibitor is classic for Myasthenia Gravis, driven by anti-AChR antibodies (or MuSK antibodies)."
+        "explanation": "Fluctuating, fatigable skeletal muscle weakness with diurnal variation (worsening with repetitive activity or towards the evening and improving with rest) primarily affecting ocular and bulbar musculature is the defining presentation of Myasthenia Gravis. Approximately 85% of generalized cases are driven by autoantibodies against the postsynaptic nicotinic acetylcholine receptor (AChR), with anti-MuSK antibodies found in a subset of seronegative individuals. Thymic hyperplasia (or thymoma) is common, warranting chest CT imaging."
     },
     {
         "type": "sba",
@@ -242,7 +242,7 @@ ADDITIONAL_QUESTIONS = [
             "Temporal artery biopsy"
         ],
         "correct_answer": "Lumbar puncture for xanthochromia",
-        "explanation": "A thunderclap headache is highly suspicious for a Subarachnoid Haemorrhage (SAH). If the initial CT is negative, a lumbar puncture performed >12 hours post-onset looking for xanthochromia (bilirubin from broken-down RBCs) is the classic diagnostic step."
+        "explanation": "A hyperacute 'thunderclap' headache (reaching maximal intensity within seconds to minutes) must be managed as a suspected subarachnoid haemorrhage (SAH) until excluded. While modern non-contrast CT head within 6 hours has high sensitivity (>98%), a negative or delayed scan mandates a lumbar puncture performed at least 12 hours after symptom onset. Spectrophotometric analysis of the CSF for xanthochromia (the yellowish tinge caused by oxyhaemoglobin breakdown into bilirubin) distinguishes true subarachnoid bleeding from a traumatic tap."
     },
 
     # 9. Renal / Urology
@@ -258,7 +258,7 @@ ADDITIONAL_QUESTIONS = [
             "Prostate cancer"
         ],
         "correct_answer": "Renal cell carcinoma",
-        "explanation": "The classic triad of haematuria, flank pain, and a palpable mass, along with a left-sided varicocele (due to tumour invasion into the left renal vein blocking the left gonadal vein), is highly suggestive of Renal Cell Carcinoma."
+        "explanation": "Although the classical clinical triad of visible haematuria, flank pain, and a palpable loin mass is present in only 10% of patients with Renal Cell Carcinoma (RCC), its presence signifies locally advanced disease. A newly developing, non-emptying left-sided varicocele is an important clinical clue indicating tumour invasion into the left renal vein, obstructing drainage from the left testicular vein. Contrast-enhanced CT of the chest, abdomen, and pelvis is the gold standard staging investigation."
     },
     {
         "type": "sba",
@@ -272,7 +272,7 @@ ADDITIONAL_QUESTIONS = [
             "Tram-track appearance of the basement membrane"
         ],
         "correct_answer": "Effacement of podocyte foot processes",
-        "explanation": "This is Minimal Change Disease, the most common cause of nephrotic syndrome in children. It responds well to steroids, and electron microscopy characteristically shows effacement of podocyte foot processes."
+        "explanation": "Minimal Change Disease (MCD) accounts for >80% of nephrotic syndrome cases in young children, presenting with profound proteinuria, hypoalbuminaemia, and generalized periorbital and peripheral oedema. Light microscopy and immunofluorescence appear essentially normal (hence 'minimal change'), but electron microscopy characteristically demonstrates diffuse effacement (flattening) of the visceral epithelial cell foot processes (podocytopathy). Over 90% of paediatric patients achieve complete remission with first-line oral corticosteroid therapy."
     },
 
     # 10. Reproductive / Obstetrics & Gynaecology
@@ -288,7 +288,7 @@ ADDITIONAL_QUESTIONS = [
             "Pelvic MRI"
         ],
         "correct_answer": "Transvaginal ultrasound scan (TVUS)",
-        "explanation": "Postmenopausal bleeding must be assumed to be endometrial cancer until proven otherwise. The classic first-line investigation is a TVUS to measure endometrial thickness (>4mm warrants biopsy)."
+        "explanation": "Postmenopausal bleeding (PMB) is a 'red flag' symptom that requires urgent evaluation via a 2-week wait gynaecological referral to exclude endometrial carcinoma, with risk further elevated by obesity and diabetes (unopposed oestrogen exposure). Transvaginal ultrasound (TVUS) is the recommended first-line imaging modality to measure endometrial thickness. An endometrial thickness of >=4 mm in postmenopausal women warrants definitive tissue sampling via hysteroscopy or outpatient endometrial pipelle biopsy."
     },
     {
         "type": "sba",
@@ -302,7 +302,7 @@ ADDITIONAL_QUESTIONS = [
             "Cervical ectropion"
         ],
         "correct_answer": "Placenta praevia",
-        "explanation": "Painless, bright red vaginal bleeding in the third trimester with a soft, non-tender uterus is the classic clinical presentation of Placenta Praevia."
+        "explanation": "Painless, bright red vaginal bleeding occurring in the third trimester with a relaxed, non-tender uterus and normal fetal heart rate is the classical presentation of placenta praevia (where the placenta implants in the lower uterine segment over or near the internal cervical os). In contrast, placental abruption typically presents with painful, dark vaginal bleeding and a tense, 'woody' hard uterus. Digital vaginal examination is strictly contraindicated until placenta praevia has been definitively ruled out by ultrasound."
     },
 
     # 11. Respiratory
@@ -318,7 +318,7 @@ ADDITIONAL_QUESTIONS = [
             "Tuberculosis"
         ],
         "correct_answer": "Pancoast tumour",
-        "explanation": "A lung apex tumour (Pancoast tumour) compressing the sympathetic chain causes the classic triad of ptosis, miosis, and anhidrosis, known as Horner's syndrome."
+        "explanation": "A Pancoast tumour (superior sulcus tumour) is an apical lung neoplasm (most commonly non-small cell lung cancer) that invades adjacent structures at the thoracic inlet. Extrinsic compression or infiltration of the cervical sympathetic chain and stellate ganglion produces ipsilateral Horner's syndrome (the triad of partial ptosis, miosis, and facial anhidrosis). Infiltration of the lower trunk of the brachial plexus (C8–T1) may additionally cause severe shoulder/arm pain and wasting of intrinsic hand muscles."
     },
     {
         "type": "sba",
@@ -332,7 +332,7 @@ ADDITIONAL_QUESTIONS = [
             "Idiopathic pulmonary fibrosis"
         ],
         "correct_answer": "Acute Respiratory Distress Syndrome (ARDS)",
-        "explanation": "Bilateral infiltrates ('white out') with severe hypoxaemia and a normal PCWP (indicating non-cardiogenic pulmonary oedema) following a systemic insult like sepsis is the classic picture of ARDS."
+        "explanation": "Acute Respiratory Distress Syndrome (ARDS) is characterized by acute hypoxaemic respiratory failure occurring within 1 week of a known clinical insult (such as sepsis, pneumonia, or pancreatitis). The Berlin definition requires bilateral radiographic opacities not fully explained by heart failure, and a normal pulmonary capillary wedge pressure (<18 mmHg) confirming non-cardiogenic pulmonary oedema resulting from diffuse alveolar-capillary endothelial damage. Ventilatory management relies on a lung-protective strategy utilizing low tidal volumes (6 mL/kg ideal body weight) and positive end-expiratory pressure (PEEP)."
     },
 
     # 12. Pharmacology
@@ -348,7 +348,7 @@ ADDITIONAL_QUESTIONS = [
             "Streptomycin; Thiamine (Vitamin B1)"
         ],
         "correct_answer": "Isoniazid; Pyridoxine (Vitamin B6)",
-        "explanation": "Isoniazid classically causes peripheral neuropathy by depleting Vitamin B6. It is routinely co-prescribed with pyridoxine (Vitamin B6) to prevent this complication."
+        "explanation": "Isoniazid (INH) is well known for inducing dose-dependent peripheral neuropathy by inhibiting pyridoxine phosphokinase, impairing the synthesis of pyridoxal-5-phosphate (active Vitamin B6) and enhancing urinary pyridoxine excretion. This neurotoxicity is preventable by co-prescribing prophylactic pyridoxine (Vitamin B6 10 mg daily), which is routinely administered to high-risk individuals including diabetic, malnourished, pregnant, or elderly patients undergoing anti-tuberculosis therapy."
     },
     {
         "type": "sba",
@@ -362,7 +362,7 @@ ADDITIONAL_QUESTIONS = [
             "Intravenous Atropine"
         ],
         "correct_answer": "Intravenous Sodium Bicarbonate",
-        "explanation": "Amitriptyline is a tricyclic antidepressant (TCA). TCA overdose classically causes anticholinergic toxidrome and QRS widening due to sodium channel blockade. The specific antidote for the cardiotoxicity is IV Sodium Bicarbonate."
+        "explanation": "Tricyclic antidepressant (TCA) toxicity causes an anticholinergic toxidrome alongside life-threatening myocardial sodium channel blockade, reflected on ECG by PR prolongation, terminal R-wave elevation in aVR, and QRS prolongation (>100 ms predicts seizures; >160 ms predicts ventricular arrhythmias). Intravenous 8.4% sodium bicarbonate is the definitive treatment for TCA-induced cardiotoxicity: the alkaline pH decreases active drug binding to fast sodium channels while the sodium load overcomes competitive blockade."
     },
 
     # 13. Professional Dilemmas (8 Ranking, 8 Selection)
