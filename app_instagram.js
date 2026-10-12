@@ -396,10 +396,18 @@ function openInstagramModal(questionId) {
 
   // Show modal
   document.getElementById("instagram-modal").style.display = "flex";
+  if (typeof syncVideoControlsWithInstaState === "function") {
+    syncVideoControlsWithInstaState();
+    recalculateVideoTimeline();
+    renderVideoFrameAt(0);
+  }
 }
 
 function closeInstagramModal() {
   document.getElementById("instagram-modal").style.display = "none";
+  if (typeof pauseVideoPlayback === "function") {
+    pauseVideoPlayback();
+  }
 }
 
 // --- Viewport Ratio Handling ---

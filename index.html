@@ -491,14 +491,22 @@
       
     </main>
     
-    <!-- Modal: Instagram Carousel Generator -->
+    <!-- Modal: Social Content Studio (Carousel & Video) -->
     <div id="instagram-modal" class="modal-overlay">
       <div class="modal-content instagram-modal-content">
         <div class="instagram-modal-header">
-          <h2><i class="fa-brands fa-instagram"></i> Instagram Carousel Generator</h2>
+          <div class="studio-modal-header-left">
+            <h2><i class="fa-solid fa-photo-film"></i> Social Content Studio</h2>
+            <div class="studio-mode-tabs">
+              <button type="button" id="studio-tab-carousel" class="studio-tab-btn active"><i class="fa-solid fa-images"></i> Static Carousel</button>
+              <button type="button" id="studio-tab-video" class="studio-tab-btn"><i class="fa-solid fa-clapperboard"></i> Animated Reel Video <span class="new-pill">NEW</span></button>
+            </div>
+          </div>
           <button id="close-instagram-modal" class="close-modal-btn" title="Close Modal">&times;</button>
         </div>
         
+        <!-- Tab Pane 1: Static Carousel Generator -->
+        <div id="carousel-tab-pane" class="studio-tab-pane active">
         <div class="instagram-modal-body">
           <!-- Left: Live Preview -->
           <div class="instagram-preview-section">
@@ -673,6 +681,263 @@
             </div>
           </div>
         </div>
+        </div> <!-- End Tab Pane 1: carousel-tab-pane -->
+
+        <!-- Tab Pane 2: Animated Reel Video Generator -->
+        <div id="video-tab-pane" class="studio-tab-pane">
+          <div class="video-modal-body">
+            <!-- Left: Live Video Preview Player -->
+            <div class="video-preview-section">
+              <div class="preview-header-label" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                <span><i class="fa-solid fa-clapperboard"></i> 9:16 Reel Video Preview</span>
+                <span id="video-phase-badge" class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3);">⚡ Question Reading</span>
+              </div>
+              
+              <div class="video-canvas-wrapper">
+                <div id="video-viewport" class="video-viewport paused" title="Click to Play / Pause">
+                  <canvas id="video-preview-canvas" width="1080" height="1920"></canvas>
+                  <div id="video-play-overlay" class="video-play-overlay">
+                    <i class="fa-solid fa-play"></i>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Video Player Controls Bar -->
+              <div class="video-player-controls">
+                <button type="button" id="video-play-pause-btn" class="btn btn-secondary btn-sm" title="Play / Pause">
+                  <i class="fa-solid fa-play"></i>
+                </button>
+                <button type="button" id="video-restart-btn" class="btn btn-secondary btn-sm" title="Restart to Beginning">
+                  <i class="fa-solid fa-rotate-left"></i>
+                </button>
+                <div class="video-scrubber-container">
+                  <input type="range" id="video-scrubber" min="0" max="100" value="0" step="0.1" class="video-slider">
+                  <span id="video-time-display" class="video-time-label">0.0s / 12.0s</span>
+                </div>
+                <button type="button" id="video-mute-btn" class="btn btn-secondary btn-sm" title="Mute / Unmute Audio">
+                  <i class="fa-solid fa-volume-high"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Animation & Sound Controls -->
+            <div class="video-controls-section">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1.15rem;"><i class="fa-solid fa-sliders"></i> Animated Video Controls</h3>
+                <span class="badge" style="background: rgba(99, 102, 241, 0.15); color: var(--primary);">9:16 Vertical Video Studio</span>
+              </div>
+
+              <!-- Top Row: Theme & Typography (2 Columns) -->
+              <div class="controls-grid-2col">
+                <div class="form-group" style="margin: 0;">
+                  <label>Background Theme</label>
+                  <div class="theme-grid" id="video-theme-grid">
+                    <!-- Swatches populated dynamically -->
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin: 0;">
+                  <label for="video-font-select">Typography Font</label>
+                  <select id="video-font-select" class="form-control">
+                    <option value="Outfit">Outfit (Modern Sans)</option>
+                    <option value="Inter">Inter (Clean Sans)</option>
+                    <option value="Playfair">Playfair Display (Serif)</option>
+                    <option value="Mono">Roboto Mono (Monospace)</option>
+                  </select>
+
+                  <div style="margin-top: 10px;">
+                    <label for="video-deliberation-style-select" style="font-size: 0.82rem; font-weight: 600;">Deliberation Format</label>
+                    <select id="video-deliberation-style-select" class="form-control">
+                      <option value="single-pass-pill">✨ 1-Pass Deliberate Scan (Evaluated Pills)</option>
+                      <option value="minimal-timer">⏱️ Minimalist Smooth Countdown Bar</option>
+                      <option value="elimination">🚫 Process of Elimination (Dims non-answers)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Main Settings: 2 Big Highlight Columns -->
+              <div class="controls-grid-2col">
+                <!-- Left Sub-Box: Question & Timer Length -->
+                <div class="control-box-highlight" style="margin: 0;">
+                  <div class="control-box-title">
+                    <i class="fa-solid fa-bolt"></i> 1. Question Reading (Silent)
+                  </div>
+                  <p class="control-box-subtext">Reveals words just faster than average reading pace to pull the viewer forward.</p>
+                  
+                  <div class="form-group" style="margin-bottom: 8px;">
+                    <label for="video-reading-style-select" style="font-size: 0.82rem; font-weight: 600;">Animation Style</label>
+                    <select id="video-reading-style-select" class="form-control">
+                      <option value="kinetic-glow">⚡ Kinetic Word Illuminator (High Retention)</option>
+                      <option value="word-fade">✨ Word-by-Word Progressive Reveal</option>
+                      <option value="typewriter">⌨️ Typewriter Reveal</option>
+                    </select>
+                  </div>
+
+                  <div class="slider-row">
+                    <label for="video-speed-slider">Reading Pace: <span id="val-video-speed">300</span> WPM (<span id="val-video-speed-label">Optimal Flow</span>)</label>
+                    <input type="range" id="video-speed-slider" min="200" max="440" value="300" step="10" class="insta-slider">
+                  </div>
+
+                  <div style="border-top: 1px solid rgba(99, 102, 241, 0.2); margin-top: 8px; padding-top: 10px;">
+                    <div class="control-box-title" style="font-size: 0.88rem; margin-bottom: 4px;">
+                      <i class="fa-solid fa-stopwatch"></i> Deliberation Timer Length
+                    </div>
+                    <div class="slider-row">
+                      <label for="video-cycling-duration-slider">Timer Length: <span id="val-video-cycling-duration">4.0</span>s</label>
+                      <input type="range" id="video-cycling-duration-slider" min="2.0" max="10.0" value="4.0" step="0.5" class="insta-slider">
+                    </div>
+                    <span id="val-video-cycling-desc" style="font-size: 0.75rem; color: var(--text-tertiary); display: block; margin-top: 2px;">1.0s deliberate review per option (1 pass only)</span>
+                  </div>
+                </div>
+
+                <!-- Right Sub-Box: Audio & Sound Effects (Softer & Prolonged) -->
+                <div class="control-box-highlight" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.25); margin: 0;">
+                  <div class="control-box-title" style="color: #10b981;">
+                    <i class="fa-solid fa-music"></i> 2. Audio & Soft Sounds
+                  </div>
+                  <p class="control-box-subtext">Velvety warm tones with smooth sustain for a calm, professional medical review.</p>
+
+                  <div class="form-group" style="margin-bottom: 8px;">
+                    <label for="video-cycling-sound-select" style="font-size: 0.82rem; font-weight: 600;">Cycling Sound Effect</label>
+                    <div style="display: flex; gap: 8px;">
+                      <select id="video-cycling-sound-select" class="form-control" style="flex: 1;">
+                        <option value="soft-piano">🎹 Soft Ambient Piano (Warm Rhodes & Sustain)</option>
+                        <option value="marimba-boop">🪵 Warm Acoustic Marimba (Mellow Mallet)</option>
+                        <option value="zen-chime">🔔 Gentle Zen Chime (Long Resonance)</option>
+                        <option value="digital-blip">💧 Subtle Water Drop / Pop</option>
+                        <option value="mute">🔇 Mute (No Sound)</option>
+                        <option value="custom">📁 Custom Audio File (Upload your own)</option>
+                      </select>
+                      <button type="button" id="video-test-sound-btn" class="btn btn-secondary btn-sm" title="Preview Sound"><i class="fa-solid fa-volume-high"></i> Test</button>
+                    </div>
+                  </div>
+
+                  <!-- Custom Sound Upload Row -->
+                  <div id="video-custom-sound-row" class="form-group" style="display: none; background: rgba(0,0,0,0.25); padding: 10px; border-radius: var(--border-radius-sm); border: 1px dashed var(--border-color);">
+                    <label for="video-custom-audio-file" style="font-size: 0.8rem; font-weight: 600; display: block; margin-bottom: 4px;">Choose Audio File (.mp3, .wav, .m4a)</label>
+                    <input type="file" id="video-custom-audio-file" accept="audio/*" class="form-control" style="font-size: 0.8rem; padding: 4px;">
+                    <span id="video-custom-audio-filename" style="font-size: 0.75rem; color: #10b981; margin-top: 4px; display: block;">No file chosen</span>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 8px;">
+                    <label for="video-reveal-sound-select" style="font-size: 0.82rem; font-weight: 600;">Answer Reveal Sound</label>
+                    <select id="video-reveal-sound-select" class="form-control">
+                      <option value="success-chime">✨ Success Chime & Warm Chord</option>
+                      <option value="piano-resolve">🎹 Soft Piano Major Resolve</option>
+                      <option value="gentle-bell">🔔 Gentle Resonance Bell</option>
+                      <option value="mute">🔇 Mute</option>
+                    </select>
+                  </div>
+
+                  <div class="slider-row">
+                    <label for="video-volume-slider">Audio Volume: <span id="val-video-volume">45</span>% (<span style="color: #10b981;">Subtle Background</span>)</label>
+                    <input type="range" id="video-volume-slider" min="0" max="100" value="45" class="insta-slider">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Row: Retention & Branding (2 Columns) -->
+              <div class="controls-grid-2col">
+                <!-- Retention & Answer Reveal Strategy -->
+                <div class="control-box-highlight" style="background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.25); margin: 0;">
+                  <div class="control-box-title" style="color: #f59e0b;">
+                    <i class="fa-solid fa-chart-line"></i> 3. Answer Reveal Strategy
+                  </div>
+                  <div class="form-group" style="margin-bottom: 8px;">
+                    <label for="video-reveal-mode-select" style="font-size: 0.82rem; font-weight: 600;">Video Ending Format</label>
+                    <select id="video-reveal-mode-select" class="form-control">
+                      <option value="full">🟢 Reveal Answer & Quick Pearl (Best for Pause/Loop)</option>
+                      <option value="teaser">❓ Teaser Mode ("Lock in answer in comments & bio")</option>
+                    </select>
+                  </div>
+                  <div class="slider-row">
+                    <label for="video-reveal-duration-slider">Answer Display Time: <span id="val-video-reveal-duration">3.5</span>s</label>
+                    <input type="range" id="video-reveal-duration-slider" min="2.0" max="6.0" value="3.5" step="0.5" class="insta-slider">
+                  </div>
+                </div>
+
+                <!-- Branding & Font Sizes -->
+                <div class="form-group font-sliders" style="margin: 0; background: var(--bg-tertiary); padding: 14px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color);">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                    <label style="font-weight: 700; font-size: 0.85rem;"><i class="fa-solid fa-font"></i> Text Scale</label>
+                    <span style="font-size: 0.75rem; color: var(--text-tertiary);">Adjust pixel sizes</span>
+                  </div>
+                  <div class="slider-row" style="margin-bottom: 4px;">
+                    <label for="video-size-scenario">Scenario (<span id="val-video-size-scenario">28</span>px)</label>
+                    <input type="range" id="video-size-scenario" min="20" max="48" value="28" class="insta-slider">
+                  </div>
+                  <div class="slider-row" style="margin-bottom: 4px;">
+                    <label for="video-size-options">Options (<span id="val-video-size-options">22</span>px)</label>
+                    <input type="range" id="video-size-options" min="16" max="36" value="22" class="insta-slider">
+                  </div>
+                  <div class="slider-row">
+                    <label for="video-size-explanation">Explanation (<span id="val-video-size-explanation">18</span>px)</label>
+                    <input type="range" id="video-size-explanation" min="14" max="32" value="18" class="insta-slider">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Engagement & Viewer Prompts (Pause & Check Description/Comments) -->
+              <div class="control-box-highlight" style="background: rgba(147, 51, 234, 0.08); border-color: rgba(147, 51, 234, 0.25); margin: 0;">
+                <div class="control-box-title" style="color: #a855f7;">
+                  <i class="fa-solid fa-circle-play"></i> 4. Viewer Engagement & Pause Prompts
+                </div>
+                <p class="control-box-subtext">On-screen callouts that instruct viewers to pause before the answer reveals and check the caption/comments for the full clinical breakdown.</p>
+
+                <div class="controls-grid-2col" style="margin-top: 6px;">
+                  <!-- Pause Prompt Toggle & Text -->
+                  <div>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">
+                      <input type="checkbox" id="video-toggle-pause-prompt" checked style="width: 16px; height: 16px; cursor: pointer;">
+                      Show "Pause to Solve" Prompt
+                    </label>
+                    <input type="text" id="video-pause-prompt-text" class="form-control" value="⏸️ Pause to solve • Answer in 3s" style="font-size: 0.8rem; padding: 6px 10px;">
+                  </div>
+
+                  <!-- Comment & Description Prompt Toggle & Text -->
+                  <div>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">
+                      <input type="checkbox" id="video-toggle-comment-prompt" checked style="width: 16px; height: 16px; cursor: pointer;">
+                      Show "Check Caption / Comments" Prompt
+                    </label>
+                    <input type="text" id="video-comment-prompt-text" class="form-control" value="💬 Full rationale & guidelines in caption 👇" style="font-size: 0.8rem; padding: 6px 10px;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Branding Row -->
+              <div class="controls-grid-2col" style="background: var(--bg-secondary); padding: 12px 14px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color);">
+                <div class="form-group" style="margin: 0;">
+                  <label for="video-handle-input" style="font-size: 0.8rem; font-weight: 600;">Account Handle</label>
+                  <input type="text" id="video-handle-input" class="form-control" value="@medqstudios">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                  <label for="video-website-input" style="font-size: 0.8rem; font-weight: 600;">Website Callout Link</label>
+                  <input type="text" id="video-website-input" class="form-control" value="www.medqstudios.com">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Modal Footer -->
+          <div class="video-modal-footer">
+            <div class="video-export-group" style="display: flex; align-items: center; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 12px;">
+              <div class="export-status-info" id="video-export-status" style="font-size: 0.9rem; color: var(--text-secondary);">
+                <span><i class="fa-solid fa-circle-info"></i> Ready to render vertical (1080x1920) 9:16 Reel video with synchronized audio.</span>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button type="button" id="video-export-btn" class="btn" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); font-weight: 700; padding: 12px 24px; font-size: 1rem;">
+                  <i class="fa-solid fa-clapperboard"></i> Record & Export Video (.mp4 / .webm)
+                </button>
+              </div>
+            </div>
+            <!-- Live Export Progress Bar -->
+            <div id="video-export-progress-bar-container" style="display: none; width: 100%; margin-top: 12px; background: rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; height: 10px;">
+              <div id="video-export-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10b981, #38bdf8); transition: width 0.1s linear;"></div>
+            </div>
+          </div>
+        </div> <!-- End Tab Pane 2: video-tab-pane -->
       </div>
     </div>
 
@@ -713,5 +978,7 @@
   <script src="app.js"></script>
   <!-- Instagram Carousel Generator Script -->
   <script src="app_instagram.js"></script>
+  <!-- Animated Reel Video Generator Script -->
+  <script src="app_video.js"></script>
 </body>
 </html>
