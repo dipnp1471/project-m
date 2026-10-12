@@ -1557,6 +1557,17 @@ async function exportAnimatedVideo() {
 
   pauseVideoPlayback();
   studioAudio.init();
+  if (studioAudio.ctx && studioAudio.ctx.state === "suspended") {
+    try {
+      await studioAudio.ctx.resume();
+    } catch (e) {}
+  }
+
+  // Ensure canvas and timeline state are at frame 0 before capturing
+  videoState.currentTime = 0;
+  videoState.lastSoundStep = -1;
+  videoState.revealSoundPlayed = false;
+  renderVideoFrameAt(0);
 
   const exportBtn = document.getElementById("video-export-btn");
   const originalBtnHTML = exportBtn ? exportBtn.innerHTML : "";
@@ -1580,8 +1591,19 @@ async function exportAnimatedVideo() {
 
   // Audio destination node for recording
   const audioDest = studioAudio.ctx.createMediaStreamDestination();
-  // Master gain also outputs to audioDest during export
   studioAudio.masterGain.connect(audioDest);
+
+  // Inaudible ghost carrier to keep MediaStreamAudioDestinationNode active from t = 0.
+  // Without this, Chromium detects a silent audio track during the reading phase and
+  // drops all video frames until the first note plays at cyclingStart, truncating the video intro!
+  const ghostOsc = studioAudio.ctx.createOscillator();
+  const ghostGain = studioAudio.ctx.createGain();
+  ghostGain.gain.setValueAtTime(0.00001, studioAudio.ctx.currentTime); // Inaudible, but prevents track suspension
+  ghostOsc.connect(ghostGain);
+  ghostGain.connect(audioDest);
+  try {
+    ghostOsc.start();
+  } catch (e) {}
 
   // Combined video & audio tracks
   const combinedStream = new MediaStream([
@@ -1629,6 +1651,10 @@ async function exportAnimatedVideo() {
 
   // 2. Start recording loop
   recorder.start(100);
+
+  // 150ms encoder stabilization buffer while holding frame 0
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  renderVideoFrameAt(0);
 
   const totalDuration = videoState.totalDuration;
   const startTime = performance.now();
@@ -1684,7 +1710,12 @@ async function exportAnimatedVideo() {
 
   const finishExport = () => {
     recorder.onstop = () => {
-      // Disconnect export audio node
+      // Disconnect and stop ghost oscillator and audio destination
+      try {
+        ghostOsc.stop();
+        ghostOsc.disconnect();
+        ghostGain.disconnect();
+      } catch (e) {}
       try {
         studioAudio.masterGain.disconnect(audioDest);
       } catch (e) {}
