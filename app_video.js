@@ -13,6 +13,7 @@ const videoState = {
   totalDuration: 13.0,
   readingDuration: 5.0,
   cyclingDuration: 4.0, // Default 4.0s (1.0s deliberate review per option)
+  postCyclingPause: 2.0, // Default 2.0s suspense pause after options cycling before answer pops up
   revealDuration: 3.5,
   wpm: 300,
   readingStyle: "kinetic-glow", // "kinetic-glow", "word-fade", "typewriter"
@@ -364,6 +365,13 @@ function syncVideoControlsWithInstaState() {
     if (label) label.textContent = instaState.explanationFontSize;
   }
 
+  const postCycleSlider = document.getElementById("video-post-cycle-pause-slider");
+  if (postCycleSlider) {
+    postCycleSlider.value = videoState.postCyclingPause;
+    const label = document.getElementById("val-video-post-cycle-pause");
+    if (label) label.textContent = Number(videoState.postCyclingPause).toFixed(1);
+  }
+
   // Update active swatch
   const grid = document.getElementById("video-theme-grid");
   if (grid) {
@@ -418,7 +426,7 @@ function initVideoControls() {
       const pct = parseFloat(e.target.value);
       videoState.currentTime = (pct / 100) * videoState.totalDuration;
       videoState.lastSoundStep = -1;
-      videoState.revealSoundPlayed = videoState.currentTime >= (videoState.readingDuration + 0.5 + videoState.cyclingDuration);
+      videoState.revealSoundPlayed = videoState.currentTime >= (videoState.readingDuration + 0.5 + videoState.cyclingDuration + (videoState.postCyclingPause || 2.0));
       renderVideoFrameAt(videoState.currentTime);
       updateScrubberUI();
     });
@@ -491,6 +499,19 @@ function initVideoControls() {
         desc.textContent = `${(val / optCount).toFixed(1)}s deliberate review per option (1 pass only)`;
       }
 
+      recalculateVideoTimeline();
+      renderVideoFrameAt(videoState.currentTime);
+    });
+  }
+
+  // Post-Cycle Suspense Pause Slider
+  const postCycleSlider = document.getElementById("video-post-cycle-pause-slider");
+  if (postCycleSlider) {
+    postCycleSlider.addEventListener("input", (e) => {
+      const val = parseFloat(e.target.value);
+      videoState.postCyclingPause = val;
+      const label = document.getElementById("val-video-post-cycle-pause");
+      if (label) label.textContent = val.toFixed(1);
       recalculateVideoTimeline();
       renderVideoFrameAt(videoState.currentTime);
     });
@@ -724,7 +745,8 @@ function recalculateVideoTimeline() {
   videoState.readingDuration = Math.max(3.2, Math.min(12.0, rawReadingTime));
 
   const pauseBeforeOptions = 0.5;
-  videoState.totalDuration = videoState.readingDuration + pauseBeforeOptions + videoState.cyclingDuration + videoState.revealDuration;
+  const postPause = typeof videoState.postCyclingPause === "number" ? videoState.postCyclingPause : 2.0;
+  videoState.totalDuration = videoState.readingDuration + pauseBeforeOptions + videoState.cyclingDuration + postPause + videoState.revealDuration;
 
   updateScrubberUI();
 }
@@ -749,6 +771,7 @@ function updateScrubberUI() {
     const readingEnd = videoState.readingDuration;
     const cyclingStart = readingEnd + 0.5;
     const cyclingEnd = cyclingStart + videoState.cyclingDuration;
+    const revealStart = cyclingEnd + (videoState.postCyclingPause || 2.0);
 
     if (cur < cyclingStart) {
       phaseBadge.textContent = "⚡ Question Reading";
@@ -758,6 +781,10 @@ function updateScrubberUI() {
       phaseBadge.textContent = "🎵 Options Cycling";
       phaseBadge.style.color = "#38bdf8";
       phaseBadge.style.background = "rgba(56, 189, 248, 0.2)";
+    } else if (cur < revealStart) {
+      phaseBadge.textContent = "⏳ Final Thinking Pause";
+      phaseBadge.style.color = "#f59e0b";
+      phaseBadge.style.background = "rgba(245, 158, 11, 0.2)";
     } else {
       phaseBadge.textContent = videoState.revealMode === "full" ? "🟢 Answer Reveal" : "❓ Teaser Callout";
       phaseBadge.style.color = "#34d399";
@@ -828,6 +855,7 @@ function checkAndPlayAudioTriggers(time, destNode = null) {
   const readingEnd = videoState.readingDuration;
   const cyclingStart = readingEnd + 0.5;
   const cyclingEnd = cyclingStart + videoState.cyclingDuration;
+  const revealStart = cyclingEnd + (videoState.postCyclingPause || 2.0);
 
   const q = videoState.activeQuestion || instaState.activeQuestion;
   if (!q) return;
@@ -846,8 +874,8 @@ function checkAndPlayAudioTriggers(time, destNode = null) {
     }
   }
 
-  // Check Reveal sound trigger:
-  if (time >= cyclingEnd && !videoState.revealSoundPlayed) {
+  // Check Reveal sound trigger (after post-cycling suspense pause):
+  if (time >= revealStart && !videoState.revealSoundPlayed) {
     videoState.revealSoundPlayed = true;
     studioAudio.playRevealSound(destNode);
   }
@@ -900,12 +928,13 @@ function drawReelFrame(ctx, q, time, width, height) {
   // 5. Options Spotlight & Deliberation
   const cyclingStart = readingEnd + 0.5;
   const cyclingEnd = cyclingStart + videoState.cyclingDuration;
+  const revealStart = cyclingEnd + (videoState.postCyclingPause || 2.0);
   const optionsStartY = scenarioBottomY + 40;
 
-  const optionsBottomY = drawOptionsSection(ctx, q, optionsStartY, width, time, cyclingStart, cyclingEnd);
+  const optionsBottomY = drawOptionsSection(ctx, q, optionsStartY, width, time, cyclingStart, cyclingEnd, revealStart);
 
   // 6. Viewer Engagement & Pause Prompts (Safe Zone)
-  drawEngagementPrompts(ctx, q, time, cyclingStart, cyclingEnd, optionsBottomY, width, height);
+  drawEngagementPrompts(ctx, q, time, cyclingStart, cyclingEnd, revealStart, optionsBottomY, width, height);
 
   // 7. Footer (Website Pill & CTA Handle)
   drawFooterSection(ctx, q, height - 120, width);
@@ -1094,25 +1123,32 @@ function drawScenarioText(ctx, scenario, startY, width, time, readingEnd) {
 }
 
 // Options Spotlight & Countdown Section Drawing
-function drawOptionsSection(ctx, q, startY, width, time, cyclingStart, cyclingEnd) {
+function drawOptionsSection(ctx, q, startY, width, time, cyclingStart, cyclingEnd, revealStart) {
   const fontFam = (typeof FONT_MAP !== "undefined" && FONT_MAP[instaState.font]) || "'Outfit', sans-serif";
   const options = q.options || [];
   const paddingX = 70;
   const cardWidth = width - paddingX * 2;
   const isSBA = q.type === "sba" || q.type === "emq" || !q.type;
 
+  // Phase flags:
+  const isCycling = time >= cyclingStart && time < cyclingEnd;
+  const isSuspense = time >= cyclingEnd && time < revealStart;
+  const isRevealed = time >= revealStart;
+
   // Prompt Line
   ctx.font = `700 20px ${fontFam}`;
   ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
   ctx.textAlign = "left";
   ctx.textBaseline = "middle";
-  const promptText = q.type === "ranking" ? "RANK THE OPTIONS:" : "SELECT THE SINGLE BEST ANSWER:";
+  let promptText = q.type === "ranking" ? "RANK THE OPTIONS:" : "SELECT THE SINGLE BEST ANSWER:";
+  if (isSuspense) {
+    promptText = "LOCK IN YOUR FINAL GUESS:";
+  } else if (isRevealed) {
+    promptText = videoState.revealMode === "full" ? "CORRECT ANSWER:" : "CAN YOU SOLVE THIS CASE?";
+  }
   ctx.fillText(promptText, paddingX, startY);
 
-  // Timer Bar under prompt during cycling
-  const isCycling = time >= cyclingStart && time < cyclingEnd;
-  const isRevealed = time >= cyclingEnd;
-
+  // Timer Bar under prompt during cycling & suspense pause
   if (isCycling) {
     const elapsed = time - cyclingStart;
     const progress = Math.max(0, Math.min(1, elapsed / videoState.cyclingDuration));
@@ -1122,7 +1158,21 @@ function drawOptionsSection(ctx, q, startY, width, time, cyclingStart, cyclingEn
     drawRoundedRect(ctx, paddingX, startY + 22, cardWidth, 6, 3);
     ctx.fill();
 
-    ctx.fillStyle = "linear-gradient" ? "#38bdf8" : "#38bdf8";
+    ctx.fillStyle = "#38bdf8";
+    drawRoundedRect(ctx, paddingX, startY + 22, timerW, 6, 3);
+    ctx.fill();
+  } else if (isSuspense) {
+    const pauseDur = Math.max(0.1, videoState.postCyclingPause || 2.0);
+    const elapsed = time - cyclingEnd;
+    const progress = Math.max(0, Math.min(1, elapsed / pauseDur));
+    const timerW = cardWidth * (1 - progress);
+
+    ctx.fillStyle = "rgba(255, 255, 255, 0.15)";
+    drawRoundedRect(ctx, paddingX, startY + 22, cardWidth, 6, 3);
+    ctx.fill();
+
+    // Warm amber bar for suspense countdown
+    ctx.fillStyle = "#f59e0b";
     drawRoundedRect(ctx, paddingX, startY + 22, timerW, 6, 3);
     ctx.fill();
   }
@@ -1147,7 +1197,7 @@ function drawOptionsSection(ctx, q, startY, width, time, cyclingStart, cyclingEn
 
   options.forEach((opt, idx) => {
     const isThisActive = isCycling && activeIndex === idx;
-    const hasCycledThrough = isCycling && idx < activeIndex;
+    const hasCycledThrough = (isCycling && idx < activeIndex) || isSuspense;
     const isThisCorrect = isRevealed && (idx === correctIdx || opt === q.correct_answer);
 
     // Card background & border
@@ -1317,24 +1367,30 @@ function drawExplanationCard(ctx, q, startY, width, cardWidth, paddingX) {
 }
 
 // Viewer Engagement & Pause Prompts (Safe Zone directly below options/explanation)
-function drawEngagementPrompts(ctx, q, time, cyclingStart, cyclingEnd, optionsBottomY, width, height) {
+function drawEngagementPrompts(ctx, q, time, cyclingStart, cyclingEnd, revealStart, optionsBottomY, width, height) {
   if (!videoState.showPausePrompt && !videoState.showCommentPrompt) return;
 
   const fontFam = (typeof FONT_MAP !== "undefined" && FONT_MAP[instaState.font]) || "'Outfit', sans-serif";
   const isDeliberating = time >= cyclingStart && time < cyclingEnd;
-  const isRevealed = time >= cyclingEnd;
+  const isSuspense = time >= cyclingEnd && time < revealStart;
+  const isRevealed = time >= revealStart;
 
-  // Only appear once options are active / visible (deliberation or reveal phase)
-  if (!isDeliberating && !isRevealed) return;
+  // Only appear once options are active / visible (deliberation, suspense, or reveal phase)
+  if (!isDeliberating && !isSuspense && !isRevealed) return;
 
   // Safe vertical placement above the bottom UI overlay
   let promptY = Math.min(height - 230, Math.max(optionsBottomY + 24, height - 320));
 
   // 1. Pause Callout Pill
   if (videoState.showPausePrompt) {
-    const pauseText = isDeliberating
-      ? (videoState.pausePromptText || "⏸️ Pause to solve • Answer in 3s")
-      : "⏸️ Tap screen to pause & read key points";
+    let pauseText;
+    if (isDeliberating) {
+      pauseText = videoState.pausePromptText || "⏸️ Pause to solve • Answer in 3s";
+    } else if (isSuspense) {
+      pauseText = "⏸️ Final chance to pause • Revealing answer!";
+    } else {
+      pauseText = "⏸️ Tap screen to pause & read key points";
+    }
 
     ctx.font = `700 20px ${fontFam}`;
     const textW = ctx.measureText(pauseText).width;
@@ -1342,7 +1398,7 @@ function drawEngagementPrompts(ctx, q, time, cyclingStart, cyclingEnd, optionsBo
     const pillH = 48;
     const pillX = (width - pillW) / 2;
 
-    if (isDeliberating) {
+    if (isDeliberating || isSuspense) {
       // Warm amber urgent pulse
       ctx.fillStyle = "rgba(245, 158, 11, 0.22)";
       ctx.strokeStyle = "rgba(245, 158, 11, 0.75)";
@@ -1372,7 +1428,7 @@ function drawEngagementPrompts(ctx, q, time, cyclingStart, cyclingEnd, optionsBo
 
   // 2. Caption & Comments Engagement Prompt
   if (videoState.showCommentPrompt) {
-    const commentText = isDeliberating
+    const commentText = (isDeliberating || isSuspense)
       ? "💬 Drop your answer below • Full case in caption 👇"
       : (videoState.commentPromptText || "💬 Full rationale & guidelines in caption 👇");
 
@@ -1598,6 +1654,7 @@ async function exportAnimatedVideo() {
     const readingEnd = videoState.readingDuration;
     const cyclingStart = readingEnd + 0.5;
     const cyclingEnd = cyclingStart + videoState.cyclingDuration;
+    const revealStart = cyclingEnd + (videoState.postCyclingPause || 2.0);
     const optionsCount = (q.options || []).length || 4;
 
     if (exportTime >= cyclingStart && exportTime < cyclingEnd) {
@@ -1612,7 +1669,7 @@ async function exportAnimatedVideo() {
       }
     }
 
-    if (exportTime >= cyclingEnd && !exportRevealPlayed) {
+    if (exportTime >= revealStart && !exportRevealPlayed) {
       exportRevealPlayed = true;
       studioAudio.playRevealSound(audioDest);
     }
