@@ -16,6 +16,7 @@ const videoState = {
   postCyclingPause: 2.0, // Default 2.0s suspense pause after options cycling before answer pops up
   revealDuration: 3.5,
   wpm: 300,
+  explanationFontSize: 24, // Video explanation font size
   readingStyle: "kinetic-glow", // "kinetic-glow", "word-fade", "typewriter"
   deliberationStyle: "single-pass-pill", // "single-pass-pill", "minimal-timer", "elimination"
   cycleSound: "soft-piano", // "soft-piano", "marimba-boop", "zen-chime", "digital-blip", "mute", "custom"
@@ -360,9 +361,11 @@ function syncVideoControlsWithInstaState() {
 
   const explSlider = document.getElementById("video-size-explanation");
   if (explSlider) {
-    explSlider.value = instaState.explanationFontSize;
+    const curVal = videoState.explanationFontSize || instaState.explanationFontSize || 24;
+    videoState.explanationFontSize = curVal;
+    explSlider.value = curVal;
     const label = document.getElementById("val-video-size-explanation");
-    if (label) label.textContent = instaState.explanationFontSize;
+    if (label) label.textContent = curVal;
   }
 
   const postCycleSlider = document.getElementById("video-post-cycle-pause-slider");
@@ -679,6 +682,7 @@ function initVideoControls() {
   if (sizeExpl) {
     sizeExpl.addEventListener("input", (e) => {
       const val = parseInt(e.target.value);
+      videoState.explanationFontSize = val;
       instaState.explanationFontSize = val;
       const label = document.getElementById("val-video-size-explanation");
       if (label) label.textContent = val;
@@ -1313,8 +1317,8 @@ function drawOptionsSection(ctx, q, startY, width, time, cyclingStart, cyclingEn
 
   // 7. Reveal Box (Learning Point / Teaser Callout)
   if (isRevealed) {
-    drawExplanationCard(ctx, q, cardY + 10, width, cardWidth, paddingX);
-    return cardY + 10 + (videoState.revealMode === "teaser" ? 130 : 160);
+    const cardH = drawExplanationCard(ctx, q, cardY + 10, width, cardWidth, paddingX);
+    return cardY + 10 + cardH;
   }
   return cardY;
 }
@@ -1325,44 +1329,131 @@ function drawExplanationCard(ctx, q, startY, width, cardWidth, paddingX) {
 
   if (videoState.revealMode === "teaser") {
     // Teaser Mode Card
-    ctx.fillStyle = "rgba(245, 158, 11, 0.2)";
+    const boxHeight = 150;
+    ctx.save();
+    ctx.fillStyle = "rgba(245, 158, 11, 0.18)";
     ctx.strokeStyle = "#f59e0b";
-    ctx.lineWidth = 2;
-    drawRoundedRect(ctx, paddingX, startY, cardWidth, 130, 20);
+    ctx.lineWidth = 2.5;
+    ctx.shadowColor = "rgba(245, 158, 11, 0.4)";
+    ctx.shadowBlur = 18;
+    drawRoundedRect(ctx, paddingX, startY, cardWidth, boxHeight, 22);
     ctx.fill();
     ctx.stroke();
+    ctx.restore();
 
-    ctx.font = `700 26px ${fontFam}`;
+    ctx.font = `700 28px ${fontFam}`;
     ctx.fillStyle = "#fcd34d";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("💬 Lock in your guess in the comments!", width / 2, startY + 45);
+    ctx.fillText("💬 Lock in your guess in the comments!", width / 2, startY + 50);
 
-    ctx.font = `500 20px ${fontFam}`;
-    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-    ctx.fillText("Full clinical rationale & 1000+ MSRA cases at " + (instaState.websiteUrl || "medqstudios.com"), width / 2, startY + 85);
+    ctx.font = `600 22px ${fontFam}`;
+    ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
+    ctx.fillText("Full clinical rationale & 1000+ MSRA cases at " + (instaState.websiteUrl || "medqstudios.com"), width / 2, startY + 98);
+
+    return boxHeight;
   } else {
     // Full Learning Point Reveal
-    const boxHeight = 160;
-    ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.18)";
+    const baseSize = videoState.explanationFontSize || instaState.explanationFontSize || 24;
+    const explFontSize = Math.max(26, Math.round(baseSize * 1.25));
+    const lineHeight = Math.round(explFontSize * 1.48);
+    const textMaxWidth = cardWidth - 64;
+
+    const explText = q.explanation || "Review the pathognomonic clinical signs and guidelines for this presentation.";
+
+    // Measure and wrap explanation lines
+    ctx.font = `500 ${explFontSize}px ${fontFam}`;
+    const words = explText.split(/\s+/).filter(Boolean);
+    const lines = [];
+    let currentLine = "";
+
+    for (let i = 0; i < words.length; i++) {
+      const testLine = currentLine + words[i] + " ";
+      const testWidth = ctx.measureText(testLine).width;
+      if (testWidth > textMaxWidth && i > 0) {
+        lines.push(currentLine.trim());
+        currentLine = words[i] + " ";
+      } else {
+        currentLine = testLine;
+      }
+    }
+    if (currentLine.trim().length > 0) {
+      lines.push(currentLine.trim());
+    }
+
+    // Limit to 4 lines with ellipsis if necessary
+    const maxLines = 4;
+    if (lines.length > maxLines) {
+      lines.length = maxLines;
+      let lastLine = lines[maxLines - 1];
+      while (ctx.measureText(lastLine + "...").width > textMaxWidth && lastLine.length > 3) {
+        lastLine = lastLine.slice(0, -1);
+      }
+      lines[maxLines - 1] = lastLine.trim() + "...";
+    }
+
+    const headerHeight = 56;
+    const paddingY = 24;
+    const contentHeight = lines.length * lineHeight;
+    const boxHeight = Math.max(160, headerHeight + contentHeight + paddingY * 2);
+
+    // High-contrast, rich dark card background with emerald accent glow
+    ctx.save();
+    const grad = ctx.createLinearGradient(paddingX, startY, paddingX + cardWidth, startY + boxHeight);
+    grad.addColorStop(0, "rgba(10, 16, 30, 0.94)");
+    grad.addColorStop(1, "rgba(5, 8, 16, 0.98)");
+    ctx.fillStyle = grad;
+
+    ctx.strokeStyle = "rgba(52, 211, 153, 0.50)"; // Radiant Emerald Border
+    ctx.lineWidth = 2.5;
+    ctx.shadowColor = "rgba(16, 185, 129, 0.35)";
+    ctx.shadowBlur = 18;
+    drawRoundedRect(ctx, paddingX, startY, cardWidth, boxHeight, 22);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+
+    // Emerald Header Accent Pill
+    const pillY = startY + 20;
+    const pillH = 36;
+    ctx.font = `700 20px ${fontFam}`;
+    const headerTitle = "💡 KEY CLINICAL PEARL";
+    const titleWidth = ctx.measureText(headerTitle).width;
+    const pillW = titleWidth + 30;
+
+    ctx.fillStyle = "rgba(16, 185, 129, 0.22)";
+    ctx.strokeStyle = "#10b981";
     ctx.lineWidth = 1.5;
-    drawRoundedRect(ctx, paddingX, startY, cardWidth, boxHeight, 20);
+    drawRoundedRect(ctx, paddingX + 24, pillY, pillW, pillH, 18);
     ctx.fill();
     ctx.stroke();
 
-    // Title
-    ctx.font = `700 22px ${fontFam}`;
     ctx.fillStyle = "#34d399";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(headerTitle, paddingX + 24 + pillW / 2, pillY + pillH / 2);
+
+    // Subtle divider line under header
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(paddingX + 24, startY + headerHeight + 8);
+    ctx.lineTo(paddingX + cardWidth - 24, startY + headerHeight + 8);
+    ctx.stroke();
+
+    // Render explanation text lines (crisp pure white, 500 semi-bold, high readability)
+    ctx.font = `500 ${explFontSize}px ${fontFam}`;
+    ctx.fillStyle = "#ffffff";
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
-    ctx.fillText("💡 Key Learning Point", paddingX + 24, startY + 20);
 
-    // Explanation snippet wrapped
-    ctx.font = `400 20px ${fontFam}`;
-    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
-    const explText = q.explanation || "Review the pathognomonic clinical signs and guidelines for this presentation.";
-    drawWrappedParagraph(ctx, explText, paddingX + 24, startY + 56, cardWidth - 48, 28, 3);
+    let lineY = startY + headerHeight + 20;
+    lines.forEach((l) => {
+      ctx.fillText(l, paddingX + 28, lineY);
+      lineY += lineHeight;
+    });
+
+    return boxHeight;
   }
 }
 
