@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-High-Yield Clinical Problem Solving Questions
-60 challenging clinical questions focusing on classic diagnostic signs, core pathophysiology, and high-yield findings.
+High-Yield Clinical Problem Solving Questions (MSRA / UKMLA / AKT Format)
+60 clinical reasoning vignettes designed around NICE CKS, BNF, and UK guidelines.
 5 questions for each of the 12 clinical domains.
 """
 
@@ -12,72 +12,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Cardiovascular",
-        "scenario": "A 3-week-old infant is brought in with poor feeding, sweating during feeds, and cyanosis that worsens with crying. A chest X-ray reveals a 'boot-shaped heart' with upturned cardiac apex and decreased pulmonary vascular markings. What is the most likely diagnosis?",
+        "scenario": "A 58-year-old Caucasian man attends his GP surgery after ambulatory blood pressure monitoring (ABPM) confirms a daytime average blood pressure of 146/92 mmHg. His QRISK3 score is 14%. His past medical history includes diet-controlled type 2 diabetes mellitus and mild knee osteoarthritis. Renal function and electrolytes are normal (eGFR >90 mL/min/1.73m², K+ 4.2 mmol/L). According to NICE guidelines, what is the most appropriate first-line antihypertensive medication?",
         "options": [
-            "Tetralogy of Fallot",
-            "Transposition of the Great Arteries",
-            "Truncus Arteriosus",
-            "Coarctation of the Aorta",
-            "Atrial Septal Defect"
+            "Ramipril",
+            "Amlodipine",
+            "Indapamide",
+            "Bisoprolol",
+            "Doxazosin"
         ],
-        "correct_answer": "Tetralogy of Fallot",
-        "explanation": "A 'boot-shaped' cardiac silhouette (coeur en sabot) on chest radiography is a hallmark radiological feature of Tetralogy of Fallot (TOF). The characteristic contour is produced by right ventricular hypertrophy elevating the cardiac apex alongside hypoplasia of the pulmonary artery trunk. The presentation of cyanosis exacerbated by crying or feeding represents hypercyanotic 'tet spells', which occur due to acute infundibular spasm worsening the right-to-left shunt."
+        "correct_answer": "Ramipril",
+        "explanation": "While patients aged 55 years or over (without diabetes) are normally started on a calcium channel blocker (such as amlodipine) as Step 1 therapy, NICE NG136 specifies that adults of any age with type 2 diabetes mellitus should be offered an ACE inhibitor (such as ramipril) or an ARB as first-line antihypertensive treatment due to their renoprotective effect on glomerular efferent arteriolar pressure."
     },
     {
         "type": "sba",
         "category": "Cardiovascular",
-        "scenario": "A 45-year-old woman presents with severe dyspnoea. She recently had a viral upper respiratory infection. Her blood pressure is 85/55 mmHg, heart rate is 120 bpm, and neck veins are distended. An ECG shows sinus tachycardia with alternating amplitude of the QRS complexes in consecutive beats. What is the most definitive immediate treatment?",
+        "scenario": "A 64-year-old man presents to the Emergency Department with a 2-hour history of severe central crushing chest pain radiating to his jaw. His 12-lead ECG shows 3 mm ST-segment elevation in leads II, III, and aVF. On examination, his blood pressure is 84/52 mmHg, heart rate is 56 bpm, jugular venous pressure (JVP) is elevated at 6 cm above the sternal angle, and auscultation of both lung fields is completely clear. While preparing for immediate primary percutaneous coronary intervention (PCI), what is the most appropriate initial management of his hypotension?",
         "options": [
-            "Pericardiocentesis",
-            "Intravenous Furosemide",
-            "Intravenous Amiodarone",
-            "Synchronised DC Cardioversion",
-            "High-dose oral Ibuprofen"
+            "Intravenous 0.9% sodium chloride fluid bolus",
+            "Sublingual glyceryl trinitrate (GTN) spray",
+            "Intravenous furosemide 40 mg",
+            "Oral bisoprolol 2.5 mg",
+            "Intra-aortic balloon pump insertion before angiography"
         ],
-        "correct_answer": "Pericardiocentesis",
-        "explanation": "This patient presents with acute cardiac tamponade, evidenced by Beck's triad (hypotension, elevated jugular venous pressure, and muffled heart sounds) alongside electrical alternans on ECG (beat-to-beat variation in QRS amplitude caused by the heart swinging within a fluid-filled pericardial sac). Urgent pericardiocentesis under echocardiographic guidance is the definitive life-saving intervention to relieve intrapericardial pressure."
+        "correct_answer": "Intravenous 0.9% sodium chloride fluid bolus",
+        "explanation": "Inferior STEMI (leads II, III, aVF, typically due to right coronary artery occlusion) accompanied by the triad of hypotension, raised JVP, and clear lung fields indicates acute right ventricular infarction. The ischaemic right ventricle depends heavily on preload to maintain left ventricular filling. Nitrates (GTN) and diuretics reduce preload and precipitate profound cardiovascular collapse; cautious intravenous 0.9% sodium chloride boluses are given to optimise right ventricular preload."
     },
     {
         "type": "sba",
         "category": "Cardiovascular",
-        "scenario": "A 22-year-old man presents with headaches and leg cramps after running. Examination reveals a blood pressure of 170/100 mmHg in the right arm and 110/70 mmHg in the left leg. Palpation of pulses reveals radio-femoral delay. Chest X-ray shows 'notching' of the inferior aspect of the posterior ribs. What is the diagnosis?",
+        "scenario": "A 54-year-old man who drives a standard car (Group 1 licence) is about to be discharged after an NSTEMI that was successfully treated with percutaneous coronary intervention (PCI) and drug-eluting stent insertion to the left anterior descending artery. Pre-discharge echocardiography shows a left ventricular ejection fraction of 52%, and no further revascularisation is planned. What advice should you give him regarding driving?",
         "options": [
-            "Coarctation of the Aorta",
-            "Aortic Dissection",
-            "Takayasu Arteritis",
-            "Fibromuscular Dysplasia",
-            "Patent Ductus Arteriosus"
+            "He must stop driving for 1 week and does not need to notify the DVLA",
+            "He must stop driving for 4 weeks and does not need to notify the DVLA",
+            "He must stop driving for 4 weeks and must notify the DVLA immediately",
+            "He must stop driving for 6 weeks until his cardiology outpatient review",
+            "He can resume driving immediately upon hospital discharge"
         ],
-        "correct_answer": "Coarctation of the Aorta",
-        "explanation": "Radio-femoral delay, blood pressure discrepancy between the upper and lower extremities, and inferior rib notching on chest radiography strongly point to coarctation of the aorta. Rib notching results from pressure erosion by dilated, tortuous intercostal collateral arteries bypassing the aortic narrowing (typically involving ribs 3 to 8). It is commonly associated with a bicuspid aortic valve and Turner syndrome."
+        "correct_answer": "He must stop driving for 1 week and does not need to notify the DVLA",
+        "explanation": "Under DVLA regulations for Group 1 (car and motorcycle) drivers following acute coronary syndrome (ACS), if the patient is successfully treated by coronary angioplasty (PCI), has no other urgent revascularisation planned, and has a left ventricular ejection fraction of at least 40%, they may resume driving after 1 week and do not need to notify the DVLA. If ACS is managed medically without successful angioplasty, the restriction is 4 weeks."
     },
     {
         "type": "sba",
         "category": "Cardiovascular",
-        "scenario": "A 60-year-old man presents with sharp pleuritic chest pain. He had a myocardial infarction 4 weeks ago. An echocardiogram shows a large accumulation of fluid in the pericardial sac. A chest X-ray demonstrates an enlarged globular cardiac silhouette, often described as a 'water bottle' heart. What is the underlying immunological process?",
+        "scenario": "A 38-year-old woman is referred to the hypertension clinic with persistent blood pressure readings around 168/104 mmHg despite adherence to amlodipine, indapamide, and doxazosin. She has no significant past medical history and does not eat liquorice. Blood tests reveal: Na+ 145 mmol/L, K+ 2.9 mmol/L, urea 4.4 mmol/L, creatinine 68 umol/L, and bicarbonate 31 mmol/L. What is the most appropriate initial diagnostic investigation?",
         "options": [
-            "Dressler's syndrome",
-            "Acute viral pericarditis",
-            "Ventricular pseudoaneurysm",
-            "Left ventricular rupture",
-            "Uraemic pericarditis"
+            "Plasma aldosterone-to-renin ratio",
+            "24-hour urinary free cortisol",
+            "CT scan of the adrenal glands",
+            "Renal artery Doppler ultrasound",
+            "24-hour urinary metanephrines"
         ],
-        "correct_answer": "Dressler's syndrome",
-        "explanation": "Dressler's syndrome (post-myocardial infarction pericarditis) is an immune-mediated pericarditis that characteristically develops 2 to 10 weeks after a myocardial infarction, triggered by autoimmune response against damaged myocardial antigens. The globular 'water bottle' cardiac contour on chest radiography reflects a substantial pericardial effusion. Management typically involves high-dose NSAIDs or colchicine; corticosteroids are reserved for refractory cases."
+        "correct_answer": "Plasma aldosterone-to-renin ratio",
+        "explanation": "Resistant hypertension in a young patient accompanied by hypokalaemia and metabolic alkalosis strongly points to primary hyperaldosteronism (Conn's syndrome, caused by a unilateral adrenal adenoma or bilateral adrenal hyperplasia). Autonomous aldosterone secretion promotes distal renal sodium retention and potassium/hydrogen ion excretion while suppressing renin. The first-line screening investigation is a plasma aldosterone-to-renin ratio (showing high aldosterone and suppressed renin), performed before adrenal CT imaging."
     },
     {
         "type": "sba",
         "category": "Cardiovascular",
-        "scenario": "A 35-year-old woman from South America presents with progressive dysphagia and constipation. She recently developed right bundle branch block on ECG and signs of dilated cardiomyopathy. She reports being bitten by a 'kissing bug' in childhood. What is the most likely causative organism?",
+        "scenario": "A 71-year-old man with a bioprosthetic aortic valve presents with a 3-week history of fevers, drenching night sweats, and lethargy. Examination reveals splinter haemorrhages and a new aortic regurgitant murmur. Three sets of peripheral blood cultures grow Streptococcus gallolyticus (formerly Streptococcus bovis). Alongside targeted intravenous antibiotic therapy and transoesophageal echocardiography, which additional investigation is mandatory?",
         "options": [
-            "Trypanosoma cruzi",
-            "Trypanosoma brucei",
-            "Leishmania donovani",
-            "Toxoplasma gondii",
-            "Schistosoma mansoni"
+            "Colonoscopy",
+            "High-resolution CT of the chest",
+            "Orthopantomogram (dental X-ray)",
+            "Cystoscopy",
+            "MR cholangiopancreatography (MRCP)"
         ],
-        "correct_answer": "Trypanosoma cruzi",
-        "explanation": "Chagas disease is caused by the protozoan parasite Trypanosoma cruzi, transmitted by the triatomine ('kissing') bug in endemic regions of Central and South America. Chronic infection manifests decades later with destructive parasympathetic denervation, leading to dilated cardiomyopathy (frequently featuring right bundle branch block or left ventricular apical aneurysms), megaoesophagus (achalasia-like dysphagia), and megacolon (severe chronic constipation)."
+        "correct_answer": "Colonoscopy",
+        "explanation": "Bacteraemia or infective endocarditis caused by Streptococcus gallolyticus (Streptococcus bovis biotype I) has a strong association with underlying colonic neoplasia (adenomatous polyps or colorectal adenocarcinoma, present in over 50% of cases), as the organism translocates across disrupted colonic mucosa. A full colonoscopy is therefore mandatory during or shortly after treatment even in the absence of bowel symptoms."
     },
 
     # =========================================================================
@@ -86,72 +86,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Dermatology / Ophthalmology / ENT",
-        "scenario": "A 25-year-old man presents with a mild pruritic rash. It began 10 days ago as a single 3 cm oval, salmon-coloured scaly patch on his chest. Yesterday, a widespread eruption of smaller scaly macules appeared on his trunk along the lines of cleavage, giving a 'Christmas tree' distribution. What is the most likely diagnosis?",
+        "scenario": "A 46-year-old woman attends an urgent GP appointment after waking up with a marked reduction in hearing in her left ear accompanied by high-pitched tinnitus. She has no ear pain, discharge, or recent upper respiratory tract infection. Otoscopy shows normal, intact tympanic membranes and clear external auditory canals bilaterally. Using a 512 Hz tuning fork, Rinne's test is positive (air conduction > bone conduction) on both sides, and Weber's test lateralises to the right ear. What is the most appropriate management?",
         "options": [
-            "Pityriasis rosea",
-            "Psoriasis vulgaris",
-            "Tinea versicolor",
-            "Secondary syphilis",
-            "Guttate psoriasis"
+            "Urgent same-day ENT referral and initiation of high-dose oral prednisolone",
+            "Reassurance and a 2-week course of olive oil ear drops",
+            "A 6-week trial of fluticasone nasal spray and Valsalva manoeuvres",
+            "Oral amoxicillin for 5 days for acute otitis media",
+            "Routine outpatient audiology referral within 6 weeks"
         ],
-        "correct_answer": "Pityriasis rosea",
-        "explanation": "The appearance of an initial solitary, salmon-pink 'herald patch' followed days later by a generalised eruption of smaller oval plaques orientated along Langer's cleavage lines (the classic 'Christmas tree' distribution) is characteristic of pityriasis rosea. Likely associated with reactivation of HHV-6 or HHV-7, the condition is benign and self-limiting, typically resolving spontaneously over 6 to 12 weeks without requiring treatment beyond topical emollients or mild antipruritics."
+        "correct_answer": "Urgent same-day ENT referral and initiation of high-dose oral prednisolone",
+        "explanation": "Weber's test lateralising to the unaffected (right) ear combined with a bilateral positive Rinne's test confirms left-sided sensorineural hearing loss. Idiopathic sudden sensorineural hearing loss (SSNHL) developing over <72 hours is an otological emergency. NICE guidelines mandate an urgent same-day referral to ENT (within 24 hours) for pure-tone audiometry, consideration of high-dose oral or intratympanic corticosteroids, and MRI of the internal acoustic meatus."
     },
     {
         "type": "sba",
         "category": "Dermatology / Ophthalmology / ENT",
-        "scenario": "A 70-year-old man presents with sudden, painless, profound loss of vision in his right eye. Examination of the fundus reveals a pale, opaque retina with a distinct 'cherry-red spot' at the macula. What is the most likely diagnosis?",
+        "scenario": "A 22-year-old university student who wears soft contact lenses presents to her GP with a 24-hour history of severe right eye pain, photophobia, watering, and blurred vision. On examination, visual acuity is 6/18 in the right eye and 6/6 in the left. There is circumcorneal redness and a 2 mm circular white opacity on the right cornea that stains brightly with fluorescein drops. What is the most appropriate immediate action?",
         "options": [
-            "Central retinal artery occlusion",
-            "Central retinal vein occlusion",
-            "Rhegmatogenous retinal detachment",
-            "Acute angle-closure glaucoma",
-            "Wet age-related macular degeneration"
+            "Same-day emergency referral to ophthalmology",
+            "Prescribe topical chloramphenicol 0.5% eye drops and review in 48 hours",
+            "Prescribe topical fusidic acid gel and advise discarding the contact lenses",
+            "Apply an eye pad with topical cyclopentolate and review tomorrow",
+            "Prescribe oral aciclovir 800 mg five times daily"
         ],
-        "correct_answer": "Central retinal artery occlusion",
-        "explanation": "Sudden, profound, painless monocular visual loss accompanied by diffuse retinal pallor and a prominent macular 'cherry-red spot' is the hallmark clinical presentation of central retinal artery occlusion (CRAO). The cherry-red appearance occurs because the thin fovea allows visualization of the underlying, well-vascularised choroid, while the surrounding oedematous, ischaemic retina appears pale. It represents an ophthalmic emergency analogous to an acute stroke and requires urgent specialist intervention to attempt preservation of vision."
+        "correct_answer": "Same-day emergency referral to ophthalmology",
+        "explanation": "A painful red eye with reduced visual acuity, photophobia, and a fluorescein-staining corneal opacity in a contact lens wearer indicates microbial (bacterial) keratitis—most frequently caused by Pseudomonas aeruginosa—until proven otherwise. Pseudomonas keratitis can cause rapid corneal stromal melting and perforation within 24–48 hours. Same-day emergency ophthalmology assessment for slit-lamp corneal scrapes and intensive topical fluoroquinolone therapy (e.g. ofloxacin/levofloxacin) is mandatory; topical chloramphenicol is ineffective against Pseudomonas."
     },
     {
         "type": "sba",
         "category": "Dermatology / Ophthalmology / ENT",
-        "scenario": "A 4-year-old unimmunised boy is brought to the GP with a 3-day history of high fever, coryza, cough, and conjunctivitis. On examination of the oral mucosa, tiny white spots resembling grains of salt on a red background are seen on the buccal mucosa opposite the molars. What are these spots called?",
+        "scenario": "A 26-year-old man presents with an acute symmetrical rash over the backs of his hands, palms, and forearms that appeared 48 hours ago. Examination reveals multiple 1 cm round lesions, each displaying a dusky, blistered centre surrounded by a pale oedematous ring and an outer erythematous halo. His oral, ocular, and genital mucosae are completely normal, and he is afebrile. He recalls having a 'cold sore' on his lower lip 10 days ago. What is the most common infectious trigger for this presentation?",
         "options": [
-            "Koplik spots",
-            "Fordyce spots",
-            "Aphthous ulcers",
-            "Leukoplakia",
-            "Brushfield spots"
+            "Herpes simplex virus (HSV)",
+            "Epstein-Barr virus (EBV)",
+            "Streptococcus pyogenes",
+            "Varicella-zoster virus (VZV)",
+            "Staphylococcus aureus"
         ],
-        "correct_answer": "Koplik spots",
-        "explanation": "Koplik spots are tiny, bluish-white granular papules situated on an erythematous base upon the buccal mucosa (characteristically opposite the second molars). They are highly distinctive of the prodromal stage of measles (rubeola), emerging 1 to 2 days prior to the characteristic cephalocaudal maculopapular exanthem and typically fading within 48 hours. The clinical triad of the 'three Cs'—cough, coryza, and conjunctivitis—further confirms measles."
+        "correct_answer": "Herpes simplex virus (HSV)",
+        "explanation": "Symmetrical acral lesions with three distinct concentric zones (a central dusky/vesicular zone, an intermediate pale oedematous zone, and a peripheral erythematous ring) are the classic target lesions of erythema multiforme. In the absence of mucosal involvement (erythema multiforme minor), the condition is a cell-mediated hypersensitivity reaction triggered in over 70–80% of cases by preceding Herpes simplex virus (HSV-1 or HSV-2) infection (with Mycoplasma pneumoniae being the second most common infectious cause)."
     },
     {
         "type": "sba",
         "category": "Dermatology / Ophthalmology / ENT",
-        "scenario": "A 65-year-old man with long-standing poorly controlled hypertension attends for a routine eye check. Fundoscopy shows thickening of the retinal arterioles causing compression of the venules where they cross. What is this specific finding known as?",
+        "scenario": "A 74-year-old woman presents with a slowly enlarging, asymptomatic red patch on her anterior right lower leg that has been present for 9 months. She previously applied a 2-week course of 1% hydrocortisone cream with no change. Examination shows a solitary, sharply demarcated, erythematous plaque measuring 1.8 cm in diameter with fine surface scale, but no central ulceration, pearly rolled border, or dermal induration. Dermoscopy reveals clustered glomerular vessels. What is the most likely diagnosis?",
         "options": [
-            "AV nipping (nipping/nicking)",
-            "Cotton wool spots",
-            "Flame haemorrhages",
-            "Roth spots",
-            "Drusen"
+            "Bowen's disease (squamous cell carcinoma in situ)",
+            "Nodular basal cell carcinoma",
+            "Discoid eczema",
+            "Amelanotic malignant melanoma",
+            "Pyoderma gangrenosum"
         ],
-        "correct_answer": "AV nipping (nipping/nicking)",
-        "explanation": "Arteriovenous (AV) nipping, or nicking, is a recognized feature of moderate (Grade II) hypertensive retinopathy. It develops because chronic arterial wall thickening and sclerosis compress and taper the underlying, thinner-walled venule where they share a common adventitial sheath at vascular crossings. Left unchecked, this can predispose to branch retinal vein occlusion (BRVO)."
+        "correct_answer": "Bowen's disease (squamous cell carcinoma in situ)",
+        "explanation": "A solitary, well-demarcated, erythematous scaly plaque on the sun-exposed lower leg of an older woman that fails to respond to topical steroids is characteristic of Bowen's disease (intraepidermal squamous cell carcinoma in situ). Dermoscopy characteristically shows glomerular (coiled) vessels and surface scale. Untreated, Bowen's disease carries a 3–5% risk of progressing to invasive squamous cell carcinoma; management options include topical 5-fluorouracil, cryotherapy, curettage, or surgical excision."
     },
     {
         "type": "sba",
         "category": "Dermatology / Ophthalmology / ENT",
-        "scenario": "A 55-year-old farmer presents with a slowly growing nodule on his upper lip. On examination, it is a 1 cm nodule with a 'pearly, rolled edge' and visible fine telangiectasia across its surface. The centre is slightly ulcerated. What is the most likely diagnosis?",
+        "scenario": "A 68-year-old hypermetropic (long-sighted) woman attends the Emergency Department at 10 pm with a severe right frontal headache, nausea, vomiting, and blurred vision with coloured halos around streetlights. Ten days ago, her GP started her on amitriptyline 25 mg at night for sciatica. On examination, the right eye is diffusely injected with a hazy cornea and a fixed, mid-dilated oval pupil, and the globe feels hard on gentle palpation. By what mechanism did amitriptyline precipitate this emergency?",
         "options": [
-            "Basal cell carcinoma",
-            "Squamous cell carcinoma",
-            "Malignant melanoma",
-            "Actinic keratosis",
-            "Keratoacanthoma"
+            "Antimuscarinic pupillary dilatation crowding the iridocorneal drainage angle",
+            "Alpha-1 adrenergic stimulation increasing aqueous humour secretion by the ciliary body",
+            "Serotonergic vasoconstriction of the central retinal artery",
+            "Direct microvascular thrombosis of the central retinal vein",
+            "Histamine H1 receptor blockade causing corneal endothelial oedema"
         ],
-        "correct_answer": "Basal cell carcinoma",
-        "explanation": "A pearly translucent nodule with rolled borders, arborising telangiectasias, and central ulceration (a 'rodent ulcer') is the signature clinical presentation of nodular basal cell carcinoma (BCC). BCC is the most common non-melanoma cutaneous malignancy, primarily driven by cumulative ultraviolet radiation exposure. While locally invasive and destructive if neglected, distant metastases are exceptionally rare, and surgical excision with margins is typically curative."
+        "correct_answer": "Antimuscarinic pupillary dilatation crowding the iridocorneal drainage angle",
+        "explanation": "This patient has acute angle-closure glaucoma, which classically affects older, hypermetropic individuals (who have a shallow anterior chamber). Tricyclic antidepressants like amitriptyline possess potent antimuscarinic (anticholinergic) properties that induce mydriasis (pupillary dilatation), especially in dim evening light. In a shallow anterior chamber, the dilated iris bunches up peripherally and obstructs the trabecular meshwork at the iridocorneal angle, preventing aqueous humour outflow and causing a rapid spike in intraocular pressure."
     },
 
     # =========================================================================
@@ -160,72 +160,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Endocrinology / Metabolic",
-        "scenario": "A 42-year-old woman is found to have an incidental thyroid nodule. Fine needle aspiration (FNA) is inconclusive, but histological analysis following hemithyroidectomy demonstrates cells with ground-glass nuclei, nuclear grooving, and psammoma bodies. What is the diagnosis?",
+        "scenario": "A 42-year-old woman presents with a 5-month history of lethargy, cold intolerance, constipation, and a 4 kg weight gain. Initial thyroid function tests show TSH 7.8 mU/L (normal range 0.4–4.5 mU/L) and free T4 13.2 pmol/L (normal range 10.0–22.0 pmol/L). Repeat testing 3 months later shows TSH 8.4 mU/L, free T4 12.8 pmol/L, and strongly positive anti-thyroid peroxidase (anti-TPO) antibodies. According to NICE guidelines, what is the most appropriate management?",
         "options": [
-            "Papillary thyroid carcinoma",
-            "Follicular thyroid carcinoma",
-            "Medullary thyroid carcinoma",
-            "Anaplastic thyroid carcinoma",
-            "Hashimoto thyroiditis"
+            "Offer a 6-month trial of oral levothyroxine",
+            "Reassure and repeat thyroid function tests in 12 months without treatment",
+            "Refer urgently to endocrinology for radioactive iodine therapy",
+            "Start oral liothyronine (T3) monotherapy",
+            "Arrange a thyroid ultrasound and fine-needle aspiration"
         ],
-        "correct_answer": "Papillary thyroid carcinoma",
-        "explanation": "Ground-glass, optically clear nuclei with prominent grooves (classically described as 'Orphan Annie eyes') and concentric, laminated calcospherites known as psammoma bodies are definitive histological hallmarks of papillary thyroid carcinoma. It accounts for over 70–80% of all thyroid cancers, generally carries an excellent overall prognosis, and primarily metastasises via lymphatic drainage to regional cervical nodes."
+        "correct_answer": "Offer a 6-month trial of oral levothyroxine",
+        "explanation": "This patient has persistent subclinical hypothyroidism (TSH between 4.5 and 10 mU/L with a normal free T4 on two occasions 3 months apart). Under NICE NG145 guidelines, while levothyroxine is routinely started for anyone with a TSH >=10 mU/L, for adults aged under 65 with a TSH <10 mU/L who have symptoms suggestive of hypothyroidism, clinicians should consider offering a 6-month trial of levothyroxine (and discontinuing it if symptoms do not improve despite TSH normalisation)."
     },
     {
         "type": "sba",
         "category": "Endocrinology / Metabolic",
-        "scenario": "A 35-year-old woman presents with palpitations, weight loss, and heat intolerance. On examination, she has bilateral exophthalmos and a raised, thickened, non-pitting, red plaque on her shins. What is the specific term for the finding on her shins?",
+        "scenario": "A 34-year-old woman with vitiligo presents with a 3-month history of progressive fatigue, postural dizziness, anorexia, weight loss, and darkening of her palmar skin creases and buccal mucosa. Blood tests show: Na+ 127 mmol/L, K+ 5.8 mmol/L, urea 9.4 mmol/L, random glucose 3.2 mmol/L, TSH 14.5 mU/L, and free T4 7.8 pmol/L. A 9 am serum cortisol is 62 nmol/L. Why is it critical to initiate hydrocortisone replacement before starting levothyroxine in this patient?",
         "options": [
-            "Pretibial myxoedema",
-            "Erythema nodosum",
-            "Necrobiosis lipoidica",
-            "Pyoderma gangrenosum",
-            "Stasis dermatitis"
+            "Levothyroxine increases basal metabolic rate and hepatic cortisol clearance, precipitating an acute adrenal crisis",
+            "Hydrocortisone inhibits peripheral conversion of T4 to reverse T3, preventing thyroid storm",
+            "Levothyroxine blocks mineralocorticoid receptors in the distal renal tubule, worsening hyperkalaemia",
+            "Starting levothyroxine first causes acute pituitary apoplexy due to sudden TSH suppression",
+            "Levothyroxine chelates oral hydrocortisone in the gastrointestinal tract, preventing steroid absorption"
         ],
-        "correct_answer": "Pretibial myxoedema",
-        "explanation": "Pretibial myxoedema (thyroid dermopathy) is a localized, mucinous non-pitting cutaneous infiltration virtually unique to Graves' disease. It arises from thyroid-stimulating hormone (TSH) receptor antibody activation of dermal fibroblasts, leading to marked glycosaminoglycan accumulation. It almost invariably develops in patients with preexisting Graves' ophthalmopathy and indicates high circulating autoantibody titres."
+        "correct_answer": "Levothyroxine increases basal metabolic rate and hepatic cortisol clearance, precipitating an acute adrenal crisis",
+        "explanation": "This patient has autoimmune polyendocrine syndrome type 2 (Schmidt's syndrome), presenting with both primary adrenal insufficiency (Addison's disease: hyponatraemia, hyperkalaemia, hypoglycaemia, hyperpigmentation) and autoimmune hypothyroidism. In any patient with concurrent adrenal insufficiency and hypothyroidism (or panhypopituitarism), glucocorticoid replacement (hydrocortisone) must always be started before levothyroxine. Thyroid hormone accelerates basal metabolic rate and hepatic cytochrome P450 clearance of cortisol, which rapidly exhausts residual cortisol stores and triggers a potentially fatal Addisonian crisis."
     },
     {
         "type": "sba",
         "category": "Endocrinology / Metabolic",
-        "scenario": "A 55-year-old man presents with fatigue, joint pains, and erectile dysfunction. On examination, he has a slate-grey hyperpigmentation of his skin. Blood tests show significantly elevated ferritin and fasting blood glucose is 14 mmol/L. This presentation is classically referred to as 'bronze diabetes'. What is the underlying condition?",
+        "scenario": "A 76-year-old woman is brought to her GP surgery with mild confusion and unsteadiness 2 weeks after starting citalopram for depression. On examination, her pulse is 74 bpm, blood pressure is 128/76 mmHg with no postural drop, mucous membranes are moist, JVP is normal, and there is no peripheral oedema. Investigations show: Serum Na+ 122 mmol/L, serum osmolality 252 mOsm/kg, urine osmolality 490 mOsm/kg, and urinary sodium 48 mmol/L. Thyroid function and 9 am cortisol are normal. What is the diagnosis?",
         "options": [
-            "Haemochromatosis",
-            "Wilson's disease",
-            "Addison's disease",
-            "Cushing's disease",
-            "Porphyria cutanea tarda"
+            "Syndrome of inappropriate ADH secretion (SIADH)",
+            "Cranial diabetes insipidus",
+            "Primary polydipsia",
+            "Cerebral salt wasting syndrome",
+            "Addison's disease"
         ],
-        "correct_answer": "Haemochromatosis",
-        "explanation": "The combination of slate-grey skin hyperpigmentation, newly diagnosed diabetes mellitus, and signs of chronic organ damage (such as chondrocalcinosis, hypogonadotropic hypogonadism, or hepatomegaly) represents the historical triad of 'bronze diabetes' in hereditary haemochromatosis. Caused by an autosomal recessive mutation in the HFE gene (most commonly C282Y homozygous), uncontrolled intestinal iron absorption causes parenchymal iron overload. Regular venesection is the cornerstone of therapy to prevent progression to cirrhosis and hepatocellular carcinoma."
+        "correct_answer": "Syndrome of inappropriate ADH secretion (SIADH)",
+        "explanation": "SSRIs (such as citalopram) are a well-recognised cause of SIADH, particularly in older adults during the first few weeks of therapy. The diagnostic criteria for SIADH are all met here: clinical euvolaemia, hypotonic hyponatraemia (serum Na+ <135 mmol/L and serum osmolality <275 mOsm/kg), inappropriately concentrated urine (urine osmolality >100 mOsm/kg), elevated urinary sodium (>20–30 mmol/L), and normal renal, adrenal, and thyroid function. First-line management involves stopping the offending drug and fluid restriction."
     },
     {
         "type": "sba",
         "category": "Endocrinology / Metabolic",
-        "scenario": "A 28-year-old woman undergoes a total thyroidectomy. On post-operative day 2, she complains of tingling around her mouth and in her fingers. When taking her blood pressure, inflation of the cuff above systolic pressure causes carpal spasm. What is this sign called?",
+        "scenario": "A 29-year-old woman was diagnosed with Graves' thyrotoxicosis 4 weeks ago and started on carbimazole 40 mg daily. She telephones the GP surgery today reporting a severe sore throat, painful mouth ulcers, and a temperature of 38.7°C since yesterday. What is the single most important instruction to give her immediately?",
         "options": [
-            "Trousseau's sign",
-            "Chvostek's sign",
-            "Kernig's sign",
-            "Brudzinski's sign",
-            "Homans' sign"
+            "Stop taking carbimazole immediately and attend today for an urgent full blood count",
+            "Continue carbimazole, take paracetamol, and book a routine throat swab in 48 hours",
+            "Halve the dose of carbimazole to 20 mg daily and start oral phenoxymethylpenicillin",
+            "Switch carbimazole to propylthiouracil immediately without blood tests",
+            "Continue carbimazole and attend for urgent thyroid function tests to exclude thyroid storm"
         ],
-        "correct_answer": "Trousseau's sign",
-        "explanation": "Trousseau's sign of latent tetany—carpopedal spasm elicited by inflating a sphygmomanometer cuff above systolic pressure for 3 minutes—is considerably more sensitive and specific for hypocalcaemia than Chvostek's sign. Post-thyroidectomy hypocalcaemia is caused by transient ischaemia or inadvertent devascularisation/resection of the parathyroid glands. Prompt intravenous or oral calcium replacement alongside active vitamin D (calcitriol/alfacalcidol) is indicated."
+        "correct_answer": "Stop taking carbimazole immediately and attend today for an urgent full blood count",
+        "explanation": "Carbimazole and propylthiouracil carry a ~0.1–0.5% risk of idiosyncratic agranulocytosis (severe neutropenia, typically occurring within the first 3 months of treatment). Any patient on antithyroid drug therapy who develops a sore throat, mouth ulcers, bruising, or unexplained fever must stop the drug immediately and have an urgent same-day full blood count (FBC). Carbimazole may only be restarted if the FBC confirms a normal neutrophil count."
     },
     {
         "type": "sba",
         "category": "Endocrinology / Metabolic",
-        "scenario": "A 60-year-old woman presents with bone pain, renal colic, and constipation. She reports feeling increasingly depressed and lethargic. Serum biochemistry shows hypercalcaemia. Her constellation of symptoms is historically described as 'moans, groans, stones, and bones'. What is the most likely diagnosis?",
+        "scenario": "A 19-year-old man with type 1 diabetes is admitted to the Emergency Department with diabetic ketoacidosis (capillary ketones 5.6 mmol/L, blood glucose 26.4 mmol/L, venous pH 7.14, bicarbonate 9 mmol/L). He is commenced on a fixed-rate intravenous insulin infusion at 0.1 units/kg/hour alongside his first 1-litre bag of 0.9% sodium chloride. His initial laboratory venous potassium returns at 5.8 mmol/L. According to Joint British Diabetes Societies (JBDS) guidelines, how should potassium be managed in his intravenous fluids at this stage?",
         "options": [
-            "Primary hyperparathyroidism",
-            "Hypoparathyroidism",
-            "Paget's disease of bone",
-            "Osteomalacia",
-            "Multiple myeloma"
+            "Give 0.9% sodium chloride with no added potassium until serum potassium falls below 5.5 mmol/L",
+            "Add 40 mmol/L potassium chloride immediately because insulin drives potassium into cells",
+            "Add 20 mmol/L potassium chloride and administer intravenous calcium gluconate",
+            "Pause the fixed-rate insulin infusion until serum potassium falls below 5.0 mmol/L",
+            "Administer nebulised salbutamol to lower the potassium before continuing fluids"
         ],
-        "correct_answer": "Primary hyperparathyroidism",
-        "explanation": "The traditional mnemonic 'painful bones, renal stones, abdominal groans, and psychiatric moans' summarises the clinical sequelae of symptomatic hypercalcaemia. In ambulatory outpatients, primary hyperparathyroidism (usually secondary to a solitary benign parathyroid adenoma in ~85% of cases) is by far the leading cause, characterized by elevated serum calcium with inappropriately normal or raised PTH. In hospitalised inpatients, malignancy-related hypercalcaemia (PTHrP secretion or osteolytic metastases) predominates."
+        "correct_answer": "Give 0.9% sodium chloride with no added potassium until serum potassium falls below 5.5 mmol/L",
+        "explanation": "Although patients in DKA have a total-body potassium deficit and insulin rapidly drives potassium into cells, potassium replacement must be guided strictly by the serum potassium level to avoid fatal hyperkalaemic arrhythmias: if K+ is >5.5 mmol/L, no potassium is added to the fluid bag; once K+ falls to 3.5–5.5 mmol/L (and the patient is passing urine), 40 mmol/L of potassium chloride is added to the 0.9% sodium chloride; if K+ is <3.5 mmol/L, the insulin infusion must be temporarily paused and senior review sought for higher-rate potassium replacement."
     },
 
     # =========================================================================
@@ -234,72 +234,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Gastroenterology / Clinical Nutrition",
-        "scenario": "A 24-year-old man presents with chronic bloody diarrhoea. A barium enema reveals complete loss of haustral markings throughout the descending and sigmoid colon, giving it the appearance of a smooth, rigid tube. What is the classical name for this radiological finding?",
+        "scenario": "A 27-year-old woman presents with a 6-month history of abdominal bloating, loose stools, and fatigue. Full blood count reveals a microcytic anaemia (Hb 103 g/L, MCV 72 fL) and low serum ferritin. You suspect coeliac disease and plan to request serological testing. According to NICE guidelines, which first-line blood tests should be requested and what dietary advice must be given?",
         "options": [
-            "Lead pipe colon",
-            "Apple core lesion",
-            "String sign of Kantor",
-            "Cobblestone appearance",
-            "Thumbprinting"
+            "Total serum IgA and IgA tissue transglutaminase (tTG), while eating gluten in more than one meal daily for at least 6 weeks",
+            "IgG deamidated gliadin peptide (DGP) only, after excluding gluten from her diet for 2 weeks",
+            "HLA-DQ2 and HLA-DQ8 genetic typing as the initial screening test",
+            "IgA endomysial antibodies (EMA) alone, with no specific dietary requirements",
+            "Faecal calprotectin and anti-Saccharomyces cerevisiae antibodies (ASCA)"
         ],
-        "correct_answer": "Lead pipe colon",
-        "explanation": "A 'lead pipe' colon describes the radiological appearance of a featureless, foreshortened, and rigid colon lacking normal haustral mucosal folds on contrast imaging. It is a defining chronic feature of long-standing ulcerative colitis, caused by recurrent mucosal inflammation, mural hypertrophy, and submucosal fibrosis. Patients with extensive colitis exceeding 8–10 years duration require regular surveillance colonoscopy due to an elevated risk of colorectal dysplasia."
+        "correct_answer": "Total serum IgA and IgA tissue transglutaminase (tTG), while eating gluten in more than one meal daily for at least 6 weeks",
+        "explanation": "NICE NG20 recommends testing for both total serum IgA and IgA tissue transglutaminase (tTG) as the first-line serological choice for suspected coeliac disease. Measuring total IgA simultaneously is essential because selective IgA deficiency occurs in ~2–3% of patients with coeliac disease and would otherwise produce a false-negative IgA-tTG result (requiring IgG-based testing instead). Patients must consume gluten in more than one meal every day for at least 6 weeks prior to both serology and endoscopic duodenal biopsy to avoid false-negative results."
     },
     {
         "type": "sba",
         "category": "Gastroenterology / Clinical Nutrition",
-        "scenario": "A 28-year-old woman presents with abdominal pain and weight loss. Colonoscopy reveals transmural inflammation with deep fissuring ulcers interspersed with normal mucosa, giving a 'cobblestone' appearance. A barium follow-through shows severe stricturing of the terminal ileum. What is the stricture known as?",
+        "scenario": "A 31-year-old man with known ulcerative colitis presents to the Emergency Department with a 4-day history of passing 8 bloody stools per 24 hours. His temperature is 38.2°C, heart rate is 98 bpm, blood pressure is 118/74 mmHg, haemoglobin is 96 g/L, and ESR is 44 mm/hr. Abdominal examination reveals mild left iliac fossa tenderness with no peritonism, and plain abdominal X-ray shows a transverse colon diameter of 4.2 cm. According to Truelove and Witts' criteria and NICE guidelines, how is this flare classified and what is the first-line inpatient treatment?",
         "options": [
-            "String sign of Kantor",
-            "Bird's beak sign",
-            "Coffee bean sign",
-            "Pauchet's sign",
-            "Whirl sign"
+            "Acute severe ulcerative colitis; treat with intravenous hydrocortisone",
+            "Moderately active ulcerative colitis; discharge on high-dose oral mesalazine and rectal prednisolone",
+            "Toxic megacolon; proceed directly to emergency subtotal colectomy",
+            "Acute severe ulcerative colitis; start intravenous infliximab as first-line monotherapy",
+            "Mild ulcerative colitis flare; start a tapering course of oral budesonide"
         ],
-        "correct_answer": "String sign of Kantor",
-        "explanation": "The 'string sign of Kantor' is a radiological sign on small bowel follow-through where severe narrowing of the terminal ileum resembles a frayed piece of string. This luminal stenosis results from persistent transmural inflammation, muscular spasm, and fibrotic stricturing characteristic of Crohn's disease. The interspersed 'skip lesions' and deep mucosal fissures producing cobblestoning clearly differentiate Crohn's from ulcerative colitis."
+        "correct_answer": "Acute severe ulcerative colitis; treat with intravenous hydrocortisone",
+        "explanation": "Under the Truelove and Witts criteria, an ulcerative colitis flare is classified as 'acute severe' if the patient passes >=6 bloody stools per day PLUS has at least one feature of systemic toxicity: temperature >37.8°C, heart rate >90 bpm, haemoglobin <105 g/L, or ESR >30 mm/hr (all four are present here). Toxic megacolon requires colonic dilatation >6 cm. First-line management of acute severe ulcerative colitis is hospital admission for intravenous corticosteroids (IV hydrocortisone 100 mg four times daily or IV methylprednisolone) alongside prophylactic low-molecular-weight heparin."
     },
     {
         "type": "sba",
         "category": "Gastroenterology / Clinical Nutrition",
-        "scenario": "A 68-year-old man presents with iron deficiency anaemia and altered bowel habit. A barium enema demonstrates a short segment of severe, circumferential irregular narrowing in the descending colon with overhanging edges. What is the classic term for this appearance?",
+        "scenario": "A 44-year-old man with chronic alcohol dependence and a BMI of 15.6 kg/m² is admitted to the medical ward after eating virtually nothing for 8 days. He is given intravenous thiamine (Pabrinex) and started on nasogastric enteral feeding. Forty-eight hours later, he develops generalised muscle weakness, paraesthesia, diplopia, and ventricular ectopics. Which biochemical abnormality is the primary hallmark of this complication?",
         "options": [
-            "Apple core lesion",
-            "Lead pipe sign",
-            "Thumbprinting",
-            "Accordion sign",
-            "Target sign"
+            "Severe hypophosphataemia",
+            "Hypercalcaemia",
+            "Hyperkalaemia",
+            "Hypermagnesaemia",
+            "Metabolic acidosis with raised anion gap"
         ],
-        "correct_answer": "Apple core lesion",
-        "explanation": "An 'apple core' (or napkin-ring) sign on fluoroscopic barium enema describes annular, circumferential constriction of the colonic lumen with abrupt shelf-like or overhanging margins. It strongly suggests an infiltrating colorectal adenocarcinoma until proven otherwise. In contemporary practice, suspected lesions are investigated directly with colonoscopy or CT colonography to allow tissue biopsy and formal staging."
+        "correct_answer": "Severe hypophosphataemia",
+        "explanation": "This patient has developed refeeding syndrome, which occurs when carbohydrate nutrition is reintroduced too rapidly after prolonged starvation (>5–10 days) or severe malnutrition. The sudden switch from fat/protein catabolism back to carbohydrate metabolism triggers an insulin surge that drives phosphate, potassium, and magnesium into cells alongside intracellular consumption of phosphate for ATP synthesis. Severe hypophosphataemia (accompanied by hypokalaemia, hypomagnesaemia, and thiamine depletion) is the hallmark biochemical feature, leading to respiratory muscle weakness, rhabdomyolysis, seizures, and cardiac arrhythmias."
     },
     {
         "type": "sba",
         "category": "Gastroenterology / Clinical Nutrition",
-        "scenario": "A 19-year-old man presents with tremors and signs of chronic liver disease. Slit-lamp examination of the eyes reveals golden-brown rings at the periphery of the cornea in Descemet's membrane. What are these rings called?",
+        "scenario": "A 58-year-old man with decompensated alcohol-related liver cirrhosis and tense ascites is admitted with mild diffuse abdominal discomfort and new-onset grade 2 hepatic encephalopathy. He is afebrile (36.8°C). A diagnostic ascitic tap (paracentesis) is performed in the Emergency Department. Which ascitic fluid result is the diagnostic threshold for initiating empirical intravenous antibiotics for spontaneous bacterial peritonitis (SBP)?",
         "options": [
-            "Kayser-Fleischer rings",
-            "Fleischer rings",
-            "Corneal arcus",
-            "Lisch nodules",
-            "Kayser-Roth rings"
+            "Ascitic fluid neutrophil count >=250 cells/mm³ (0.25 x 10⁹/L)",
+            "Ascitic fluid total white cell count >=1,000 cells/mm³ (1.0 x 10⁹/L)",
+            "Serum-ascites albumin gradient (SAAG) <11 g/L",
+            "Positive Gram stain on ascitic fluid microscopy only",
+            "Ascitic fluid pH <7.30 with elevated amylase"
         ],
-        "correct_answer": "Kayser-Fleischer rings",
-        "explanation": "Kayser-Fleischer (KF) rings are greenish-brown or golden pigmented bands formed by abnormal copper deposition within Descemet's membrane of the peripheral corneal limbus. They are strongly indicative of Wilson's disease (hepatolenticular degeneration) and are present in nearly all patients presenting with neurological or psychiatric features. Wilson's disease results from mutations in the ATP7B gene, causing impaired biliary copper excretion; diagnostic findings include low serum caeruloplasmin and elevated 24-hour urinary copper."
+        "correct_answer": "Ascitic fluid neutrophil count >=250 cells/mm³ (0.25 x 10⁹/L)",
+        "explanation": "Spontaneous bacterial peritonitis (SBP) frequently presents subtly in cirrhotic patients—often with encephalopathy, worsening renal function, or mild abdominal pain without fever. Because ascitic fluid bacterial cultures take 48 hours and can be negative in up to 40% of cases, the diagnostic threshold to start immediate empirical intravenous antibiotics (e.g. cefotaxime or piperacillin-tazobactam) and intravenous human albumin solution is an ascitic fluid polymorphonuclear (neutrophil) count >=250 cells/mm³."
     },
     {
         "type": "sba",
         "category": "Gastroenterology / Clinical Nutrition",
-        "scenario": "A 45-year-old woman presents with intermittent dysphagia for both solids and liquids, along with retrosternal chest pain. A barium swallow reveals multiple uncoordinated contractions, giving the oesophagus a 'corkscrew' or 'rosary bead' appearance. What is the diagnosis?",
+        "scenario": "A 41-year-old man attends his GP surgery with a 3-week history of solid food feeling as though it sticks transiently behind his sternum a few seconds after swallowing. His weight is stable, he has no odynophagia or vomiting, and his full blood count is normal (Hb 148 g/L). He smokes 10 cigarettes a day. According to NICE NG12 guidelines on suspected cancer, what is the most appropriate next step?",
         "options": [
-            "Diffuse oesophageal spasm",
-            "Achalasia",
-            "Oesophageal adenocarcinoma",
-            "Systemic sclerosis",
-            "Schatzki ring"
+            "Urgent 2-week wait referral for upper gastrointestinal endoscopy",
+            "A 4-week trial of full-dose oral omeprazole 20 mg daily and review",
+            "Carbon-13 urea breath test for Helicobacter pylori",
+            "Routine barium swallow examination",
+            "Reassurance and lifestyle advice on chewing food thoroughly"
         ],
-        "correct_answer": "Diffuse oesophageal spasm",
-        "explanation": "A 'corkscrew' or 'rosary bead' oesophagus on barium swallow is a distinctive finding of diffuse oesophageal spasm (distal oesophageal spasm). It is caused by uncoordinated, simultaneous non-peristaltic tertiary contractions in the smooth muscle portion of the oesophagus. High-resolution manometry is the gold standard diagnostic modality, revealing premature, repetitive contractions with normal lower oesophageal sphincter relaxation."
+        "correct_answer": "Urgent 2-week wait referral for upper gastrointestinal endoscopy",
+        "explanation": "Under NICE NG12 guidelines for suspected upper gastrointestinal (oesophageal or gastric) cancer, dysphagia (at ANY age) or aged >=55 years with weight loss and upper abdominal pain, reflux, or dyspepsia requires an urgent 2-week wait referral for upper GI endoscopy (OGD). Unlike uncomplicated dyspepsia, true dysphagia is a red-flag symptom that must never be empirically treated with a trial of a proton pump inhibitor before endoscopic exclusion of malignancy."
     },
 
     # =========================================================================
@@ -308,72 +308,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-        "scenario": "A 65-year-old man presents with fatigue and bleeding gums. A full blood count shows a low haemoglobin, thrombocytopenia, and leukocytosis. A blood film reveals large blast cells with prominent nucleoli and distinct, needle-like eosinophilic inclusions in the cytoplasm. What are these inclusions called?",
+        "scenario": "An 18-year-old university student presented to an urgent care centre 4 days ago with fever, severe tonsillar exudates, and bilateral posterior cervical lymphadenopathy. She was prescribed oral amoxicillin for presumed bacterial tonsillitis. Today she attends her GP with a widespread, symmetrical, non-blanching-to-blanching maculopapular rash over her trunk and limbs, without facial oedema, wheeze, or hypotension. Abdominal palpation reveals mild splenomegaly. What is the most accurate explanation for her rash?",
         "options": [
-            "Auer rods",
-            "Döhle bodies",
-            "Howell-Jolly bodies",
-            "Heinz bodies",
-            "Pappenheimer bodies"
+            "A transient reaction to amoxicillin in the context of acute Epstein-Barr virus infection, not a true penicillin allergy",
+            "An IgE-mediated type I hypersensitivity reaction requiring lifelong penicillin avoidance",
+            "Scarlet fever caused by group A beta-haemolytic Streptococcus",
+            "Stevens-Johnson syndrome triggered by beta-lactam antibiotics",
+            "Secondary syphilis presenting during young adulthood"
         ],
-        "correct_answer": "Auer rods",
-        "explanation": "Auer rods are linear, needle-like reddish-purple inclusions formed by coalesced azurophilic lysosomes and myeloperoxidase within the cytoplasm of blast cells. Their detection confirms myeloid lineage and is diagnostic of Acute Myeloid Leukaemia (AML) (or high-grade myelodysplastic syndrome with excess blasts), conclusively distinguishing AML from Acute Lymphoblastic Leukaemia (ALL). Multiple Auer rods stacked together ('faggot cells') are especially prominent in acute promyelocytic leukaemia (APML)."
+        "correct_answer": "A transient reaction to amoxicillin in the context of acute Epstein-Barr virus infection, not a true penicillin allergy",
+        "explanation": "The triad of pharyngitis, posterior cervical lymphadenopathy, and splenomegaly in a young adult is classic for infectious mononucleosis caused by Epstein-Barr virus (EBV). Administering aminopenicillins (amoxicillin or ampicillin) during acute EBV infection triggers a florid, generalised maculopapular exanthem in 80–90% of patients due to transient immune complex formation and altered drug metabolism. Crucially, this does not represent a true IgE-mediated penicillin allergy, and the patient should not be labelled penicillin-allergic for life."
     },
     {
         "type": "sba",
         "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-        "scenario": "A 25-year-old woman presents with a painless, enlarged cervical lymph node and night sweats. A lymph node biopsy demonstrates large, binucleate cells with prominent eosinophilic nucleoli giving an 'owl-eye' appearance. What is the specific name of these cells?",
+        "scenario": "A 79-year-old man taking warfarin for a mechanical mitral valve presents to the Emergency Department with large-volume haematemesis and melaena. His blood pressure is 86/52 mmHg, heart rate is 118 bpm, haemoglobin is 74 g/L, and his INR returns at 6.8. Alongside haemodynamic resuscitation and withholding warfarin, what is the definitive immediate reversal regimen recommended by NICE and British Society for Haematology guidelines?",
         "options": [
-            "Reed-Sternberg cells",
-            "Gaucher cells",
-            "Langhans giant cells",
-            "Touton giant cells",
-            "Mott cells"
+            "Intravenous 4-factor prothrombin complex concentrate (PCC) plus intravenous phytomenadione (vitamin K1) 5 mg",
+            "Intravenous phytomenadione (vitamin K1) 10 mg alone and recheck INR in 6 hours",
+            "Four units of ABO-matched fresh frozen plasma (FFP) as first-line reversal",
+            "Oral phytomenadione 5 mg plus intravenous tranexamic acid only",
+            "Intravenous idarucizumab plus platelet transfusion"
         ],
-        "correct_answer": "Reed-Sternberg cells",
-        "explanation": "Reed-Sternberg cells are giant, morphologically distinctive binucleated or multinucleated B-cells featuring prominent eosinophilic nucleoli surrounded by a clear halo, creating an 'owl-eye' appearance. They are the defining neoplastic component of classic Hodgkin's lymphoma, characteristically staining positive for CD30 and CD15 on immunohistochemistry. Typically, they comprise only 1–2% of the tumour mass, embedded within a dense reactive inflammatory background of lymphocytes, eosinophils, and histiocytes."
+        "correct_answer": "Intravenous 4-factor prothrombin complex concentrate (PCC) plus intravenous phytomenadione (vitamin K1) 5 mg",
+        "explanation": "In life-threatening or major bleeding on warfarin (irrespective of the INR value), immediate reversal requires BOTH intravenous 4-factor prothrombin complex concentrate (PCC, e.g. Beriplex/Octaplex, containing factors II, VII, IX, and X) AND intravenous phytomenadione (vitamin K1) 5 mg. PCC normalises the INR within 10–15 minutes (unlike FFP, which requires ABO matching, thawing, and large fluid volumes), while IV vitamin K1 sustains endogenous clotting factor synthesis once the short half-life of factor VII in PCC wears off."
     },
     {
         "type": "sba",
         "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-        "scenario": "An asymptomatic 70-year-old man is found to have a significantly elevated lymphocyte count on a routine blood test. A peripheral blood smear shows many mature-appearing small lymphocytes alongside fragile, disrupted lymphocytes. What is the term for these disrupted cells?",
+        "scenario": "A 56-year-old woman undergoing adjuvant FEC-T chemotherapy for breast cancer (last cycle administered 10 days ago) attends the Emergency Department feeling shivery and exhausted. Her temperature is 38.4°C, heart rate is 98 bpm, blood pressure is 116/72 mmHg, and respiratory rate is 18/min. She has no localising symptoms on initial history. Blood cultures and a full blood count are taken from her peripheral vein and PICC line. What is the most appropriate immediate next step?",
         "options": [
-            "Smudge cells",
-            "Schistocytes",
-            "Target cells",
-            "Tear drop cells",
-            "Acanthocytes"
+            "Administer empirical intravenous piperacillin with tazobactam immediately without waiting for the full blood count result",
+            "Wait 45 minutes for the laboratory neutrophil count to confirm neutropenia (<0.5 x 10⁹/L) before prescribing antibiotics",
+            "Administer subcutaneous granulocyte colony-stimulating factor (G-CSF) and observe for 4 hours",
+            "Perform a chest X-ray and lumbar puncture prior to giving intravenous antibiotics",
+            "Prescribe oral co-amoxiclav and ciprofloxacin and discharge with oncology follow-up tomorrow"
         ],
-        "correct_answer": "Smudge cells",
-        "explanation": "Smudge cells (or Gumprecht shadow cells) are fragile, mechanically disrupted leucocytes that disintegrate during the preparation of a peripheral blood smear due to cytoskeletal defects (specifically vimentin deficiency). While non-specific in isolation, their presence in large numbers alongside an isolated, persistent mature lymphocytosis (>5 x 10^9/L) is strongly characteristic of Chronic Lymphocytic Leukaemia (CLL). Diagnosis is confirmed with flow cytometry demonstrating a clonal B-cell population expressing CD5, CD19, and CD23."
+        "correct_answer": "Administer empirical intravenous piperacillin with tazobactam immediately without waiting for the full blood count result",
+        "explanation": "Any patient who has received systemic anti-cancer therapy within the last 6 weeks (especially at the neutrophil nadir 7–14 days post-chemotherapy) presenting with a temperature >38.0°C or clinical signs of sepsis must be treated as having neutropenic sepsis until proven otherwise. NICE CG151 mandates immediate empirical intravenous piperacillin with tazobactam (Tazocin) within 1 hour of arrival—clinicians must never delay antibiotic administration while waiting for the laboratory full blood count to confirm a neutrophil count <=0.5 x 10⁹/L."
     },
     {
         "type": "sba",
         "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-        "scenario": "A 68-year-old man presents with severe back pain and lethargy. Investigations reveal hypercalcaemia and impaired renal function. Urine electrophoresis identifies monoclonal free light chains. What is the eponymous name for these light chains?",
+        "scenario": "A 62-year-old man with bulky, high-grade Burkitt lymphoma commences systemic R-CHOP chemotherapy. Thirty-six hours later, he develops nausea, lethargy, painful muscle spasms, and oliguria, with tall tented T waves on his ECG. Which combination of serum electrolyte and metabolic abnormalities defines this oncological emergency?",
         "options": [
-            "Bence Jones proteins",
-            "Russell bodies",
-            "Cryoglobulins",
-            "Waldenström macroglobulins",
-            "Amyloid light chains"
+            "Hyperkalaemia, hyperphosphataemia, hyperuricaemia, and hypocalcaemia",
+            "Hyperkalaemia, hyperphosphataemia, hyperuricaemia, and hypercalcaemia",
+            "Hypokalaemia, hypophosphataemia, hyperuricaemia, and hypercalcaemia",
+            "Hyponatraemia, hypokalaemia, hypocalcaemia, and metabolic alkalosis",
+            "Hypernatraemia, hypercalcaemia, hypophosphataemia, and hypoglycaemia"
         ],
-        "correct_answer": "Bence Jones proteins",
-        "explanation": "Bence Jones proteins are monoclonal free immunoglobulin light chains (either kappa or lambda) filtered by the glomeruli and detected in the urine via protein electrophoresis or immunofixation. They are strongly associated with multiple myeloma and light chain amyloidosis, where excessive light chain production overwhelms proximal tubular reabsorption and causes cast nephropathy (myeloma kidney). The classic 'CRAB' features—HyperCalcaemia, Renal impairment, Anaemia, and Bone lesions—further support the diagnosis."
+        "correct_answer": "Hyperkalaemia, hyperphosphataemia, hyperuricaemia, and hypocalcaemia",
+        "explanation": "Tumour lysis syndrome (TLS) occurs when rapid destruction of highly proliferative malignant cells (such as Burkitt lymphoma or acute leukaemia) releases vast quantities of intracellular ions and nucleic acids into the circulation. This produces the classic metabolic tetrad of 'three ups and one down': hyperkalaemia, hyperphosphataemia, and hyperuricaemia (from purine catabolism), accompanied by secondary hypocalcaemia because free serum calcium precipitates with the excess phosphate as calcium phosphate in tissues and renal tubules."
     },
     {
         "type": "sba",
         "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-        "scenario": "A 22-year-old man of Mediterranean descent develops jaundice and dark urine after starting nitrofurantoin for a UTI. A peripheral blood smear shows 'bite cells' and special staining reveals denatured haemoglobin aggregates within red blood cells. What are these aggregates called?",
+        "scenario": "A 29-year-old woman at 16 weeks gestation contacts her GP surgery after spending 3 hours indoors yesterday with her 4-year-old nephew, who developed a classic vesicular chickenpox rash this morning. She is currently asymptomatic but says she cannot remember ever having chickenpox as a child and has not been vaccinated against varicella. What is the most appropriate initial step in management?",
         "options": [
-            "Heinz bodies",
-            "Howell-Jolly bodies",
-            "Basophilic stippling",
-            "Pappenheimer bodies",
-            "Cabot rings"
+            "Check maternal serum for varicella-zoster virus (VZV) IgG antibodies urgently",
+            "Prescribe oral aciclovir 800 mg five times daily immediately for 7 days",
+            "Administer intramuscular varicella-zoster immunoglobulin (VZIG) today without blood testing",
+            "Reassure her that chickenpox poses no risk to the fetus between 12 and 24 weeks gestation",
+            "Admit immediately to the obstetric unit for intravenous aciclovir"
         ],
-        "correct_answer": "Heinz bodies",
-        "explanation": "Heinz bodies are insoluble clumps of oxidised, denatured haemoglobin that precipitate onto red cell membranes following oxidative insults (such as nitrofurantoin, primaquine, fava beans, or acute infection) in Glucose-6-Phosphate Dehydrogenase (G6PD) deficiency. As these damaged erythrocytes transit through the splenic cords, macrophages pluck out the Heinz bodies, leaving behind characteristic 'bite cells' (degmacytes) and blister cells on the peripheral blood film. G6PD enzyme assays should only be measured once the acute haemolytic crisis has resolved, as surviving younger reticulocytes can yield false-normal levels."
+        "correct_answer": "Check maternal serum for varicella-zoster virus (VZV) IgG antibodies urgently",
+        "explanation": "Significant contact is defined as face-to-face contact or >15 minutes in the same room with an infectious individual (who is contagious from 48 hours before rash onset until all vesicles crust over). Over 80% of UK-born adults who recall no history of chickenpox are actually immune on testing. Therefore, RCOG and UKHSA guidelines state that the first step in a pregnant woman with no definite history of varicella is to urgently test maternal serum (or stored antenatal booking blood) for VZV IgG antibodies. If she is seronegative (non-immune), post-exposure prophylaxis with oral aciclovir (from day 7 to 14 post-exposure) or VZIG is given."
     },
 
     # =========================================================================
@@ -382,72 +382,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Musculoskeletal",
-        "scenario": "A 28-year-old man presents with chronic lower back pain and morning stiffness lasting over an hour that improves with exercise. A plain pelvic radiograph shows complete fusion of the sacroiliac joints, and spinal X-rays reveal extensive syndesmophyte formation and calcification of the spinal ligaments. What is the classic term for this spinal appearance?",
+        "scenario": "A 43-year-old man with a history of lower back pain presents to his GP with a 24-hour history of severe pain radiating down the back of both legs into his calves. On direct questioning, he mentions that his perineum felt numb when wiping himself after opening his bowels this morning, and he has had to strain to pass urine today. What is the single most appropriate immediate action?",
         "options": [
-            "Bamboo spine",
-            "Rugger-jersey spine",
-            "Picture frame spine",
-            "Scaffold spine",
-            "Codfish vertebrae"
+            "Emergency same-day hospital referral for an urgent MRI of the lumbosacral spine",
+            "Request an urgent outpatient lumbar spine MRI under the 2-week wait pathway",
+            "Prescribe oral naproxen and amitriptyline and review in 48 hours",
+            "Arrange urgent plain radiographs of the lumbar spine and pelvis today",
+            "Refer to the community musculoskeletal physiotherapy triage service"
         ],
-        "correct_answer": "Bamboo spine",
-        "explanation": "'Bamboo spine' is the definitive radiographic appearance of end-stage ankylosing spondylitis (axial spondyloarthritis). It results from progressive ossification of the annulus fibrosus, syndesmophyte bridging between adjacent vertebral bodies, and calcification of the anterior longitudinal ligament and interspinous ligaments, creating a continuous, rigid column. Patients are usually HLA-B27 positive and have a heightened risk of spinal fractures following even minor trauma."
+        "correct_answer": "Emergency same-day hospital referral for an urgent MRI of the lumbosacral spine",
+        "explanation": "Bilateral sciatica accompanied by 'red flag' sphincteric or perineal symptoms—specifically saddle/perineal anaesthesia, urinary hesitancy/retention, overflow incontinence, or reduced anal tone—indicates suspected cauda equina syndrome (most commonly caused by a large central L4/L5 or L5/S1 intervertebral disc prolapse). This is a neurosurgical emergency requiring immediate same-day hospital transfer for an emergency MRI of the lumbosacral spine and urgent surgical decompression to prevent permanent paraplegia and incontinence."
     },
     {
         "type": "sba",
         "category": "Musculoskeletal",
-        "scenario": "A 50-year-old woman with a 15-year history of rheumatoid arthritis presents with hand deformities. On examination, the PIP joint of her middle finger is permanently flexed, and the DIP joint is hyperextended. What is the name of this deformity?",
+        "scenario": "A 72-year-old woman presents with a 6-week history of severe bilateral aching pain and morning stiffness across her shoulders, neck, and hips. The stiffness lasts for 2 hours each morning, making it difficult for her to get out of bed or raise her arms to brush her hair. She has no headache, visual disturbance, or jaw pain when chewing. On examination, active shoulder abduction is restricted by pain, but distal and proximal muscle power is normal (5/5) once supported. Blood tests show: Hb 114 g/L, ESR 68 mm/hr, CRP 52 mg/L, and creatine kinase (CK) 78 U/L (normal). What is the most appropriate initial treatment?",
         "options": [
-            "Boutonniere deformity",
-            "Swan neck deformity",
-            "Mallet finger",
-            "Z-deformity of the thumb",
-            "Dupuytren contracture"
+            "Oral prednisolone 15 mg once daily",
+            "Oral prednisolone 60 mg once daily",
+            "Oral methotrexate 15 mg once weekly",
+            "Oral ibuprofen 400 mg three times daily",
+            "Intramuscular methylprednisolone 120 mg single dose only"
         ],
-        "correct_answer": "Boutonniere deformity",
-        "explanation": "A Boutonnière (buttonhole) deformity consists of persistent flexion of the proximal interphalangeal (PIP) joint combined with hyperextension of the distal interphalangeal (DIP) joint. It develops in rheumatoid arthritis when chronic synovitis ruptures or attenuates the central slip of the extensor digitorum tendon, causing the lateral bands to slip volarward and act as PIP flexors. In contrast, a swan-neck deformity represents the exact opposite configuration: PIP hyperextension with DIP flexion."
+        "correct_answer": "Oral prednisolone 15 mg once daily",
+        "explanation": "Subacute bilateral shoulder and pelvic girdle pain with prolonged morning stiffness (>45 minutes) in a patient aged >50 years with markedly elevated ESR/CRP and a normal serum creatine kinase (which excludes polymyositis) is the classic presentation of polymyalgia rheumatica (PMR). In the absence of cranial symptoms of giant cell arteritis (which would require 40–60 mg prednisolone), NICE guidelines recommend starting oral prednisolone 15 mg once daily, which characteristically produces a dramatic clinical improvement within 1 week."
     },
     {
         "type": "sba",
         "category": "Musculoskeletal",
-        "scenario": "A 62-year-old woman presents with persistent, aching pain and morning stiffness lasting 15 minutes in her hands, worsened by knitting. Examination shows prominent, hard, non-tender bony enlargements over the distal interphalangeal (DIP) joints of both hands. What are these bony enlargements called?",
+        "scenario": "A 69-year-old man presents with a 12-hour history of an exquisitely painful, red, swollen right first metatarsophalangeal (MTP) joint that woke him at 3 am. He is afebrile and systemically well. His past medical history includes hypertension, chronic kidney disease stage 4 (eGFR 21 mL/min/1.73m²), and a peptic ulcer 3 years ago. He does not currently take urate-lowering therapy. What is the safest and most appropriate pharmacological treatment for this acute flare?",
         "options": [
-            "Heberden's nodes",
-            "Bouchard's nodes",
-            "Rheumatoid nodules",
-            "Tophi",
-            "Osler's nodes"
+            "Oral prednisolone 30–35 mg once daily for 5 days",
+            "Oral naproxen 500 mg twice daily with omeprazole",
+            "Oral allopurinol 100 mg once daily started immediately",
+            "High-dose oral colchicine 1 mg followed by 500 mcg every 2 hours",
+            "Oral febuxostat 80 mg once daily"
         ],
-        "correct_answer": "Heberden's nodes",
-        "explanation": "Heberden's nodes are hard, palpable bony outgrowths (osteophytes) located at the distal interphalangeal (DIP) joints of the hands, characteristic of primary nodal osteoarthritis. Bouchard's nodes similarly represent osteophytic hypertrophy but affect the proximal interphalangeal (PIP) joints. The brief duration of morning stiffness (<30 minutes), absence of systemic symptoms, and specific involvement of the DIPs help differentiate nodal osteoarthritis from inflammatory arthritides like rheumatoid arthritis, which typically spares the DIP joints."
+        "correct_answer": "Oral prednisolone 30–35 mg once daily for 5 days",
+        "explanation": "This patient has acute gout (podagra). Normally, an NSAID (plus PPI) or low-dose colchicine is first-line for an acute flare. However, NSAIDs are contraindicated in stage 4 CKD (eGFR 21) and peptic ulcer disease, and colchicine carries a high risk of severe toxicity (myopathy,bone marrow suppression, and diarrhoea) in severe renal impairment. Therefore, a short course of an oral corticosteroid (prednisolone 30–35 mg daily for 5 days) or intra-articular steroid injection is the safest effective option. Urate-lowering therapy (allopurinol/febuxostat) must never be initiated during an acute flare as it prolongs and worsens the attack."
     },
     {
         "type": "sba",
         "category": "Musculoskeletal",
-        "scenario": "A 52-year-old man presents with acute, excruciating pain, swelling, and redness in his first metatarsophalangeal (MTP) joint that started overnight. Arthrocentesis is performed. Polarised light microscopy demonstrates needle-shaped crystals with strong negative birefringence. What is the diagnosis?",
+        "scenario": "A 76-year-old woman is reviewed in GP clinic after a DEXA scan performed following a Colles' wrist fracture shows a femoral neck T-score of -2.9. Her past medical history includes achalasia with delayed oesophageal emptying. Her eGFR is 66 mL/min/1.73m², and her serum calcium and vitamin D levels are normal. Why is oral alendronic acid contraindicated in this patient?",
         "options": [
-            "Gout",
-            "Pseudogout",
-            "Septic arthritis",
-            "Reactive arthritis",
-            "Hydroxyapatite arthropathy"
+            "Abnormalities of the oesophagus that delay oesophageal emptying predispose to severe chemical oesophagitis and ulceration",
+            "Oral bisphosphonates relax the lower oesophageal sphincter via smooth muscle calcium channel blockade",
+            "Achalasia prevents gastric acid secretion required to convert alendronate into its active metabolite",
+            "Alendronic acid causes selective osteonecrosis of the cervical vertebrae in patients with dysphagia",
+            "Oral bisphosphonates trigger autoimmune destruction of myenteric plexus ganglion cells"
         ],
-        "correct_answer": "Gout",
-        "explanation": "Synovial fluid analysis showing needle-shaped monosodium urate crystals displaying strong negative birefringence under polarized light microscopy confirms acute gout (podagra). 'Negative birefringence' means the crystals appear yellow when aligned parallel to the polarizing axis and blue when perpendicular. In contrast, pseudogout features calcium pyrophosphate dihydrate (CPPD) crystals, which are rhomboid-shaped and demonstrate weak positive birefringence."
+        "correct_answer": "Abnormalities of the oesophagus that delay oesophageal emptying predispose to severe chemical oesophagitis and ulceration",
+        "explanation": "Oral bisphosphonates (such as alendronic acid and risedronate) are direct mucosal irritants. That is why patients must take them on an empty stomach with a full glass of plain water and remain upright (sitting or standing) for at least 30 minutes before eating. They are strictly contraindicated in patients with oesophageal abnormalities that delay emptying—such as achalasia or oesophageal stricture—or those unable to sit upright for 30 minutes; parenteral alternatives (intravenous zoledronic acid or subcutaneous denosumab) should be used instead."
     },
     {
         "type": "sba",
         "category": "Musculoskeletal",
-        "scenario": "A 75-year-old woman presents with an acutely swollen and painful right knee. A radiograph shows a thin layer of calcification within the articular cartilage. Joint aspiration reveals weakly positive birefringent, rhomboid-shaped crystals. What is the diagnosis?",
+        "scenario": "A 32-year-old woman who gave birth 3 months ago presents with a 4-week history of worsening pain and swelling over the radial aspect of her right wrist, particularly when lifting her baby under the arms. Examination reveals localised tenderness over the tip of the radial styloid process. Asking her to tuck her thumb inside her closed fist and ulnar-deviating the wrist (Finkelstein's test) reproduces sharp pain along the radial wrist. Which tendons are affected in this condition?",
         "options": [
-            "Pseudogout",
-            "Gout",
-            "Basic calcium phosphate crystal disease",
-            "Osteoarthritis flare",
-            "Avascular necrosis"
+            "Abductor pollicis longus and extensor pollicis brevis",
+            "Flexor pollicis longus and flexor carpi radialis",
+            "Extensor pollicis longus and extensor carpi radialis brevis",
+            "Abductor pollicis brevis and opponens pollicis",
+            "Extensor digitorum and extensor indicis"
         ],
-        "correct_answer": "Pseudogout",
-        "explanation": "The presence of rhomboid-shaped calcium pyrophosphate dihydrate (CPPD) crystals with weak positive birefringence on polarized microscopy establishes the diagnosis of pseudogout (acute CPPD crystal arthritis). Under compensated polarized light, these crystals turn blue when parallel to the slow axis of the compensator. Plain radiographs commonly demonstrate chondrocalcinosis (linear calcification within hyaline or fibrocartilage, frequently in the menisci or triangular fibrocartilage of the wrist)."
+        "correct_answer": "Abductor pollicis longus and extensor pollicis brevis",
+        "explanation": "Radial wrist pain exacerbated by repetitive thumb abduction/pinching (classically seen in new mothers lifting infants, sometimes called 'baby wrist') with radial styloid tenderness and a positive Finkelstein's test is diagnostic of De Quervain's stenosing tenosynovitis. It is caused by non-inflammatory thickening and entrapment of the tendons of the first dorsal extensor compartment of the wrist—specifically abductor pollicis longus (APL) and extensor pollicis brevis (EPB)—which form the anterior border of the anatomical snuffbox."
     },
 
     # =========================================================================
@@ -456,72 +456,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Paediatrics",
-        "scenario": "A newborn with Down's syndrome develops bilious vomiting shortly after birth. An abdominal radiograph reveals two large air-filled spaces in the upper abdomen and an absence of distal bowel gas. What is the classic name for this sign?",
+        "scenario": "A 6-year-old boy is brought to his GP with a 2-day history of fever (38.9°C), sore throat, and headache. Today he developed a diffuse, blanching erythematous rash across his neck, chest, and axillae that feels like coarse sandpaper to touch. Examination of the oral cavity shows tonsillar exudates, palatal petechiae, and prominent red papillae protruding through a white coating on his tongue. He has no penicillin allergy. What is the correct antibiotic regimen and school exclusion advice?",
         "options": [
-            "Double bubble sign",
-            "Target sign",
-            "String sign",
-            "Coffee bean sign",
-            "Bird's beak sign"
+            "Oral phenoxymethylpenicillin (Penicillin V) for 10 days; he can return to school 24 hours after starting antibiotics",
+            "Oral amoxicillin for 5 days; he must stay off school until the rash has completely desquamated",
+            "Supportive care with paracetamol only as it is viral; no school exclusion is required",
+            "Oral clarithromycin for 7 days; he must stay off school for 5 days from rash onset",
+            "Urgent hospital admission for intravenous immunoglobulin (IVIG) and high-dose aspirin"
         ],
-        "correct_answer": "Double bubble sign",
-        "explanation": "The 'double bubble' sign on an erect abdominal radiograph indicates duodenal atresia. The two prominent gas fluid levels represent air distending the stomach and the blind-ending dilated first part of the duodenum, with a complete absence of distal bowel gas. Duodenal atresia results from failure of recanalisation of the embryonic duodenum at weeks 8–10 of gestation and is strongly associated with Trisomy 21 (Down's syndrome), occurring in approximately one-third of affected infants."
+        "correct_answer": "Oral phenoxymethylpenicillin (Penicillin V) for 10 days; he can return to school 24 hours after starting antibiotics",
+        "explanation": "Exudative tonsillitis accompanied by a coarse 'sandpaper' rash, Pastia's lines in skin creases, circumoral pallor, and a 'strawberry tongue' is classic for scarlet fever, caused by an erythrogenic exotoxin-producing strain of Streptococcus pyogenes (Group A Streptococcus). NICE and UKHSA guidelines recommend a 10-day course of oral phenoxymethylpenicillin (Penicillin V) to prevent rheumatic fever and peritonsillar abscess. Scarlet fever is a notifiable disease, and the child may return to school or nursery 24 hours after commencing antibiotic treatment (provided they feel well enough)."
     },
     {
         "type": "sba",
         "category": "Paediatrics",
-        "scenario": "A 2-year-old boy presents with a barking cough and stridor. An AP neck radiograph is performed to rule out other conditions, and it shows subglottic narrowing. What is the name of this radiological sign?",
+        "scenario": "A 10-week-old exclusively formula-fed infant is brought to the GP with frequent posseting after feeds, loose stools containing occasional streaks of mucus, and an erythematous eczematous rash on his cheeks and trunk. He is alert, well hydrated, and tracking steadily along the 50th centile for weight and length. You suspect mild-to-moderate non-IgE-mediated cow's milk protein allergy (CMPA). According to NICE guidelines, what is the first-line formula replacement in primary care?",
         "options": [
-            "Steeple sign",
-            "Thumbprint sign",
-            "Omega sign",
-            "Spinnaker sail sign",
-            "Deep sulcus sign"
+            "An extensively hydrolysed formula (eHF)",
+            "An amino acid-based formula (AAF)",
+            "A soya-based infant formula",
+            "A lactose-free cow's milk formula",
+            "Goat's milk infant formula"
         ],
-        "correct_answer": "Steeple sign",
-        "explanation": "The 'steeple sign' (or wine-bottle sign) describes symmetrical subglottic tracheal narrowing on an anteroposterior (AP) soft-tissue neck radiograph, resembling a church steeple. It is a recognized radiological feature of acute laryngotracheobronchitis (croup), typically caused by parainfluenza virus. While croup is primarily a clinical diagnosis diagnosed by a barking cough, hoarseness, and inspiratory stridor, imaging is occasionally obtained to exclude foreign body inhalation or acute epiglottitis. First-line medical therapy is oral dexamethasone."
+        "correct_answer": "An extensively hydrolysed formula (eHF)",
+        "explanation": "In formula-fed infants with suspected mild-to-moderate IgE- or non-IgE-mediated cow's milk protein allergy (CMPA), the first-line diagnostic and therapeutic replacement in primary care is an extensively hydrolysed formula (eHF) for a 2–4 week elimination trial. Amino acid-based formulas (AAF) are reserved for severe CMPA (e.g. anaphylaxis, faltering growth, or symptoms failing to resolve on an eHF). Soya formula is not recommended under 6 months of age due to phytoestrogens and cross-reactivity, goat's milk shares high protein homology with cow's milk, and lactose-free formula still contains intact cow's milk proteins."
     },
     {
         "type": "sba",
         "category": "Paediatrics",
-        "scenario": "A 4-year-old unimmunised girl presents with a high fever, drooling, and leaning forward in a 'tripod' position. She looks toxic. A lateral neck radiograph is taken cautiously and shows an enlarged epiglottis. What is the name of this sign?",
+        "scenario": "A 4-year-old boy is brought to the Paediatric Assessment Unit after waking up with a right-sided limp. He had a mild viral upper respiratory tract infection 1 week ago. On examination, he is afebrile (36.6°C), looks well, and walks across the room with a mild antalgic gait. There is slight discomfort only at the extreme of internal rotation of the right hip, with no overlying erythema or knee swelling. Blood tests show: WCC 7.6 x 10⁹/L, CRP 3 mg/L, and ESR 10 mm/hr. What is the most likely diagnosis and appropriate management?",
         "options": [
-            "Thumbprint sign",
-            "Steeple sign",
-            "Silhouette sign",
-            "Sail sign",
-            "Pencil tip sign"
+            "Transient synovitis (irritable hip); manage with rest, oral ibuprofen, and safety-netting to return urgently if fever develops or he stops weight-bearing",
+            "Septic arthritis; arrange immediate theatre hip arthrotomy and intravenous ceftriaxone",
+            "Slipped capital femoral epiphysis (SCFE); keep nil by mouth for urgent percutaneous pinning",
+            "Developmental dysplasia of the hip (DDH); apply a Pavlik harness for 6 weeks",
+            "Juvenile idiopathic arthritis; initiate oral methotrexate and refer to paediatric rheumatology"
         ],
-        "correct_answer": "Thumbprint sign",
-        "explanation": "The 'thumbprint sign' on a lateral cervical soft-tissue radiograph represents a thickened, rounded, edematous epiglottis projecting into the hypopharynx, resembling an adult thumb. It indicates acute epiglottitis, historically caused by Haemophilus influenzae type b (Hib) and now occasionally caused by Streptococcus pyogenes or Staphylococcus aureus in unimmunised children. This is a critical airway emergency: direct inspection of the pharynx must be avoided until an experienced anaesthetist or ENT surgeon is present in theatre with emergency airway equipment ready."
+        "correct_answer": "Transient synovitis (irritable hip); manage with rest, oral ibuprofen, and safety-netting to return urgently if fever develops or he stops weight-bearing",
+        "explanation": "Transient synovitis (irritable hip) is the commonest cause of acute hip pain in children aged 3–8 years, classically following a recent viral upper respiratory infection. The Kocher criteria help distinguish septic arthritis from transient synovitis using four predictors: (1) non-weight-bearing, (2) fever >38.5°C, (3) WCC >12 x 10⁹/L, and (4) ESR >40 mm/hr (or CRP >20 mg/L). With a Kocher score of 0 (afebrile, weight-bearing, normal inflammatory markers), septic arthritis is <0.2% likely; management is conservative with oral NSAIDs, rest, and clear safety-netting."
     },
     {
         "type": "sba",
         "category": "Paediatrics",
-        "scenario": "A 7-month-old infant presents with episodic inconsolable crying, drawing his legs up to his chest, followed by lethargy. He has passed stool that looks like 'red currant jelly'. An abdominal ultrasound shows a 'target' or 'doughnut' sign. What is the diagnosis?",
+        "scenario": "A 20-month-old girl is brought to an out-of-hours GP clinic with a 24-hour history of coryza, a hoarse voice, and a harsh 'seal-like' barking cough. While sitting calmly on her father's lap, she has no audible stridor at rest, no intercostal or subcostal recession, normal colour, and oxygen saturations of 99% in air. A faint inspiratory stridor is heard only when she cries during examination. What is the most appropriate pharmacological treatment?",
         "options": [
-            "Intussusception",
-            "Pyloric stenosis",
-            "Meckel's diverticulitis",
-            "Hirschsprung disease",
-            "Midgut volvulus"
+            "A single dose of oral dexamethasone (0.15 mg/kg)",
+            "Reassurance and steam inhalation only, as steroids are reserved for stridor at rest",
+            "Nebulised adrenaline (epinephrine) 1:1000 and immediate ambulance transfer",
+            "Oral amoxicillin 125 mg three times daily for 5 days",
+            "Inhaled salbutamol 100 mcg via spacer four times daily"
         ],
-        "correct_answer": "Intussusception",
-        "explanation": "The 'target' (or 'doughnut') sign on ultrasound—demonstrating concentric alternating rings of hypoechoic and hyperechoic bowel wall—confirms ileocolic intussusception, where a proximal segment of bowel telescopes into a distal segment. Passage of 'red currant jelly' stools (a mixture of shed mucosa, sloughed bowel, and blood) is a late clinical finding denoting intestinal ischaemia. Ultrasound has >95% sensitivity and specificity; first-line definitive management in hemodynamically stable children without peritonitis or perforation is radiological pneumatic (air) reduction."
+        "correct_answer": "A single dose of oral dexamethasone (0.15 mg/kg)",
+        "explanation": "A barking cough and hoarse voice with stridor audible only on agitation/crying (and absent at rest, with no chest wall recession) classifies this as mild viral laryngotracheobronchitis (croup). Crucially, NICE guidelines state that ALL children with croup—whether mild, moderate, or severe—should receive a single dose of oral dexamethasone (0.15 mg/kg), as it reduces symptom duration, return visits, and progression to airway obstruction. Children with mild croup can be safely managed at home after receiving oral dexamethasone, whereas stridor at rest or recession (moderate/severe croup) requires hospital admission."
     },
     {
         "type": "sba",
         "category": "Paediatrics",
-        "scenario": "A 6-year-old girl is brought in with mild fever and a bright red macular rash on both cheeks. Two days later, a lacy, reticular rash appears on her arms and trunk. What is the name of the appearance on her face?",
+        "scenario": "A 5-day-old term neonate, born at 39 weeks following an uncomplicated pregnancy and normal vaginal delivery, is brought to the Emergency Department with two episodes of dark green (bilious) vomiting over the past 3 hours. The baby passed meconium within 12 hours of birth. On examination, the abdomen is currently soft and non-distended, capillary refill is 2 seconds, and heart rate is 150 bpm. What is the most important urgent diagnostic investigation to exclude the most time-critical surgical emergency?",
         "options": [
-            "Slapped cheek appearance",
-            "Butterfly rash",
-            "Strawberry mark",
-            "Port-wine stain",
-            "Erythema marginatum"
+            "Urgent upper gastrointestinal contrast study",
+            "Abdominal ultrasound looking for a pyloric 'olive' mass",
+            "Rectal suction biopsy for submucosal ganglion cells",
+            "Diagnostic pneumatic air enema",
+            "24-hour oesophageal pH and impedance monitoring"
         ],
-        "correct_answer": "Slapped cheek appearance",
-        "explanation": "The confluent, intense erythema over both cheeks giving a 'slapped cheek' appearance followed several days later by a reticular, lace-like erythematous rash on the trunk and limbs is distinctive of erythema infectiosum (fifth disease). It is caused by Parvovirus B19 infection. By the time the facial rash erupts, the child is no longer infectious. Crucially, Parvovirus B19 can precipitate aplastic crises in individuals with underlying haemoglobinopathies (e.g. sickle cell disease) and hydrops fetalis in pregnant women."
+        "correct_answer": "Urgent upper gastrointestinal contrast study",
+        "explanation": "Dark green (bilious) vomiting in a neonate is intestinal malrotation with midgut volvulus until proven otherwise. Even if the abdomen initially feels soft and non-distended, twisting of the midgut around the superior mesenteric artery axis can rapidly cause catastrophic total small bowel necrosis within hours. While a plain abdominal X-ray is often performed quickly, the gold-standard investigation to diagnose malrotation/volvulus is an urgent upper gastrointestinal water-soluble contrast study, which demonstrates an abnormally positioned duodenojejunal flexure (ligament of Treitz) to the right of the midline or a 'corkscrew' duodenum."
     },
 
     # =========================================================================
@@ -530,72 +530,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Pharmacology",
-        "scenario": "A 78-year-old woman with atrial fibrillation is admitted with nausea, vomiting, and visual disturbances, specifically yellow-green halos around objects. Her ECG shows scooped, 'reverse tick' ST-segment depression. What drug toxicity is most likely?",
+        "scenario": "A 68-year-old woman taking once-weekly oral methotrexate and folic acid for rheumatoid arthritis attends her GP surgery with a 2-day history of dysuria and urinary frequency. Urine dipstick is positive for nitrites and leucocytes. Her eGFR is 68 mL/min/1.73m². Why is prescribing trimethoprim strictly contraindicated in this patient?",
         "options": [
-            "Digoxin",
-            "Amiodarone",
-            "Flecainide",
-            "Verapamil",
-            "Bisoprolol"
+            "Both drugs inhibit dihydrofolate reductase, causing additive folate antagonism and life-threatening pancytopenia",
+            "Trimethoprim induces hepatic CYP3A4, causing acute rheumatoid arthritis flare",
+            "Co-administration precipitates acute uric acid nephropathy and renal cortical necrosis",
+            "Trimethoprim displaces methotrexate from red blood cell haemoglobin, causing methemoglobinaemia",
+            "Combined therapy causes irreversible cholestatic hepatitis within 24 hours"
         ],
-        "correct_answer": "Digoxin",
-        "explanation": "Xanthopsia (yellow-green vision or halos), gastrointestinal upset, and scooped, down-sloping 'reverse tick' (Salvador Dalí's moustache) ST depressions are characteristic features of digoxin toxicity. The therapeutic window for digoxin is narrow, and toxicity is frequently triggered by hypokalaemia, hypomagnesaemia, or renal dysfunction, as hypokalaemia increases myocardial sensitivity to digoxin. Life-threatening arrhythmias or severe hyperkalaemia are treated with digoxin-specific antibody fragments (DigiFab)."
+        "correct_answer": "Both drugs inhibit dihydrofolate reductase, causing additive folate antagonism and life-threatening pancytopenia",
+        "explanation": "Methotrexate and trimethoprim (as well as co-trimoxazole) both act as folate antagonists by inhibiting dihydrofolate reductase, blocking the conversion of dihydrofolic acid to tetrahydrofolic acid required for DNA synthesis. Furthermore, trimethoprim reduces renal tubular secretion of methotrexate. Co-prescribing them causes severe, potentially fatal bone marrow suppression (myelosuppression/pancytopenia) and mucositis. Nitrofurantoin (provided eGFR >=45 mL/min/1.73m²) is a safe first-line alternative for her uncomplicated lower UTI."
     },
     {
         "type": "sba",
         "category": "Pharmacology",
-        "scenario": "A 40-year-old man with bipolar disorder is admitted with confusion, ataxia, and a severe coarse tremor. He recently developed a diarrhoeal illness and became dehydrated. Which medication is most likely responsible for his symptoms?",
+        "scenario": "A 71-year-old man with a documented history of penicillin anaphylaxis is diagnosed with moderate community-acquired pneumonia and prescribed oral clarithromycin 500 mg twice daily for 5 days. His regular repeat medications are ramipril 10 mg daily, amlodipine 5 mg daily, and atorvastatin 40 mg nightly. What medication adjustment must be made when issuing this prescription?",
         "options": [
-            "Lithium",
-            "Sodium valproate",
-            "Lamotrigine",
-            "Quetiapine",
-            "Olanzapine"
+            "Temporarily withhold atorvastatin while he is taking clarithromycin to prevent myopathy and rhabdomyolysis",
+            "Temporarily withhold ramipril to prevent acute hyperkalaemia",
+            "Double the dose of atorvastatin to 80 mg nightly due to enzyme induction",
+            "Switch amlodipine to verapamil for the duration of antibiotic therapy",
+            "No adjustment is needed as atorvastatin is excreted unchanged by the kidneys"
         ],
-        "correct_answer": "Lithium",
-        "explanation": "A coarse tremor, ataxia, hyperreflexia, and altered mental status are hallmark signs of lithium toxicity. While a fine postural tremor is a common benign therapeutic side effect, the emergence of a coarse tremor alongside cerebellar or neurological signs signals dangerously elevated serum lithium levels (>1.5–2.0 mmol/L). Volume depletion (from gastroenteritis, ACE inhibitors, NSAIDs, or thiazide diuretics) reduces renal lithium clearance, triggering toxicity. Management includes aggressive IV 0.9% saline rehydration, with hemodialysis indicated for severe toxicity."
+        "correct_answer": "Temporarily withhold atorvastatin while he is taking clarithromycin to prevent myopathy and rhabdomyolysis",
+        "explanation": "Macrolide antibiotics—specifically clarithromycin and erythromycin—are potent inhibitors of the hepatic cytochrome P450 3A4 (CYP3A4) isoenzyme and organic anion-transporting polypeptide (OATP1B1). Because simvastatin and atorvastatin are extensively metabolised by CYP3A4, co-administration with clarithromycin markedly elevates plasma statin concentrations and can precipitate severe myopathy and acute rhabdomyolysis. BNF guidance states that simvastatin or atorvastatin should be temporarily paused during a short course of clarithromycin."
     },
     {
         "type": "sba",
         "category": "Pharmacology",
-        "scenario": "A 30-year-old woman with epilepsy presents for a routine check. On examination, you note significant overgrowth of her gums. She also has coarse facial features and mild hirsutism. Which anti-epileptic drug is the likely cause?",
+        "scenario": "A 59-year-old man who takes sertraline 100 mg daily for generalised anxiety disorder attends his GP with an acute flare of knee osteoarthritis. Topical NSAIDs have been ineffective, and you decide to prescribe a short course of oral naproxen alongside gastroprotection with lansoprazole. By what pharmacological mechanism do SSRIs like sertraline substantially increase the risk of upper gastrointestinal bleeding when combined with NSAIDs?",
         "options": [
-            "Phenytoin",
-            "Carbamazepine",
-            "Levetiracetam",
-            "Sodium valproate",
-            "Ethosuximide"
+            "SSRIs inhibit serotonin reuptake into platelets, depleting platelet serotonin stores required for aggregation",
+            "SSRIs directly stimulate parietal cell H+/K+-ATPase pumps to double gastric acid output",
+            "SSRIs inhibit hepatic cyclooxygenase-1 (COX-1), blocking prostaglandin E2 synthesis",
+            "SSRIs displace naproxen from plasma albumin, causing direct mucosal chemical burns",
+            "SSRIs impair hepatic synthesis of vitamin K-dependent clotting factors II, VII, IX, and X"
         ],
-        "correct_answer": "Phenytoin",
-        "explanation": "Gingival hypertrophy (overgrowth of the gums), coarsening of facial features, acne, and hirsutism are well-documented long-term adverse effects of chronic phenytoin therapy. Gingival hyperplasia occurs in up to 50% of patients due to drug-induced alteration of collagen catabolism by gingival fibroblasts; strict oral hygiene and chlorhexidine rinses can limit severity. In acute toxicity, nystagmus, ataxia, and dysarthria predominate."
+        "correct_answer": "SSRIs inhibit serotonin reuptake into platelets, depleting platelet serotonin stores required for aggregation",
+        "explanation": "Platelets cannot synthesise serotonin (5-HT) endogenously and rely entirely on the serotonin transporter (SERT) to take up serotonin from the bloodstream. When vascular injury occurs, platelets release stored serotonin to promote vasoconstriction and amplify ADP-induced platelet aggregation. SSRIs block platelet SERT, depleting intraplatelet serotonin and impairing primary haemostasis. When combined with NSAID-induced gastric mucosal injury, the relative risk of upper GI bleeding increases synergistically (up to 6- to 10-fold), mandating co-prescription of a proton pump inhibitor."
     },
     {
         "type": "sba",
         "category": "Pharmacology",
-        "scenario": "A 65-year-old man presents with worsening breathlessness. He has a history of ventricular arrhythmias. Examination reveals a slate-grey discoloration of his skin in sun-exposed areas. A slit-lamp eye examination shows corneal microdeposits. Which medication is he taking?",
+        "scenario": "A 52-year-old woman with bipolar I disorder has been stable on lithium carbonate for 6 years, with consistent 12-hour trough serum lithium levels around 0.7 mmol/L. Two weeks ago, she was started on bendroflumethiazide 2.5 mg daily for hypertension. She now presents to the Emergency Department with nausea, a coarse hand tremor, dysarthria, and ataxia, and her serum lithium level is 2.1 mmol/L. How did bendroflumethiazide precipitate lithium toxicity?",
         "options": [
-            "Amiodarone",
-            "Sotalol",
-            "Diltiazem",
-            "Mexiletine",
-            "Propafenone"
+            "Distal convoluted tubule sodium depletion triggers a compensatory increase in proximal tubular reabsorption of both sodium and lithium",
+            "Thiazide diuretics inhibit hepatic glucuronidation of lithium carbonate",
+            "Hypokalaemia increases the blood-brain barrier permeability to lithium ions",
+            "Thiazides directly compete with lithium for active secretion in the collecting duct",
+            "Metabolic alkalosis converts ionised lithium into lipid-soluble non-ionised lithium"
         ],
-        "correct_answer": "Amiodarone",
-        "explanation": "Slate-grey or blue-grey skin pigmentation (ceruloderma) on sun-exposed surfaces, asymptomatic corneal microdeposits (cornea verticillata), and pulmonary toxicity (pulmonary fibrosis/organising pneumonia) are distinctive adverse effects of long-term amiodarone therapy. Because of its high iodine content and extensive tissue accumulation, baseline and regular monitoring of pulmonary function, thyroid status (hypo- or hyperthyroidism), and liver enzymes is mandatory."
+        "correct_answer": "Distal convoluted tubule sodium depletion triggers a compensatory increase in proximal tubular reabsorption of both sodium and lithium",
+        "explanation": "Lithium is a monovalent cation handled by the kidneys in the same way as sodium: approximately 70–80% of filtered lithium is reabsorbed in the proximal convoluted tubule alongside sodium. When a thiazide diuretic inhibits the Na+/Cl- cotransporter in the distal convoluted tubule, the resulting mild extracellular volume and sodium depletion stimulates a compensatory increase in proximal tubular sodium (and therefore lithium) reabsorption, reducing renal lithium clearance by 25–40% and rapidly precipitating toxicity."
     },
     {
         "type": "sba",
         "category": "Pharmacology",
-        "scenario": "A 55-year-old diabetic man is started on a new antihypertensive medication. Two weeks later, he develops a persistent, dry, tickly cough that is worse at night. What is the mechanism behind this side effect?",
+        "scenario": "A 67-year-old man with type 2 diabetes and hypertension telephones the GP surgery with a 36-hour history of profuse watery diarrhoea and vomiting. He is unable to keep fluids down. His regular medications are metformin, ramipril, and atorvastatin. You advise him to temporarily withhold ramipril and metformin ('sick day rules'). What specific life-threatening metabolic complication is prevented by suspending metformin during acute dehydration?",
         "options": [
-            "Accumulation of bradykinin",
-            "Inhibition of angiotensin II type 1 receptors",
-            "Direct histamine release",
-            "Excessive aldosterone degradation",
-            "Bronchoconstriction via beta-2 antagonism"
+            "Lactic acidosis",
+            "Hyperosmolar hyperglycaemic state (HHS)",
+            "Severe hypoglycaemic coma",
+            "Syndrome of inappropriate ADH secretion (SIADH)",
+            "Acute hepatic necrosis"
         ],
-        "correct_answer": "Accumulation of bradykinin",
-        "explanation": "A persistent, non-productive nocturnal cough is a well-recognised class effect of Angiotensin-Converting Enzyme (ACE) inhibitors, affecting roughly 10–15% of patients. ACE (kininase II) is responsible for hydrolysing bradykinin and substance P in the respiratory tract. When ACE is inhibited, circulating and tissue levels of bradykinin accumulate, irritating pulmonary C-fibres and provoking cough. The cough typically resolves within 1 to 4 weeks of switching the patient to an Angiotensin Receptor Blocker (ARB), which does not affect bradykinin metabolism."
+        "correct_answer": "Lactic acidosis",
+        "explanation": "Metformin reduces hepatic gluconeogenesis (including conversion of lactate to glucose) and is excreted unchanged by the kidneys. During acute dehydrating illnesses (gastroenteritis, sepsis, or acute kidney injury), reduced renal perfusion causes metformin to accumulate in plasma, while tissue hypoperfusion increases anaerobic lactate production—precipitating life-threatening metformin-associated lactic acidosis (MALA). Under 'sick day rules', patients must temporarily pause metformin (and ACE inhibitors/ARBs, diuretics, and SGLT2 inhibitors) until they are eating and drinking normally for 24–48 hours."
     },
 
     # =========================================================================
@@ -604,72 +604,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Psychiatry / Neurology",
-        "scenario": "A 35-year-old man presents with ascending, symmetrical, flaccid weakness of his legs that developed over 3 days, following a Campylobacter jejuni gastroenteritis. A lumbar puncture is performed. What is the classic cerebrospinal fluid (CSF) finding?",
+        "scenario": "A 74-year-old man is brought to the neurology clinic by his daughter with a 9-month history of progressive difficulty walking, urinary urgency with episodes of incontinence, and slowed thinking and forgetfulness. On examination, he has a broad-based, shuffling 'magnetic' gait where his feet appear stuck to the floor on initiating movement, but there is no resting tremor and upper limb tone is normal. CT head demonstrates marked enlargement of the lateral and third ventricles out of proportion to cortical sulcal atrophy. What is the definitive surgical treatment?",
         "options": [
-            "Albuminocytologic dissociation",
-            "Marked lymphocytic pleocytosis",
-            "Significantly decreased glucose with high neutrophils",
-            "Normal protein and elevated red blood cells",
-            "Oligoclonal bands with low protein"
+            "Ventriculoperitoneal (VP) shunt insertion",
+            "Deep brain stimulation of the subthalamic nucleus",
+            "Bilateral decompressive craniectomy",
+            "Endoscopic third ventriculostomy for aqueductal stenosis",
+            "Carotid endarterectomy"
         ],
-        "correct_answer": "Albuminocytologic dissociation",
-        "explanation": "Albuminocytological dissociation—characterized by a markedly elevated CSF protein concentration (>0.55 g/L) in the presence of a normal cerebrospinal fluid white cell count (<10 cells/uL)—is a defining diagnostic hallmark of Guillain-Barré syndrome (GBS). This dissociation reflects severe immune-mediated inflammation and demyelination of the spinal nerve roots without intrathecal cellular infiltration. Treatment involves intravenous immunoglobulin (IVIG) or plasma exchange, alongside close spirometric monitoring of forced vital capacity (FVC)."
+        "correct_answer": "Ventriculoperitoneal (VP) shunt insertion",
+        "explanation": "The clinical triad of gait apraxia ('magnetic' shuffling gait—typically the earliest feature), urinary urgency/incontinence, and subcortical cognitive decline ('wet, wobbly, and wacky'), combined with ventriculomegaly disproportionate to cerebral sulcal atrophy on neuroimaging, is characteristic of Normal Pressure Hydrocephalus (NPH). Unlike Alzheimer's or Parkinson's dementia, NPH is a potentially reversible cause of cognitive and motor decline; following a positive high-volume CSF tap test (lumbar puncture drainage trial), definitive treatment is ventriculoperitoneal (VP) shunting."
     },
     {
         "type": "sba",
         "category": "Psychiatry / Neurology",
-        "scenario": "A 28-year-old woman presents with sudden unilateral visual loss and pain on eye movement. She had a similar episode of right leg weakness 2 years ago that resolved. A lumbar puncture and serum protein electrophoresis are performed. Which finding on cerebrospinal fluid (CSF) analysis supports this diagnosis?",
+        "scenario": "A 28-year-old man taking fluoxetine 40 mg daily for depression attends the Emergency Department 6 hours after taking several doses of tramadol for acute back pain alongside an over-the-counter dextromethorphan cough suppressant. He is agitated, restless, and profusely sweaty. His temperature is 38.9°C, heart rate is 132 bpm, and blood pressure is 164/98 mmHg. Neurological examination reveals dilated pupils, marked lower-limb hyperreflexia, and inducible bilateral ankle clonus. What is the diagnosis?",
         "options": [
-            "Oligoclonal bands in CSF but not in serum",
-            "Elevated opening pressure only",
-            "Marked neutrophilic pleocytosis",
-            "Markedly low CSF glucose",
-            "Normal protein and normal white cell count"
+            "Serotonin syndrome",
+            "Neuroleptic malignant syndrome",
+            "Anticholinergic toxidrome",
+            "Malignant hyperthermia",
+            "Opioid overdose"
         ],
-        "correct_answer": "Oligoclonal bands in CSF but not in serum",
-        "explanation": "The detection of two or more unique IgG oligoclonal bands in the CSF that are absent in matched paired serum samples demonstrates intrathecal immunoglobin synthesis, serving as a key supportive diagnostic feature of Multiple Sclerosis (under the McDonald criteria). The clinical history of optic neuritis and previous resolved myelopathy demonstrates neurological lesions disseminated in both time and space. Brain MRI with gadolinium contrast remains the primary investigation to assess for active and prior demyelinating plaques."
+        "correct_answer": "Serotonin syndrome",
+        "explanation": "Both tramadol and dextromethorphan inhibit serotonin reuptake; combining them with an SSRI (fluoxetine) precipitates acute serotonin toxicity (serotonin syndrome). It is distinguished from neuroleptic malignant syndrome (NMS) by its rapid onset (within hours rather than days) and its classic neuromuscular signs: hyperreflexia, myoclonus, and inducible/spontaneous clonus (typically more pronounced in the lower limbs), alongside autonomic instability and agitation. In contrast, NMS (triggered by dopamine antagonists) features 'lead-pipe' muscular rigidity and hyporeflexia."
     },
     {
         "type": "sba",
         "category": "Psychiatry / Neurology",
-        "scenario": "An autopsy is performed on a 75-year-old man who had a history of resting tremor, rigidity, bradykinesia, and visual hallucinations. Histology of the substantia nigra reveals eosinophilic intracytoplasmic inclusions within neurons. What are these inclusions called?",
+        "scenario": "A 73-year-old woman presents to her GP with a 10-day history of a throbbing right temporal headache, scalp tenderness when brushing her hair, and aching in her jaw muscles when chewing meat. This morning she experienced two 15-minute episodes of painless complete loss of vision in her right eye (amaurosis fugax). On examination, the right superficial temporal artery is thickened, tender, and non-pulsatile. What is the most appropriate immediate management?",
         "options": [
-            "Lewy bodies",
-            "Neurofibrillary tangles",
-            "Pick bodies",
-            "Hirano bodies",
-            "Bunina bodies"
+            "Same-day emergency ophthalmology referral for intravenous methylprednisolone (giving 60 mg oral prednisolone immediately if there is any delay)",
+            "Start oral prednisolone 15 mg daily and arrange a routine temporal artery ultrasound within 2 weeks",
+            "Start oral aspirin 300 mg only and refer to the TIA clinic within 7 days",
+            "Withhold corticosteroids until a temporal artery biopsy has been performed to avoid false-negative histology",
+            "Prescribe oral sumatriptan 50 mg and review in 48 hours"
         ],
-        "correct_answer": "Lewy bodies",
-        "explanation": "Lewy bodies are round, eosinophilic, concentric intracytoplasmic inclusion bodies with a halo, composed predominantly of abnormally aggregated, misfolded alpha-synuclein protein. They represent the primary histological hallmark of both Parkinson's disease (where loss of dopaminergic neurons in the substantia nigra pars compacta is prominent) and Dementia with Lewy Bodies (DLB), where widespread cortical Lewy bodies cause fluctuating cognition, Parkinsonism, and early visual hallucinations."
+        "correct_answer": "Same-day emergency ophthalmology referral for intravenous methylprednisolone (giving 60 mg oral prednisolone immediately if there is any delay)",
+        "explanation": "Jaw claudication, scalp tenderness, and a tender non-pulsatile temporal artery in a patient aged >50 years indicate giant cell (temporal) arteritis (GCA). Transient monocular visual loss (amaurosis fugax) or diplopia is a critical warning sign of impending irreversible anterior ischaemic optic neuropathy (permanent blindness). While uncomplicated GCA is treated with oral prednisolone 40–60 mg daily, GCA WITH visual symptoms requires immediate same-day ophthalmology assessment for pulsed intravenous methylprednisolone (500 mg–1 g daily for 3 days), giving 60 mg oral prednisolone immediately before transfer if there is any delay."
     },
     {
         "type": "sba",
         "category": "Psychiatry / Neurology",
-        "scenario": "A 45-year-old patient with severe depression is admitted to the psychiatric ward. They are mute, immobile, and hold unusual, awkward postures for hours without showing fatigue. When the doctor lifts the patient's arm, it remains exactly where it was placed. What is this sign called?",
+        "scenario": "A 68-year-old man presents to the Emergency Department with left-sided arm and leg weakness that began 10 hours ago. Non-contrast CT head excludes intracerebral haemorrhage and confirms an acute right middle cerebral artery ischaemic stroke. He is outside the window for intravenous thrombolysis and mechanical thrombectomy. His 12-lead ECG and 24-hour telemetry show normal sinus rhythm. According to NICE guidelines, what is the standard antiplatelet regimen for acute management followed by long-term secondary prevention?",
         "options": [
-            "Waxy flexibility (Catalepsy)",
-            "Gegenhalten (Paratonia)",
-            "Cogwheel rigidity",
-            "Lead-pipe rigidity",
-            "Mitgehen"
+            "Aspirin 300 mg daily for 14 days, followed by clopidogrel 75 mg daily long-term",
+            "Clopidogrel 75 mg daily immediately without initial aspirin",
+            "Aspirin 75 mg daily plus dipyridamole 200 mg twice daily indefinitely",
+            "Apixaban 5 mg twice daily started immediately",
+            "Dual antiplatelet therapy with aspirin 75 mg and ticagrelor 90 mg twice daily for 12 months"
         ],
-        "correct_answer": "Waxy flexibility (Catalepsy)",
-        "explanation": "Waxy flexibility (flexibilitas cerea) is a classic motor sign of catatonia, characterized by initial slight resistance when moving the patient's limbs followed by the patient remaining in whatever position or posture they have been placed in, akin to bending a wax candle. Catatonia can occur in schizophrenia, severe affective disorders (depression or mania), and medical conditions (such as encephalitis). First-line pharmacological management is intravenous or oral lorazepam, with electroconvulsive therapy (ECT) indicated for refractory or malignant cases."
+        "correct_answer": "Aspirin 300 mg daily for 14 days, followed by clopidogrel 75 mg daily long-term",
+        "explanation": "Under NICE NG128 guidelines for acute ischaemic stroke (once intracerebral haemorrhage has been excluded by neuroimaging), patients who do not have atrial fibrillation are given aspirin 300 mg daily (orally or rectally/via NG tube if dysphagic, alongside a PPI) as soon as possible and continued for 14 days. After 14 days (or on hospital discharge if earlier), they are switched to long-term clopidogrel 75 mg once daily monotherapy as first-line secondary prevention."
     },
     {
         "type": "sba",
         "category": "Psychiatry / Neurology",
-        "scenario": "A patient dies from progressive encephalitis characterized by hydrophobia, hypersalivation, and pharyngeal spasms after an animal bite in a developing country. Brain biopsy shows eosinophilic cytoplasmic inclusions in the Purkinje cells of the cerebellum and hippocampal neurons. What are they?",
+        "scenario": "A 61-year-old man who suffered an acute anterior ST-elevation myocardial infarction 6 weeks ago attends his GP with a 1-month history of persistent low mood, anhedonia, feelings of worthlessness, and early morning wakening. Following discussion, he wishes to start an antidepressant alongside cognitive behavioural therapy. Which antidepressant is the safest first-line pharmacological choice in a patient with a recent myocardial infarction?",
         "options": [
-            "Negri bodies",
-            "Cowdry A inclusions",
-            "Guarnieri bodies",
-            "Babes-Ernst granules",
-            "Councilman bodies"
+            "Sertraline",
+            "Citalopram",
+            "Amitriptyline",
+            "Venlafaxine",
+            "Phenelzine"
         ],
-        "correct_answer": "Negri bodies",
-        "explanation": "Negri bodies are sharply defined, eosinophilic, round or oval intracytoplasmic viral inclusion bodies found within the Purkinje cells of the cerebellum and pyramidal cells of the hippocampus. Their histological presence confirms rabies virus encephalitis (a Lyssavirus). Rabies causes a fatal encephalomyelitis characterized by aerophobia, hydrophobia (violent laryngeal spasms when attempting to swallow liquids), and autonomic instability, emphasizing the necessity of prompt post-exposure prophylaxis (rabies vaccine and rabies immunoglobulin) prior to symptom onset."
+        "correct_answer": "Sertraline",
+        "explanation": "Sertraline is the first-line SSRI of choice in patients with recent myocardial infarction or unstable angina, supported by randomised trial evidence (SADHART) demonstrating cardiac safety without pro-arrhythmic effects. In contrast, citalopram and escitalopram cause dose-dependent QT-interval prolongation (predisposing to torsades de pointes), tricyclic antidepressants (amitriptyline, dosulepin) are cardiotoxic and pro-arrhythmic via sodium channel blockade, and venlafaxine can exacerbate hypertension and tachycardia."
     },
 
     # =========================================================================
@@ -678,72 +678,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Renal / Urology",
-        "scenario": "A 60-year-old man undergoes major abdominal surgery complicated by severe hypotension. Three days later, his creatinine rises from 80 to 450 umol/L. Urine microscopy is performed. Which characteristic finding on urine microscopy confirms Acute Tubular Necrosis (ATN)?",
+        "scenario": "A 66-year-old man with hypertension and type 2 diabetes is started on ramipril 2.5 mg once daily. Baseline blood tests prior to starting treatment showed: Na+ 139 mmol/L, K+ 4.4 mmol/L, creatinine 100 umol/L, and eGFR 68 mL/min/1.73m². Repeat renal profile 2 weeks after starting ramipril shows: Na+ 138 mmol/L, K+ 4.8 mmol/L, creatinine 118 umol/L, and eGFR 56 mL/min/1.73m². His blood pressure has improved to 134/80 mmHg. According to NICE guidelines, what is the most appropriate action?",
         "options": [
-            "Muddy brown casts",
-            "Hyaline casts",
-            "Broad waxy casts",
-            "White blood cell casts",
-            "Fatty casts"
+            "Continue ramipril at the current dose and recheck renal function and potassium in 1–2 weeks",
+            "Stop ramipril immediately and refer urgently for CT renal angiography to exclude renal artery stenosis",
+            "Switch ramipril to losartan 50 mg daily as ARBs do not affect glomerular filtration rate",
+            "Add oral sodium zirconium cyclosilicate to lower his potassium below 4.5 mmol/L",
+            "Halve the ramipril dose and start furosemide 40 mg daily"
         ],
-        "correct_answer": "Muddy brown casts",
-        "explanation": "'Muddy brown' coarse granular casts (composed of sloughed, necrotic tubular epithelial cells and Tamm-Horsfall mucoprotein) in the urinary sediment are a diagnostic hallmark of Acute Tubular Necrosis (ATN). ATN is the most frequent intrinsic cause of acute kidney injury in hospitalized patients, typically resulting from prolonged renal hypoperfusion (ischaemic ATN) or nephrotoxic agents like aminoglycosides, radiocontrast, or NSAIDs."
+        "correct_answer": "Continue ramipril at the current dose and recheck renal function and potassium in 1–2 weeks",
+        "explanation": "ACE inhibitors and ARBs dilate the glomerular efferent arteriole, reducing intraglomerular filtration pressure. Consequently, a modest rise in serum creatinine of up to 30% from baseline (here it rose from 100 to 118 umol/L, an 18% increase) or a fall in eGFR of up to 25% (here an 18% decrease), along with a modest rise in potassium (provided K+ remains <5.5 mmol/L), is an expected physiological effect and actually predicts long-term renoprotection. NICE guidelines advise continuing the ACE inhibitor unless serum creatinine rises by >30%, eGFR falls by >25%, or K+ reaches >=5.5–6.0 mmol/L."
     },
     {
         "type": "sba",
         "category": "Renal / Urology",
-        "scenario": "A 25-year-old man presents with macroscopic haematuria and hypertension 2 weeks after a severe sore throat. Urine microscopy reveals distorted erythrocytes and cylindrical structures. Which type of urinary casts is characteristic of acute glomerulonephritis (nephritic syndrome)?",
+        "scenario": "A 15-year-old boy is brought to the Emergency Department with a 2-hour history of sudden-onset, severe right-sided scrotal and lower abdominal pain accompanied by two episodes of vomiting. On examination, he is afebrile, the right hemiscrotum is erythematous and swollen, the right testis lies high and transversely ('bell-clapper' position), and the right cremasteric reflex is absent. Urine dipstick is completely negative. What is the single most appropriate immediate action?",
         "options": [
-            "Red blood cell casts",
-            "Muddy brown casts",
-            "White blood cell casts",
-            "Hyaline casts",
-            "Eosinophil casts"
+            "Immediate surgical referral for emergency scrotal exploration and bilateral orchidopexy",
+            "Request an urgent departmental Doppler ultrasound of the testes to confirm reduced blood flow",
+            "Administer intramuscular ceftriaxone and oral doxycycline for acute epididymo-orchitis",
+            "Attempt manual detorsion in the Emergency Department and discharge if pain improves",
+            "Arrange an urgent CT scan of the abdomen and pelvis to exclude a ureteric calculus"
         ],
-        "correct_answer": "Red blood cell casts",
-        "explanation": "Red blood cell (RBC) casts are formed when erythrocytes pass through a damaged glomerular basement membrane and become entrapped in a matrix of Tamm-Horsfall protein within the distal nephron. Finding RBC casts confirms intrinsic glomerular bleeding, strongly indicating an active proliferative glomerulonephritis (nephritic syndrome), such as post-streptococcal glomerulonephritis, IgA nephropathy, or ANCA-associated vasculitis."
+        "correct_answer": "Immediate surgical referral for emergency scrotal exploration and bilateral orchidopexy",
+        "explanation": "Sudden-onset severe scrotal/lower abdominal pain with nausea/vomiting, a high-riding transversely orientated testis, and an absent cremasteric reflex in an adolescent is acute testicular torsion until proven otherwise. Testicular viability drops precipitously after 6 hours of ischaemia. Clinical suspicion mandates immediate surgical scrotal exploration (with detorsion and bilateral orchidopexy, as the bell-clapper deformity is usually bilateral)—clinicians must NEVER delay theatre for a scrotal Doppler ultrasound."
     },
     {
         "type": "sba",
         "category": "Renal / Urology",
-        "scenario": "A 45-year-old woman with nephrotic syndrome undergoes a renal biopsy. Silver staining and electron microscopy show thickening of the glomerular basement membrane with subepithelial immune complex deposits, forming a characteristic 'spike and dome' appearance. What is the diagnosis?",
+        "scenario": "A 69-year-old man has been taking finasteride 5 mg daily and tamsulosin 400 mcg daily for the past 9 months for lower urinary tract symptoms secondary to benign prostatic hyperplasia. He attends his GP requesting a prostate-specific antigen (PSA) blood test after his older brother was diagnosed with prostate cancer. His serum PSA result returns at 2.8 ng/mL (laboratory age-specific upper limit of normal for a 60–69-year-old is 4.0 ng/mL). How should this result be interpreted and managed?",
         "options": [
-            "Membranous nephropathy",
-            "Minimal change disease",
-            "Focal segmental glomerulosclerosis",
-            "IgA nephropathy",
-            "Diabetic nephropathy"
+            "Finasteride halves serum PSA levels; his corrected PSA is approximately 5.6 ng/mL, warranting an urgent 2-week wait urology referral",
+            "Reassure him that his PSA of 2.8 ng/mL is well below the 4.0 ng/mL threshold and no further action is needed",
+            "Stop tamsulosin for 2 weeks and repeat the PSA test, as alpha-blockers falsely lower PSA",
+            "Treat empirically with a 4-week course of ciprofloxacin for subclinical prostatitis and repeat PSA",
+            "Reassure him that benign prostatic hyperplasia treatment completely prevents prostate adenocarcinoma"
         ],
-        "correct_answer": "Membranous nephropathy",
-        "explanation": "A 'spike and dome' pattern on silver staining and electron microscopy is the diagnostic hallmark of membranous nephropathy. The 'spikes' represent projections of newly formed glomerular basement membrane matrix protruding between subepithelial IgG and C3 immune complex deposits ('domes'). In approximately 70–80% of primary cases in adults, it is mediated by autoantibodies against the M-type phospholipase A2 receptor (anti-PLA2R); secondary causes include malignancies, hepatitis B, SLE, and medications."
+        "correct_answer": "Finasteride halves serum PSA levels; his corrected PSA is approximately 5.6 ng/mL, warranting an urgent 2-week wait urology referral",
+        "explanation": "5-alpha-reductase inhibitors (finasteride and dutasteride) block the conversion of testosterone to dihydrotestosterone (DHT), shrinking prostatic glandular tissue and reducing serum PSA concentrations by approximately 50% after 6 months of treatment. Therefore, when interpreting a PSA level in a patient taking finasteride or dutasteride for >=6 months, the measured PSA value must be DOUBLED (2.8 x 2 = 5.6 ng/mL). Because his corrected PSA of 5.6 ng/mL exceeds the age-specific threshold of 4.0 ng/mL, an urgent 2-week wait referral for suspected prostate cancer is required."
     },
     {
         "type": "sba",
         "category": "Renal / Urology",
-        "scenario": "A 30-year-old man with Hepatitis C presents with mixed nephritic/nephrotic syndrome. A renal biopsy shows mesangial interposition into the capillary wall, causing a 'tram-track' or double-contour appearance of the glomerular basement membrane on light microscopy. What is the diagnosis?",
+        "scenario": "A 39-year-old man presents to the Emergency Department with a 3-hour history of sudden-onset, excruciating left loin-to-groin pain that comes in waves. He is restless and pacing the cubicle. His temperature is 36.7°C, heart rate is 92 bpm, blood pressure is 138/84 mmHg, and eGFR is >90 mL/min/1.73m². Urine dipstick shows +++ blood and is negative for nitrites and leucocytes. According to NICE guidelines, what is the first-line analgesia and gold-standard diagnostic imaging?",
         "options": [
-            "Membranoproliferative glomerulonephritis (MPGN)",
+            "An NSAID (by any route) for analgesia, and a low-dose non-contrast CT KUB within 24 hours",
+            "Intravenous morphine as first-line analgesia, and an intravenous urogram (IVU)",
+            "Oral tamsulosin for immediate pain relief, and a plain abdominal radiograph (KUB X-ray)",
+            "Oral codeine phosphate, and a renal tract ultrasound within 72 hours",
+            "Intravenous paracetamol only, and a contrast-enhanced CT abdomen and pelvis"
+        ],
+        "correct_answer": "An NSAID (by any route) for analgesia, and a low-dose non-contrast CT KUB within 24 hours",
+        "explanation": "NICE NG118 guidelines on renal and ureteric stones recommend offering an NSAID (such as intramuscular/rectal diclofenac, IV ketorolac, or oral ibuprofen) by any route as first-line analgesia for suspected renal colic, as NSAIDs directly inhibit prostaglandin-mediated afferent arteriolar vasodilatation and ureteric smooth muscle spasm, providing superior pain relief to opioids. The gold-standard diagnostic imaging for non-pregnant adults is an urgent low-dose non-contrast CT of the kidneys, ureters, and bladder (CT KUB) performed within 24 hours (sensitivity and specificity >95%)."
+    },
+    {
+        "type": "sba",
+        "category": "Renal / Urology",
+        "scenario": "A 22-year-old man presents to his GP after noticing painless, frank red/cola-coloured urine this morning. He developed a viral sore throat and coryza 36 hours ago. He reports having had a similar 2-day episode of dark urine during a cold 18 months ago that resolved spontaneously. On examination, his blood pressure is 124/76 mmHg and there is no peripheral oedema. Serum creatinine is 82 umol/L and complement C3 and C4 levels are normal. What is the most likely diagnosis?",
+        "options": [
+            "IgA nephropathy (Berger's disease)",
             "Post-streptococcal glomerulonephritis",
-            "Alport syndrome",
-            "Rapidly progressive glomerulonephritis",
-            "Lupus nephritis class IV"
+            "Minimal change disease",
+            "Goodpasture's syndrome (anti-GBM disease)",
+            "Alport syndrome"
         ],
-        "correct_answer": "Membranoproliferative glomerulonephritis (MPGN)",
-        "explanation": "A 'tram-track' (or double-contour) appearance on light microscopy—caused by mesangial cell proliferation and matrix interposition splitting the glomerular capillary basement membrane—is the classic histological signature of membranoproliferative glomerulonephritis (MPGN). It frequently presents as a combined nephritic and nephrotic syndrome with low complement levels, and is strongly associated with chronic hepatitis C virus infection and cryoglobulinaemia."
-    },
-    {
-        "type": "sba",
-        "category": "Renal / Urology",
-        "scenario": "A 65-year-old man with a 25-year history of poorly controlled type 2 diabetes presents with proteinuria. A renal biopsy reveals nodular glomerulosclerosis with eosinophilic nodules at the periphery of the glomerulus. What are these classic nodules called?",
-        "options": [
-            "Kimmelstiel-Wilson nodules",
-            "Aschoff bodies",
-            "Mallory-Denk bodies",
-            "Psammoma bodies",
-            "Ferruginous bodies"
-        ],
-        "correct_answer": "Kimmelstiel-Wilson nodules",
-        "explanation": "Kimmelstiel-Wilson nodules (intercapillary glomerulosclerosis) are rounded, acellular, eosinophilic PAS-positive nodules formed within the mesangium of the renal glomeruli. They represent advanced, irreversible diabetic nephropathy (diabetic glomerulosclerosis). Early diabetic renal disease begins with glomerular hyperfiltration and microalbuminuria; finding Kimmelstiel-Wilson nodules signifies severe chronic microvascular damage, typically accompanied by diabetic retinopathy."
+        "correct_answer": "IgA nephropathy (Berger's disease)",
+        "explanation": "Recurrent painless macroscopic haematuria occurring within 24–72 hours of a mucosal viral upper respiratory or gastrointestinal infection ('synpharyngitic haematuria') in a young adult with normal serum complement levels is the classic presentation of IgA nephropathy (Berger's disease), the commonest primary glomerulonephritis worldwide. This timing distinguishes it from post-streptococcal glomerulonephritis, which presents after a latent period of 1 to 3 weeks following a streptococcal throat or skin infection and features low serum C3 levels."
     },
 
     # =========================================================================
@@ -752,72 +752,72 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Reproductive / Obstetrics & Gynaecology",
-        "scenario": "A 28-year-old pregnant woman presents at 10 weeks gestation with severe hyperemesis, a uterus large for dates, and vaginal bleeding. Transvaginal ultrasound demonstrates a heterogeneous mass with multiple cystic spaces, and an absence of fetal parts. What is the classic term for this ultrasound appearance?",
+        "scenario": "A 26-year-old woman attends a sexual health clinic requesting emergency contraception 84 hours (3.5 days) after an episode of unprotected sexual intercourse on day 11 of her regular 28-day menstrual cycle. She is counselled that the copper intrauterine device (Cu-IUD) is the most effective method overall, but she declines an intrauterine procedure and requests an oral tablet. She has no medical conditions and takes no regular medications. Which oral emergency contraceptive is indicated?",
         "options": [
-            "Snowstorm appearance",
-            "Ground glass appearance",
-            "Wheel spoke pattern",
-            "Honeycomb pattern",
-            "Whirlpool sign"
+            "Ulipristal acetate 30 mg single oral dose",
+            "Levonorgestrel 1.5 mg single oral dose",
+            "Levonorgestrel 3 mg double oral dose",
+            "Oral mifepristone 200 mg followed by misoprostol",
+            "Desogestrel 75 mcg daily started immediately"
         ],
-        "correct_answer": "Snowstorm appearance",
-        "explanation": "A 'snowstorm' (or 'granular') ultrasound appearance—featuring an enlarged uterine cavity filled with a heterogeneous, echogenic mass and numerous small cystic vesicles without an identifiable fetus or amniotic sac—is characteristic of a complete hydatidiform mole. This molar pregnancy results from fertilization of an enucleated ovum by one or two sperm (typically 46,XX diploid). Serum beta-hCG levels are markedly elevated, accounting for prominent theca lutein cysts and pronounced hyperemesis gravidarum. Treatment is suction evacuation followed by serial hCG monitoring."
+        "correct_answer": "Ulipristal acetate 30 mg single oral dose",
+        "explanation": "While the copper IUD is the most effective emergency contraceptive (effective up to 5 days after UPSI or up to 5 days after the earliest estimated date of ovulation), if a woman declines a Cu-IUD at 84 hours (3.5 days) post-UPSI, ulipristal acetate (ellaOne 30 mg) is the only licensed and effective oral option. Levonorgestrel (Levonelle) is licensed only up to 72 hours (3 days) post-UPSI and cannot inhibit ovulation once the luteinising hormone (LH) surge has begun, whereas ulipristal acetate (a selective progesterone receptor modulator) remains effective up to 120 hours (5 days) and works even up to the peak of the LH surge."
     },
     {
         "type": "sba",
         "category": "Reproductive / Obstetrics & Gynaecology",
-        "scenario": "A 32-year-old woman presents with severe secondary dysmenorrhoea and deep dyspareunia. A laparoscopy is performed, revealing an ovarian cyst filled with thick, dark, old blood. What is the common clinical term for this finding in endometriosis?",
+        "scenario": "A 41-year-old woman in her first pregnancy attends her booking midwife appointment at 10 weeks gestation. Her booking blood pressure is 120/74 mmHg, her BMI is 36 kg/m², and urine dipstick is negative for protein. She has no past medical history of chronic hypertension, diabetes, or renal disease. According to NICE guidelines on hypertension in pregnancy, what prophylactic medication should be advised?",
         "options": [
-            "Chocolate cyst",
-            "Dermoid cyst",
-            "Corpus luteum cyst",
-            "Theca lutein cyst",
-            "Simple follicular cyst"
+            "Oral aspirin 75–150 mg once daily from 12 weeks gestation until birth",
+            "Oral labetalol 100 mg twice daily starting immediately",
+            "High-dose folic acid 5 mg daily until 36 weeks gestation only",
+            "Subcutaneous enoxaparin 40 mg daily from 28 weeks gestation only",
+            "No pharmacological prophylaxis is required as her booking blood pressure is normal"
         ],
-        "correct_answer": "Chocolate cyst",
-        "explanation": "An ovarian endometrioma is colloquially termed a 'chocolate cyst' because repeated cyclic haemorrhage from ectopic endometrial glandular tissue inside the ovary produces thick, dark, syrupy fluid resembling melted chocolate. Endometriomas are strongly indicative of moderate-to-severe endometriosis. Definitive diagnosis requires laparoscopy, and management encompasses hormonal suppression (e.g. combined oral contraceptives, progestogens, or GnRH analogues) or laparoscopic cystectomy to alleviate dysmenorrhoea and preserve fertility."
+        "correct_answer": "Oral aspirin 75–150 mg once daily from 12 weeks gestation until birth",
+        "explanation": "NICE NG133 guidelines recommend low-dose aspirin (75–150 mg once daily at night from 12 weeks gestation until birth) to reduce the risk of pre-eclampsia in women with EITHER 1 high risk factor (hypertensive disease in a previous pregnancy, CKD, autoimmune disease such as SLE/APS, type 1 or 2 diabetes, or chronic hypertension) OR >=2 moderate risk factors: (1) first pregnancy (nulliparity), (2) age >=40 years, (3) pregnancy interval >10 years, (4) BMI >=35 kg/m² at booking, (5) family history of pre-eclampsia, or (6) multiple pregnancy. This patient has three moderate risk factors (primigravida, age 41, BMI 36)."
     },
     {
         "type": "sba",
         "category": "Reproductive / Obstetrics & Gynaecology",
-        "scenario": "A 24-year-old woman presents with an offensive, thin, grey-white vaginal discharge. The pH is >4.5 and a 'whiff test' with potassium hydroxide produces a fishy odour. Microscopy of the discharge reveals vaginal squamous epithelial cells covered in bacteria, obscuring their borders. What are these cells called?",
+        "scenario": "A 29-year-old woman at 6 weeks gestation attends the Early Pregnancy Assessment Unit with mild left iliac fossa discomfort and light brownish vaginal spotting. She is haemodynamically stable (BP 118/72 mmHg, HR 70 bpm) and her abdomen is soft with no guarding or rebound tenderness. Transvaginal ultrasound shows an empty uterine cavity and an unruptured 22 mm left tubal ectopic pregnancy with no visible fetal heartbeat and no free pelvic fluid. Her serum beta-hCG is 1,150 IU/L. She wishes to avoid surgery if safe. Why is she eligible for systemic methotrexate therapy?",
         "options": [
-            "Clue cells",
-            "Koilocytes",
-            "Parabasal cells",
-            "Navicular cells",
-            "Donovan bodies"
+            "She is haemodynamically stable without significant pain, the unruptured adnexal mass is <35 mm with no fetal heartbeat, and serum beta-hCG is <1,500 IU/L",
+            "Methotrexate can be used in any ectopic pregnancy regardless of beta-hCG level provided there is no vaginal bleeding",
+            "Presence of a visible fetal heartbeat on ultrasound is required before methotrexate can target trophoblastic tissue",
+            "Systemic methotrexate is only offered when serum beta-hCG is above 5,000 IU/L and the mass is >40 mm",
+            "She is eligible only because the ectopic pregnancy is located in the left fallopian tube rather than the right"
         ],
-        "correct_answer": "Clue cells",
-        "explanation": "Clue cells are vaginal squamous epithelial cells whose borders are studded and obscured by adherent coccobacilli (predominantly Gardnerella vaginalis). Their presence on wet mount microscopy is a cornerstone of the Amsel criteria for diagnosing Bacterial Vaginosis (BV), which also requires three of: a homogeneous grey-white discharge, vaginal pH >4.5, and a positive amine 'whiff test' upon adding 10% KOH. BV represents a dysbiosis where protective hydrogen peroxide-producing lactobacilli are displaced by anaerobic overgrowth; oral metronidazole is first-line treatment."
+        "correct_answer": "She is haemodynamically stable without significant pain, the unruptured adnexal mass is <35 mm with no fetal heartbeat, and serum beta-hCG is <1,500 IU/L",
+        "explanation": "Under NICE NG126 guidelines, systemic single-dose intramuscular methotrexate is a safe first-line medical option for tubal ectopic pregnancy when all of the following criteria are met: no significant pain, unruptured tubal ectopic pregnancy with an adnexal mass smaller than 35 mm, no visible fetal heartbeat, serum beta-hCG <1,500 IU/L (or between 1,500 and 5,000 IU/L alongside surgical options), no intrauterine pregnancy, and the patient is able to attend for repeat beta-hCG monitoring on days 4 and 7."
     },
     {
         "type": "sba",
         "category": "Reproductive / Obstetrics & Gynaecology",
-        "scenario": "A 27-year-old woman presents with a frothy, yellow-green vaginal discharge and vulval itch. On speculum examination, the cervix has multiple punctate haemorrhages. What is this classic clinical sign called?",
+        "scenario": "A 49-year-old woman attends her GP with troublesome vasomotor symptoms (frequent hot flushes and drenching night sweats) that are severely affecting her sleep and work. Her menstrual periods have become irregular over the past year, and her last menstrual period was 4 months ago. She has an intact uterus and no history of breast cancer, venous thromboembolism, or cardiovascular disease. Which hormone replacement therapy (HRT) regimen is appropriate?",
         "options": [
-            "Strawberry cervix",
-            "Cobblestone cervix",
-            "Ectropion",
-            "Nabothian cyst",
-            "Cervical leukoplakia"
+            "Sequential (cyclical) combined HRT (oestrogen daily plus progestogen for 12–14 days per cycle)",
+            "Continuous combined HRT (oestrogen and progestogen taken every day without a break)",
+            "Unopposed transdermal oestradiol monotherapy",
+            "Topical vaginal oestriol cream alone",
+            "Oral tibolone started immediately"
         ],
-        "correct_answer": "Strawberry cervix",
-        "explanation": "A 'strawberry cervix' (colpitis macularis) describes punctate micro-haemorrhages scattered across the ectocervix, giving it the appearance of a ripe strawberry. It is a highly specific physical sign of Trichomonas vaginalis infection, an STI caused by a flagellated protozoan. Patients typically present with a copious, frothy, malodorous yellow-green discharge, dysuria, and vulval irritation. Both the patient and sexual partners should be treated with oral metronidazole."
+        "correct_answer": "Sequential (cyclical) combined HRT (oestrogen daily plus progestogen for 12–14 days per cycle)",
+        "explanation": "Choosing the right systemic HRT regimen depends on two key questions: (1) Does the patient have a uterus? Yes—so progestogen must be co-prescribed alongside oestrogen to prevent unopposed oestrogen-induced endometrial hyperplasia and adenocarcinoma. (2) Has it been >=12 months since her last menstrual period? No—her last period was 4 months ago (perimenopausal), so she must be prescribed sequential (cyclical) combined HRT, which produces a regular monthly withdrawal bleed. Starting continuous combined HRT (or tibolone) within 12 months of the last period causes erratic, unscheduled breakthrough bleeding."
     },
     {
         "type": "sba",
         "category": "Reproductive / Obstetrics & Gynaecology",
-        "scenario": "A 29-year-old woman presents with oligomenorrhoea, hirsutism, and infertility. A pelvic ultrasound shows enlarged ovaries with multiple small peripherally arranged follicles (typically 12 or more per ovary). What is the classic term for this ultrasound appearance?",
+        "scenario": "A 31-year-old woman at 9 weeks gestation presents to her GP with a 2-day history of dysuria and urinary frequency. She has no fever or loin pain. Urine dipstick is positive for nitrites and leucocytes. A midstream urine specimen is sent for culture and sensitivity, and a 7-day course of oral nitrofurantoin is prescribed. Why was trimethoprim avoided in this patient, and at what stage of pregnancy must nitrofurantoin itself be avoided?",
         "options": [
-            "String of pearls sign",
-            "Snowstorm sign",
-            "Cogwheel sign",
-            "Tip of the iceberg sign",
-            "Whirlpool sign"
+            "Trimethoprim is a folate antagonist (teratogenic in the 1st trimester); nitrofurantoin is avoided at term/3rd trimester due to the risk of neonatal haemolysis",
+            "Trimethoprim causes neonatal haemolysis in the 1st trimester; nitrofurantoin causes fetal neural tube defects in the 3rd trimester",
+            "Trimethoprim causes premature closure of the ductus arteriosus; nitrofurantoin causes congenital deafness",
+            "Trimethoprim stains fetal teeth yellow; nitrofurantoin causes maternal agranulocytosis at term",
+            "Both antibiotics are contraindicated throughout all three trimesters of pregnancy"
         ],
-        "correct_answer": "String of pearls sign",
-        "explanation": "The 'string of pearls' (or 'necklace') sign on pelvic ultrasound describes the peripheral distribution of 12 or more subcentimeter antral follicles (typically 2–9 mm in diameter) encircling an increased hyperechoic central ovarian stroma. This is the characteristic sonographic morphology of Polycystic Ovary Syndrome (PCOS). Under the Rotterdam diagnostic criteria, PCOS requires at least two of: oligo/anovulation, clinical or biochemical hyperandrogenism, and polycystic ovarian morphology on ultrasound."
+        "correct_answer": "Trimethoprim is a folate antagonist (teratogenic in the 1st trimester); nitrofurantoin is avoided at term/3rd trimester due to the risk of neonatal haemolysis",
+        "explanation": "All symptomatic UTIs and asymptomatic bacteriuria in pregnancy require a 7-day antibiotic course with urine culture. Trimethoprim inhibits dihydrofolate reductase (a folate antagonist) and is avoided in the first trimester due to the risk of neural tube defects and congenital malformations during organogenesis. Conversely, nitrofurantoin is safe in the first and second trimesters, but must be avoided at term (and in the late third trimester) because immature neonatal erythrocyte enzyme systems (glutathione instability) predispose the newborn to haemolytic anaemia and neonatal jaundice."
     },
 
     # =========================================================================
@@ -826,71 +826,71 @@ CLINICAL_QUESTIONS = [
     {
         "type": "sba",
         "category": "Respiratory",
-        "scenario": "A 60-year-old woman with chronic cough and copious purulent sputum production undergoes a high-resolution CT of the chest. It demonstrates dilated, thick-walled bronchi that are larger than their accompanying pulmonary artery. What is the classic term for this CT finding?",
+        "scenario": "A 24-year-old woman with asthma is brought to the Emergency Department with acute shortness of breath. She is unable to complete sentences in one breath. Her respiratory rate is 28 breaths/min, heart rate is 118 bpm, peak expiratory flow (PEF) is 38% of predicted, and SpO2 is 93% on supplemental oxygen. An arterial blood gas shows: pH 7.36, PaO2 9.6 kPa, PaCO2 5.3 kPa (normal range 4.7–6.0 kPa), and bicarbonate 23 mmol/L. According to BTS/SIGN and NICE guidelines, how is the severity of this asthma exacerbation classified?",
         "options": [
-            "Signet ring sign",
-            "Tree-in-bud pattern",
-            "Crazy paving pattern",
-            "Halo sign",
-            "Reverse halo sign"
+            "Life-threatening asthma",
+            "Moderate asthma exacerbation",
+            "Acute severe asthma",
+            "Brittle asthma",
+            "Near-fatal asthma requiring immediate intubation"
         ],
-        "correct_answer": "Signet ring sign",
-        "explanation": "The 'signet ring' sign on high-resolution chest CT (HRCT) is the radiographic hallmark of bronchiectasis. In normal lungs, a bronchus has roughly the same calibre as its accompanying pulmonary artery (bronchoarterial ratio = 1). In bronchiectasis, chronic inflammation causes irreversible bronchial dilatation, making the cross-sectional airway significantly larger than the adjacent artery and resembling a signet ring. Cylindrical bronchiectasis viewed longitudinally also produces thickened parallel 'tram-track' opacities."
+        "correct_answer": "Life-threatening asthma",
+        "explanation": "At first glance, her PEF (33–50%), RR (>=25/min), and HR (>=110 bpm) fit 'acute severe asthma'. However, look closely at the arterial blood gas: her PaCO2 is 5.3 kPa (within the normal range of 4.7–6.0 kPa). During an acute asthma attack, tachypnoea should blow off carbon dioxide, producing a respiratory alkalosis with a LOW PaCO2 (<4.6 kPa). A 'normal' PaCO2 (4.6–6.0 kPa) in a breathless asthmatic indicates respiratory muscle fatigue and failing ventilation—making it a defining feature of life-threatening asthma (whereas raised PaCO2 >6.0 kPa defines near-fatal asthma)."
     },
     {
         "type": "sba",
         "category": "Respiratory",
-        "scenario": "A 70-year-old man presents with progressive exertional dyspnoea and a dry cough. Auscultation reveals fine, end-inspiratory 'Velcro-like' crackles at the lung bases. HRCT demonstrates subpleural, basal predominant reticular opacities with clustered cystic air spaces. What is the term for this advanced cystic change?",
+        "scenario": "A 68-year-old man with a history of both mild heart failure and a 45-pack-year smoking history presents with a moderate right-sided pleural effusion. Diagnostic pleural aspiration yields straw-coloured fluid. Laboratory results show: Serum total protein 66 g/L, Serum LDH 200 U/L (laboratory upper limit of normal for serum LDH is 210 U/L); Pleural fluid protein 28 g/L, Pleural fluid LDH 150 U/L. Applying Light's criteria, how is this pleural effusion classified?",
         "options": [
-            "Honeycomb lung",
-            "Ground glass opacities",
-            "Emphysema",
-            "Pneumatocele",
-            "Bronchiolectasis"
+            "Exudate, because the pleural fluid-to-serum LDH ratio is >0.6 (and pleural LDH is >2/3 of the upper limit of normal serum LDH)",
+            "Transudate, because the pleural fluid-to-serum protein ratio is <0.5",
+            "Transudate, because pleural fluid protein is <30 g/L",
+            "Exudate, only if all three of Light's criteria are simultaneously positive",
+            "Chylothorax, because the LDH is elevated relative to protein"
         ],
-        "correct_answer": "Honeycomb lung",
-        "explanation": "Honeycombing describes clustered, thick-walled cystic spaces (typically 3–10 mm in diameter) arranged in rows beneath the pleura, accompanied by traction bronchiectasis and architectural distortion. On high-resolution CT, a subpleural and basilar predominant honeycombing pattern defines the usual interstitial pneumonia (UIP) pattern, which provides definitive confirmation of idiopathic pulmonary fibrosis (IPF) in the appropriate clinical setting, eliminating the need for invasive surgical lung biopsy."
+        "correct_answer": "Exudate, because the pleural fluid-to-serum LDH ratio is >0.6 (and pleural LDH is >2/3 of the upper limit of normal serum LDH)",
+        "explanation": "When total serum protein is normal, pleural fluid protein <30 g/L usually suggests a transudate, and >30 g/L an exudate. However, when protein is borderline (25–35 g/L)—as here (28 g/L)—Light's criteria must be applied. Under Light's criteria, an effusion is an EXUDATE if it meets AT LEAST ONE of: (1) pleural-to-serum protein ratio >0.5 (here 28/66 = 0.42), (2) pleural-to-serum LDH ratio >0.6 (here 150/200 = 0.75—POSITIVE!), or (3) pleural LDH >2/3 the upper limit of normal serum LDH (here 150 > 140 U/L—POSITIVE!). Because criteria 2 and 3 are met, this is an exudative effusion requiring investigation for malignancy or infection."
     },
     {
         "type": "sba",
         "category": "Respiratory",
-        "scenario": "A 35-year-old woman of Afro-Caribbean descent presents with erythema nodosum, uveitis, and a dry cough. A chest X-ray shows bilateral hilar lymphadenopathy. A transbronchial biopsy is performed. Which histological feature confirms the diagnosis of sarcoidosis?",
+        "scenario": "A 67-year-old ex-smoker with severe COPD attends the respiratory outpatient clinic when clinically stable on optimal inhaled triple therapy. Two arterial blood gases taken 3 weeks apart while breathing room air show: Sample 1: PaO2 7.6 kPa, PaCO2 5.6 kPa; Sample 2: PaO2 7.5 kPa, PaCO2 5.5 kPa. According to NICE guidelines, which additional clinical or laboratory finding would qualify this patient for Long-Term Oxygen Therapy (LTOT)?",
         "options": [
-            "Non-caseating granulomas",
-            "Caseating granulomas with central necrosis",
-            "Reed-Sternberg cells",
-            "Atypical lymphoid infiltrates",
-            "Cavitating lesions with fungal balls"
+            "Peripheral oedema, pulmonary hypertension, or secondary polycythaemia (haematocrit >55%)",
+            "A forced expiratory volume in 1 second (FEV1) <50% of predicted",
+            "More than two infective COPD exacerbations requiring oral steroids in the past year",
+            "Continued smoking of <5 cigarettes per day with morning headaches",
+            "AnMRC dyspnoea scale score of 3"
         ],
-        "correct_answer": "Non-caseating granulomas",
-        "explanation": "Non-caseating (non-necrotising) epithelioid granulomas—composed of compact aggregates of epithelioid histiocytes and multinucleated Langhans giant cells without central necrosis—are the defining histological finding in sarcoidosis. This contrasts with tuberculosis, which typically produces caseating (necrotising) granulomas. The presentation with bilateral hilar lymphadenopathy, erythema nodosum, and bilateral ankle arthralgia is specifically known as Löfgren's syndrome, an acute form of sarcoidosis with an excellent spontaneous remission rate."
+        "correct_answer": "Peripheral oedema, pulmonary hypertension, or secondary polycythaemia (haematocrit >55%)",
+        "explanation": "Long-Term Oxygen Therapy (LTOT, worn for >=15 hours/day) improves survival in chronic hypoxaemic COPD. NICE NG115 specifies two PaO2 thresholds measured on two occasions at least 3 weeks apart in a stable, non-smoking patient: (1) PaO2 <7.3 kPa is an absolute indication for LTOT regardless of other features; (2) PaO2 between 7.3 and 8.0 kPa is an indication for LTOT IF accompanied by secondary polycythaemia (haematocrit >55%), peripheral oedema, pulmonary hypertension (cor pulmonale), or nocturnal hypoxaemia."
     },
     {
         "type": "sba",
         "category": "Respiratory",
-        "scenario": "A 12-year-old boy with a known history of severe asthma provides a sputum sample during an exacerbation. Microscopy reveals spiral-shaped mucus plugs and hexagonal, double-pointed crystals derived from eosinophil breakdown. What are these crystals called?",
+        "scenario": "A 66-year-old man is assessed in the Emergency Department with a 3-day history of fever, productive cough with rusty sputum, and right-sided pleuritic chest pain. Chest X-ray confirms right lower lobe consolidation. On examination, he is fully alert and orientated (AMTS 10/10), his respiratory rate is 24 breaths/min, blood pressure is 126/78 mmHg, and heart rate is 92 bpm. Venous blood tests show urea 8.4 mmol/L, creatinine 92 umol/L, and CRP 145 mg/L. What is his CURB-65 score and recommended management setting?",
         "options": [
-            "Charcot-Leyden crystals",
-            "Curschmann spirals",
-            "Ferruginous bodies",
-            "Cholesterol crystals",
-            "Calcium oxalate crystals"
+            "CURB-65 score of 2; consider hospital-supervised inpatient treatment for moderate-severity community-acquired pneumonia",
+            "CURB-65 score of 1; discharge home with a 5-day course of oral amoxicillin monotherapy",
+            "CURB-65 score of 3; admit to the high-dependency unit for intravenous co-amoxiclav and clarithromycin",
+            "CURB-65 score of 0; reassure and manage conservatively without antibiotics",
+            "CURB-65 score of 4; intubate and transfer to the intensive care unit"
         ],
-        "correct_answer": "Charcot-Leyden crystals",
-        "explanation": "Charcot-Leyden crystals are slender, bipyramidal hexagonal structures formed from the crystallisation of galectin-10 (a lysophospholipase protein) derived from the degeneration of eosinophils. Their presence in sputum or bronchoalveolar lavage fluid reflects marked eosinophilic airway inflammation, characteristic of severe bronchial asthma and allergic bronchopulmonary aspergillosis (ABPA). Sputum microscopy in asthmatics may also reveal Curschmann spirals (coiled casts of condensed mucus formed in small bronchioles)."
+        "correct_answer": "CURB-65 score of 2; consider hospital-supervised inpatient treatment for moderate-severity community-acquired pneumonia",
+        "explanation": "The CURB-65 score assigns 1 point for each of: Confusion (new onset or AMTS <=8) [0], Urea >7 mmol/L [1 point: his is 8.4 mmol/L], Respiratory rate >=30/min [0: his is 24], Blood pressure <90 mmHg systolic or <=60 mmHg diastolic [0: his is 126/78], and Age >=65 years [1 point: he is 66]. This gives a CURB-65 score of 2 (moderate severity, ~9% 30-day mortality), which is the threshold for hospital-supervised treatment (short-stay inpatient admission or hospital-at-home) with dual antibiotic therapy (e.g. amoxicillin plus clarithromycin or doxycycline)."
     },
     {
         "type": "sba",
         "category": "Respiratory",
-        "scenario": "A 45-year-old woman presents with sudden onset pleuritic chest pain, haemoptysis, and shortness of breath following a long-haul flight. A chest X-ray shows a wedge-shaped opacity in the right lower lobe with its base against the pleura. What is this sign known as?",
+        "scenario": "A 22-year-old tall, thin man with no history of lung disease presents to the Emergency Department with mild right-sided pleuritic chest pain that started 3 hours ago while sitting at his desk. On examination, he is comfortable at rest and not breathless when walking across the cubicle. His heart rate is 74 bpm, blood pressure is 122/76 mmHg, respiratory rate is 15/min, and SpO2 is 99% on room air. Chest X-ray reveals a right-sided primary spontaneous pneumothorax measuring 2.4 cm at the level of the hilum. According to current BTS/NICE guidelines, what is the most appropriate management?",
         "options": [
-            "Hampton's hump",
-            "Westermark sign",
-            "Fleischner sign",
-            "Palla's sign",
-            "Golden S sign"
+            "Conservative outpatient management with safety-netting advice and clinical review in 2–4 weeks",
+            "Immediate insertion of a large-bore (28 Fr) intercostal chest drain in the 5th intercostal space",
+            "Emergency needle decompression in the 2nd intercostal space mid-clavicular line",
+            "Urgent video-assisted thoracoscopic surgery (VATS) pleurodesis today",
+            "Inpatient admission for 100% high-flow reservoir mask oxygen therapy for 5 days"
         ],
-        "correct_answer": "Hampton's hump",
-        "explanation": "Hampton's hump is a peripheral, wedge-shaped pulmonary opacity with its broad base abutted against the visceral pleura and its apex directed toward the hilum. It is a classic radiological sign of pulmonary infarction following a pulmonary embolism (PE), typically developing in distal pulmonary arterial occlusions. Another recognized radiological sign of PE on chest radiography is Westermark's sign (focal oligaemia distal to the occluded vessel). CT Pulmonary Angiography (CTPA) is the gold standard diagnostic investigation."
+        "correct_answer": "Conservative outpatient management with safety-netting advice and clinical review in 2–4 weeks",
+        "explanation": "Under the updated 2023 British Thoracic Society (BTS) pleural disease guidelines, management of a primary spontaneous pneumothorax (PSP) is now driven primarily by symptoms (breathlessness) and physiological stability rather than a rigid 2 cm radiographic size cut-off alone. In a physiologically stable patient with a PSP who has minimal or no breathlessness and no high-risk features, conservative management (safe discharge with written safety-netting advice and outpatient review every 2–4 days/weeks until resolution) is recommended as a safe first-line option regardless of pneumothorax size on CXR."
     }
 ]
