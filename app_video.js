@@ -525,12 +525,14 @@ function applyVideoModeUI() {
   const staticBox = document.getElementById("video-static-settings");
   const animControls = document.getElementById("video-animated-only-controls");
   const delibWrapper = document.getElementById("video-deliberation-format-wrapper");
+  const timingAccordion = document.getElementById("video-advanced-timing-accordion");
 
   if (animBtn) animBtn.classList.toggle("active", !isStatic);
   if (staticBtn) staticBtn.classList.toggle("active", isStatic);
   if (staticBox) staticBox.style.display = isStatic ? "block" : "none";
   if (animControls) animControls.style.display = isStatic ? "none" : "grid";
   if (delibWrapper) delibWrapper.style.display = isStatic ? "none" : "block";
+  if (timingAccordion) timingAccordion.style.display = isStatic ? "none" : "block";
 
   const durSlider = document.getElementById("video-static-duration-slider");
   if (durSlider) durSlider.value = videoState.staticDuration;
@@ -727,6 +729,7 @@ function syncVideoControlsWithInstaState() {
   if (shareFeedToggle) shareFeedToggle.checked = Boolean(igServerState.shareToFeed);
 
   applyVideoModeUI();
+  syncVideoPublishedToggleUI();
 
   // Update active swatch
   const grid = document.getElementById("video-theme-grid");
@@ -1127,6 +1130,17 @@ function initVideoControls() {
   const captionTextarea = document.getElementById("video-caption-textarea");
   if (captionTextarea) {
     captionTextarea.addEventListener("input", updateCaptionCharCount);
+  }
+
+  // Published-to-Instagram manual toggle inside Reel Studio
+  const studioPublishedToggle = document.getElementById("video-published-toggle");
+  if (studioPublishedToggle) {
+    studioPublishedToggle.addEventListener("change", (e) => {
+      const q = videoState.activeQuestion || instaState.activeQuestion;
+      if (q && typeof toggleQuestionPublishedToIg === "function") {
+        toggleQuestionPublishedToIg(q.id, e.target.checked);
+      }
+    });
   }
 
   // Share to Feed Toggle
@@ -1641,13 +1655,53 @@ function drawScenarioText(ctx, scenario, startY, width, time, readingEnd) {
   return curY;
 }
 
-// Options Spotlight & Countdown Section Drawing
+// Helper: Word-wrap text into full array of lines with zero truncation
+function wrapCanvasTextLines(ctx, text, maxWidth) {
+  const raw = String(text || "").trim();
+  if (!raw) return [""];
+  const words = raw.split(/\s+/);
+  const lines = [];
+  let currentLine = "";
+
+  for (let i = 0; i < words.length; i++) {
+    let word = words[i];
+    // Handle exceptionally long single tokens (e.g. drug names/URLs) without overflow
+    if (ctx.measureText(word).width > maxWidth) {
+      if (currentLine) {
+        lines.push(currentLine);
+        currentLine = "";
+      }
+      let chunk = "";
+      for (const ch of word) {
+        if (ctx.measureText(chunk + ch).width > maxWidth && chunk.length > 0) {
+          lines.push(chunk);
+          chunk = ch;
+        } else {
+          chunk += ch;
+        }
+      }
+      currentLine = chunk;
+      continue;
+    }
+
+    const candidate = currentLine ? `${currentLine} ${word}` : word;
+    if (ctx.measureText(candidate).width > maxWidth && currentLine) {
+      lines.push(currentLine);
+      currentLine = word;
+    } else {
+      currentLine = candidate;
+    }
+  }
+  if (currentLine) lines.push(currentLine);
+  return lines.length > 0 ? lines : [""];
+}
+
+// Options Spotlight & Countdown Section Drawing (Auto-wrapping & dynamic box heights)
 function drawOptionsSection(ctx, q, startY, width, time, cyclingStart, cyclingEnd, revealStart) {
   const fontFam = (typeof FONT_MAP !== "undefined" && FONT_MAP[instaState.font]) || "'Outfit', sans-serif";
   const options = q.options || [];
   const paddingX = 70;
   const cardWidth = width - paddingX * 2;
-  const isSBA = q.type === "sba" || q.type === "emq" || !q.type;
 
   // Phase flags:
   const isCycling = time >= cyclingStart && time < cyclingEnd;
@@ -1708,46 +1762,77 @@ function drawOptionsSection(ctx, q, startY, width, time, cyclingStart, cyclingEn
   // Correct answer index
   const correctIdx = options.indexOf(q.correct_answer);
 
-  // Draw Option Cards
-  let cardY = startY + 45;
-  const cardHeight = Math.min(110, Math.max(85, Math.round(instaState.optionsFontSize * 3.4)));
-  const cardSpacing = 16;
-  const optFontSize = Math.max(20, Math.round(instaState.optionsFontSize * 1.2));
+  // Compute dynamic multi-line layout so ENTIRE option text is ALWAYS visible at any font size
+  const cardsStartY = startY + 42;
+  const canvasHeight = 1920;
+  const reservedBottom = isRevealed ? 440 : 280; // Leave room for clinical pearl/prompts & footer
+  const maxAvailableHeight = Math.max(280, canvasHeight - reservedBottom - cardsStartY);
 
-  options.forEach((opt, idx) => {
+  let optFontSize = Math.max(18, Math.round(instaState.optionsFontSize * 1.2));
+  let cardSpacing = 14;
+  let padY = Math.max(16, Math.round(optFontSize * 0.55));
+  const textX = paddingX + 78;
+  const maxOptTextWidth = cardWidth - 102;
+
+  const measureLayout = (fontPx, spacingPx, vPadPx) => {
+    ctx.font = `600 ${fontPx}px ${fontFam}`;
+    const lineH = Math.round(fontPx * 1.32);
+    const minCardH = Math.max(66, Math.round(fontPx * 2.35));
+    const items = options.map((opt) => {
+      const lines = wrapCanvasTextLines(ctx, opt, maxOptTextWidth);
+      const textBlockH = lines.length * lineH;
+      const h = Math.max(minCardH, textBlockH + vPadPx * 2);
+      return { opt, lines, lineH, height: h };
+    });
+    const totalH = items.reduce((sum, it) => sum + it.height, 0) + Math.max(0, items.length - 1) * spacingPx;
+    return { items, totalH };
+  };
+
+  let layout = measureLayout(optFontSize, cardSpacing, padY);
+  // First gently tighten spacing & vertical padding if tall, while keeping requested font size
+  if (layout.totalH > maxAvailableHeight) {
+    cardSpacing = 10;
+    padY = Math.max(12, Math.round(optFontSize * 0.4));
+    layout = measureLayout(optFontSize, cardSpacing, padY);
+  }
+  // Only scale down font size if total wrapped option cards would physically collide with footer/explanation
+  while (layout.totalH > maxAvailableHeight && optFontSize > 16) {
+    optFontSize -= 2;
+    padY = Math.max(10, Math.round(optFontSize * 0.36));
+    layout = measureLayout(optFontSize, cardSpacing, padY);
+  }
+
+  let cardY = cardsStartY;
+  layout.items.forEach((item, idx) => {
+    const { opt, lines, lineH, height: cardHeight } = item;
     const isThisActive = isCycling && activeIndex === idx;
     const hasCycledThrough = (isCycling && idx < activeIndex) || isSuspense;
     const isThisCorrect = isRevealed && (idx === correctIdx || opt === q.correct_answer);
 
     // Card background & border
     if (isThisCorrect && videoState.revealMode === "full") {
-      // Emerald Green Highlight for correct answer
       ctx.fillStyle = "rgba(16, 185, 129, 0.28)";
       ctx.strokeStyle = "#10b981";
       ctx.lineWidth = 3;
       ctx.shadowColor = "rgba(16, 185, 129, 0.5)";
       ctx.shadowBlur = 20;
     } else if (isThisActive) {
-      // Spotlighted Option (Velvety Indigo/Cyan Glow)
       ctx.fillStyle = "rgba(99, 102, 241, 0.22)";
       ctx.strokeStyle = "#818cf8";
       ctx.lineWidth = 2.5;
       ctx.shadowColor = "rgba(99, 102, 241, 0.5)";
       ctx.shadowBlur = 16;
     } else if (hasCycledThrough) {
-      // Already Cycled Through (Evaluated Option - Changed pill & card color!)
       ctx.fillStyle = "rgba(168, 85, 247, 0.12)";
       ctx.strokeStyle = "rgba(168, 85, 247, 0.45)";
       ctx.lineWidth = 1.6;
       ctx.shadowBlur = 0;
     } else if (isRevealed && videoState.revealMode === "full") {
-      // Non-correct options dim when answer is revealed
       ctx.fillStyle = "rgba(255, 255, 255, 0.03)";
       ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
       ctx.lineWidth = 1;
       ctx.shadowBlur = 0;
     } else {
-      // Pending option (not yet evaluated)
       ctx.fillStyle = "rgba(255, 255, 255, 0.06)";
       ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
       ctx.lineWidth = 1.2;
@@ -1757,58 +1842,54 @@ function drawOptionsSection(ctx, q, startY, width, time, cyclingStart, cyclingEn
     drawRoundedRect(ctx, paddingX, cardY, cardWidth, cardHeight, 18);
     ctx.fill();
     ctx.stroke();
-    ctx.shadowBlur = 0; // Reset shadow
+    ctx.shadowBlur = 0;
 
-    // Badge circle / Pill (Letter A, B, C, D)
-    const badgeX = paddingX + 34;
+    // Badge circle (Letter A, B, C, D) centered vertically in the dynamic card
+    const badgeX = paddingX + 38;
     const badgeY = cardY + cardHeight / 2;
-    const badgeR = 24;
+    const badgeR = Math.min(24, Math.max(19, Math.round(cardHeight * 0.28)));
 
     ctx.beginPath();
     ctx.arc(badgeX, badgeY, badgeR, 0, Math.PI * 2);
 
     if (isThisCorrect && videoState.revealMode === "full") {
-      // Correct: Green Checkmark
       ctx.fillStyle = "#10b981";
-      ctx.fill();
-      ctx.fillStyle = "#ffffff";
-      ctx.font = `700 24px ${fontFam}`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText("✓", badgeX, badgeY);
-    } else if (isThisActive) {
-      // Active: Spotlighted Indigo Pill
-      ctx.fillStyle = "#6366f1";
       ctx.fill();
       ctx.fillStyle = "#ffffff";
       ctx.font = `700 22px ${fontFam}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
+      ctx.fillText("✓", badgeX, badgeY);
+    } else if (isThisActive) {
+      ctx.fillStyle = "#6366f1";
+      ctx.fill();
+      ctx.fillStyle = "#ffffff";
+      ctx.font = `700 20px ${fontFam}`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
       ctx.fillText(String.fromCharCode(65 + idx), badgeX, badgeY);
     } else if (hasCycledThrough) {
-      // Cycled through: Evaluated Soft Purple/Amethyst Pill (Changed Color!)
       ctx.fillStyle = "rgba(168, 85, 247, 0.45)";
       ctx.fill();
       ctx.strokeStyle = "#c084fc";
       ctx.lineWidth = 1.5;
       ctx.stroke();
       ctx.fillStyle = "#f3e8ff";
-      ctx.font = `600 20px ${fontFam}`;
+      ctx.font = `600 19px ${fontFam}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(String.fromCharCode(65 + idx), badgeX, badgeY);
     } else {
-      // Pending: Translucent pill
       ctx.fillStyle = "rgba(255, 255, 255, 0.12)";
       ctx.fill();
       ctx.fillStyle = isRevealed && videoState.revealMode === "full" ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.75)";
-      ctx.font = `600 20px ${fontFam}`;
+      ctx.font = `600 19px ${fontFam}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(String.fromCharCode(65 + idx), badgeX, badgeY);
     }
 
-    // Option Text
+    // Multi-line Option Text (100% visible, centered vertically inside the resized box)
     ctx.font = `600 ${optFontSize}px ${fontFam}`;
     ctx.textAlign = "left";
     ctx.textBaseline = "middle";
@@ -1823,9 +1904,12 @@ function drawOptionsSection(ctx, q, startY, width, time, cyclingStart, cyclingEn
       ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
     }
 
-    const textX = paddingX + 74;
-    const maxOptTextWidth = cardWidth - 90;
-    drawWrappedSingleLine(ctx, opt, textX, badgeY, maxOptTextWidth);
+    const totalTextH = lines.length * lineH;
+    let lineCenterY = cardY + (cardHeight - totalTextH) / 2 + lineH / 2;
+    lines.forEach((ln) => {
+      ctx.fillText(ln, textX, lineCenterY);
+      lineCenterY += lineH;
+    });
 
     cardY += cardHeight + cardSpacing;
   });
@@ -2161,6 +2245,35 @@ function encodeReelMetaHeader(metaObj) {
     binary += String.fromCharCode(b);
   });
   return btoa(binary);
+}
+
+function syncVideoPublishedToggleUI(targetQId = null) {
+  const q = videoState.activeQuestion || instaState.activeQuestion;
+  const qId = targetQId || (q ? q.id : null);
+  const toggleEl = document.getElementById("video-published-toggle");
+  const pillEl = document.getElementById("video-published-pill");
+  const labelEl = document.getElementById("video-published-label");
+  const linkEl = document.getElementById("video-published-permalink");
+  if (!toggleEl || !qId) return;
+
+  const info = typeof getPublishedReelInfo === "function" ? getPublishedReelInfo(qId) : null;
+  const isPub = Boolean(info && info.published);
+  toggleEl.checked = isPub;
+  if (pillEl) pillEl.classList.toggle("is-published", isPub);
+  if (labelEl) {
+    const dateStr = info && info.publishedAt && typeof formatPublishedDateShort === "function"
+      ? formatPublishedDateShort(info.publishedAt)
+      : "";
+    labelEl.textContent = isPub ? `Posted to IG${dateStr ? " • " + dateStr : ""}` : "Mark as Posted";
+  }
+  if (linkEl) {
+    if (isPub && info.permalink) {
+      linkEl.href = info.permalink;
+      linkEl.style.display = "inline-flex";
+    } else {
+      linkEl.style.display = "none";
+    }
+  }
 }
 
 // --- Direct-to-Instagram Backend Status (Vercel Cloud or Local server.py) ---
@@ -3185,6 +3298,12 @@ async function publishReelToInstagram() {
 
         if (pubData.status === "done") {
           done = true;
+          if (typeof markQuestionPublishedToIg === "function") {
+            markQuestionPublishedToIg(q.id, {
+              permalink: pubData.permalink || "",
+              mediaId: pubData.media_id || "",
+            });
+          }
           if (progressBar) progressBar.style.width = "100%";
           const linkHtml = pubData.permalink
             ? ` <a href="${pubData.permalink}" target="_blank" rel="noopener" style="color: #38bdf8; font-weight: 700; text-decoration: underline; margin-left: 6px;">View Live Reel ↗</a>`
@@ -3243,6 +3362,12 @@ async function publishReelToInstagram() {
 
       if (job.status === "done") {
         done = true;
+        if (typeof markQuestionPublishedToIg === "function") {
+          markQuestionPublishedToIg(q.id, {
+            permalink: job.permalink || "",
+            mediaId: job.media_id || "",
+          });
+        }
         if (progressBar) progressBar.style.width = "100%";
         const linkHtml = job.permalink
           ? ` <a href="${job.permalink}" target="_blank" rel="noopener" style="color: #38bdf8; font-weight: 700; text-decoration: underline; margin-left: 6px;">View Live Reel ↗</a>`

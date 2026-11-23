@@ -277,6 +277,16 @@ function initEventListeners() {
       }
     });
   }
+
+  const practicePublishedToggle = document.getElementById("practice-published-toggle");
+  if (practicePublishedToggle) {
+    practicePublishedToggle.addEventListener("click", () => {
+      const pState = state.activePractice;
+      if (pState.questions.length > 0 && pState.questions[pState.currentIndex]) {
+        toggleQuestionPublishedToIg(pState.questions[pState.currentIndex].id);
+      }
+    });
+  }
   
   // Exam Simulator controls
   document.getElementById("start-exam-sim-btn").addEventListener("click", startExamSimulation);
@@ -512,6 +522,8 @@ function renderPracticeQuestion() {
   
   const flagBtn = document.getElementById("flag-question-btn");
   flagBtn.className = state.flaggedQuestions[q.id] ? "question-flag active" : "question-flag";
+
+  updatePracticePublishedUI(q.id);
   
   // EMQ specific elements
   const emqThemeBanner = document.getElementById("emq-theme-banner");
@@ -931,16 +943,24 @@ function renderBookmarks() {
     }
     
     let answerText = Array.isArray(q.correct_answer) ? q.correct_answer.join(" ➔ ") : q.correct_answer;
+    const pubInfo = getPublishedReelInfo(q.id);
+    const isPublished = Boolean(pubInfo && pubInfo.published);
+    const pubDate = pubInfo && pubInfo.publishedAt ? formatPublishedDateShort(pubInfo.publishedAt) : "";
     
     card.innerHTML = `
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div style="display: flex; gap: 8px; align-items: center;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
           <span class="question-category" style="background-color: var(--info-light); color: var(--info); border-color: rgba(96,165,250,0.2);">${q.exam || "MSRA"}</span>
           <span class="question-category">${q.category} (${q.type.toUpperCase()})</span>
+          <button type="button" class="ig-posted-toggle ${isPublished ? "is-published" : ""}" data-id="${q.id}" title="${isPublished ? "Marked as published to Instagram (click to toggle)" : "Click to mark as published to Instagram"}">
+            <i class="fa-solid ${isPublished ? "fa-circle-check" : "fa-circle"}"></i>
+            ${isPublished ? `Posted${pubDate ? " " + pubDate : ""}` : "Not Posted"}
+          </button>
+          ${isPublished && pubInfo.permalink ? `<a href="${pubInfo.permalink}" target="_blank" rel="noopener" class="ig-posted-link" title="View published Reel on Instagram"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ""}
         </div>
-        <div style="display: flex; gap: 8px;">
-          <button class="btn btn-sm btn-ig-publish-quick quick-post-reel-bookmark-btn" data-id="${q.id}" title="1-Click Render & Publish Reel directly to Instagram">
-            <i class="fa-solid fa-paper-plane"></i> Post Reel
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-sm ${isPublished ? "btn-secondary" : "btn-ig-publish-quick"} quick-post-reel-bookmark-btn" data-id="${q.id}" title="${isPublished ? "Repost Reel to Instagram" : "1-Click Render & Publish Reel directly to Instagram"}">
+            <i class="fa-solid ${isPublished ? "fa-rotate-right" : "fa-paper-plane"}"></i> ${isPublished ? "Repost" : "Post Reel"}
           </button>
           <button class="btn btn-secondary btn-sm generate-post-btn" data-id="${q.id}" style="padding: 4px 8px; font-size: 0.8rem;" title="Open Reel & Carousel Studio">
             <i class="fa-brands fa-instagram"></i> Studio
@@ -960,6 +980,7 @@ function renderBookmarks() {
       </div>
     `;
     
+    card.querySelector(".ig-posted-toggle").addEventListener("click", () => toggleQuestionPublishedToIg(q.id));
     card.querySelector(".quick-post-reel-bookmark-btn").addEventListener("click", () => openInstagramModal(q.id, { tab: "video", autoPublish: true }));
     card.querySelector(".generate-post-btn").addEventListener("click", () => openInstagramModal(q.id, { tab: "video" }));
     card.querySelector(".remove-bookmark-btn").addEventListener("click", () => {
@@ -1717,10 +1738,12 @@ function setupAdminTabPanelNavigation() {
   const searchInput = document.getElementById("admin-search-input");
   const catFilter = document.getElementById("admin-category-filter");
   const typeFilter = document.getElementById("admin-type-filter");
+  const igStatusFilter = document.getElementById("admin-ig-status-filter");
   
   searchInput.oninput = renderAdminManageQuestionsList;
   catFilter.onchange = renderAdminManageQuestionsList;
   typeFilter.onchange = renderAdminManageQuestionsList;
+  if (igStatusFilter) igStatusFilter.onchange = renderAdminManageQuestionsList;
   
   updateAdminFlaggedBadge();
 }
@@ -1741,6 +1764,130 @@ function populateAdminFilters() {
   });
 }
 
+// --- INSTAGRAM PUBLISHED REELS TRACKING (Auto-marked on Publish + Manual Toggle) ---
+const PUBLISHED_REELS_STORAGE_KEY = "medbank_published_reels_v1";
+
+function loadPublishedReelsMap() {
+  try {
+    const raw = localStorage.getItem(PUBLISHED_REELS_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function savePublishedReelsMap(map) {
+  try {
+    localStorage.setItem(PUBLISHED_REELS_STORAGE_KEY, JSON.stringify(map));
+  } catch (e) {
+    console.warn("Could not save published reels map:", e);
+  }
+}
+
+function getPublishedReelInfo(questionId) {
+  if (!questionId) return null;
+  const map = loadPublishedReelsMap();
+  return map[questionId] || null;
+}
+
+function isQuestionPublishedToIg(questionId) {
+  const info = getPublishedReelInfo(questionId);
+  return Boolean(info && info.published);
+}
+
+function formatPublishedDateShort(isoStr) {
+  if (!isoStr) return "";
+  try {
+    const d = new Date(isoStr);
+    if (isNaN(d.getTime())) return "";
+    return d.toLocaleDateString(undefined, { day: "numeric", month: "short" });
+  } catch (e) {
+    return "";
+  }
+}
+
+function markQuestionPublishedToIg(questionId, details = {}) {
+  if (!questionId) return;
+  const map = loadPublishedReelsMap();
+  const prev = map[questionId] || {};
+  map[questionId] = {
+    published: true,
+    publishedAt: details.publishedAt || new Date().toISOString(),
+    permalink: details.permalink || prev.permalink || "",
+    mediaId: details.mediaId || prev.mediaId || "",
+  };
+  savePublishedReelsMap(map);
+  refreshAllPublishedUI(questionId);
+}
+
+function toggleQuestionPublishedToIg(questionId, forceState = null) {
+  if (!questionId) return false;
+  const map = loadPublishedReelsMap();
+  const currentlyPublished = Boolean(map[questionId] && map[questionId].published);
+  const nextState = typeof forceState === "boolean" ? forceState : !currentlyPublished;
+
+  if (nextState) {
+    map[questionId] = {
+      published: true,
+      publishedAt: (map[questionId] && map[questionId].publishedAt) || new Date().toISOString(),
+      permalink: (map[questionId] && map[questionId].permalink) || "",
+      mediaId: (map[questionId] && map[questionId].mediaId) || "",
+    };
+  } else {
+    delete map[questionId];
+  }
+  savePublishedReelsMap(map);
+  refreshAllPublishedUI(questionId);
+  return nextState;
+}
+
+function updatePracticePublishedUI(questionId) {
+  const toggleBtn = document.getElementById("practice-published-toggle");
+  const postBtn = document.getElementById("quick-post-reel-btn");
+  const info = getPublishedReelInfo(questionId);
+  const isPub = Boolean(info && info.published);
+  const dateStr = info && info.publishedAt ? formatPublishedDateShort(info.publishedAt) : "";
+
+  if (toggleBtn) {
+    toggleBtn.classList.toggle("is-published", isPub);
+    toggleBtn.innerHTML = isPub
+      ? `<i class="fa-solid fa-circle-check"></i> Posted${dateStr ? " " + dateStr : ""}`
+      : `<i class="fa-regular fa-circle"></i> Not Posted`;
+    toggleBtn.title = isPub
+      ? "Published to Instagram (click to toggle off)"
+      : "Not yet published to Instagram (click to mark as posted)";
+  }
+  if (postBtn) {
+    postBtn.innerHTML = isPub
+      ? '<i class="fa-solid fa-rotate-right"></i> Repost'
+      : '<i class="fa-solid fa-paper-plane"></i> Post Reel';
+    postBtn.classList.toggle("btn-ig-publish-quick", !isPub);
+    postBtn.classList.toggle("btn-secondary", isPub);
+  }
+}
+
+function refreshAllPublishedUI(questionId = null) {
+  // Update Practice Room if active
+  const pState = state.activePractice;
+  if (pState && pState.questions && pState.questions[pState.currentIndex]) {
+    updatePracticePublishedUI(pState.questions[pState.currentIndex].id);
+  }
+  // Update Admin Question Inventory list if rendered
+  if (document.getElementById("admin-questions-list-container")) {
+    renderAdminManageQuestionsList();
+  }
+  // Update Bookmarks list if visible
+  const bookmarksPanel = document.getElementById("bookmarks-panel");
+  if (bookmarksPanel && bookmarksPanel.classList.contains("active")) {
+    renderBookmarks();
+  }
+  // Update Reel Studio modal toggle if open
+  if (typeof syncVideoPublishedToggleUI === "function") {
+    syncVideoPublishedToggleUI(questionId);
+  }
+}
+
 // --- ADMIN QUESTION INVENTORY MANAGER ---
 function renderAdminManageQuestionsList() {
   const container = document.getElementById("admin-questions-list-container");
@@ -1748,14 +1895,24 @@ function renderAdminManageQuestionsList() {
   
   container.innerHTML = "";
   
-  const query = document.getElementById("admin-search-input").value.toLowerCase();
-  const catVal = document.getElementById("admin-category-filter").value;
-  const typeVal = document.getElementById("admin-type-filter").value;
+  const query = (document.getElementById("admin-search-input")?.value || "").toLowerCase();
+  const catVal = document.getElementById("admin-category-filter")?.value || "all";
+  const typeVal = document.getElementById("admin-type-filter")?.value || "all";
+  const igStatusVal = document.getElementById("admin-ig-status-filter")?.value || "all";
   
-  let filtered = state.questions.filter(q => q.exam === state.activeExam);
+  const examQuestions = state.questions.filter(q => q.exam === state.activeExam);
+  const postedTotal = examQuestions.filter(q => isQuestionPublishedToIg(q.id)).length;
+  const countBadge = document.getElementById("admin-ig-posted-count");
+  if (countBadge) {
+    countBadge.textContent = `${postedTotal} / ${examQuestions.length} Posted to IG`;
+  }
+
+  let filtered = examQuestions;
   
   if (catVal !== "all") filtered = filtered.filter(q => q.category === catVal);
   if (typeVal !== "all") filtered = filtered.filter(q => q.type === typeVal);
+  if (igStatusVal === "published") filtered = filtered.filter(q => isQuestionPublishedToIg(q.id));
+  if (igStatusVal === "unpublished") filtered = filtered.filter(q => !isQuestionPublishedToIg(q.id));
   
   if (query) {
     filtered = filtered.filter(q => 
@@ -1779,22 +1936,30 @@ function renderAdminManageQuestionsList() {
     
     const isCustom = q.id.startsWith("q_custom_");
     const badgeText = isCustom ? "Custom" : "Base";
+    const pubInfo = getPublishedReelInfo(q.id);
+    const isPublished = Boolean(pubInfo && pubInfo.published);
+    const pubDate = pubInfo && pubInfo.publishedAt ? formatPublishedDateShort(pubInfo.publishedAt) : "";
     
     card.innerHTML = `
       <div class="admin-question-card-header">
         <div style="flex: 1;">
-          <div class="admin-question-info" style="margin-bottom: 6px;">
+          <div class="admin-question-info" style="margin-bottom: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
             <span class="admin-question-badge" style="background-color: var(--primary-light); color: var(--primary);">${q.id}</span>
             <span class="admin-question-badge" style="background-color: var(--info-light); color: var(--info); border-color: rgba(96,165,250,0.2); font-weight: bold;">${q.exam || "MSRA"}</span>
             <span class="admin-question-badge">${q.category}</span>
             <span class="admin-question-badge" style="text-transform: uppercase;">${q.type}</span>
             <span class="admin-question-badge" style="background-color: var(--success-light); color: var(--success);">${badgeText}</span>
+            <button type="button" class="ig-posted-toggle ${isPublished ? "is-published" : ""}" data-id="${q.id}" title="${isPublished ? "Published to Instagram (click to toggle)" : "Click to mark as published to Instagram"}">
+              <i class="fa-solid ${isPublished ? "fa-circle-check" : "fa-circle"}"></i>
+              ${isPublished ? `Posted to IG${pubDate ? " • " + pubDate : ""}` : "Not Posted"}
+            </button>
+            ${isPublished && pubInfo.permalink ? `<a href="${pubInfo.permalink}" target="_blank" rel="noopener" class="ig-posted-link" title="View published Reel on Instagram"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ""}
           </div>
           <div class="admin-question-text">${q.scenario}</div>
         </div>
         <div class="admin-question-actions">
-          <button class="btn btn-sm btn-ig-publish-quick admin-post-reel-btn" data-id="${q.id}" title="1-Click Render & Publish Reel directly to Instagram">
-            <i class="fa-solid fa-paper-plane"></i> Post Reel
+          <button class="btn btn-sm ${isPublished ? "btn-secondary" : "btn-ig-publish-quick"} admin-post-reel-btn" data-id="${q.id}" title="${isPublished ? "Repost Reel to Instagram" : "1-Click Render & Publish Reel directly to Instagram"}">
+            <i class="fa-solid ${isPublished ? "fa-rotate-right" : "fa-paper-plane"}"></i> ${isPublished ? "Repost" : "Post Reel"}
           </button>
           <button class="btn btn-secondary btn-sm admin-share-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;" title="Open Reel & Carousel Studio">
             <i class="fa-brands fa-instagram"></i> Studio
@@ -1809,6 +1974,7 @@ function renderAdminManageQuestionsList() {
       </div>
     `;
     
+    card.querySelector(".ig-posted-toggle").addEventListener("click", () => toggleQuestionPublishedToIg(q.id));
     card.querySelector(".admin-post-reel-btn").addEventListener("click", () => openInstagramModal(q.id, { tab: "video", autoPublish: true }));
     card.querySelector(".admin-share-btn").addEventListener("click", () => openInstagramModal(q.id, { tab: "video" }));
     card.querySelector(".edit-q-btn").addEventListener("click", () => editQuestion(q.id));
