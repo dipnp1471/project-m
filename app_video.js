@@ -2461,12 +2461,108 @@ async function loadMp4Muxer() {
   return _mp4MuxerModule;
 }
 
-let _vercelBlobClientModule = null;
-async function loadVercelBlobClient() {
-  if (!_vercelBlobClientModule) {
-    _vercelBlobClientModule = await import("https://esm.sh/@vercel/blob@0.27.3/client");
+// Native XHR helper with real upload progress + explicit timeout (zero external CDN SDK!)
+function xhrUploadBlob({ method, url, headers, body, timeoutMs = 90000, onProgress }) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    xhr.timeout = timeoutMs;
+
+    Object.entries(headers || {}).forEach(([k, v]) => {
+      xhr.setRequestHeader(k, v);
+    });
+
+    xhr.upload.onprogress = (evt) => {
+      if (evt.lengthComputable && typeof onProgress === "function") {
+        onProgress(evt.loaded, evt.total);
+      }
+    };
+
+    xhr.onload = () => {
+      let data = {};
+      try {
+        data = xhr.responseText ? JSON.parse(xhr.responseText) : {};
+      } catch (e) {
+        data = { raw: xhr.responseText };
+      }
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(data);
+      } else {
+        const msg =
+          data?.error?.message ||
+          data?.error ||
+          data?.message ||
+          data?.raw ||
+          `Upload failed with HTTP ${xhr.status}`;
+        reject(new Error(typeof msg === "string" ? msg : JSON.stringify(msg)));
+      }
+    };
+
+    xhr.onerror = () => {
+      reject(new Error("Network/CORS error while uploading MP4 to Vercel Blob."));
+    };
+
+    xhr.ontimeout = () => {
+      reject(new Error("Timed out uploading MP4 to Vercel Blob (check network or try a shorter Reel)."));
+    };
+
+    xhr.send(body);
+  });
+}
+
+async function uploadMp4ToVercelBlob(mp4Blob, baseFilename, passcode, onProgress) {
+  const safeName = `${String(baseFilename || "medbank_reel").replace(/[^a-zA-Z0-9._-]+/g, "_")}.mp4`;
+  const DIRECT_LIMIT_BYTES = 4 * 1024 * 1024; // 4.0 MB safe threshold under Vercel's 4.5 MB limit
+
+  // Fast path (<= 4 MB): Single server-side put() call — immune to CORS/client-token issues
+  if (mp4Blob.size <= DIRECT_LIMIT_BYTES) {
+    const res = await xhrUploadBlob({
+      method: "POST",
+      url: `/api/blob-upload?mode=direct&filename=${encodeURIComponent(safeName)}`,
+      headers: {
+        "Content-Type": "video/mp4",
+        "X-Admin-Passcode": passcode || "",
+      },
+      body: mp4Blob,
+      onProgress,
+    });
+    if (!res.ok || !res.url) {
+      throw new Error(res.error || "Vercel Blob did not return a public URL.");
+    }
+    return res.url;
   }
-  return _vercelBlobClientModule;
+
+  // Large file path (> 4 MB): Mint scoped client token, then direct browser PUT to Vercel Blob
+  const tokenResp = await fetch("/api/blob-upload?mode=token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Admin-Passcode": passcode || "",
+    },
+    body: JSON.stringify({ filename: safeName }),
+  });
+  const tokenData = await tokenResp.json().catch(() => ({}));
+  if (!tokenResp.ok || !tokenData.ok || !tokenData.clientToken || !tokenData.uploadUrl) {
+    throw new Error(tokenData.error || `Failed to obtain Vercel Blob upload token (HTTP ${tokenResp.status}).`);
+  }
+
+  const blobRes = await xhrUploadBlob({
+    method: "PUT",
+    url: tokenData.uploadUrl,
+    headers: {
+      Authorization: `Bearer ${tokenData.clientToken}`,
+      "x-content-type": "video/mp4",
+      "x-add-random-suffix": "1",
+      "x-api-version": "7",
+    },
+    body: mp4Blob,
+    onProgress,
+  });
+
+  if (!blobRes || !blobRes.url) {
+    throw new Error("Vercel Blob upload completed without returning a URL.");
+  }
+  return blobRes.url;
 }
 
 async function selectSupportedAvcCodec(width, height, fps) {
@@ -2562,7 +2658,7 @@ async function encodeReelWithWebCodecs(onProgress) {
     codec: avcCodec,
     width,
     height,
-    bitrate: videoState.videoMode === "static" ? 3_500_000 : 5_500_000,
+    bitrate: videoState.videoMode === "static" ? 2_000_000 : 2_800_000,
     framerate: fps,
   });
 
@@ -3023,24 +3119,21 @@ async function publishReelToInstagram() {
 
       const passcode = getStoredPasscode();
 
-      // Step 2: Direct client upload to Vercel Blob (bypasses Vercel's 4.5 MB API limit!)
+      // Step 2: Upload MP4 to Vercel Blob (zero external CDN SDK, live byte progress + timeout!)
+      const totalMb = (blob.size / (1024 * 1024)).toFixed(1);
       if (progressBar) progressBar.style.width = "45%";
       if (statusInfo) {
-        statusInfo.innerHTML = `<span><i class="fa-solid fa-cloud-arrow-up fa-fade" style="color: #8b5cf6;"></i> Step 2/4: Uploading MP4 (${(blob.size / (1024 * 1024)).toFixed(1)} MB) to Vercel Blob...</span>`;
+        statusInfo.innerHTML = `<span><i class="fa-solid fa-cloud-arrow-up fa-fade" style="color: #8b5cf6;"></i> Step 2/4: Uploading MP4 (0% of ${totalMb} MB) to Vercel Blob...</span>`;
       }
 
-      const { upload } = await loadVercelBlobClient();
-      const mp4File = new File([blob], `${baseFilename}.mp4`, { type: "video/mp4" });
-      const uploadedBlob = await upload(`reels/${baseFilename}.mp4`, mp4File, {
-        access: "public",
-        handleUploadUrl: "/api/blob-upload",
-        clientPayload: JSON.stringify({ passcode }),
-        onUploadProgress: (evt) => {
-          const rawPct = evt && typeof evt.percentage === "number" ? evt.percentage : 0;
-          const norm = rawPct > 1 ? rawPct / 100 : rawPct;
-          const uiPct = Math.round(45 + norm * 18);
-          if (progressBar) progressBar.style.width = `${Math.min(63, uiPct)}%`;
-        },
+      const uploadedBlobUrl = await uploadMp4ToVercelBlob(blob, baseFilename, passcode, (loaded, total) => {
+        const pct = total > 0 ? Math.min(100, Math.round((loaded / total) * 100)) : 0;
+        const uiPct = Math.round(45 + (pct / 100) * 20);
+        if (progressBar) progressBar.style.width = `${Math.min(65, uiPct)}%`;
+        if (statusInfo) {
+          const loadedMb = (loaded / (1024 * 1024)).toFixed(1);
+          statusInfo.innerHTML = `<span><i class="fa-solid fa-cloud-arrow-up fa-fade" style="color: #8b5cf6;"></i> Step 2/4: Uploading MP4 (${pct}% • ${loadedMb} / ${totalMb} MB) to Vercel Blob...</span>`;
+        }
       });
 
       // Step 3: Create Instagram Reel container with video_url + JSON caption
@@ -3056,7 +3149,7 @@ async function publishReelToInstagram() {
           "X-Admin-Passcode": passcode,
         },
         body: JSON.stringify({
-          video_url: uploadedBlob.url,
+          video_url: uploadedBlobUrl,
           caption: caption,
           share_to_feed: shareToFeed,
         }),
@@ -3082,7 +3175,7 @@ async function publishReelToInstagram() {
           },
           body: JSON.stringify({
             container_id: containerId,
-            blob_url: uploadedBlob.url,
+            blob_url: uploadedBlobUrl,
           }),
         });
         const pubData = await pubResp.json();
