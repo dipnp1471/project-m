@@ -1,0 +1,10 @@
+{
+  "name": "medbank-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MedBank Studio — MSRA Question Bank & Direct-to-Instagram Reel Publisher",
+  "dependencies": {
+    "@vercel/blob": "^0.27.3"
+  }
+}

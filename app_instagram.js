@@ -345,7 +345,7 @@ function setupSlider(sliderId, labelId, onChange) {
 }
 
 // --- Modal Open/Close ---
-function openInstagramModal(questionId) {
+function openInstagramModal(questionId, options = {}) {
   const q = state.questions.find(item => item.id === questionId);
   if (!q) {
     alert("Question not found in database.");
@@ -400,6 +400,22 @@ function openInstagramModal(questionId) {
     syncVideoControlsWithInstaState();
     recalculateVideoTimeline();
     renderVideoFrameAt(0);
+  }
+  if (typeof populateVideoCaption === "function") {
+    populateVideoCaption(q);
+  }
+
+  // Switch directly to the requested tab (default to last-used or "video" when requested)
+  const targetTab = options.tab || (options.autoPublish ? "video" : "video");
+  if (typeof switchStudioTab === "function") {
+    switchStudioTab(targetTab, { autoPlay: !options.autoPublish });
+  }
+
+  if (options.autoPublish && typeof publishReelToInstagram === "function") {
+    // Give the modal & canvas a brief tick to paint before recording & publishing
+    setTimeout(() => {
+      publishReelToInstagram();
+    }, 120);
   }
 }
 
@@ -782,18 +798,14 @@ function buildSlideHTML(q, slideNumber) {
   return slide;
 }
 
-// --- Instagram Caption Copier with Website Link ---
-function copyInstagramCaption() {
-  const q = instaState.activeQuestion;
-  if (!q) {
-    alert("No active question found.");
-    return;
-  }
+// --- Instagram Caption Builder & Copier ---
+function buildInstagramCaption(q) {
+  if (!q) return "";
 
   const typeLabel = q.type === "sba" ? "SBA" :
                     q.type === "emq" ? "EMQ" :
                     q.type === "ranking" ? "Ranking" :
-                    q.type === "selection" ? "Selection" : q.type.toUpperCase();
+                    q.type === "selection" ? "Selection" : (q.type || "SBA").toUpperCase();
 
   const optionsList = (q.options || []).map((opt, idx) => {
     const letter = String.fromCharCode(65 + idx);
@@ -824,7 +836,7 @@ function copyInstagramCaption() {
   const explanationText = q.explanation ? `📖 Explanation:\n${q.explanation}` : "";
 
   const captionTitle = instaState.captionTitle || "🎯 Clinical Case Challenge";
-  const captionText = `${captionTitle} (${typeLabel})
+  return `${captionTitle} (${typeLabel})
 
 ${q.scenario}
 
@@ -841,6 +853,18 @@ ${explanationText}
 👉 https://${instaState.websiteUrl} (Link in bio!)
 
 #MSRA #MedicalExam #MedEd #NHS #JuniorDoctor #GPST #Revision ${instaState.handle}`;
+}
+
+function copyInstagramCaption(customText = null) {
+  const q = instaState.activeQuestion;
+  const captionText = typeof customText === "string" && customText.trim()
+    ? customText
+    : buildInstagramCaption(q);
+
+  if (!captionText) {
+    alert("No active question found.");
+    return;
+  }
 
   navigator.clipboard.writeText(captionText).then(() => {
     alert("Instagram Caption copied to clipboard!\n\nIncludes your question scenario, options, correct answer, explanation, website link (https://" + instaState.websiteUrl + "), and bio CTA.");

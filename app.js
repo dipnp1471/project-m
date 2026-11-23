@@ -256,15 +256,27 @@ function initEventListeners() {
   document.getElementById("flag-question-btn").addEventListener("click", toggleActiveQuestionFlag);
   document.getElementById("end-practice-session").addEventListener("click", endPracticeSession);
   
-  // Instagram Carousel Generator (practice room)
+  // Instagram & Direct Reel Studio (practice room)
   document.getElementById("generate-carousel-btn").addEventListener("click", () => {
     const pState = state.activePractice;
     if (pState.questions.length > 0 && pState.questions[pState.currentIndex]) {
-      openInstagramModal(pState.questions[pState.currentIndex].id);
+      openInstagramModal(pState.questions[pState.currentIndex].id, { tab: "video" });
     } else {
-      alert("No active question to generate a carousel from. Start a practice session first.");
+      alert("No active question to generate a reel from. Start a practice session first.");
     }
   });
+
+  const quickPostReelBtn = document.getElementById("quick-post-reel-btn");
+  if (quickPostReelBtn) {
+    quickPostReelBtn.addEventListener("click", () => {
+      const pState = state.activePractice;
+      if (pState.questions.length > 0 && pState.questions[pState.currentIndex]) {
+        openInstagramModal(pState.questions[pState.currentIndex].id, { tab: "video", autoPublish: true });
+      } else {
+        alert("No active question to post. Start a practice session first.");
+      }
+    });
+  }
   
   // Exam Simulator controls
   document.getElementById("start-exam-sim-btn").addEventListener("click", startExamSimulation);
@@ -927,8 +939,11 @@ function renderBookmarks() {
           <span class="question-category">${q.category} (${q.type.toUpperCase()})</span>
         </div>
         <div style="display: flex; gap: 8px;">
-          <button class="btn btn-secondary btn-sm generate-post-btn" data-id="${q.id}" style="padding: 4px 8px; font-size: 0.8rem;">
-            <i class="fa-brands fa-instagram"></i> Share
+          <button class="btn btn-sm btn-ig-publish-quick quick-post-reel-bookmark-btn" data-id="${q.id}" title="1-Click Render & Publish Reel directly to Instagram">
+            <i class="fa-solid fa-paper-plane"></i> Post Reel
+          </button>
+          <button class="btn btn-secondary btn-sm generate-post-btn" data-id="${q.id}" style="padding: 4px 8px; font-size: 0.8rem;" title="Open Reel & Carousel Studio">
+            <i class="fa-brands fa-instagram"></i> Studio
           </button>
           <button class="btn btn-secondary btn-danger btn-sm remove-bookmark-btn" data-id="${q.id}" style="padding: 4px 8px; font-size: 0.8rem;">
             <i class="fa-solid fa-trash-can"></i> Remove
@@ -945,7 +960,8 @@ function renderBookmarks() {
       </div>
     `;
     
-    card.querySelector(".generate-post-btn").addEventListener("click", () => openInstagramModal(q.id));
+    card.querySelector(".quick-post-reel-bookmark-btn").addEventListener("click", () => openInstagramModal(q.id, { tab: "video", autoPublish: true }));
+    card.querySelector(".generate-post-btn").addEventListener("click", () => openInstagramModal(q.id, { tab: "video" }));
     card.querySelector(".remove-bookmark-btn").addEventListener("click", () => {
       toggleBookmark(q.id);
       renderBookmarks();
@@ -1777,8 +1793,11 @@ function renderAdminManageQuestionsList() {
           <div class="admin-question-text">${q.scenario}</div>
         </div>
         <div class="admin-question-actions">
-          <button class="btn btn-secondary btn-sm admin-share-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;">
-            <i class="fa-brands fa-instagram"></i> Share
+          <button class="btn btn-sm btn-ig-publish-quick admin-post-reel-btn" data-id="${q.id}" title="1-Click Render & Publish Reel directly to Instagram">
+            <i class="fa-solid fa-paper-plane"></i> Post Reel
+          </button>
+          <button class="btn btn-secondary btn-sm admin-share-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;" title="Open Reel & Carousel Studio">
+            <i class="fa-brands fa-instagram"></i> Studio
           </button>
           <button class="btn btn-secondary btn-sm edit-q-btn" data-id="${q.id}" style="padding: 6px 12px; font-size: 0.8rem;">
             <i class="fa-solid fa-pen"></i> Edit
@@ -1790,7 +1809,8 @@ function renderAdminManageQuestionsList() {
       </div>
     `;
     
-    card.querySelector(".admin-share-btn").addEventListener("click", () => openInstagramModal(q.id));
+    card.querySelector(".admin-post-reel-btn").addEventListener("click", () => openInstagramModal(q.id, { tab: "video", autoPublish: true }));
+    card.querySelector(".admin-share-btn").addEventListener("click", () => openInstagramModal(q.id, { tab: "video" }));
     card.querySelector(".edit-q-btn").addEventListener("click", () => editQuestion(q.id));
     card.querySelector(".delete-q-btn").addEventListener("click", () => deleteQuestion(q.id));
     

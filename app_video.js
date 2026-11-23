@@ -8,6 +8,9 @@
 // --- Video Studio State ---
 const videoState = {
   activeQuestion: null,
+  videoMode: "animated", // "animated" | "static"
+  staticDuration: 7, // Default 7s for Static Reel (3-30s)
+  staticLayout: "question-only", // "question-only" | "with-answer"
   isPlaying: false,
   currentTime: 0,
   totalDuration: 13.0,
@@ -261,19 +264,295 @@ class StudioAudioEngine {
       osc.stop(noteTime + 0.9);
     });
   }
+
+  // Render full deterministic stereo 48kHz AudioBuffer offline (for fast WebCodecs MP4 export)
+  async renderOfflineAudioBuffer(q, totalDuration, sampleRate = 48000) {
+    const numFrames = Math.max(sampleRate, Math.ceil(totalDuration * sampleRate));
+    const offlineCtx = new OfflineAudioContext(2, numFrames, sampleRate);
+    const masterGain = offlineCtx.createGain();
+    const vol = videoState.isMuted ? 0 : Math.max(0, Math.min(1, videoState.volume ?? 0.45));
+    masterGain.gain.setValueAtTime(vol, 0);
+    masterGain.connect(offlineCtx.destination);
+
+    // Static Reel mode or muted -> clean silent stereo AAC track (required for smooth IG Reels ingestion)
+    if (videoState.videoMode === "static" || videoState.isMuted || vol <= 0) {
+      return await offlineCtx.startRendering();
+    }
+
+    const prevCtx = this.ctx;
+    this.ctx = offlineCtx;
+    try {
+      const readingEnd = videoState.readingDuration;
+      const cyclingStart = readingEnd + 0.5;
+      const cyclingEnd = cyclingStart + videoState.cyclingDuration;
+      const revealStart = cyclingEnd + (videoState.postCyclingPause || 2.0);
+      const optionsCount = (q && q.options ? q.options.length : 4) || 4;
+      const stepDuration = videoState.cyclingDuration / Math.max(1, optionsCount);
+
+      if (videoState.cycleSound !== "mute") {
+        for (let step = 0; step < optionsCount; step++) {
+          const t = cyclingStart + step * stepDuration;
+          if (t >= totalDuration) break;
+          if (videoState.cycleSound === "custom" && videoState.customCycleBuffer) {
+            try {
+              const src = offlineCtx.createBufferSource();
+              src.buffer = videoState.customCycleBuffer;
+              src.connect(masterGain);
+              src.start(t);
+            } catch (e) {}
+          } else if (videoState.cycleSound === "marimba-boop") {
+            this.synthesizeMarimbaBoop(step, masterGain, t);
+          } else if (videoState.cycleSound === "zen-chime") {
+            this.synthesizeZenChime(masterGain, t);
+          } else if (videoState.cycleSound === "digital-blip") {
+            this.synthesizeDigitalBlip(masterGain, t);
+          } else {
+            this.synthesizeSoftPiano(step, masterGain, t);
+          }
+        }
+      }
+
+      if (videoState.revealSound !== "mute" && revealStart < totalDuration) {
+        this.scheduleRevealSoundAt(masterGain, revealStart);
+      }
+    } finally {
+      this.ctx = prevCtx;
+    }
+
+    return await offlineCtx.startRendering();
+  }
+
+  scheduleRevealSoundAt(dest, t) {
+    if (videoState.revealSound === "piano-resolve") {
+      [261.63, 392.0, 523.25].forEach((freq) => {
+        const osc = this.ctx.createOscillator();
+        const noteGain = this.ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, t);
+        noteGain.gain.setValueAtTime(0, t);
+        noteGain.gain.linearRampToValueAtTime(0.2, t + 0.02);
+        noteGain.gain.exponentialRampToValueAtTime(0.0001, t + 1.2);
+        osc.connect(noteGain);
+        noteGain.connect(dest);
+        osc.start(t);
+        osc.stop(t + 1.25);
+      });
+      return;
+    }
+    if (videoState.revealSound === "gentle-bell") {
+      const osc = this.ctx.createOscillator();
+      const noteGain = this.ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(1046.5, t);
+      noteGain.gain.setValueAtTime(0, t);
+      noteGain.gain.linearRampToValueAtTime(0.35, t + 0.015);
+      noteGain.gain.exponentialRampToValueAtTime(0.0001, t + 1.0);
+      osc.connect(noteGain);
+      noteGain.connect(dest);
+      osc.start(t);
+      osc.stop(t + 1.05);
+      return;
+    }
+    const chord = [523.25, 659.25, 783.99, 1046.5];
+    chord.forEach((freq, idx) => {
+      const noteTime = t + idx * 0.06;
+      const osc = this.ctx.createOscillator();
+      const noteGain = this.ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, noteTime);
+      noteGain.gain.setValueAtTime(0, noteTime);
+      noteGain.gain.linearRampToValueAtTime(0.25, noteTime + 0.015);
+      noteGain.gain.exponentialRampToValueAtTime(0.0001, noteTime + 0.85);
+      osc.connect(noteGain);
+      noteGain.connect(dest);
+      osc.start(noteTime);
+      osc.stop(noteTime + 0.9);
+    });
+  }
 }
 
 const studioAudio = new StudioAudioEngine();
 
+const VIDEO_PREFS_KEY = "medbank_reel_prefs_v1";
+const VERCEL_PASSCODE_KEY = "medbank_vercel_passcode_v1";
+const igServerState = {
+  checked: false,
+  mode: "offline", // "vercel" | "local" | "offline"
+  online: false,
+  ffmpegAvailable: false,
+  ffmpegPath: "",
+  blobConfigured: false,
+  passcodeRequired: false,
+  igConfigured: false,
+  igUsername: "",
+  shareToFeed: true,
+  saveLocalCopy: true,
+};
+
+function getStoredPasscode() {
+  try {
+    return localStorage.getItem(VERCEL_PASSCODE_KEY) || "";
+  } catch (e) {
+    return "";
+  }
+}
+
+function setStoredPasscode(val) {
+  try {
+    if (val) localStorage.setItem(VERCEL_PASSCODE_KEY, val);
+    else localStorage.removeItem(VERCEL_PASSCODE_KEY);
+  } catch (e) {}
+}
+
+function loadVideoPreferences() {
+  try {
+    const raw = localStorage.getItem(VIDEO_PREFS_KEY);
+    if (!raw) return;
+    const prefs = JSON.parse(raw);
+    if (!prefs || typeof prefs !== "object") return;
+
+    const videoKeys = [
+      "videoMode",
+      "staticDuration",
+      "staticLayout",
+      "cyclingDuration",
+      "postCyclingPause",
+      "revealDuration",
+      "wpm",
+      "explanationFontSize",
+      "readingStyle",
+      "deliberationStyle",
+      "cycleSound",
+      "revealSound",
+      "volume",
+      "revealMode",
+      "showPausePrompt",
+      "pausePromptText",
+      "showCommentPrompt",
+      "commentPromptText",
+    ];
+    videoKeys.forEach((k) => {
+      if (prefs[k] !== undefined && prefs[k] !== null) {
+        if (k === "cycleSound" && prefs[k] === "custom") return;
+        videoState[k] = prefs[k];
+      }
+    });
+
+    if (typeof instaState !== "undefined") {
+      const instaKeys = [
+        "theme",
+        "font",
+        "handle",
+        "websiteUrl",
+        "scenarioFontSize",
+        "optionsFontSize",
+        "explanationFontSize",
+      ];
+      instaKeys.forEach((k) => {
+        if (prefs[k] !== undefined && prefs[k] !== null) {
+          instaState[k] = prefs[k];
+        }
+      });
+    }
+
+    if (typeof prefs.shareToFeed === "boolean") {
+      igServerState.shareToFeed = prefs.shareToFeed;
+    }
+  } catch (err) {
+    console.warn("Could not load saved Reel preferences:", err);
+  }
+}
+
+function saveVideoPreferences() {
+  try {
+    const prefs = {
+      videoMode: videoState.videoMode,
+      staticDuration: videoState.staticDuration,
+      staticLayout: videoState.staticLayout,
+      cyclingDuration: videoState.cyclingDuration,
+      postCyclingPause: videoState.postCyclingPause,
+      revealDuration: videoState.revealDuration,
+      wpm: videoState.wpm,
+      explanationFontSize: videoState.explanationFontSize,
+      readingStyle: videoState.readingStyle,
+      deliberationStyle: videoState.deliberationStyle,
+      cycleSound: videoState.cycleSound === "custom" ? "soft-piano" : videoState.cycleSound,
+      revealSound: videoState.revealSound,
+      volume: videoState.volume,
+      revealMode: videoState.revealMode,
+      showPausePrompt: videoState.showPausePrompt,
+      pausePromptText: videoState.pausePromptText,
+      showCommentPrompt: videoState.showCommentPrompt,
+      commentPromptText: videoState.commentPromptText,
+      shareToFeed: igServerState.shareToFeed,
+    };
+    if (typeof instaState !== "undefined") {
+      prefs.theme = instaState.theme;
+      prefs.font = instaState.font;
+      prefs.handle = instaState.handle;
+      prefs.websiteUrl = instaState.websiteUrl;
+      prefs.scenarioFontSize = instaState.scenarioFontSize;
+      prefs.optionsFontSize = instaState.optionsFontSize;
+    }
+    localStorage.setItem(VIDEO_PREFS_KEY, JSON.stringify(prefs));
+  } catch (err) {
+    console.warn("Could not save Reel preferences:", err);
+  }
+}
+
+function updateCaptionCharCount() {
+  const textarea = document.getElementById("video-caption-textarea");
+  const counter = document.getElementById("video-caption-char-count");
+  if (!textarea || !counter) return;
+  const len = textarea.value.length;
+  counter.textContent = `${len.toLocaleString()} / 2,200`;
+  counter.style.color = len > 2200 ? "#f87171" : "var(--text-tertiary)";
+}
+
+function populateVideoCaption(q) {
+  const textarea = document.getElementById("video-caption-textarea");
+  if (!textarea || !q) return;
+  if (typeof buildInstagramCaption === "function") {
+    textarea.value = buildInstagramCaption(q);
+    updateCaptionCharCount();
+  }
+}
+
+function applyVideoModeUI() {
+  const isStatic = videoState.videoMode === "static";
+  const animBtn = document.getElementById("video-mode-animated-btn");
+  const staticBtn = document.getElementById("video-mode-static-btn");
+  const staticBox = document.getElementById("video-static-settings");
+  const animControls = document.getElementById("video-animated-only-controls");
+  const delibWrapper = document.getElementById("video-deliberation-format-wrapper");
+
+  if (animBtn) animBtn.classList.toggle("active", !isStatic);
+  if (staticBtn) staticBtn.classList.toggle("active", isStatic);
+  if (staticBox) staticBox.style.display = isStatic ? "block" : "none";
+  if (animControls) animControls.style.display = isStatic ? "none" : "grid";
+  if (delibWrapper) delibWrapper.style.display = isStatic ? "none" : "block";
+
+  const durSlider = document.getElementById("video-static-duration-slider");
+  if (durSlider) durSlider.value = videoState.staticDuration;
+  const durVal = document.getElementById("val-video-static-duration");
+  if (durVal) durVal.textContent = videoState.staticDuration;
+
+  const layoutSel = document.getElementById("video-static-layout-select");
+  if (layoutSel) layoutSel.value = videoState.staticLayout;
+}
+
 // --- Lifecycle & Initialization ---
 document.addEventListener("DOMContentLoaded", () => {
+  loadVideoPreferences();
   initStudioTabs();
   initVideoControls();
   initVideoThemeGrid();
+  initIgDirectSetupUI();
+  checkLocalServerStatus();
 });
 
-// Tab Switcher (Static Carousel vs Animated Video)
-function initStudioTabs() {
+// Switch between Static Carousel and Animated Reel Video tabs
+function switchStudioTab(tabName, opts = {}) {
   const carouselTabBtn = document.getElementById("studio-tab-carousel");
   const videoTabBtn = document.getElementById("studio-tab-video");
   const carouselPane = document.getElementById("carousel-tab-pane");
@@ -281,15 +560,7 @@ function initStudioTabs() {
 
   if (!carouselTabBtn || !videoTabBtn) return;
 
-  carouselTabBtn.addEventListener("click", () => {
-    carouselTabBtn.classList.add("active");
-    videoTabBtn.classList.remove("active");
-    if (carouselPane) carouselPane.style.display = "block";
-    if (videoPane) videoPane.style.display = "none";
-    pauseVideoPlayback();
-  });
-
-  videoTabBtn.addEventListener("click", () => {
+  if (tabName === "video") {
     videoTabBtn.classList.add("active");
     carouselTabBtn.classList.remove("active");
     if (carouselPane) carouselPane.style.display = "none";
@@ -297,8 +568,28 @@ function initStudioTabs() {
     syncVideoControlsWithInstaState();
     recalculateVideoTimeline();
     renderVideoFrameAt(0);
-    playVideoPlayback();
-  });
+    if (opts.autoPlay !== false) {
+      playVideoPlayback();
+    }
+    checkLocalServerStatus();
+  } else {
+    carouselTabBtn.classList.add("active");
+    videoTabBtn.classList.remove("active");
+    if (carouselPane) carouselPane.style.display = "block";
+    if (videoPane) videoPane.style.display = "none";
+    pauseVideoPlayback();
+  }
+}
+
+// Tab Switcher (Static Carousel vs Animated Video)
+function initStudioTabs() {
+  const carouselTabBtn = document.getElementById("studio-tab-carousel");
+  const videoTabBtn = document.getElementById("studio-tab-video");
+
+  if (!carouselTabBtn || !videoTabBtn) return;
+
+  carouselTabBtn.addEventListener("click", () => switchStudioTab("carousel"));
+  videoTabBtn.addEventListener("click", () => switchStudioTab("video", { autoPlay: true }));
 }
 
 // Populate Theme Grid in Video Studio
@@ -326,6 +617,7 @@ function initVideoThemeGrid() {
         });
       }
       if (typeof rebuildAllSlides === "function") rebuildAllSlides();
+      saveVideoPreferences();
       renderVideoFrameAt(videoState.currentTime);
     });
     grid.appendChild(swatch);
@@ -368,12 +660,73 @@ function syncVideoControlsWithInstaState() {
     if (label) label.textContent = curVal;
   }
 
+  const readStyleSel = document.getElementById("video-reading-style-select");
+  if (readStyleSel) readStyleSel.value = videoState.readingStyle;
+
+  const delibStyleSel = document.getElementById("video-deliberation-style-select");
+  if (delibStyleSel) delibStyleSel.value = videoState.deliberationStyle;
+
+  const speedSlider = document.getElementById("video-speed-slider");
+  if (speedSlider) {
+    speedSlider.value = videoState.wpm;
+    const label = document.getElementById("val-video-speed");
+    if (label) label.textContent = videoState.wpm;
+  }
+
+  const cycleDurSlider = document.getElementById("video-cycling-duration-slider");
+  if (cycleDurSlider) {
+    cycleDurSlider.value = videoState.cyclingDuration;
+    const label = document.getElementById("val-video-cycling-duration");
+    if (label) label.textContent = Number(videoState.cyclingDuration).toFixed(1);
+  }
+
   const postCycleSlider = document.getElementById("video-post-cycle-pause-slider");
   if (postCycleSlider) {
     postCycleSlider.value = videoState.postCyclingPause;
     const label = document.getElementById("val-video-post-cycle-pause");
     if (label) label.textContent = Number(videoState.postCyclingPause).toFixed(1);
   }
+
+  const cycleSoundSel = document.getElementById("video-cycling-sound-select");
+  if (cycleSoundSel) cycleSoundSel.value = videoState.cycleSound;
+
+  const revealSoundSel = document.getElementById("video-reveal-sound-select");
+  if (revealSoundSel) revealSoundSel.value = videoState.revealSound;
+
+  const volSlider = document.getElementById("video-volume-slider");
+  if (volSlider) {
+    const volPct = Math.round((videoState.volume ?? 0.45) * 100);
+    volSlider.value = volPct;
+    const label = document.getElementById("val-video-volume");
+    if (label) label.textContent = volPct;
+  }
+
+  const revealModeSel = document.getElementById("video-reveal-mode-select");
+  if (revealModeSel) revealModeSel.value = videoState.revealMode;
+
+  const revealDurSlider = document.getElementById("video-reveal-duration-slider");
+  if (revealDurSlider) {
+    revealDurSlider.value = videoState.revealDuration;
+    const label = document.getElementById("val-video-reveal-duration");
+    if (label) label.textContent = Number(videoState.revealDuration).toFixed(1);
+  }
+
+  const togglePause = document.getElementById("video-toggle-pause-prompt");
+  if (togglePause) togglePause.checked = Boolean(videoState.showPausePrompt);
+
+  const pauseText = document.getElementById("video-pause-prompt-text");
+  if (pauseText) pauseText.value = videoState.pausePromptText || "";
+
+  const toggleComment = document.getElementById("video-toggle-comment-prompt");
+  if (toggleComment) toggleComment.checked = Boolean(videoState.showCommentPrompt);
+
+  const commentText = document.getElementById("video-comment-prompt-text");
+  if (commentText) commentText.value = videoState.commentPromptText || "";
+
+  const shareFeedToggle = document.getElementById("video-share-to-feed-toggle");
+  if (shareFeedToggle) shareFeedToggle.checked = Boolean(igServerState.shareToFeed);
+
+  applyVideoModeUI();
 
   // Update active swatch
   const grid = document.getElementById("video-theme-grid");
@@ -726,11 +1079,114 @@ function initVideoControls() {
     });
   }
 
-  // Video Export Button
+  // Reel Mode Toggle: Animated vs Static (No Animations)
+  const modeAnimBtn = document.getElementById("video-mode-animated-btn");
+  const modeStaticBtn = document.getElementById("video-mode-static-btn");
+  if (modeAnimBtn) {
+    modeAnimBtn.addEventListener("click", () => {
+      videoState.videoMode = "animated";
+      applyVideoModeUI();
+      saveVideoPreferences();
+      recalculateVideoTimeline();
+      renderVideoFrameAt(videoState.currentTime);
+    });
+  }
+  if (modeStaticBtn) {
+    modeStaticBtn.addEventListener("click", () => {
+      videoState.videoMode = "static";
+      applyVideoModeUI();
+      saveVideoPreferences();
+      recalculateVideoTimeline();
+      renderVideoFrameAt(0);
+    });
+  }
+
+  // Static Reel Duration Slider (3-30s)
+  const staticDurSlider = document.getElementById("video-static-duration-slider");
+  if (staticDurSlider) {
+    staticDurSlider.addEventListener("input", (e) => {
+      const val = parseInt(e.target.value, 10) || 7;
+      videoState.staticDuration = Math.max(3, Math.min(30, val));
+      const label = document.getElementById("val-video-static-duration");
+      if (label) label.textContent = videoState.staticDuration;
+      recalculateVideoTimeline();
+      renderVideoFrameAt(0);
+    });
+  }
+
+  // Static Reel Content Layout Select
+  const staticLayoutSel = document.getElementById("video-static-layout-select");
+  if (staticLayoutSel) {
+    staticLayoutSel.addEventListener("change", (e) => {
+      videoState.staticLayout = e.target.value;
+      renderVideoFrameAt(0);
+    });
+  }
+
+  // Caption character counter
+  const captionTextarea = document.getElementById("video-caption-textarea");
+  if (captionTextarea) {
+    captionTextarea.addEventListener("input", updateCaptionCharCount);
+  }
+
+  // Share to Feed Toggle
+  const shareFeedToggle = document.getElementById("video-share-to-feed-toggle");
+  if (shareFeedToggle) {
+    shareFeedToggle.addEventListener("change", (e) => {
+      igServerState.shareToFeed = e.target.checked;
+      saveVideoPreferences();
+    });
+  }
+
+  // Reset Caption Button
+  const resetCaptionBtn = document.getElementById("video-reset-caption-btn");
+  if (resetCaptionBtn) {
+    resetCaptionBtn.addEventListener("click", () => {
+      const q = videoState.activeQuestion || instaState.activeQuestion;
+      if (q) populateVideoCaption(q);
+    });
+  }
+
+  // Copy Caption Button (inside Video Tab)
+  const copyCaptionBtn = document.getElementById("video-copy-caption-btn");
+  if (copyCaptionBtn) {
+    copyCaptionBtn.addEventListener("click", () => {
+      const captionEl = document.getElementById("video-caption-textarea");
+      const text = captionEl ? captionEl.value.trim() : "";
+      if (typeof copyInstagramCaption === "function") {
+        copyInstagramCaption(text);
+      }
+    });
+  }
+
+  // Auto-save any Reel preference changes in the Video Controls panel
+  const controlsPanel = document.querySelector(".video-controls-section");
+  if (controlsPanel) {
+    let saveTimer = null;
+    const scheduleSave = (e) => {
+      if (e.target && (e.target.id === "video-caption-textarea" || e.target.id === "video-custom-audio-file")) {
+        return;
+      }
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(() => saveVideoPreferences(), 120);
+    };
+    controlsPanel.addEventListener("change", scheduleSave);
+    controlsPanel.addEventListener("input", scheduleSave);
+  }
+
+  // Video Export Button (Saves IG-ready MP4)
   const exportBtn = document.getElementById("video-export-btn");
   if (exportBtn) {
     exportBtn.addEventListener("click", () => {
       exportAnimatedVideo();
+    });
+  }
+
+  // Direct Publish to Instagram Button
+  const publishBtn = document.getElementById("video-publish-ig-btn");
+  if (publishBtn) {
+    publishBtn.addEventListener("click", () => {
+      publishReelToInstagram();
     });
   }
 }
@@ -739,6 +1195,15 @@ function initVideoControls() {
 function recalculateVideoTimeline() {
   const q = videoState.activeQuestion || instaState.activeQuestion;
   if (!q) return;
+
+  if (videoState.videoMode === "static") {
+    videoState.totalDuration = Math.max(3, Math.min(30, Number(videoState.staticDuration) || 7));
+    if (videoState.currentTime > videoState.totalDuration) {
+      videoState.currentTime = 0;
+    }
+    updateScrubberUI();
+    return;
+  }
 
   const words = (q.scenario || "").split(/\s+/).filter(Boolean);
   const wordCount = Math.max(1, words.length);
@@ -772,6 +1237,13 @@ function updateScrubberUI() {
   }
 
   if (phaseBadge) {
+    if (videoState.videoMode === "static") {
+      phaseBadge.textContent = `🖼️ Static Reel (${tot.toFixed(0)}s • No Animations)`;
+      phaseBadge.style.color = "#38bdf8";
+      phaseBadge.style.background = "rgba(56, 189, 248, 0.2)";
+      return;
+    }
+
     const readingEnd = videoState.readingDuration;
     const cyclingStart = readingEnd + 0.5;
     const cyclingEnd = cyclingStart + videoState.cyclingDuration;
@@ -856,6 +1328,7 @@ function videoLoop(now) {
 }
 
 function checkAndPlayAudioTriggers(time, destNode = null) {
+  if (videoState.videoMode === "static") return;
   const readingEnd = videoState.readingDuration;
   const cyclingStart = readingEnd + 0.5;
   const cyclingEnd = cyclingStart + videoState.cyclingDuration;
@@ -924,8 +1397,50 @@ function drawReelFrame(ctx, q, time, width, height) {
   const headerY = 90;
   drawHeaderSection(ctx, q, headerY, width);
 
-  // 4. Question Scenario Area (Kinetic Reading Reveal)
+  // 4. Static Reel Mode (Zero Animations) vs Animated Reel Mode
   const scenarioStartY = 260;
+  if (videoState.videoMode === "static") {
+    // Draw full crisp scenario immediately (no word highlight or fade)
+    const scenarioBottomY = drawScenarioText(ctx, q.scenario, scenarioStartY, width, 99999, 1);
+    const optionsStartY = scenarioBottomY + 40;
+    const showAnswer = videoState.staticLayout === "with-answer";
+
+    if (showAnswer) {
+      const optionsBottomY = drawOptionsSection(ctx, q, optionsStartY, width, 99999, 1, 2, 3);
+      drawEngagementPrompts(ctx, q, 99999, 1, 2, 3, optionsBottomY, width, height);
+    } else {
+      const optionsBottomY = drawOptionsSection(ctx, q, optionsStartY, width, 0, 99999, 99999, 99999);
+      // Show clean caption callout pill in Static Question-Only mode
+      if (videoState.showCommentPrompt) {
+        const fontFam = (typeof FONT_MAP !== "undefined" && FONT_MAP[instaState.font]) || "'Outfit', sans-serif";
+        const promptY = Math.min(height - 230, Math.max(optionsBottomY + 28, height - 290));
+        const commentText = videoState.commentPromptText || "💬 Drop your answer below • Full rationale in caption 👇";
+        ctx.font = `600 20px ${fontFam}`;
+        const textW = ctx.measureText(commentText).width;
+        const pillW = Math.min(width - 120, textW + 48);
+        const pillH = 48;
+        const pillX = (width - pillW) / 2;
+
+        ctx.fillStyle = "rgba(0, 0, 0, 0.35)";
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.26)";
+        ctx.lineWidth = 1.5;
+        drawRoundedRect(ctx, pillX, promptY, pillW, pillH, 24);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = "rgba(255, 255, 255, 0.96)";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(commentText, width / 2, promptY + pillH / 2);
+      }
+    }
+
+    drawFooterSection(ctx, q, height - 120, width);
+    ctx.restore();
+    return;
+  }
+
+  // Animated Reel Mode: Kinetic Reading + Option Deliberation + Reveal
   const readingEnd = videoState.readingDuration;
   const scenarioBottomY = drawScenarioText(ctx, q.scenario, scenarioStartY, width, time, readingEnd);
 
@@ -1637,14 +2152,534 @@ function drawWrappedParagraph(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
   ctx.fillText(line, x, curY);
 }
 
-// --- Video Export Engine (.mp4 / .webm with Synchronized Audio) ---
-async function exportAnimatedVideo() {
-  if (videoState.isExporting) return;
-  const q = videoState.activeQuestion || instaState.activeQuestion;
-  if (!q) {
-    alert("No question available to export.");
+// --- Helper: UTF-8 safe Base64 JSON header encoding ---
+function encodeReelMetaHeader(metaObj) {
+  const jsonStr = JSON.stringify(metaObj);
+  const bytes = new TextEncoder().encode(jsonStr);
+  let binary = "";
+  bytes.forEach((b) => {
+    binary += String.fromCharCode(b);
+  });
+  return btoa(binary);
+}
+
+// --- Direct-to-Instagram Backend Status (Vercel Cloud or Local server.py) ---
+async function checkLocalServerStatus() {
+  const serverPill = document.getElementById("ig-status-server-pill");
+  const ffmpegPill = document.getElementById("ig-status-ffmpeg-pill");
+  const accountPill = document.getElementById("ig-status-account-pill");
+
+  const webCodecsReady = typeof VideoEncoder !== "undefined" && typeof VideoFrame !== "undefined";
+
+  try {
+    const resp = await fetch("/api/status", { cache: "no-store" });
+    if (!resp.ok) throw new Error("Not available");
+    const data = await resp.json();
+
+    igServerState.checked = true;
+    igServerState.mode = data.mode || (data.server ? "local" : "offline");
+    igServerState.online = igServerState.mode === "vercel" || Boolean(data.server);
+    igServerState.ffmpegAvailable = Boolean(data.ffmpeg_available);
+    igServerState.ffmpegPath = data.ffmpeg_path || "";
+    igServerState.blobConfigured = Boolean(data.blob_configured);
+    igServerState.passcodeRequired = Boolean(data.passcode_required);
+    igServerState.igConfigured = Boolean(data.ig_configured);
+    igServerState.igUsername = data.ig_username || "";
+    igServerState.saveLocalCopy = data.save_local_copy !== false;
+
+    if (igServerState.mode === "vercel") {
+      if (serverPill) {
+        serverPill.className = "ig-pill ig-pill-ok";
+        serverPill.innerHTML = '<i class="fa-solid fa-cloud"></i> Vercel Cloud: Online';
+      }
+      if (ffmpegPill) {
+        if (igServerState.blobConfigured && webCodecsReady) {
+          ffmpegPill.className = "ig-pill ig-pill-ok";
+          ffmpegPill.innerHTML = '<i class="fa-solid fa-bolt"></i> MP4 + Blob: Ready';
+        } else if (!igServerState.blobConfigured) {
+          ffmpegPill.className = "ig-pill ig-pill-warn";
+          ffmpegPill.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Vercel Blob: Setup Needed';
+        } else {
+          ffmpegPill.className = "ig-pill ig-pill-warn";
+          ffmpegPill.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Use Chrome/Edge for MP4';
+        }
+      }
+      if (accountPill) {
+        if (igServerState.igConfigured) {
+          const label = igServerState.igUsername ? `@${igServerState.igUsername}` : "Env Connected";
+          accountPill.className = "ig-pill ig-pill-ok";
+          accountPill.innerHTML = `<i class="fa-brands fa-instagram"></i> Instagram: ${label}`;
+        } else {
+          accountPill.className = "ig-pill ig-pill-warn";
+          accountPill.innerHTML = '<i class="fa-brands fa-instagram"></i> Instagram: Add Env Vars';
+        }
+      }
+    } else {
+      if (serverPill) {
+        serverPill.className = "ig-pill ig-pill-ok";
+        serverPill.innerHTML = '<i class="fa-solid fa-server"></i> Local Server: Online';
+      }
+      if (ffmpegPill) {
+        if (webCodecsReady) {
+          ffmpegPill.className = "ig-pill ig-pill-ok";
+          ffmpegPill.innerHTML = '<i class="fa-solid fa-bolt"></i> Browser MP4: Ready';
+        } else if (igServerState.ffmpegAvailable) {
+          ffmpegPill.className = "ig-pill ig-pill-ok";
+          ffmpegPill.innerHTML = '<i class="fa-solid fa-film"></i> FFmpeg: Ready (IG MP4)';
+        } else {
+          ffmpegPill.className = "ig-pill ig-pill-warn";
+          ffmpegPill.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> FFmpeg: Not Installed';
+        }
+      }
+      if (accountPill) {
+        if (igServerState.igConfigured) {
+          const label = igServerState.igUsername ? `@${igServerState.igUsername}` : "Configured";
+          accountPill.className = "ig-pill ig-pill-ok";
+          accountPill.innerHTML = `<i class="fa-brands fa-instagram"></i> Instagram: ${label}`;
+        } else {
+          accountPill.className = "ig-pill ig-pill-warn";
+          accountPill.innerHTML = '<i class="fa-brands fa-instagram"></i> Instagram: Setup Needed';
+        }
+      }
+    }
+  } catch (err) {
+    igServerState.checked = true;
+    igServerState.mode = "offline";
+    igServerState.online = false;
+    igServerState.ffmpegAvailable = false;
+    igServerState.igConfigured = false;
+
+    if (serverPill) {
+      serverPill.className = "ig-pill ig-pill-warn";
+      serverPill.innerHTML = '<i class="fa-solid fa-plug-circle-xmark"></i> Offline (Deploy to Vercel or run server.py)';
+    }
+    if (ffmpegPill) {
+      if (webCodecsReady) {
+        ffmpegPill.className = "ig-pill ig-pill-ok";
+        ffmpegPill.innerHTML = '<i class="fa-solid fa-bolt"></i> Browser MP4: Ready';
+      } else {
+        ffmpegPill.className = "ig-pill ig-pill-muted";
+        ffmpegPill.innerHTML = '<i class="fa-solid fa-film"></i> MP4 Encoder: Fallback';
+      }
+    }
+    if (accountPill) {
+      accountPill.className = "ig-pill ig-pill-muted";
+      accountPill.innerHTML = '<i class="fa-brands fa-instagram"></i> Direct Publish: Offline';
+    }
+  }
+  return igServerState;
+}
+
+function initIgDirectSetupUI() {
+  const openBtn = document.getElementById("open-ig-setup-btn");
+  const closeBtn = document.getElementById("close-ig-setup-modal");
+  const overlay = document.getElementById("ig-setup-modal");
+  const saveBtn = document.getElementById("ig-setup-save-btn");
+  const testBtn = document.getElementById("ig-setup-test-btn");
+
+  if (openBtn) openBtn.addEventListener("click", openIgSetupModal);
+  if (closeBtn) closeBtn.addEventListener("click", closeIgSetupModal);
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeIgSetupModal();
+    });
+  }
+  if (saveBtn) saveBtn.addEventListener("click", () => saveIgConfig(false));
+  if (testBtn) testBtn.addEventListener("click", () => saveIgConfig(true));
+}
+
+async function openIgSetupModal() {
+  const modal = document.getElementById("ig-setup-modal");
+  const warning = document.getElementById("ig-setup-server-warning");
+  const resultBox = document.getElementById("ig-setup-test-result");
+  const vercelSection = document.getElementById("ig-setup-vercel-section");
+  const localSection = document.getElementById("ig-setup-local-section");
+  const passcodeInput = document.getElementById("ig-vercel-passcode");
+
+  if (resultBox) resultBox.style.display = "none";
+
+  await checkLocalServerStatus();
+  if (warning) warning.style.display = igServerState.online ? "none" : "block";
+
+  if (igServerState.mode === "vercel") {
+    if (vercelSection) vercelSection.style.display = "flex";
+    if (localSection) localSection.style.display = "none";
+    if (passcodeInput) passcodeInput.value = getStoredPasscode();
+  } else {
+    if (vercelSection) vercelSection.style.display = "none";
+    if (localSection) localSection.style.display = "flex";
+
+    if (igServerState.online) {
+      try {
+        const resp = await fetch("/api/config", { cache: "no-store" });
+        if (resp.ok) {
+          const cfg = await resp.json();
+          const userIdEl = document.getElementById("ig-config-user-id");
+          const tokenEl = document.getElementById("ig-config-token");
+          const tokenHint = document.getElementById("ig-token-hint");
+          const apiVerEl = document.getElementById("ig-config-api-version");
+          const ffmpegEl = document.getElementById("ig-config-ffmpeg-path");
+          const shareFeedEl = document.getElementById("ig-config-share-feed");
+          const saveLocalEl = document.getElementById("ig-config-save-local");
+
+          if (userIdEl) userIdEl.value = cfg.ig_user_id || "";
+          if (tokenEl) tokenEl.value = "";
+          if (tokenHint) {
+            tokenHint.textContent = cfg.has_token
+              ? `(Saved: ${cfg.token_preview} — leave blank to keep)`
+              : "(Required)";
+          }
+          if (apiVerEl) apiVerEl.value = cfg.api_version || "v21.0";
+          if (ffmpegEl) ffmpegEl.value = cfg.ffmpeg_path || "";
+          if (shareFeedEl) shareFeedEl.checked = cfg.share_to_feed !== false;
+          if (saveLocalEl) saveLocalEl.checked = cfg.save_local_copy !== false;
+        }
+      } catch (e) {}
+    }
+  }
+
+  if (modal) modal.style.display = "flex";
+}
+
+function closeIgSetupModal() {
+  const modal = document.getElementById("ig-setup-modal");
+  if (modal) modal.style.display = "none";
+}
+
+async function saveIgConfig(runTest) {
+  const resultBox = document.getElementById("ig-setup-test-result");
+  const showResult = (ok, html) => {
+    if (!resultBox) return;
+    resultBox.style.display = "block";
+    resultBox.style.background = ok ? "rgba(16, 185, 129, 0.14)" : "rgba(239, 68, 68, 0.14)";
+    resultBox.style.border = ok ? "1px solid rgba(16, 185, 129, 0.45)" : "1px solid rgba(239, 68, 68, 0.45)";
+    resultBox.style.color = ok ? "#10b981" : "#f87171";
+    resultBox.innerHTML = html;
+  };
+
+  if (!igServerState.online) {
+    showResult(false, "Backend not detected. Deploy to Vercel or start <code>python server.py</code> locally.");
     return;
   }
+
+  const testBtn = document.getElementById("ig-setup-test-btn");
+  const saveBtn = document.getElementById("ig-setup-save-btn");
+  if (testBtn) testBtn.disabled = true;
+  if (saveBtn) saveBtn.disabled = true;
+
+  try {
+    // Vercel Cloud mode: store passcode in localStorage and verify via /api/ig-test
+    if (igServerState.mode === "vercel") {
+      const passcode = (document.getElementById("ig-vercel-passcode")?.value || "").trim();
+      setStoredPasscode(passcode);
+
+      if (!runTest) {
+        showResult(true, '<i class="fa-solid fa-circle-check"></i> Passcode saved in this browser.');
+        return;
+      }
+
+      const resp = await fetch("/api/ig-test", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Admin-Passcode": passcode,
+        },
+        body: JSON.stringify({}),
+      });
+      const data = await resp.json();
+      if (!resp.ok || !data.ok) {
+        throw new Error(data.error || "Connection test failed.");
+      }
+
+      await checkLocalServerStatus();
+      const uname = data.profile?.username ? `@${data.profile.username}` : data.profile?.id || "Instagram";
+      const accountPill = document.getElementById("ig-status-account-pill");
+      if (accountPill) {
+        accountPill.className = "ig-pill ig-pill-ok";
+        accountPill.innerHTML = `<i class="fa-brands fa-instagram"></i> Instagram: ${uname}`;
+      }
+      showResult(
+        true,
+        `<i class="fa-solid fa-circle-check"></i> Connected to <strong>${uname}</strong> via Vercel! Ready for 1-click Reel publishing.`
+      );
+      return;
+    }
+
+    // Local server.py mode: save to ig_config.json and optionally test
+    const userId = (document.getElementById("ig-config-user-id")?.value || "").trim();
+    const rawToken = (document.getElementById("ig-config-token")?.value || "").trim();
+    const apiVer = (document.getElementById("ig-config-api-version")?.value || "v21.0").trim();
+    const ffmpegPath = (document.getElementById("ig-config-ffmpeg-path")?.value || "").trim();
+    const shareToFeed = Boolean(document.getElementById("ig-config-share-feed")?.checked);
+    const saveLocalCopy = Boolean(document.getElementById("ig-config-save-local")?.checked);
+
+    const payload = {
+      ig_user_id: userId,
+      access_token: rawToken ? rawToken : "__KEEP__",
+      api_version: apiVer,
+      ffmpeg_path: ffmpegPath,
+      share_to_feed: shareToFeed,
+      save_local_copy: saveLocalCopy,
+    };
+
+    const endpoint = runTest ? "/api/test-connection" : "/api/config";
+    const resp = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await resp.json();
+
+    if (!resp.ok || !data.ok) {
+      throw new Error(data.error || "Failed to save configuration.");
+    }
+
+    await checkLocalServerStatus();
+    if (runTest && data.profile) {
+      const uname = data.profile.username ? `@${data.profile.username}` : data.profile.id;
+      showResult(
+        true,
+        `<i class="fa-solid fa-circle-check"></i> Connected to <strong>${uname}</strong>! You can now publish Reels directly to Instagram in 1 click.`
+      );
+    } else {
+      showResult(true, '<i class="fa-solid fa-circle-check"></i> Settings saved to <code>ig_config.json</code>.');
+    }
+  } catch (err) {
+    showResult(false, `<i class="fa-solid fa-circle-xmark"></i> ${err.message}`);
+  } finally {
+    if (testBtn) testBtn.disabled = false;
+    if (saveBtn) saveBtn.disabled = false;
+  }
+}
+
+// --- Browser-Native Instagram MP4 Encoder (WebCodecs + mp4-muxer, Zero FFmpeg Needed!) ---
+let _mp4MuxerModule = null;
+async function loadMp4Muxer() {
+  if (!_mp4MuxerModule) {
+    _mp4MuxerModule = await import("https://cdn.jsdelivr.net/npm/mp4-muxer@5.2.2/build/mp4-muxer.mjs");
+  }
+  return _mp4MuxerModule;
+}
+
+let _vercelBlobClientModule = null;
+async function loadVercelBlobClient() {
+  if (!_vercelBlobClientModule) {
+    _vercelBlobClientModule = await import("https://esm.sh/@vercel/blob@0.27.3/client");
+  }
+  return _vercelBlobClientModule;
+}
+
+async function selectSupportedAvcCodec(width, height, fps) {
+  if (typeof VideoEncoder === "undefined") return null;
+  const candidates = [
+    "avc1.64002a", // H.264 High Profile Level 4.2
+    "avc1.640028", // H.264 High Profile Level 4.0
+    "avc1.4d002a", // H.264 Main Profile Level 4.2
+    "avc1.42E028", // H.264 Baseline Level 4.0
+  ];
+  for (const codec of candidates) {
+    try {
+      const support = await VideoEncoder.isConfigSupported({
+        codec,
+        width,
+        height,
+        bitrate: 5_000_000,
+        framerate: fps,
+      });
+      if (support && support.supported) return codec;
+    } catch (e) {}
+  }
+  return null;
+}
+
+async function isAacEncodingSupported(sampleRate = 48000, numberOfChannels = 2) {
+  if (typeof AudioEncoder === "undefined") return false;
+  try {
+    const support = await AudioEncoder.isConfigSupported({
+      codec: "mp4a.40.2",
+      sampleRate,
+      numberOfChannels,
+      bitrate: 128_000,
+    });
+    return Boolean(support && support.supported);
+  } catch (e) {
+    return false;
+  }
+}
+
+async function encodeReelWithWebCodecs(onProgress) {
+  const q = videoState.activeQuestion || instaState.activeQuestion;
+  if (!q) throw new Error("No question available to render.");
+
+  pauseVideoPlayback();
+  recalculateVideoTimeline();
+
+  const canvas = document.getElementById("video-preview-canvas");
+  const width = canvas.width || 1080;
+  const height = canvas.height || 1920;
+  const fps = 30;
+  const totalDuration = Math.max(3, videoState.totalDuration);
+  const totalFrames = Math.ceil(totalDuration * fps);
+
+  const avcCodec = await selectSupportedAvcCodec(width, height, fps);
+  if (!avcCodec) {
+    throw new Error("WEBCODECS_UNSUPPORTED");
+  }
+
+  const { Muxer, ArrayBufferTarget } = await loadMp4Muxer();
+  const sampleRate = 48000;
+  const channels = 2;
+  const includeAudio = await isAacEncodingSupported(sampleRate, channels);
+
+  const target = new ArrayBufferTarget();
+  const muxerOpts = {
+    target,
+    video: {
+      codec: "avc",
+      width,
+      height,
+    },
+    fastStart: "in-memory",
+    firstTimestampBehavior: "offset",
+  };
+  if (includeAudio) {
+    muxerOpts.audio = {
+      codec: "aac",
+      numberOfChannels: channels,
+      sampleRate,
+    };
+  }
+  const muxer = new Muxer(muxerOpts);
+
+  let videoErr = null;
+  const videoEncoder = new VideoEncoder({
+    output: (chunk, meta) => muxer.addVideoChunk(chunk, meta),
+    error: (e) => {
+      videoErr = e;
+    },
+  });
+  videoEncoder.configure({
+    codec: avcCodec,
+    width,
+    height,
+    bitrate: videoState.videoMode === "static" ? 3_500_000 : 5_500_000,
+    framerate: fps,
+  });
+
+  // 1. Encode Video Frames (Static Reel draws once and reuses frame; Animated steps at exact 30fps!)
+  const isStatic = videoState.videoMode === "static";
+  if (isStatic) {
+    renderVideoFrameAt(0);
+  }
+
+  const frameDurationUs = Math.round(1_000_000 / fps);
+  for (let i = 0; i < totalFrames; i++) {
+    if (!videoState.isExporting) {
+      throw new Error("Export cancelled.");
+    }
+    if (videoErr) throw videoErr;
+
+    const t = i / fps;
+    if (!isStatic) {
+      renderVideoFrameAt(t);
+    }
+
+    const timestampUs = Math.round((i * 1_000_000) / fps);
+    const frame = new VideoFrame(canvas, {
+      timestamp: timestampUs,
+      duration: frameDurationUs,
+    });
+    videoEncoder.encode(frame, { keyFrame: i % (fps * 2) === 0 });
+    frame.close();
+
+    // Prevent encoder queue overflow & keep browser UI responsive
+    if (videoEncoder.encodeQueueSize > 8) {
+      await new Promise((r) => setTimeout(r, 8));
+    } else if (i % 6 === 0) {
+      await new Promise((r) => setTimeout(r, 0));
+    }
+
+    if (typeof onProgress === "function" && (i % 3 === 0 || i === totalFrames - 1)) {
+      const pct = ((i + 1) / totalFrames) * (includeAudio ? 88 : 100);
+      onProgress(pct, t, totalDuration);
+    }
+  }
+
+  await videoEncoder.flush();
+  videoEncoder.close();
+  if (videoErr) throw videoErr;
+
+  // 2. Render & Encode Synchronized AAC Audio Offline (48kHz Stereo, 128kbps)
+  if (includeAudio) {
+    let audioErr = null;
+    const audioEncoder = new AudioEncoder({
+      output: (chunk, meta) => muxer.addAudioChunk(chunk, meta),
+      error: (e) => {
+        audioErr = e;
+      },
+    });
+    audioEncoder.configure({
+      codec: "mp4a.40.2",
+      sampleRate,
+      numberOfChannels: channels,
+      bitrate: 128_000,
+    });
+
+    const audioBuffer = await studioAudio.renderOfflineAudioBuffer(q, totalDuration, sampleRate);
+    const ch0 = audioBuffer.getChannelData(0);
+    const ch1 = audioBuffer.numberOfChannels > 1 ? audioBuffer.getChannelData(1) : ch0;
+    const totalSamples = audioBuffer.length;
+    const chunkFrames = 4096;
+
+    for (let offset = 0; offset < totalSamples; offset += chunkFrames) {
+      if (audioErr) throw audioErr;
+      const count = Math.min(chunkFrames, totalSamples - offset);
+      const planar = new Float32Array(count * 2);
+      planar.set(ch0.subarray(offset, offset + count), 0);
+      planar.set(ch1.subarray(offset, offset + count), count);
+
+      const audioData = new AudioData({
+        format: "f32-planar",
+        sampleRate,
+        numberOfFrames: count,
+        numberOfChannels: 2,
+        timestamp: Math.round((offset * 1_000_000) / sampleRate),
+        data: planar,
+      });
+      audioEncoder.encode(audioData);
+      audioData.close();
+
+      if (audioEncoder.encodeQueueSize > 12) {
+        await new Promise((r) => setTimeout(r, 4));
+      }
+    }
+
+    await audioEncoder.flush();
+    audioEncoder.close();
+    if (audioErr) throw audioErr;
+  }
+
+  if (typeof onProgress === "function") {
+    onProgress(100, totalDuration, totalDuration);
+  }
+
+  muxer.finalize();
+  const blob = new Blob([target.buffer], { type: "video/mp4" });
+  const modeTag = isStatic ? `static_${Math.round(totalDuration)}s` : "animated";
+  const baseFilename = `${(q.exam || "msra").toLowerCase()}_${q.id || q.type}_${modeTag}_reel`;
+  return {
+    blob,
+    mimeType: "video/mp4",
+    fileExt: "mp4",
+    baseFilename,
+    isInstagramReadyMp4: true,
+  };
+}
+
+// --- Fallback Real-Time MediaRecorder Capture (for browsers without WebCodecs) ---
+async function recordVideoToBlob(onProgress) {
+  const q = videoState.activeQuestion || instaState.activeQuestion;
+  if (!q) throw new Error("No question available to render.");
 
   pauseVideoPlayback();
   studioAudio.init();
@@ -1654,58 +2689,35 @@ async function exportAnimatedVideo() {
     } catch (e) {}
   }
 
-  // Ensure canvas and timeline state are at frame 0 before capturing
+  recalculateVideoTimeline();
   videoState.currentTime = 0;
   videoState.lastSoundStep = -1;
   videoState.revealSoundPlayed = false;
   renderVideoFrameAt(0);
 
-  const exportBtn = document.getElementById("video-export-btn");
-  const originalBtnHTML = exportBtn ? exportBtn.innerHTML : "";
-  const statusInfo = document.getElementById("video-export-status");
-  const progressContainer = document.getElementById("video-export-progress-bar-container");
-  const progressBar = document.getElementById("video-export-progress-bar");
-
-  videoState.isExporting = true;
-  if (exportBtn) {
-    exportBtn.disabled = true;
-    exportBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Rendering Video...';
-  }
-  if (progressContainer) progressContainer.style.display = "block";
-  if (progressBar) progressBar.style.width = "0%";
-  if (statusInfo) statusInfo.innerHTML = '<span><i class="fa-solid fa-gear fa-spin"></i> Initializing video capture & audio stream...</span>';
-
-  // 1. Prepare Canvas & Audio Stream
   const canvas = document.getElementById("video-preview-canvas");
   const fps = 30;
   const canvasStream = canvas.captureStream(fps);
 
-  // Audio destination node for recording
   const audioDest = studioAudio.ctx.createMediaStreamDestination();
   studioAudio.masterGain.connect(audioDest);
 
-  // Inaudible ghost carrier to keep MediaStreamAudioDestinationNode active from t = 0.
-  // Without this, Chromium detects a silent audio track during the reading phase and
-  // drops all video frames until the first note plays at cyclingStart, truncating the video intro!
   const ghostOsc = studioAudio.ctx.createOscillator();
   const ghostGain = studioAudio.ctx.createGain();
-  ghostGain.gain.setValueAtTime(0.00001, studioAudio.ctx.currentTime); // Inaudible, but prevents track suspension
+  ghostGain.gain.setValueAtTime(0.00001, studioAudio.ctx.currentTime);
   ghostOsc.connect(ghostGain);
   ghostGain.connect(audioDest);
   try {
     ghostOsc.start();
   } catch (e) {}
 
-  // Combined video & audio tracks
   const combinedStream = new MediaStream([
     ...canvasStream.getVideoTracks(),
     ...audioDest.stream.getAudioTracks(),
   ]);
 
-  // Determine optimal MIME type
   let mimeType = "video/webm;codecs=vp9";
   let fileExt = "webm";
-
   if (MediaRecorder.isTypeSupported("video/mp4;codecs=avc1")) {
     mimeType = "video/mp4;codecs=avc1";
     fileExt = "mp4";
@@ -1724,84 +2736,28 @@ async function exportAnimatedVideo() {
   try {
     recorder = new MediaRecorder(combinedStream, {
       mimeType: mimeType,
-      videoBitsPerSecond: 6000000, // 6 Mbps high fidelity
+      videoBitsPerSecond: 6000000,
     });
   } catch (err) {
-    console.warn("High bitrate recorder init failed, falling back to standard:", err);
     recorder = new MediaRecorder(combinedStream);
   }
 
   const recordedChunks = [];
   recorder.ondataavailable = (e) => {
-    if (e.data && e.data.size > 0) {
-      recordedChunks.push(e.data);
-    }
+    if (e.data && e.data.size > 0) recordedChunks.push(e.data);
   };
 
-  const filename = `${(q.exam || "msra").toLowerCase()}_${q.type}_reel_animated.${fileExt}`;
-
-  // 2. Start recording loop
   recorder.start(100);
-
-  // 150ms encoder stabilization buffer while holding frame 0
   await new Promise((resolve) => setTimeout(resolve, 150));
   renderVideoFrameAt(0);
 
   const totalDuration = videoState.totalDuration;
   const startTime = performance.now();
-  let exportTime = 0;
   let lastExportSoundStep = -1;
   let exportRevealPlayed = false;
 
-  const renderExportStep = () => {
-    if (!videoState.isExporting) return;
-
-    const now = performance.now();
-    exportTime = (now - startTime) / 1000;
-
-    const pct = Math.min(100, (exportTime / totalDuration) * 100);
-    if (progressBar) progressBar.style.width = `${pct.toFixed(0)}%`;
-    if (statusInfo) {
-      statusInfo.innerHTML = `<span><i class="fa-solid fa-spinner fa-spin"></i> Rendering Reel... ${pct.toFixed(0)}% (${exportTime.toFixed(1)}s / ${totalDuration.toFixed(1)}s)</span>`;
-    }
-
-    renderVideoFrameAt(exportTime);
-
-    // Audio triggers during export:
-    const readingEnd = videoState.readingDuration;
-    const cyclingStart = readingEnd + 0.5;
-    const cyclingEnd = cyclingStart + videoState.cyclingDuration;
-    const revealStart = cyclingEnd + (videoState.postCyclingPause || 2.0);
-    const optionsCount = (q.options || []).length || 4;
-
-    if (exportTime >= cyclingStart && exportTime < cyclingEnd) {
-      const elapsedInCycling = exportTime - cyclingStart;
-      const totalSteps = optionsCount;
-      const stepDuration = videoState.cyclingDuration / Math.max(1, totalSteps);
-      const currentStep = Math.min(totalSteps - 1, Math.floor(elapsedInCycling / stepDuration));
-
-      if (currentStep !== lastExportSoundStep) {
-        lastExportSoundStep = currentStep;
-        studioAudio.playCycleSound(currentStep, audioDest);
-      }
-    }
-
-    if (exportTime >= revealStart && !exportRevealPlayed) {
-      exportRevealPlayed = true;
-      studioAudio.playRevealSound(audioDest);
-    }
-
-    if (exportTime < totalDuration) {
-      requestAnimationFrame(renderExportStep);
-    } else {
-      // Completed!
-      finishExport();
-    }
-  };
-
-  const finishExport = () => {
-    recorder.onstop = () => {
-      // Disconnect and stop ghost oscillator and audio destination
+  return new Promise((resolve, reject) => {
+    const cleanupAudio = () => {
       try {
         ghostOsc.stop();
         ghostOsc.disconnect();
@@ -1810,32 +2766,414 @@ async function exportAnimatedVideo() {
       try {
         studioAudio.masterGain.disconnect(audioDest);
       } catch (e) {}
-
-      const blob = new Blob(recordedChunks, { type: mimeType });
-      const downloadUrl = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = downloadUrl;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(downloadUrl);
-
-      videoState.isExporting = false;
-      if (exportBtn) {
-        exportBtn.disabled = false;
-        exportBtn.innerHTML = originalBtnHTML;
-      }
-      if (progressContainer) progressContainer.style.display = "none";
-      if (statusInfo) {
-        statusInfo.innerHTML = `<span><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> Video saved! Check your downloads for <strong>${filename}</strong></span>`;
-      }
-      resetVideoToStart();
     };
 
-    recorder.stop();
-  };
+    recorder.onerror = (e) => {
+      cleanupAudio();
+      reject(new Error(e?.error?.message || "MediaRecorder error during video capture."));
+    };
 
-  // Launch render loop
-  requestAnimationFrame(renderExportStep);
+    recorder.onstop = () => {
+      cleanupAudio();
+      const blob = new Blob(recordedChunks, { type: mimeType });
+      const modeTag = videoState.videoMode === "static" ? `static_${Math.round(totalDuration)}s` : "animated";
+      const baseFilename = `${(q.exam || "msra").toLowerCase()}_${q.id || q.type}_${modeTag}_reel`;
+      resolve({ blob, mimeType, fileExt, baseFilename, isInstagramReadyMp4: false });
+    };
+
+    const renderStep = () => {
+      if (!videoState.isExporting) {
+        try {
+          recorder.stop();
+        } catch (e) {}
+        return;
+      }
+
+      const exportTime = (performance.now() - startTime) / 1000;
+      const pct = Math.min(100, (exportTime / totalDuration) * 100);
+      if (typeof onProgress === "function") {
+        onProgress(pct, exportTime, totalDuration);
+      }
+
+      renderVideoFrameAt(exportTime);
+
+      if (videoState.videoMode !== "static") {
+        const readingEnd = videoState.readingDuration;
+        const cyclingStart = readingEnd + 0.5;
+        const cyclingEnd = cyclingStart + videoState.cyclingDuration;
+        const revealStart = cyclingEnd + (videoState.postCyclingPause || 2.0);
+        const optionsCount = (q.options || []).length || 4;
+
+        if (exportTime >= cyclingStart && exportTime < cyclingEnd) {
+          const elapsedInCycling = exportTime - cyclingStart;
+          const stepDuration = videoState.cyclingDuration / Math.max(1, optionsCount);
+          const currentStep = Math.min(optionsCount - 1, Math.floor(elapsedInCycling / stepDuration));
+          if (currentStep !== lastExportSoundStep) {
+            lastExportSoundStep = currentStep;
+            studioAudio.playCycleSound(currentStep, audioDest);
+          }
+        }
+
+        if (exportTime >= revealStart && !exportRevealPlayed) {
+          exportRevealPlayed = true;
+          studioAudio.playRevealSound(audioDest);
+        }
+      }
+
+      if (exportTime < totalDuration) {
+        requestAnimationFrame(renderStep);
+      } else {
+        recorder.stop();
+      }
+    };
+
+    requestAnimationFrame(renderStep);
+  });
+}
+
+// Automatically picks fast WebCodecs MP4 encoder, falling back to MediaRecorder if unsupported
+async function renderReelVideo(onProgress) {
+  try {
+    return await encodeReelWithWebCodecs(onProgress);
+  } catch (err) {
+    if (err && err.message === "Export cancelled.") throw err;
+    console.warn("WebCodecs MP4 unavailable, falling back to MediaRecorder:", err);
+    return await recordVideoToBlob(onProgress);
+  }
+}
+
+function setVideoActionButtonsDisabled(disabled) {
+  const exportBtn = document.getElementById("video-export-btn");
+  const publishBtn = document.getElementById("video-publish-ig-btn");
+  if (exportBtn) exportBtn.disabled = disabled;
+  if (publishBtn) publishBtn.disabled = disabled;
+}
+
+// --- Export Instagram-Ready MP4 Locally (Fast WebCodecs MP4 in Browser, Zero Canva!) ---
+async function exportAnimatedVideo() {
+  if (videoState.isExporting) return;
+  const q = videoState.activeQuestion || instaState.activeQuestion;
+  if (!q) {
+    alert("No question available to export.");
+    return;
+  }
+
+  const exportBtn = document.getElementById("video-export-btn");
+  const originalBtnHTML = exportBtn ? exportBtn.innerHTML : "";
+  const statusInfo = document.getElementById("video-export-status");
+  const progressContainer = document.getElementById("video-export-progress-bar-container");
+  const progressBar = document.getElementById("video-export-progress-bar");
+
+  videoState.isExporting = true;
+  setVideoActionButtonsDisabled(true);
+  if (exportBtn) exportBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Encoding MP4...';
+  if (progressContainer) progressContainer.style.display = "block";
+  if (progressBar) progressBar.style.width = "0%";
+  if (statusInfo) statusInfo.innerHTML = '<span><i class="fa-solid fa-bolt fa-fade"></i> Encoding Instagram-ready H.264 MP4...</span>';
+
+  try {
+    const { blob, mimeType, fileExt, baseFilename, isInstagramReadyMp4 } = await renderReelVideo((pct, cur, tot) => {
+      if (progressBar) progressBar.style.width = `${pct.toFixed(0)}%`;
+      if (statusInfo) {
+        statusInfo.innerHTML = `<span><i class="fa-solid fa-spinner fa-spin"></i> Encoding MP4... ${pct.toFixed(0)}% (${cur.toFixed(1)}s / ${tot.toFixed(1)}s)</span>`;
+      }
+    });
+
+    let finalBlob = blob;
+    let finalFilename = `${baseFilename}.${fileExt}`;
+
+    // Only run local FFmpeg fallback if WebCodecs wasn't available
+    if (!isInstagramReadyMp4 && igServerState.mode === "local" && igServerState.ffmpegAvailable) {
+      if (progressBar) progressBar.style.width = "90%";
+      if (statusInfo) {
+        statusInfo.innerHTML = '<span><i class="fa-solid fa-wand-magic-sparkles fa-spin"></i> Converting to Instagram H.264 MP4 via FFmpeg...</span>';
+      }
+      const resp = await fetch("/api/transcode", {
+        method: "POST",
+        headers: {
+          "Content-Type": mimeType,
+          "X-Reel-Meta": encodeReelMetaHeader({ filename: baseFilename }),
+        },
+        body: blob,
+      });
+      if (!resp.ok) {
+        const errData = await resp.json().catch(() => ({}));
+        throw new Error(errData.error || "FFmpeg conversion failed.");
+      }
+      finalBlob = await resp.blob();
+      finalFilename = `${baseFilename}.mp4`;
+    }
+
+    const downloadUrl = URL.createObjectURL(finalBlob);
+    const a = document.createElement("a");
+    a.href = downloadUrl;
+    a.download = finalFilename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(downloadUrl);
+
+    const captionText = (document.getElementById("video-caption-textarea")?.value || "").trim();
+    if (captionText && navigator.clipboard) {
+      navigator.clipboard.writeText(captionText).catch(() => {});
+    }
+
+    if (progressBar) progressBar.style.width = "100%";
+    if (statusInfo) {
+      statusInfo.innerHTML = `<span><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> Saved <strong>${finalFilename}</strong> & copied caption to clipboard!</span>`;
+    }
+  } catch (err) {
+    console.error("Video export error:", err);
+    if (statusInfo) {
+      statusInfo.innerHTML = `<span style="color: #f87171;"><i class="fa-solid fa-circle-xmark"></i> Export error: ${err.message}</span>`;
+    }
+  } finally {
+    videoState.isExporting = false;
+    setVideoActionButtonsDisabled(false);
+    if (exportBtn) exportBtn.innerHTML = originalBtnHTML;
+    setTimeout(() => {
+      if (progressContainer && !videoState.isExporting) progressContainer.style.display = "none";
+    }, 1500);
+    resetVideoToStart();
+  }
+}
+
+// --- 1-Click Publish Reel Directly to Instagram (Vercel Cloud OR Local server.py) ---
+async function publishReelToInstagram() {
+  if (videoState.isExporting) return;
+  const q = videoState.activeQuestion || instaState.activeQuestion;
+  if (!q) {
+    alert("No question selected to publish.");
+    return;
+  }
+
+  const statusInfo = document.getElementById("video-export-status");
+  const progressContainer = document.getElementById("video-export-progress-bar-container");
+  const progressBar = document.getElementById("video-export-progress-bar");
+  const publishBtn = document.getElementById("video-publish-ig-btn");
+  const originalBtnHTML = publishBtn ? publishBtn.innerHTML : "";
+
+  await checkLocalServerStatus();
+  if (!igServerState.online) {
+    if (statusInfo) {
+      statusInfo.innerHTML = `<span style="color: #f59e0b;"><i class="fa-solid fa-triangle-exclamation"></i> Backend not detected. Deploy to Vercel or start <code>python server.py</code> locally.</span>`;
+    }
+    openIgSetupModal();
+    return;
+  }
+
+  if (!igServerState.igConfigured) {
+    if (statusInfo) {
+      statusInfo.innerHTML = `<span style="color: #f59e0b;"><i class="fa-solid fa-key"></i> Configure your Instagram credentials first.</span>`;
+    }
+    openIgSetupModal();
+    return;
+  }
+
+  if (igServerState.mode === "vercel") {
+    if (!igServerState.blobConfigured) {
+      if (statusInfo) {
+        statusInfo.innerHTML = `<span style="color: #f59e0b;"><i class="fa-solid fa-database"></i> Enable a <strong>Vercel Blob Store</strong> in your Vercel project's Storage tab first (adds <code>BLOB_READ_WRITE_TOKEN</code>).</span>`;
+      }
+      return;
+    }
+    if (igServerState.passcodeRequired && !getStoredPasscode()) {
+      if (statusInfo) {
+        statusInfo.innerHTML = `<span style="color: #f59e0b;"><i class="fa-solid fa-lock"></i> Enter your Vercel publishing passcode once to unlock 1-click posting.</span>`;
+      }
+      openIgSetupModal();
+      return;
+    }
+  }
+
+  // Ensure caption is never empty — use edited textarea or fall back to generated caption
+  const captionEl = document.getElementById("video-caption-textarea");
+  let caption = (captionEl && captionEl.value.trim()) || (typeof buildInstagramCaption === "function" ? buildInstagramCaption(q) : "");
+  if (caption.length > 2200) {
+    caption = caption.slice(0, 2197) + "...";
+  }
+  const shareFeedEl = document.getElementById("video-share-to-feed-toggle");
+  const shareToFeed = shareFeedEl ? shareFeedEl.checked : igServerState.shareToFeed;
+
+  videoState.isExporting = true;
+  setVideoActionButtonsDisabled(true);
+  if (publishBtn) publishBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Publishing...';
+  if (progressContainer) progressContainer.style.display = "block";
+  if (progressBar) progressBar.style.width = "4%";
+  if (statusInfo) {
+    const modeLabel = videoState.videoMode === "static" ? `Static Reel (${videoState.staticDuration}s)` : "Animated Reel";
+    statusInfo.innerHTML = `<span><i class="fa-solid fa-bolt fa-fade" style="color: #ec4899;"></i> Step 1/4: Encoding ${modeLabel} to Instagram H.264 MP4...</span>`;
+  }
+
+  try {
+    // 1. Encode Reel in browser (0% -> 40%)
+    const { blob, mimeType, baseFilename, isInstagramReadyMp4 } = await renderReelVideo((pct, cur, tot) => {
+      const uiPct = Math.round(pct * 0.4);
+      if (progressBar) progressBar.style.width = `${uiPct}%`;
+      if (statusInfo) {
+        statusInfo.innerHTML = `<span><i class="fa-solid fa-spinner fa-spin" style="color: #ec4899;"></i> Step 1/4: Encoding MP4... ${pct.toFixed(0)}% (${cur.toFixed(1)}s / ${tot.toFixed(1)}s)</span>`;
+      }
+    });
+
+    // === VERCEL CLOUD FLOW (Direct Blob Upload -> video_url JSON -> Stateless Poll/Publish) ===
+    if (igServerState.mode === "vercel") {
+      if (!isInstagramReadyMp4 && mimeType !== "video/mp4") {
+        throw new Error("Your browser does not support native H.264 MP4 encoding (WebCodecs). Please use Chrome or Edge for Vercel cloud publishing.");
+      }
+
+      const passcode = getStoredPasscode();
+
+      // Step 2: Direct client upload to Vercel Blob (bypasses Vercel's 4.5 MB API limit!)
+      if (progressBar) progressBar.style.width = "45%";
+      if (statusInfo) {
+        statusInfo.innerHTML = `<span><i class="fa-solid fa-cloud-arrow-up fa-fade" style="color: #8b5cf6;"></i> Step 2/4: Uploading MP4 (${(blob.size / (1024 * 1024)).toFixed(1)} MB) to Vercel Blob...</span>`;
+      }
+
+      const { upload } = await loadVercelBlobClient();
+      const mp4File = new File([blob], `${baseFilename}.mp4`, { type: "video/mp4" });
+      const uploadedBlob = await upload(`reels/${baseFilename}.mp4`, mp4File, {
+        access: "public",
+        handleUploadUrl: "/api/blob-upload",
+        clientPayload: JSON.stringify({ passcode }),
+        onUploadProgress: (evt) => {
+          const rawPct = evt && typeof evt.percentage === "number" ? evt.percentage : 0;
+          const norm = rawPct > 1 ? rawPct / 100 : rawPct;
+          const uiPct = Math.round(45 + norm * 18);
+          if (progressBar) progressBar.style.width = `${Math.min(63, uiPct)}%`;
+        },
+      });
+
+      // Step 3: Create Instagram Reel container with video_url + JSON caption
+      if (progressBar) progressBar.style.width = "68%";
+      if (statusInfo) {
+        statusInfo.innerHTML = '<span><i class="fa-brands fa-instagram fa-fade" style="color: #ec4899;"></i> Step 3/4: Sending video & description to Instagram...</span>';
+      }
+
+      const createResp = await fetch("/api/ig-create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Admin-Passcode": passcode,
+        },
+        body: JSON.stringify({
+          video_url: uploadedBlob.url,
+          caption: caption,
+          share_to_feed: shareToFeed,
+        }),
+      });
+      const createData = await createResp.json();
+      if (!createResp.ok || !createData.ok || !createData.container_id) {
+        throw new Error(createData.error || "Failed to create Instagram Reel container.");
+      }
+
+      // Step 4: Poll Instagram processing & publish as soon as FINISHED (also cleans up Blob!)
+      const containerId = createData.container_id;
+      let done = false;
+      let attempts = 0;
+      while (!done && attempts < 45) {
+        attempts++;
+        await new Promise((r) => setTimeout(r, 3000));
+
+        const pubResp = await fetch("/api/ig-publish", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Admin-Passcode": passcode,
+          },
+          body: JSON.stringify({
+            container_id: containerId,
+            blob_url: uploadedBlob.url,
+          }),
+        });
+        const pubData = await pubResp.json();
+        if (!pubResp.ok && pubData.status !== "processing") {
+          throw new Error(pubData.error || "Instagram publishing failed.");
+        }
+
+        if (pubData.status === "done") {
+          done = true;
+          if (progressBar) progressBar.style.width = "100%";
+          const linkHtml = pubData.permalink
+            ? ` <a href="${pubData.permalink}" target="_blank" rel="noopener" style="color: #38bdf8; font-weight: 700; text-decoration: underline; margin-left: 6px;">View Live Reel ↗</a>`
+            : "";
+          if (statusInfo) {
+            statusInfo.innerHTML = `<span style="color: #10b981;"><i class="fa-solid fa-circle-check"></i> <strong>Published live to Instagram with description!</strong>${linkHtml}</span>`;
+          }
+        } else {
+          const uiPct = Math.min(95, 70 + Math.round((attempts / 45) * 25));
+          if (progressBar) progressBar.style.width = `${uiPct}%`;
+          if (statusInfo) {
+            statusInfo.innerHTML = `<span><i class="fa-solid fa-spinner fa-spin" style="color: #8b5cf6;"></i> Step 4/4: Instagram is processing your Reel (${pubData.status_code || "IN_PROGRESS"})...</span>`;
+          }
+        }
+      }
+      if (!done) {
+        throw new Error("Timed out waiting for Instagram to finish processing your Reel.");
+      }
+      return;
+    }
+
+    // === LOCAL server.py FLOW ===
+    if (progressBar) progressBar.style.width = "45%";
+    if (statusInfo) {
+      statusInfo.innerHTML = '<span><i class="fa-solid fa-cloud-arrow-up fa-fade" style="color: #8b5cf6;"></i> Step 2/4: Sending to local Instagram publisher...</span>';
+    }
+
+    const startResp = await fetch("/api/publish-reel", {
+      method: "POST",
+      headers: {
+        "Content-Type": mimeType,
+        "X-Reel-Meta": encodeReelMetaHeader({
+          filename: baseFilename,
+          caption: caption,
+          share_to_feed: shareToFeed,
+          already_ig_mp4: isInstagramReadyMp4,
+        }),
+      },
+      body: blob,
+    });
+    const startData = await startResp.json();
+    if (!startResp.ok || !startData.ok || !startData.job_id) {
+      throw new Error(startData.error || "Failed to start Instagram publish job.");
+    }
+
+    const jobId = startData.job_id;
+    let done = false;
+    while (!done) {
+      await new Promise((r) => setTimeout(r, 1500));
+      const jobResp = await fetch(`/api/job/${jobId}`, { cache: "no-store" });
+      const job = await jobResp.json();
+      if (!jobResp.ok) throw new Error(job.error || "Lost connection to publish job.");
+
+      const uiPct = Math.min(100, Math.round(40 + (job.progress || 0) * 0.6));
+      if (progressBar) progressBar.style.width = `${uiPct}%`;
+
+      if (job.status === "done") {
+        done = true;
+        if (progressBar) progressBar.style.width = "100%";
+        const linkHtml = job.permalink
+          ? ` <a href="${job.permalink}" target="_blank" rel="noopener" style="color: #38bdf8; font-weight: 700; text-decoration: underline; margin-left: 6px;">View Live Reel ↗</a>`
+          : "";
+        if (statusInfo) {
+          statusInfo.innerHTML = `<span style="color: #10b981;"><i class="fa-solid fa-circle-check"></i> <strong>Published live to Instagram with description!</strong>${linkHtml}</span>`;
+        }
+      } else if (job.status === "error") {
+        throw new Error(job.error || job.message || "Publishing failed.");
+      } else {
+        if (statusInfo) {
+          statusInfo.innerHTML = `<span><i class="fa-solid fa-spinner fa-spin" style="color: #8b5cf6;"></i> ${job.message || "Publishing to Instagram..."}</span>`;
+        }
+      }
+    }
+  } catch (err) {
+    console.error("Direct Instagram publish failed:", err);
+    if (statusInfo) {
+      statusInfo.innerHTML = `<span style="color: #f87171;"><i class="fa-solid fa-circle-xmark"></i> ${err.message}</span>`;
+    }
+  } finally {
+    videoState.isExporting = false;
+    setVideoActionButtonsDisabled(false);
+    if (publishBtn) publishBtn.innerHTML = originalBtnHTML;
+    resetVideoToStart();
+  }
 }

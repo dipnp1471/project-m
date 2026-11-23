@@ -10,3 +10,13 @@ Thumbs.db
 # IDE/Editor configurations
 .vscode/
 .idea/
+
+# Local Instagram API credentials & exported reels
+ig_config.json
+.env
+.env.local
+.vercel/
+node_modules/
+exports/
+*.mp4
+*.webm

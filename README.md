@@ -36,6 +36,14 @@ Built as a lightweight, single-page web application — no server, no accounts, 
 - **Manage** the full question inventory — search, filter, edit, and delete
 - **Review flagged questions** reported during practice
 
+### 🎬 Direct-to-Instagram Reel Studio (No Canva Required — Runs on Vercel or Locally)
+- **Two Reel Modes:**
+  - **Animated Reel:** Kinetic word reading, 1-pass option spotlighting, synthesized soft audio, and answer reveal
+  - **Static Reel (No Animations):** Clean static 9:16 video with configurable length (`3s–30s`) and layout (*Question + Options Only* or *With Highlighted Answer & Pearl*)
+- **Browser-Native H.264/AAC MP4 Export (WebCodecs + `mp4-muxer`):** Encodes Instagram-compliant `.mp4` directly in Chrome/Edge in ~1–3 seconds — zero FFmpeg and zero Canva needed
+- **1-Click "Post Reel"** button directly on Practice, Bookmarks, and Admin question cards with auto-saved preferences (`localStorage`) and live 2,200-char caption editor
+- **Cloud-Ready on Vercel:** Uses direct client upload to **Vercel Blob** (bypassing Vercel's 4.5 MB API cap) + stateless serverless functions (`api/ig-create.js`, `api/ig-publish.js`) that auto-delete temp videos after publishing
+
 ### 📸 Instagram Carousel Generator
 - Auto-generate social media carousels from any practice question
 - Customisable themes, fonts, aspect ratios (1:1, 4:5, 9:16)
@@ -50,7 +58,19 @@ project-m/
 ├── index.html                  # Main application HTML
 ├── styles.css                  # Full design system & styles
 ├── app.js                      # Core application logic
-├── app_instagram.js            # Instagram carousel generator module
+├── app_instagram.js            # Instagram carousel generator & caption builder
+├── app_video.js                # 9:16 Animated & Static Reel Studio + WebCodecs MP4 + direct IG publisher
+├── api/                        # Vercel Serverless Functions (Option 1 Cloud Deployment)
+│   ├── _ig.js                  # Shared Meta Graph API & passcode helpers
+│   ├── status.js               # GET  /api/status
+│   ├── blob-upload.js          # POST /api/blob-upload (Vercel Blob client upload signer)
+│   ├── ig-test.js              # POST /api/ig-test (Verify Meta credentials & passcode)
+│   ├── ig-create.js            # POST /api/ig-create (Create Reel container with video_url + caption)
+│   └── ig-publish.js           # POST /api/ig-publish (Poll status, publish Reel, delete temp Blob)
+├── package.json                # @vercel/blob dependency for Vercel functions
+├── vercel.json                 # Vercel serverless function configuration
+├── server.py                   # Optional local zero-dependency server (FFmpeg + Instagram Graph API)
+├── start_studio.bat            # Optional Windows 1-click local launcher
 ├── questions.json              # Curated question bank
 ├── generate_questions.py       # Master script to assemble and output questions.json
 ├── clinical_questions.py       # High-Yield Pathognomonic Clinical Questions (60 questions)
@@ -62,34 +82,28 @@ project-m/
 
 ---
 
-## 🚀 Getting Started
+## ☁️ Deploying to Vercel (Recommended — Zero Local Server Needed)
 
-### Prerequisites
-- A modern web browser (Chrome, Firefox, Edge, Safari)
-- No build tools, no package manager, no server required
+1. **Push this repo to GitHub** and import it into [vercel.com](https://vercel.com/) (Framework Preset: **Other** / leave Build Command blank).
+2. **Enable Vercel Blob Storage:**
+   - In your Vercel project → **Storage** tab → **Create Database** → **Blob** → connect it to your project.
+   - Vercel automatically adds `BLOB_READ_WRITE_TOKEN` to your project.
+3. **Add Environment Variables** in Vercel → **Settings → Environment Variables**:
+   - `IG_USER_ID` — your Instagram Business/Creator numeric Account ID
+   - `IG_ACCESS_TOKEN` — your Meta Unified Login access token (`instagram_basic` + `instagram_content_publish`)
+   - `ADMIN_PASSCODE` — any private password/PIN you choose (prevents public visitors from posting to your Instagram)
+   - `IG_USERNAME` *(optional)* — e.g. `medqstudios` (shown in the green status pill)
+   - `IG_API_VERSION` *(optional, defaults to `v21.0`)*
+4. **Redeploy** so the env vars take effect.
+5. Open your live Vercel URL in Chrome/Edge → click **Studio** → **Instagram API Setup** → enter your `ADMIN_PASSCODE` → click **Save & Test Connection**.
+6. Click **Post Reel** on any question to encode, upload, and publish directly to Instagram!
 
-### Running Locally
+---
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/project-m.git
-   cd project-m
-   ```
+## 🚀 Running Locally (Optional Alternative to Vercel)
 
-2. **Open the app**
-
-   Simply open `index.html` in your browser, or use a local dev server:
-   ```bash
-   # Using Python
-   python -m http.server 8080
-
-   # Using Node.js (npx)
-   npx serve .
-   ```
-
-3. **Navigate to** `http://localhost:8080`
-
-> **Note:** The app loads `questions.json` via `fetch()`, so opening `index.html` directly as a file may be blocked by CORS in some browsers. Use a local server for best results.
+1. Double-click **`start_studio.bat`** on Windows, or run `python server.py` and open `http://127.0.0.1:8080`.
+2. Open **Studio → Instagram API Setup**, paste your **IG User ID** and **Access Token**, and click **Save & Test Connection** (saved locally to git-ignored `ig_config.json`).
 
 ---
 

@@ -169,7 +169,10 @@
                 <span id="question-category-display" class="question-category">Cardiovascular</span>
               </div>
               <div style="display: flex; gap: 14px; align-items: center;">
-                <button id="generate-carousel-btn" class="question-carousel-btn" title="Generate Instagram Carousel" style="background: none; border: none; font-size: 1.25rem; color: var(--text-tertiary); cursor: pointer; transition: color var(--transition-fast);">
+                <button id="quick-post-reel-btn" class="btn btn-sm btn-ig-publish-quick" title="1-Click Create & Publish Reel directly to Instagram">
+                  <i class="fa-solid fa-paper-plane"></i> Post Reel
+                </button>
+                <button id="generate-carousel-btn" class="question-carousel-btn" title="Open Instagram & Reel Studio" style="background: none; border: none; font-size: 1.25rem; color: var(--text-tertiary); cursor: pointer; transition: color var(--transition-fast);">
                   <i class="fa-brands fa-instagram"></i>
                 </button>
                 <button id="flag-question-btn" class="question-flag" title="Flag Question for Review" style="background: none; border: none; font-size: 1.25rem; color: var(--text-tertiary); cursor: pointer; transition: color var(--transition-fast);">
@@ -722,9 +725,88 @@
 
             <!-- Right: Animation & Sound Controls -->
             <div class="video-controls-section">
-              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; gap: 10px; flex-wrap: wrap;">
                 <h3 style="margin: 0; font-size: 1.15rem;"><i class="fa-solid fa-sliders"></i> Animated Video Controls</h3>
-                <span class="badge" style="background: rgba(99, 102, 241, 0.15); color: var(--primary);">9:16 Vertical Video Studio</span>
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span id="ig-prefs-saved-badge" class="badge" style="background: rgba(16, 185, 129, 0.14); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 0.72rem;">
+                    <i class="fa-solid fa-floppy-disk"></i> Auto-saved
+                  </span>
+                  <button type="button" id="open-ig-setup-btn" class="btn btn-secondary btn-sm" style="padding: 5px 10px; font-size: 0.78rem;">
+                    <i class="fa-solid fa-gear"></i> Instagram API Setup
+                  </button>
+                </div>
+              </div>
+
+              <!-- Direct-to-Instagram Server & Account Status Bar -->
+              <div id="ig-direct-status-bar" class="ig-status-bar">
+                <div class="ig-status-pills">
+                  <span id="ig-status-server-pill" class="ig-pill ig-pill-muted">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Checking local server...
+                  </span>
+                  <span id="ig-status-ffmpeg-pill" class="ig-pill ig-pill-muted">
+                    <i class="fa-solid fa-film"></i> FFmpeg: —
+                  </span>
+                  <span id="ig-status-account-pill" class="ig-pill ig-pill-muted">
+                    <i class="fa-brands fa-instagram"></i> Instagram: —
+                  </span>
+                </div>
+              </div>
+
+              <!-- Editable Reel Caption (No need to switch tabs or open Canva) -->
+              <div class="control-box-highlight" style="background: rgba(236, 72, 153, 0.07); border-color: rgba(236, 72, 153, 0.25); margin: 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <div class="control-box-title" style="color: #ec4899;">
+                    <i class="fa-brands fa-instagram"></i> Reel Caption & Feed Settings
+                    <span id="video-caption-char-count" style="font-size: 0.72rem; font-weight: 600; color: var(--text-tertiary); margin-left: 4px;">0 / 2,200</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <label style="display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 600; cursor: pointer; color: var(--text-primary);">
+                      <input type="checkbox" id="video-share-to-feed-toggle" checked style="width: 15px; height: 15px; cursor: pointer;">
+                      Share to Main Feed
+                    </label>
+                    <button type="button" id="video-reset-caption-btn" class="btn btn-secondary btn-sm" style="padding: 3px 8px; font-size: 0.72rem;" title="Regenerate caption from question">
+                      <i class="fa-solid fa-rotate"></i> Reset
+                    </button>
+                  </div>
+                </div>
+                <textarea id="video-caption-textarea" class="form-control" rows="4" placeholder="Auto-generated Reel caption with options, explanation, and hashtags..." style="font-size: 0.8rem; line-height: 1.45; resize: vertical;"></textarea>
+              </div>
+
+              <!-- Reel Style Mode: Animated vs Static (No Animations) -->
+              <div class="control-box-highlight" style="background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.28); margin: 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
+                  <div class="control-box-title" style="color: #38bdf8;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Reel Video Mode
+                  </div>
+                  <div class="reel-mode-toggle" style="display: flex; gap: 6px;">
+                    <button type="button" id="video-mode-animated-btn" class="btn btn-secondary btn-sm active" style="padding: 5px 12px; font-size: 0.78rem;">
+                      <i class="fa-solid fa-bolt"></i> Animated Reel
+                    </button>
+                    <button type="button" id="video-mode-static-btn" class="btn btn-secondary btn-sm" style="padding: 5px 12px; font-size: 0.78rem;">
+                      <i class="fa-solid fa-image"></i> Static Reel (No Animations)
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Static Reel Settings (Visible only in Static Reel mode) -->
+                <div id="video-static-settings" style="display: none; margin-top: 8px; padding-top: 10px; border-top: 1px solid rgba(56, 189, 248, 0.2);">
+                  <div class="controls-grid-2col">
+                    <div class="slider-row" style="margin: 0;">
+                      <label for="video-static-duration-slider" style="font-weight: 600;">
+                        Static Reel Length: <span id="val-video-static-duration">7</span>s
+                      </label>
+                      <input type="range" id="video-static-duration-slider" min="3" max="30" value="7" step="1" class="insta-slider">
+                      <span style="font-size: 0.73rem; color: var(--text-tertiary);">Choose exact duration (3–30s). Encodes in ~1 second with zero animations!</span>
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                      <label for="video-static-layout-select" style="font-size: 0.82rem; font-weight: 600;">Static Card Content</label>
+                      <select id="video-static-layout-select" class="form-control">
+                        <option value="question-only">❓ Question + Options Only (Answer in Caption)</option>
+                        <option value="with-answer">✅ Question + Options + Highlighted Answer & Pearl</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- Top Row: Theme & Typography (2 Columns) -->
@@ -745,7 +827,7 @@
                     <option value="Mono">Roboto Mono (Monospace)</option>
                   </select>
 
-                  <div style="margin-top: 10px;">
+                  <div id="video-deliberation-format-wrapper" style="margin-top: 10px;">
                     <label for="video-deliberation-style-select" style="font-size: 0.82rem; font-weight: 600;">Deliberation Format</label>
                     <select id="video-deliberation-style-select" class="form-control">
                       <option value="single-pass-pill">✨ 1-Pass Deliberate Scan (Evaluated Pills)</option>
@@ -756,8 +838,8 @@
                 </div>
               </div>
 
-              <!-- Main Settings: 2 Big Highlight Columns -->
-              <div class="controls-grid-2col">
+              <!-- Main Settings: 2 Big Highlight Columns (Animated Mode Only) -->
+              <div id="video-animated-only-controls" class="controls-grid-2col">
                 <!-- Left Sub-Box: Question & Timer Length -->
                 <div class="control-box-highlight" style="margin: 0;">
                   <div class="control-box-title">
@@ -930,21 +1012,116 @@
           <!-- Video Modal Footer -->
           <div class="video-modal-footer">
             <div class="video-export-group" style="display: flex; align-items: center; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 12px;">
-              <div class="export-status-info" id="video-export-status" style="font-size: 0.9rem; color: var(--text-secondary);">
-                <span><i class="fa-solid fa-circle-info"></i> Ready to render vertical (1080x1920) 9:16 Reel video with synchronized audio.</span>
+              <div class="export-status-info" id="video-export-status" style="font-size: 0.88rem; color: var(--text-secondary); flex: 1; min-width: 240px;">
+                <span><i class="fa-solid fa-circle-info"></i> Ready to render & publish 9:16 Reel directly to Instagram (no Canva needed).</span>
               </div>
-              <div style="display: flex; gap: 10px;">
-                <button type="button" id="video-export-btn" class="btn" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); font-weight: 700; padding: 12px 24px; font-size: 1rem;">
-                  <i class="fa-solid fa-clapperboard"></i> Record & Export Video (.mp4 / .webm)
+              <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                <button type="button" id="video-copy-caption-btn" class="btn btn-secondary btn-sm" style="padding: 10px 14px;" title="Copy Reel Caption to Clipboard">
+                  <i class="fa-solid fa-copy"></i> Copy Caption
+                </button>
+                <button type="button" id="video-export-btn" class="btn btn-secondary" style="padding: 11px 16px; font-weight: 600;" title="Render and save Instagram-ready H.264 MP4 locally">
+                  <i class="fa-solid fa-download"></i> Save IG MP4
+                </button>
+                <button type="button" id="video-publish-ig-btn" class="btn btn-ig-publish" style="font-weight: 700; padding: 12px 22px; font-size: 0.98rem;">
+                  <i class="fa-brands fa-instagram"></i> Publish Directly to Instagram
                 </button>
               </div>
             </div>
-            <!-- Live Export Progress Bar -->
+            <!-- Live Export / Publish Progress Bar -->
             <div id="video-export-progress-bar-container" style="display: none; width: 100%; margin-top: 12px; background: rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; height: 10px;">
-              <div id="video-export-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10b981, #38bdf8); transition: width 0.1s linear;"></div>
+              <div id="video-export-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ec4899, #8b5cf6, #10b981); transition: width 0.2s ease;"></div>
             </div>
           </div>
         </div> <!-- End Tab Pane 2: video-tab-pane -->
+      </div>
+    </div>
+
+    <!-- Modal: Instagram Direct API Setup -->
+    <div id="ig-setup-modal" class="modal-overlay" style="z-index: 2200;">
+      <div class="modal-content" style="max-width: 580px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+          <h2 style="margin: 0; font-size: 1.25rem; display: flex; align-items: center; gap: 10px;">
+            <i class="fa-brands fa-instagram" style="color: #ec4899;"></i> Direct Instagram Publishing Setup
+          </h2>
+          <button type="button" id="close-ig-setup-modal" class="close-modal-btn" title="Close">&times;</button>
+        </div>
+
+        <p id="ig-setup-subtitle" style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
+          Connect your Instagram Professional account to publish Reels directly with zero Canva.
+        </p>
+
+        <div id="ig-setup-server-warning" style="display: none; background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: var(--border-radius-sm); padding: 12px; font-size: 0.82rem; color: var(--text-primary);">
+          <strong><i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i> Publishing backend not detected.</strong><br>
+          Deploy this repo to <strong>Vercel</strong> (with Env Vars + Vercel Blob), or run locally with <code>python server.py</code> / <code>start_studio.bat</code>.
+        </div>
+
+        <!-- Vercel Cloud Mode Section -->
+        <div id="ig-setup-vercel-section" style="display: none; flex-direction: column; gap: 12px;">
+          <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--border-radius-sm); padding: 12px; font-size: 0.82rem; color: var(--text-primary);">
+            <strong><i class="fa-solid fa-cloud" style="color: #10b981;"></i> Running on Vercel Cloud</strong><br>
+            Your <code>IG_USER_ID</code>, <code>IG_ACCESS_TOKEN</code>, and <code>BLOB_READ_WRITE_TOKEN</code> are securely stored in <strong>Vercel → Project Settings → Environment Variables</strong>.
+          </div>
+          <div class="form-group" style="margin: 0;">
+            <label for="ig-vercel-passcode">Publishing Passcode (matches your <code>ADMIN_PASSCODE</code> env var on Vercel)</label>
+            <input type="password" id="ig-vercel-passcode" class="form-control" placeholder="Enter your private publishing passcode (saved in this browser)">
+          </div>
+        </div>
+
+        <!-- Local server.py Mode Section -->
+        <div id="ig-setup-local-section" style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="form-group" style="margin: 0;">
+            <label for="ig-config-user-id">Instagram Business / Creator Account ID (IG User ID)</label>
+            <input type="text" id="ig-config-user-id" class="form-control" placeholder="e.g. 17841400123456789">
+          </div>
+
+          <div class="form-group" style="margin: 0;">
+            <label for="ig-config-token">Meta Graph API Access Token <span id="ig-token-hint" style="font-weight: 400; color: var(--text-tertiary); font-size: 0.78rem;"></span></label>
+            <input type="password" id="ig-config-token" class="form-control" placeholder="Paste your Meta Unified Login / Graph API token">
+          </div>
+
+          <div class="controls-grid-2col">
+            <div class="form-group" style="margin: 0;">
+              <label for="ig-config-api-version">Graph API Version</label>
+              <input type="text" id="ig-config-api-version" class="form-control" value="v21.0" placeholder="v21.0">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label for="ig-config-ffmpeg-path">FFmpeg Path (optional)</label>
+              <input type="text" id="ig-config-ffmpeg-path" class="form-control" placeholder="Auto-detected if installed">
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer;">
+              <input type="checkbox" id="ig-config-share-feed" checked style="width: 16px; height: 16px;">
+              Share Reels to Main Feed by default
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer;">
+              <input type="checkbox" id="ig-config-save-local" checked style="width: 16px; height: 16px;">
+              Keep local MP4 backup in <code>exports/</code>
+            </label>
+          </div>
+        </div>
+
+        <div id="ig-setup-test-result" style="display: none; padding: 10px 12px; border-radius: var(--border-radius-sm); font-size: 0.84rem;"></div>
+
+        <details style="background: var(--bg-tertiary); padding: 10px 14px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-color); font-size: 0.8rem;">
+          <summary style="cursor: pointer; font-weight: 700; color: var(--primary);">Setup Guide (Unified Login + Vercel)</summary>
+          <ol style="margin: 8px 0 0 18px; display: flex; flex-direction: column; gap: 5px; color: var(--text-secondary); line-height: 1.45;">
+            <li>Switch Instagram to a free <strong>Professional (Business or Creator)</strong> account.</li>
+            <li>In <strong>developers.facebook.com</strong> → your App → <strong>Instagram → API setup with Unified login</strong> → select <code>instagram_basic</code> and <code>instagram_content_publish</code>.</li>
+            <li>Add your IG account as an <strong>Instagram Tester</strong>, accept the invite in Instagram (<em>Settings → Website permissions → Apps and websites → Tester Invites</em>), then click <strong>Generate token</strong>.</li>
+            <li>On <strong>Vercel</strong>: enable a <strong>Blob Store</strong> in Storage (auto-adds <code>BLOB_READ_WRITE_TOKEN</code>) and add <code>IG_USER_ID</code>, <code>IG_ACCESS_TOKEN</code>, and <code>ADMIN_PASSCODE</code> in Environment Variables.</li>
+          </ol>
+        </details>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; padding-top: 6px;">
+          <button type="button" id="ig-setup-save-btn" class="btn btn-secondary">
+            <i class="fa-solid fa-floppy-disk"></i> Save Only
+          </button>
+          <button type="button" id="ig-setup-test-btn" class="btn btn-ig-publish">
+            <i class="fa-solid fa-plug-circle-check"></i> Save & Test Connection
+          </button>
+        </div>
       </div>
     </div>
 
