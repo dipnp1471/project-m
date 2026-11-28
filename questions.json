@@ -4,1703 +4,857 @@
     "exam": "MSRA",
     "type": "sba",
     "category": "Cardiovascular",
-    "scenario": "A 58-year-old man with diet-controlled type 2 diabetes has stage 1 hypertension (ABPM daytime average 146/92 mmHg) and a QRISK3 score of 14%. Renal function and electrolytes are normal. What is the first-line antihypertensive?",
+    "scenario": "A 24-year-old man with episodic palpitations has a resting ECG showing a short PR interval (<120 ms) and a slurred upstroke of the QRS complex (delta wave). What is the underlying anatomical cause?",
     "options": [
-      "Bisoprolol",
-      "Amlodipine",
-      "Indapamide",
-      "Doxazosin",
-      "Ramipril"
+      "Mitral valve prolapse",
+      "Right bundle branch block",
+      "Sinoatrial node fibrosis",
+      "Left ventricular apical aneurysm",
+      "Accessory pathway (Bundle of Kent)"
     ],
-    "correct_answer": "Ramipril",
-    "explanation": "Although adults aged >=55 without diabetes start on a calcium channel blocker (amlodipine), NICE NG136 specifies that adults of any age with type 2 diabetes should be offered an ACE inhibitor (ramipril) or ARB first-line for its renoprotective effect on glomerular efferent arteriolar pressure."
+    "correct_answer": "Accessory pathway (Bundle of Kent)",
+    "explanation": "A short PR interval paired with a delta wave is the unmistakable ECG signature of Wolff-Parkinson-White (WPW) syndrome. Pre-excitation of the ventricles occurs via an abnormal congenital accessory conduction tract—the Bundle of Kent—bypassing the normal AV nodal delay."
   },
   {
     "id": "q_2",
     "exam": "MSRA",
     "type": "sba",
     "category": "Cardiovascular",
-    "scenario": "A 64-year-old man with central crushing chest pain has 3 mm ST-segment elevation in leads II, III, and aVF. His BP is 84/52 mmHg, HR is 56 bpm, JVP is raised at 6 cm, and both lung fields are clear. While awaiting primary PCI, what is the immediate management for his hypotension?",
+    "scenario": "A 68-year-old man presents with sudden palpitations. His ECG shows a regular narrow-complex tachycardia at exactly 150 bpm with a continuous 'sawtooth' baseline in leads II, III, and aVF. What is the rhythm?",
     "options": [
-      "Oral bisoprolol 2.5 mg",
-      "Intravenous furosemide 40 mg",
-      "Intravenous 0.9% sodium chloride bolus",
-      "Intravenous dobutamine infusion",
-      "Sublingual glyceryl trinitrate (GTN)"
+      "Complete (third-degree) heart block",
+      "Ventricular tachycardia",
+      "Atrial flutter with 2:1 AV block",
+      "Sinus tachycardia",
+      "Atrial fibrillation"
     ],
-    "correct_answer": "Intravenous 0.9% sodium chloride bolus",
-    "explanation": "Inferior STEMI (leads II, III, aVF) with the triad of hypotension, raised JVP, and clear lungs indicates acute right ventricular infarction. The ischaemic right ventricle is preload-dependent: nitrates or diuretics cause catastrophic cardiovascular collapse, whereas cautious IV 0.9% sodium chloride boluses maintain right ventricular filling."
+    "correct_answer": "Atrial flutter with 2:1 AV block",
+    "explanation": "A 'sawtooth' baseline of flutter waves at ~300 bpm in the inferior leads with a regular ventricular rate of 150 bpm points straight to atrial flutter with 2:1 AV conduction. Always suspect atrial flutter whenever you see a regular narrow-complex tachycardia sitting right at 150 bpm."
   },
   {
     "id": "q_3",
     "exam": "MSRA",
     "type": "sba",
     "category": "Cardiovascular",
-    "scenario": "A 54-year-old car driver (Group 1 licence) is ready for discharge after an NSTEMI treated with successful PCI and stenting to the LAD. Echocardiography shows an LVEF of 52%, and no further revascularisation is planned. What driving advice applies?",
+    "scenario": "A 45-year-old woman presents with acute dyspnoea, BP 84/50 mmHg, distended neck veins, and muffled heart sounds. Her ECG shows sinus tachycardia with beat-to-beat alternating QRS amplitude (electrical alternans). What is the definitive immediate treatment?",
     "options": [
-      "Stop driving for 6 weeks until cardiology clinic review",
-      "Stop driving for 4 weeks; no need to notify the DVLA",
-      "Stop driving for 4 weeks and notify the DVLA immediately",
-      "Stop driving for 1 week; no need to notify the DVLA",
-      "Resume driving immediately upon hospital discharge"
+      "Intravenous amiodarone",
+      "Intravenous furosemide",
+      "Synchronised DC cardioversion",
+      "Urgent pericardiocentesis",
+      "High-dose oral ibuprofen"
     ],
-    "correct_answer": "Stop driving for 1 week; no need to notify the DVLA",
-    "explanation": "Under DVLA rules for Group 1 drivers after ACS, if PCI is successful, no further urgent revascularisation is planned, and LVEF is at least 40%, driving may resume after 1 week without notifying the DVLA. Medically managed ACS without successful PCI requires 4 weeks off driving."
+    "correct_answer": "Urgent pericardiocentesis",
+    "explanation": "Hypotension, raised JVP, and muffled heart sounds form Beck's triad, and electrical alternans occurs as the heart swings rhythmically inside a fluid-filled pericardial sac. Together they confirm acute cardiac tamponade, requiring urgent echo-guided pericardiocentesis."
   },
   {
     "id": "q_4",
     "exam": "MSRA",
     "type": "sba",
     "category": "Cardiovascular",
-    "scenario": "A 38-year-old woman has persistent hypertension (168/104 mmHg) despite adherence to amlodipine, indapamide, and doxazosin. She does not eat liquorice. Bloods show: Na+ 145 mmol/L, K+ 2.9 mmol/L, bicarbonate 31 mmol/L, and creatinine 68 umol/L. What is the initial diagnostic test?",
+    "scenario": "A 56-year-old man has a wide pulse pressure (164/52 mmHg), a collapsing 'water-hammer' pulse, visible nail-bed capillary pulsations (Quincke's sign), and an early diastolic murmur loudest at the left sternal edge when leaning forward. What is the diagnosis?",
     "options": [
-      "24-hour urinary free cortisol",
-      "CT scan of the adrenal glands",
-      "Renal artery Doppler ultrasound",
-      "24-hour urinary metanephrines",
-      "Plasma aldosterone-to-renin ratio"
+      "Aortic stenosis",
+      "Mitral stenosis",
+      "Mitral regurgitation",
+      "Tricuspid regurgitation",
+      "Aortic regurgitation"
     ],
-    "correct_answer": "Plasma aldosterone-to-renin ratio",
-    "explanation": "Resistant hypertension in a young patient with hypokalaemia and metabolic alkalosis points to primary hyperaldosteronism (Conn's syndrome). Autonomous aldosterone secretion retains sodium and excretes potassium/H+ while suppressing renin. A plasma aldosterone-to-renin ratio (high aldosterone, suppressed renin) is the first-line screening test before adrenal imaging."
+    "correct_answer": "Aortic regurgitation",
+    "explanation": "Rapid diastolic run-off of blood back into the left ventricle creates a wide pulse pressure and classic hyperdynamic signs—collapsing pulse (Corrigan's), nail-bed pulsations (Quincke's), and head bobbing (de Musset's)—alongside an early diastolic decrescendo murmur."
   },
   {
     "id": "q_5",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Cardiovascular",
-    "scenario": "A 71-year-old man with a bioprosthetic aortic valve presents with 3 weeks of fevers, night sweats, splinter haemorrhages, and a new regurgitant murmur. Three blood culture sets grow Streptococcus gallolyticus (S. bovis). Alongside IV antibiotics and echocardiography, which investigation is mandatory?",
+    "category": "Dermatology / Ophthalmology / ENT",
+    "scenario": "A 71-year-old man with atrial fibrillation suffers sudden, painless, complete loss of vision in his right eye. Fundoscopy shows a pale, oedematous retina with a striking 'cherry-red spot' at the macula. What is the diagnosis?",
     "options": [
-      "MR cholangiopancreatography (MRCP)",
-      "Flexible cystoscopy",
-      "Dental orthopantomogram",
-      "Colonoscopy",
-      "High-resolution CT chest"
+      "Anterior ischaemic optic neuropathy",
+      "Acute angle-closure glaucoma",
+      "Retinal detachment",
+      "Central retinal artery occlusion",
+      "Central retinal vein occlusion"
     ],
-    "correct_answer": "Colonoscopy",
-    "explanation": "Streptococcus gallolyticus (formerly S. bovis biotype I) endocarditis or bacteraemia is strongly associated with occult colonic neoplasia (adenomatous polyps or colorectal carcinoma in >50% of cases), as the organism translocates across disrupted bowel mucosa. Full colonoscopy is mandatory even without gastrointestinal symptoms."
+    "correct_answer": "Central retinal artery occlusion",
+    "explanation": "Sudden painless monocular blindness with a pale ischaemic retina and a cherry-red spot at the macula confirms central retinal artery occlusion (CRAO). The macula stays red because the thin fovea reveals the intact underlying choroidal blood supply."
   },
   {
     "id": "q_6",
     "exam": "MSRA",
     "type": "sba",
     "category": "Dermatology / Ophthalmology / ENT",
-    "scenario": "A 46-year-old woman wakes with sudden hearing loss and tinnitus in her left ear, without pain or discharge. Otoscopy is normal bilaterally. Rinne's test is positive (AC > BC) bilaterally, and Weber's test lateralises to the right ear. What is the most appropriate management?",
+    "scenario": "A 58-year-old man presents with severe right ear pain, vertigo, complete right-sided facial droop (including the forehead), and clustered painful vesicles inside the right external auditory canal and pinna. What is the diagnosis?",
     "options": [
-      "Fluticasone nasal spray and Valsalva manoeuvres for 6 weeks",
-      "Reassurance and olive oil ear drops for 2 weeks",
-      "Same-day ENT referral and high-dose oral prednisolone",
-      "Oral amoxicillin for 5 days for acute otitis media",
-      "Routine outpatient audiology referral within 6 weeks"
+      "Malignant otitis externa",
+      "Bell's palsy",
+      "Ramsay Hunt syndrome",
+      "Acute mastoiditis",
+      "Vestibular neuritis"
     ],
-    "correct_answer": "Same-day ENT referral and high-dose oral prednisolone",
-    "explanation": "Weber's test lateralising to the unaffected (right) ear with bilateral positive Rinne's tests confirms acute left sensorineural hearing loss. Idiopathic sudden sensorineural hearing loss (<72 hours) is an otological emergency requiring same-day ENT assessment, pure-tone audiometry, and urgent oral or intratympanic corticosteroids."
+    "correct_answer": "Ramsay Hunt syndrome",
+    "explanation": "Lower motor neuron facial paralysis accompanied by painful vesicles in the ear canal or pinna is the classic presentation of Ramsay Hunt syndrome (herpes zoster oticus), caused by varicella-zoster virus reactivation in the geniculate ganglion. Early oral aciclovir and prednisolone improve recovery."
   },
   {
     "id": "q_7",
     "exam": "MSRA",
     "type": "sba",
     "category": "Dermatology / Ophthalmology / ENT",
-    "scenario": "A 22-year-old soft contact lens wearer presents with 24 hours of severe right eye pain, photophobia, and blurred vision (acuity 6/18). Examination shows circumcorneal redness and a 2 mm white corneal opacity that stains with fluorescein. What is the immediate action?",
+    "scenario": "A 54-year-old woman presents with progressive difficulty climbing stairs, a violaceous 'heliotrope' rash around her eyelids, and flat purple-red scaly papules over the backs of her knuckles (Gottron's papules). What is the diagnosis?",
     "options": [
-      "Topical chloramphenicol drops and review in 48 hours",
-      "Eye pad with topical cyclopentolate and review tomorrow",
-      "Same-day emergency ophthalmology referral",
-      "Topical fusidic acid gel and discard contact lenses",
-      "Oral aciclovir 800 mg five times daily"
+      "Systemic lupus erythematosus",
+      "Systemic sclerosis",
+      "Dermatomyositis",
+      "Polymyositis",
+      "Psoriatic arthritis"
     ],
-    "correct_answer": "Same-day emergency ophthalmology referral",
-    "explanation": "A painful red eye, reduced visual acuity, photophobia, and a fluorescein-staining corneal opacity in a contact lens wearer indicates bacterial keratitis (typically Pseudomonas aeruginosa) until proven otherwise. Pseudomonas can cause corneal perforation within 24–48 hours; same-day slit-lamp scraping and intensive topical fluoroquinolones are mandatory (chloramphenicol does not cover Pseudomonas)."
+    "correct_answer": "Dermatomyositis",
+    "explanation": "Proximal muscle weakness combined with a purple periorbital heliotrope rash and Gottron's papules over the MCP and PIP joints is the signature presentation of dermatomyositis. Crucially, newly diagnosed adults must be screened for an underlying occult malignancy."
   },
   {
     "id": "q_8",
     "exam": "MSRA",
     "type": "sba",
     "category": "Dermatology / Ophthalmology / ENT",
-    "scenario": "A 26-year-old man develops a symmetrical rash over his hands, palms, and forearms over 48 hours. Each 1 cm lesion has a dusky blistered centre, a pale oedematous middle ring, and an outer erythematous halo. Mucosae are spared. He had a cold sore 10 days ago. What is the commonest trigger?",
+    "scenario": "A healthy 21-year-old woman develops a single 4 cm oval pink scaly plaque on her upper back ('herald patch'). Ten days later, smaller oval scaly plaques erupt across her trunk in a 'Christmas tree' distribution. What is the diagnosis?",
     "options": [
-      "Staphylococcus aureus",
-      "Herpes simplex virus (HSV)",
-      "Epstein-Barr virus (EBV)",
-      "Streptococcus pyogenes",
-      "Varicella-zoster virus (VZV)"
+      "Lichen planus",
+      "Pityriasis rosea",
+      "Guttate psoriasis",
+      "Tinea corporis",
+      "Secondary syphilis"
     ],
-    "correct_answer": "Herpes simplex virus (HSV)",
-    "explanation": "Acral lesions with three concentric zones (central dusky/blistered zone, pale oedematous ring, and outer erythematous halo) are classic target lesions of erythema multiforme. When mucosae are spared (erythema multiforme minor), it is triggered in 70–80% of cases by preceding Herpes simplex virus infection (with Mycoplasma pneumoniae second)."
+    "correct_answer": "Pityriasis rosea",
+    "explanation": "A solitary 'herald patch' with a fine collarette of scale followed 1–2 weeks later by a symmetrical 'Christmas tree' eruption along Langer's cleavage lines on the back confirms pityriasis rosea. It is benign and self-limiting, resolving within 6–8 weeks."
   },
   {
     "id": "q_9",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Dermatology / Ophthalmology / ENT",
-    "scenario": "A 74-year-old woman has an asymptomatic, slowly enlarging red patch on her right shin for 9 months that failed to clear with hydrocortisone cream. Examination shows a solitary, sharply demarcated 1.8 cm erythematous scaly plaque without ulceration. Dermoscopy shows clustered glomerular vessels. What is the likely diagnosis?",
+    "category": "Endocrinology / Metabolic",
+    "scenario": "Twenty-four hours after a total thyroidectomy, a 42-year-old woman develops perioral tingling and finger cramps. Inflating a blood pressure cuff above systolic pressure for 2 minutes provokes carpopedal spasm (Trousseau's sign). What is the immediate treatment?",
     "options": [
-      "Pyoderma gangrenosum",
-      "Amelanotic malignant melanoma",
-      "Bowen's disease (squamous cell carcinoma in situ)",
-      "Discoid eczema",
-      "Nodular basal cell carcinoma"
+      "Intravenous potassium chloride",
+      "Intravenous hydrocortisone",
+      "Intravenous 10% calcium gluconate",
+      "Oral cholecalciferol",
+      "Intravenous magnesium sulfate alone"
     ],
-    "correct_answer": "Bowen's disease (squamous cell carcinoma in situ)",
-    "explanation": "A solitary, well-demarcated erythematous scaly plaque on the sun-exposed lower leg of an older woman that fails to respond to topical steroids is typical of Bowen's disease (SCC in situ). Untreated, 3–5% progress to invasive SCC; treatments include topical 5-fluorouracil, cryotherapy, curettage, or excision."
+    "correct_answer": "Intravenous 10% calcium gluconate",
+    "explanation": "Trousseau's sign (carpopedal spasm induced by cuff inflation) is a highly specific bedside indicator of acute hypocalcaemia—here due to inadvertent parathyroid gland injury or removal during thyroidectomy. Symptomatic hypocalcaemia requires immediate IV 10% calcium gluconate with ECG monitoring."
   },
   {
     "id": "q_10",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Dermatology / Ophthalmology / ENT",
-    "scenario": "A 68-year-old long-sighted woman presents at 10 pm with severe right frontal headache, vomiting, and halos around lights, 10 days after starting amitriptyline for sciatica. The right eye is red with a hazy cornea, a fixed mid-dilated pupil, and a hard globe. How did amitriptyline trigger this?",
+    "category": "Endocrinology / Metabolic",
+    "scenario": "A 36-year-old man experiences episodic pounding headaches, drenching sweats, palpitations, and sudden blood pressure spikes to 210/115 mmHg that resolve within 30 minutes. What is the best first-line screening investigation?",
     "options": [
-      "Histamine H1 blockade causing corneal endothelial oedema",
-      "Serotonergic vasoconstriction of the central retinal artery",
-      "Alpha-1 stimulation increasing ciliary aqueous secretion",
-      "Antimuscarinic mydriasis crowding the iridocorneal angle",
-      "Direct thrombosis of the central retinal vein"
+      "Random serum cortisol",
+      "Overnight dexamethasone suppression test",
+      "Plasma aldosterone-to-renin ratio",
+      "Plasma free metanephrines (or 24-hour urinary metanephrines)",
+      "Adrenal CT scan as the initial test"
     ],
-    "correct_answer": "Antimuscarinic mydriasis crowding the iridocorneal angle",
-    "explanation": "Tricyclic antidepressants like amitriptyline have potent antimuscarinic properties that dilate the pupil (mydriasis). In a hypermetropic (long-sighted) eye with a shallow anterior chamber, the dilated iris bunches up peripherally and obstructs trabecular meshwork outflow at the iridocorneal angle, precipitating acute angle-closure glaucoma."
+    "correct_answer": "Plasma free metanephrines (or 24-hour urinary metanephrines)",
+    "explanation": "The classic triad of episodic headache, diaphoresis, and palpitations with paroxysmal hypertension points straight to phaeochromocytoma. Biochemical confirmation with plasma free or 24-hour urinary metanephrines always precedes adrenal imaging, and alpha-blockade (phenoxybenzamine/doxazosin) must precede beta-blockade."
   },
   {
     "id": "q_11",
     "exam": "MSRA",
     "type": "sba",
     "category": "Endocrinology / Metabolic",
-    "scenario": "A 42-year-old woman has 5 months of fatigue, cold intolerance, constipation, and weight gain. Initial bloods show TSH 7.8 mU/L (0.4–4.5) and normal free T4 (13.2 pmol/L). Repeat tests 3 months later show TSH 8.4 mU/L, free T4 12.8 pmol/L, and positive anti-TPO antibodies. What does NICE recommend?",
+    "scenario": "A 48-year-old man notices his wedding ring no longer fits, his shoe size has risen by two sizes, and his jaw has become prominent. Examination reveals coarse facial features, spade-like hands, and bitemporal hemianopia. What is the initial screening blood test?",
     "options": [
-      "Start oral liothyronine (T3) monotherapy",
-      "Reassure and repeat TFTs in 12 months without treatment",
-      "Offer a 6-month trial of oral levothyroxine",
-      "Refer to endocrinology for radioactive iodine therapy",
-      "Arrange thyroid ultrasound and fine-needle aspiration"
+      "9 am serum cortisol",
+      "Random serum growth hormone level",
+      "Serum insulin-like growth factor 1 (IGF-1)",
+      "Serum prolactin",
+      "Thyroid-stimulating hormone (TSH)"
     ],
-    "correct_answer": "Offer a 6-month trial of oral levothyroxine",
-    "explanation": "This is persistent subclinical hypothyroidism (TSH 4.5–10 mU/L with normal free T4 on two occasions 3 months apart). Under NICE NG145, while levothyroxine is routine for TSH >=10 mU/L, adults aged <65 with TSH <10 mU/L and hypothyroid symptoms should be offered a 6-month trial of levothyroxine."
+    "correct_answer": "Serum insulin-like growth factor 1 (IGF-1)",
+    "explanation": "Acral enlargement, prognathism, and bitemporal hemianopia (optic chiasm compression by a pituitary macroadenoma) confirm acromegaly. Because growth hormone is secreted in erratic pulses, serum IGF-1 is the best initial screen, followed by an oral glucose tolerance test (failure of GH suppression)."
   },
   {
     "id": "q_12",
     "exam": "MSRA",
     "type": "sba",
     "category": "Endocrinology / Metabolic",
-    "scenario": "A 34-year-old woman with vitiligo presents with fatigue, postural dizziness, weight loss, and pigmented palmar creases. Bloods show: Na+ 127 mmol/L, K+ 5.8 mmol/L, glucose 3.2 mmol/L, TSH 14.5 mU/L, free T4 7.8 pmol/L, and 9 am cortisol 62 nmol/L. Why must hydrocortisone be started before levothyroxine?",
+    "scenario": "A 39-year-old woman presents with progressive central obesity, round 'moon' facies, proximal muscle weakness, easy bruising, and wide (>1 cm) purple abdominal striae. Which initial test screens for this condition?",
     "options": [
-      "Levothyroxine blocks distal renal mineralocorticoid receptors, worsening hyperkalaemia",
-      "Starting levothyroxine first causes pituitary apoplexy via TSH suppression",
-      "Hydrocortisone inhibits peripheral T4-to-rT3 conversion, preventing thyroid storm",
-      "Levothyroxine accelerates hepatic cortisol clearance, precipitating adrenal crisis",
-      "Levothyroxine chelates oral hydrocortisone in the gut lumen"
+      "Random afternoon serum cortisol",
+      "Plasma aldosterone-to-renin ratio",
+      "Short Synacthen (ACTH stimulation) test",
+      "Overnight 1 mg dexamethasone suppression test",
+      "Serum IGF-1"
     ],
-    "correct_answer": "Levothyroxine accelerates hepatic cortisol clearance, precipitating adrenal crisis",
-    "explanation": "This patient has autoimmune polyendocrine syndrome type 2 (Addison's disease plus autoimmune hypothyroidism). When adrenal insufficiency and hypothyroidism coexist, glucocorticoid replacement (hydrocortisone) must always precede levothyroxine, because thyroid hormone increases basal metabolic rate and hepatic cortisol clearance, exhausting residual cortisol and triggering an Addisonian crisis."
+    "correct_answer": "Overnight 1 mg dexamethasone suppression test",
+    "explanation": "Wide violaceous striae (>1 cm), proximal myopathy, and easy bruising distinguish true Cushing's syndrome from simple obesity. First-line screening uses an overnight 1 mg dexamethasone suppression test (failure to suppress morning cortisol), 24-hour urinary free cortisol, or late-night salivary cortisol."
   },
   {
     "id": "q_13",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Endocrinology / Metabolic",
-    "scenario": "A 76-year-old woman develops mild confusion 2 weeks after starting citalopram. She is clinically euvolaemic (BP 128/76 mmHg, moist mucosae, no oedema). Bloods and urine show: serum Na+ 122 mmol/L, serum osmolality 252 mOsm/kg, urine osmolality 490 mOsm/kg, and urine Na+ 48 mmol/L. TFTs and cortisol are normal. What is the diagnosis?",
+    "category": "Gastroenterology / Clinical Nutrition",
+    "scenario": "A 21-year-old man presents with unexplained cirrhosis, a coarse resting tremor, and mood changes. Slit-lamp examination reveals golden-brown rings around the corneal limbus (Kayser-Fleischer rings). What is the expected serum caeruloplasmin result?",
     "options": [
-      "Syndrome of inappropriate ADH secretion (SIADH)",
-      "Cranial diabetes insipidus",
-      "Cerebral salt wasting syndrome",
-      "Primary polydipsia",
-      "Addison's disease"
+      "Low serum caeruloplasmin",
+      "High serum caeruloplasmin",
+      "Absent serum ferritin",
+      "Normal serum caeruloplasmin with low urinary copper",
+      "Elevated alpha-1 antitrypsin"
     ],
-    "correct_answer": "Syndrome of inappropriate ADH secretion (SIADH)",
-    "explanation": "SSRIs like citalopram commonly trigger SIADH in older adults. All diagnostic criteria are met: clinical euvolaemia, hypotonic hyponatraemia (Na+ <135 mmol/L, osmolality <275 mOsm/kg), inappropriately concentrated urine (>100 mOsm/kg), raised urinary sodium (>20–30 mmol/L), and normal renal, adrenal, and thyroid function."
+    "correct_answer": "Low serum caeruloplasmin",
+    "explanation": "Kayser-Fleischer rings (copper deposition in Descemet's membrane) paired with liver disease and neuropsychiatric signs confirm Wilson's disease (autosomal recessive ATP7B mutation). Impaired biliary copper excretion leads to low serum caeruloplasmin and high 24-hour urinary copper."
   },
   {
     "id": "q_14",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Endocrinology / Metabolic",
-    "scenario": "A 29-year-old woman started on carbimazole 40 mg daily 4 weeks ago for Graves' disease phones the GP surgery with a severe sore throat, painful mouth ulcers, and a fever of 38.7°C. What is the single most important immediate instruction?",
+    "category": "Gastroenterology / Clinical Nutrition",
+    "scenario": "A 52-year-old man presents with newly diagnosed diabetes mellitus, cirrhosis, pain in his 2nd and 3rd MCP joints, and diffuse slate-grey 'bronze' skin hyperpigmentation. Which blood test pair is the initial screen?",
     "options": [
-      "Switch carbimazole to propylthiouracil immediately without blood tests",
-      "Stop carbimazole immediately and attend today for an urgent full blood count",
-      "Halve carbimazole to 20 mg daily and start phenoxymethylpenicillin",
-      "Continue carbimazole, take paracetamol, and book a throat swab in 48 hours",
-      "Continue carbimazole and attend for urgent thyroid function tests"
+      "Alpha-fetoprotein and liver ultrasound",
+      "Transferrin saturation and serum ferritin",
+      "Anti-mitochondrial antibodies and ALP",
+      "Serum caeruloplasmin and urinary copper",
+      "Serum amylase and lipase"
     ],
-    "correct_answer": "Stop carbimazole immediately and attend today for an urgent full blood count",
-    "explanation": "Carbimazole and propylthiouracil carry a ~0.1–0.5% risk of idiosyncratic agranulocytosis, especially in the first 3 months. Any patient developing a sore throat, mouth ulcers, bruising, or fever must withhold the drug immediately and have a same-day full blood count to check the neutrophil count."
+    "correct_answer": "Transferrin saturation and serum ferritin",
+    "explanation": "The classic 'bronze diabetes' triad of cirrhosis, diabetes, and slate-grey skin pigmentation—often accompanied by 2nd/3rd MCP arthropathy—indicates hereditary haemochromatosis (HFE C282Y mutation). First-line screening looks for raised transferrin saturation (>45%) and elevated serum ferritin."
   },
   {
     "id": "q_15",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Endocrinology / Metabolic",
-    "scenario": "A 19-year-old man with type 1 diabetes is admitted in DKA (pH 7.14, ketones 5.6 mmol/L, glucose 26.4 mmol/L). He starts a fixed-rate IV insulin infusion alongside his first litre of 0.9% sodium chloride. His initial serum potassium is 5.8 mmol/L. How should IV potassium be managed right now?",
+    "category": "Gastroenterology / Clinical Nutrition",
+    "scenario": "A 34-year-old woman has a 1-year history of progressive dysphagia to both solids and liquids from onset, with regurgitation of undigested food. Barium swallow reveals a dilated oesophagus tapering smoothly to a 'bird's beak' narrowing. What is the diagnosis?",
     "options": [
-      "Add 20 mmol/L potassium chloride and give IV calcium gluconate",
-      "Give nebulised salbutamol before continuing fluid resuscitation",
-      "Pause the insulin infusion until serum K+ falls below 5.0 mmol/L",
-      "Add 40 mmol/L potassium chloride immediately as insulin shifts K+ into cells",
-      "Give 0.9% sodium chloride with no added potassium until K+ falls below 5.5 mmol/L"
+      "Diffuse oesophageal spasm",
+      "Pharyngeal pouch (Zenker's diverticulum)",
+      "Peptic oesophageal stricture",
+      "Oesophageal squamous cell carcinoma",
+      "Achalasia"
     ],
-    "correct_answer": "Give 0.9% sodium chloride with no added potassium until K+ falls below 5.5 mmol/L",
-    "explanation": "Despite total-body potassium depletion in DKA, adding potassium when serum K+ is >5.5 mmol/L risks fatal hyperkalaemic arrhythmias. JBDS guidelines specify: no potassium in the first bag or while K+ >5.5 mmol/L; add 40 mmol/L KCl once K+ is 3.5–5.5 mmol/L and passing urine; pause insulin if K+ <3.5 mmol/L."
+    "correct_answer": "Achalasia",
+    "explanation": "Dysphagia to both solids and liquids right from the start plus a classic 'bird's beak' tapering on barium swallow points straight to achalasia—caused by degeneration of inhibitory ganglion cells in Auerbach's myenteric plexus, preventing lower oesophageal sphincter relaxation."
   },
   {
     "id": "q_16",
     "exam": "MSRA",
     "type": "sba",
     "category": "Gastroenterology / Clinical Nutrition",
-    "scenario": "A 27-year-old woman presents with 6 months of bloating, loose stools, and iron-deficiency anaemia (Hb 103 g/L, MCV 72 fL). You suspect coeliac disease. According to NICE, which first-line serology and dietary advice should you give?",
+    "scenario": "A 78-year-old care-home resident presents with absolute constipation and massive tympanic abdominal distension. Plain abdominal X-ray shows a hugely dilated loop of large bowel arising from the pelvis in a 'coffee bean' shape. What is the initial management?",
     "options": [
-      "IgA endomysial antibodies (EMA) alone on a gluten-free diet",
-      "HLA-DQ2 and HLA-DQ8 genetic typing as the initial screen",
-      "Faecal calprotectin and anti-Saccharomyces cerevisiae antibodies",
-      "Total IgA and IgA-tTG, while eating gluten in >1 meal daily for >=6 weeks",
-      "IgG deamidated gliadin peptide (DGP) after excluding gluten for 2 weeks"
+      "Nasogastric tube alone without endoscopy",
+      "Immediate emergency total colectomy",
+      "Urgent upper GI endoscopy",
+      "Flexible sigmoidoscopy and decompression",
+      "Oral osmotic laxatives and observation"
     ],
-    "correct_answer": "Total IgA and IgA-tTG, while eating gluten in >1 meal daily for >=6 weeks",
-    "explanation": "NICE NG20 recommends checking total serum IgA alongside IgA tissue transglutaminase (tTG) first-line, because 2–3% of coeliac patients have selective IgA deficiency (causing a false-negative IgA-tTG). Patients must eat gluten in more than one meal daily for at least 6 weeks before testing."
+    "correct_answer": "Flexible sigmoidoscopy and decompression",
+    "explanation": "A giant 'coffee bean' loop of dilated colon pointing towards the right upper quadrant on abdominal X-ray confirms sigmoid volvulus. Provided there are no signs of ischaemia or perforation, first-line treatment is urgent decompression via flexible sigmoidoscopy and flatus tube insertion."
   },
   {
     "id": "q_17",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Gastroenterology / Clinical Nutrition",
-    "scenario": "A 31-year-old man with ulcerative colitis passes 8 bloody stools/day for 4 days. He has T 38.2°C, HR 98 bpm, Hb 96 g/L, and ESR 44 mm/hr. His abdomen is soft with a transverse colon diameter of 4.2 cm on X-ray. How is this classified and treated?",
+    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
+    "scenario": "A 64-year-old man presents with fatigue, spontaneous bruising, gum hypertrophy, and pancytopenia. His peripheral blood film shows numerous myeloblasts containing needle-like pink cytoplasmic inclusions (Auer rods). What is the diagnosis?",
     "options": [
-      "Mild flare; start a tapering course of oral budesonide",
-      "Moderately active flare; discharge on oral and rectal mesalazine",
-      "Acute severe ulcerative colitis; admit for IV hydrocortisone",
-      "Toxic megacolon; proceed to emergency subtotal colectomy",
-      "Acute severe ulcerative colitis; start IV infliximab first-line"
+      "Myelodysplastic syndrome",
+      "Acute lymphoblastic leukaemia (ALL)",
+      "Acute myeloid leukaemia (AML)",
+      "Chronic lymphocytic leukaemia (CLL)",
+      "Chronic myeloid leukaemia (CML)"
     ],
-    "correct_answer": "Acute severe ulcerative colitis; admit for IV hydrocortisone",
-    "explanation": "By Truelove and Witts' criteria, >=6 bloody stools/day plus any systemic toxicity feature (T >37.8°C, HR >90 bpm, Hb <105 g/L, or ESR >30 mm/hr) defines acute severe ulcerative colitis (toxic megacolon requires colonic dilatation >6 cm). First-line treatment is inpatient IV hydrocortisone and VTE prophylaxis."
+    "correct_answer": "Acute myeloid leukaemia (AML)",
+    "explanation": "Auer rods—needle-shaped aggregates of myeloperoxidase granules inside myeloblasts—are the unmistakable hallmark of acute myeloid leukaemia (AML), and are especially abundant in acute promyelocytic leukaemia (APML, t(15;17)). Gum infiltration is a classic additional clue in monocytic AML."
   },
   {
     "id": "q_18",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Gastroenterology / Clinical Nutrition",
-    "scenario": "A 44-year-old man with alcohol dependence (BMI 15.6 kg/m²) who has not eaten for 8 days is given IV Pabrinex and started on nasogastric feeding. Forty-eight hours later, he develops muscle weakness, paraesthesia, diplopia, and ventricular ectopics. Which electrolyte abnormality is the hallmark of this complication?",
+    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
+    "scenario": "A 24-year-old man presents with painless, rubbery cervical lymphadenopathy that aches noticeably after drinking alcohol, alongside drenching night sweats. Excision biopsy reveals large binucleated 'owl's eye' Reed-Sternberg cells. What is the diagnosis?",
     "options": [
-      "Severe hypophosphataemia",
-      "Hypermagnesaemia",
-      "High-anion-gap metabolic acidosis",
-      "Hypercalcaemia",
-      "Hyperkalaemia"
+      "Hodgkin lymphoma",
+      "Diffuse large B-cell lymphoma",
+      "Tuberculous lymphadenitis",
+      "Burkitt lymphoma",
+      "Infectious mononucleosis"
     ],
-    "correct_answer": "Severe hypophosphataemia",
-    "explanation": "Reintroducing carbohydrates after prolonged starvation (>5 days) triggers an insulin surge that drives phosphate, potassium, and magnesium into cells while consuming phosphate for ATP synthesis (refeeding syndrome). Severe hypophosphataemia is the hallmark feature, causing weakness, rhabdomyolysis, seizures, and arrhythmias."
+    "correct_answer": "Hodgkin lymphoma",
+    "explanation": "Alcohol-induced lymph node pain in a young adult combined with binucleated 'owl's eye' Reed-Sternberg cells (CD15+, CD30+) on lymph node biopsy confirms Hodgkin lymphoma. It typically spreads predictably to contiguous lymph node groups and carries a high cure rate."
   },
   {
     "id": "q_19",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Gastroenterology / Clinical Nutrition",
-    "scenario": "A 58-year-old man with alcohol-related cirrhosis and tense ascites is admitted with mild abdominal discomfort and grade 2 hepatic encephalopathy. He is afebrile. A diagnostic ascitic tap is performed. Which fluid threshold mandates empirical IV antibiotics for spontaneous bacterial peritonitis (SBP)?",
+    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
+    "scenario": "An unvaccinated 5-year-old boy presents with high fever, cough, coryza, and red watery eyes. Examination of his buccal mucosa shows tiny white 'grains of salt' spots on an erythematous base (Koplik spots) just before a rash begins behind his ears. What is the diagnosis?",
     "options": [
-      "Positive Gram stain on microscopy only",
-      "Ascitic fluid pH <7.30 with raised amylase",
-      "Serum-ascites albumin gradient (SAAG) <11 g/L",
-      "Ascitic fluid total white cell count >=1,000 cells/mm³",
-      "Ascitic fluid neutrophil count >=250 cells/mm³"
+      "Kawasaki disease",
+      "Roseola infantum",
+      "Scarlet fever",
+      "Rubella",
+      "Measles"
     ],
-    "correct_answer": "Ascitic fluid neutrophil count >=250 cells/mm³",
-    "explanation": "SBP often presents subtly with encephalopathy or renal deterioration without fever. Because ascitic cultures take 48 hours and can be negative, an ascitic fluid polymorphonuclear (neutrophil) count >=250 cells/mm³ (0.25 x 10⁹/L) is the diagnostic threshold to start immediate empirical IV antibiotics (e.g. cefotaxime) and IV albumin."
+    "correct_answer": "Measles",
+    "explanation": "The prodrome of the '3 Cs' (cough, coryza, conjunctivitis) followed by Koplik spots on the buccal mucosa opposite the molars confirms measles before the maculopapular rash even spreads from behind the ears downwards. Notify public health immediately."
   },
   {
     "id": "q_20",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Gastroenterology / Clinical Nutrition",
-    "scenario": "A 41-year-old smoker presents with a 3-week history of solid food sticking briefly behind his sternum after swallowing. His weight is stable, he has no odynophagia, and his Hb is 148 g/L. Under NICE NG12 guidelines, what is the next step?",
+    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
+    "scenario": "A 70-year-old woman presents with worsening back pain, fatigue, hypercalcaemia, renal impairment, and anaemia. Blood film shows stacks of red cells (rouleaux formation), and skull X-ray reveals 'punched-out' lytic lesions. What is the diagnosis?",
     "options": [
-      "Urgent 2-week wait referral for upper GI endoscopy",
-      "Carbon-13 urea breath test for H. pylori",
-      "Reassurance and advice on chewing thoroughly",
-      "Routine outpatient barium swallow",
-      "4-week trial of oral omeprazole 20 mg daily"
+      "Multiple myeloma",
+      "Paget's disease of bone",
+      "Chronic lymphocytic leukaemia",
+      "Waldenström macroglobulinaemia",
+      "Primary hyperparathyroidism"
     ],
-    "correct_answer": "Urgent 2-week wait referral for upper GI endoscopy",
-    "explanation": "Under NICE NG12, dysphagia at ANY age (or age >=55 with weight loss and upper abdominal pain, reflux, or dyspepsia) requires an urgent 2-week wait upper GI endoscopy (OGD). True dysphagia must never be masked with an empirical PPI trial before excluding oesophageal malignancy."
+    "correct_answer": "Multiple myeloma",
+    "explanation": "The CRAB tetrad (hyperCalcaemia, Renal impairment, Anaemia, Bone pain/lytic lesions) plus rouleaux on blood film and 'punched-out' lytic skull lesions confirms multiple myeloma—a clonal plasma cell malignancy diagnosed via serum protein electrophoresis and bone marrow biopsy."
   },
   {
     "id": "q_21",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-    "scenario": "An 18-year-old student with fever, exudative tonsillitis, and posterior cervical lymphadenopathy was prescribed amoxicillin 4 days ago. She now has a widespread symmetrical maculopapular rash and mild splenomegaly, with no airway swelling or wheeze. What explains this rash?",
+    "category": "Musculoskeletal",
+    "scenario": "A 38-year-old man with chronic inflammatory lower back pain has restricted lumbar flexion (positive Schober's test). Lumbar spine X-ray shows bridging syndesmophytes fusing the vertebrae into a 'bamboo spine'. Which HLA allele is strongly associated?",
     "options": [
-      "Amoxicillin-EBV interaction; not a true penicillin allergy",
-      "Stevens-Johnson syndrome from beta-lactam exposure",
-      "Scarlet fever caused by group A Streptococcus",
-      "IgE-mediated type I allergy requiring lifelong penicillin avoidance",
-      "Secondary syphilis rash"
+      "HLA-B27",
+      "HLA-B51",
+      "HLA-DQ2",
+      "HLA-DR4",
+      "HLA-DR2"
     ],
-    "correct_answer": "Amoxicillin-EBV interaction; not a true penicillin allergy",
-    "explanation": "Pharyngitis, posterior cervical lymphadenopathy, and splenomegaly in a young adult indicate infectious mononucleosis (EBV). Giving amoxicillin or ampicillin during acute EBV triggers a florid maculopapular rash in 80–90% of patients via transient immune complexes—it is not a true IgE penicillin allergy."
+    "correct_answer": "HLA-B27",
+    "explanation": "A 'bamboo spine' from calcified syndesmophytes and sacroiliac fusion is the classic late radiographic feature of ankylosing spondylitis (axial spondyloarthritis). Over 90% of affected patients carry the HLA-B27 allele."
   },
   {
     "id": "q_22",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-    "scenario": "A 79-year-old man on warfarin for a mechanical mitral valve presents with major haematemesis and melaena. His BP is 86/52 mmHg, HR is 118 bpm, Hb is 74 g/L, and INR is 6.8. Alongside resuscitation, what is the immediate reversal regimen?",
+    "category": "Musculoskeletal",
+    "scenario": "A 74-year-old woman develops an acutely hot, swollen right knee. Knee X-ray shows linear calcification of the articular cartilage (chondrocalcinosis), and joint fluid microscopy reveals weakly positively birefringent rhomboid-shaped crystals. What is the diagnosis?",
     "options": [
-      "Four units of ABO-matched fresh frozen plasma (FFP) first-line",
-      "Oral phytomenadione 5 mg plus IV tranexamic acid only",
-      "IV idarucizumab plus platelet transfusion",
-      "IV phytomenadione (vitamin K1) 10 mg alone and recheck INR in 6 hours",
-      "IV 4-factor prothrombin complex concentrate (PCC) plus IV phytomenadione (vitamin K1) 5 mg"
+      "Septic arthritis",
+      "Reactive arthritis",
+      "Rheumatoid arthritis",
+      "Acute gout",
+      "Pseudogout (calcium pyrophosphate deposition)"
     ],
-    "correct_answer": "IV 4-factor prothrombin complex concentrate (PCC) plus IV phytomenadione (vitamin K1) 5 mg",
-    "explanation": "Life-threatening warfarin bleeding requires immediate reversal with BOTH IV 4-factor PCC (normalises INR within 10–15 minutes by replacing factors II, VII, IX, and X) and IV vitamin K1 5 mg (sustains endogenous clotting factor synthesis once short-acting factor VII in PCC wears off)."
+    "correct_answer": "Pseudogout (calcium pyrophosphate deposition)",
+    "explanation": "Chondrocalcinosis on X-ray and weakly positively birefringent rhomboid crystals under polarised light confirm pseudogout (CPPD), most commonly affecting the knee or wrist. By contrast, gout displays strongly negatively birefringent needle-shaped monosodium urate crystals."
   },
   {
     "id": "q_23",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-    "scenario": "A 56-year-old woman 10 days post-FEC-T chemotherapy for breast cancer presents feeling shivery with a temperature of 38.4°C, HR 98 bpm, and BP 116/72 mmHg. She has no localising signs. Blood cultures and FBC are sent. What is the immediate next step?",
+    "category": "Musculoskeletal",
+    "scenario": "A 67-year-old woman has chronic hand pain worse after gardening, with 10 minutes of morning stiffness. Examination reveals hard bony nodules at the distal interphalangeal joints (Heberden's nodes) and proximal interphalangeal joints (Bouchard's nodes). What is the diagnosis?",
     "options": [
-      "Wait 45 minutes for the neutrophil count (<0.5 x 10⁹/L) before giving antibiotics",
-      "Discharge on oral co-amoxiclav and ciprofloxacin with clinic review tomorrow",
-      "Give empirical IV piperacillin-tazobactam immediately without waiting for the FBC",
-      "Give subcutaneous G-CSF and observe for 4 hours",
-      "Perform a chest X-ray and lumbar puncture before giving antibiotics"
+      "Rheumatoid arthritis",
+      "Systemic sclerosis",
+      "Osteoarthritis",
+      "Psoriatic arthritis",
+      "Tophaceous gout"
     ],
-    "correct_answer": "Give empirical IV piperacillin-tazobactam immediately without waiting for the FBC",
-    "explanation": "Fever (>38.0°C) or sepsis signs within 6 weeks of systemic chemotherapy is neutropenic sepsis until proven otherwise. NICE CG151 mandates empirical IV piperacillin-tazobactam (Tazocin) within 1 hour of arrival—never delay antibiotics while awaiting laboratory confirmation of neutropenia."
+    "correct_answer": "Osteoarthritis",
+    "explanation": "Brief morning stiffness (<30 minutes), pain aggravated by use, and bony osteophytic swellings at the DIP joints (Heberden's nodes) and PIP joints (Bouchard's nodes) point straight to osteoarthritis. Rheumatoid arthritis classically spares the DIP joints."
   },
   {
     "id": "q_24",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-    "scenario": "A 62-year-old man with bulky Burkitt lymphoma starts R-CHOP chemotherapy. Thirty-six hours later, he develops nausea, muscle spasms, oliguria, and tall tented T waves on ECG. Which electrolyte tetrad defines this emergency?",
+    "category": "Musculoskeletal",
+    "scenario": "A 15-year-old boy has 6 weeks of worsening night-time pain and swelling just above his right knee. Plain X-ray shows a destructive distal femoral lesion with periosteal elevation forming a 'Codman's triangle' and a 'sunburst' spiculated pattern. What is the diagnosis?",
     "options": [
-      "Hyponatraemia, hypokalaemia, hypocalcaemia, and metabolic alkalosis",
-      "Hyperkalaemia, hyperphosphataemia, hyperuricaemia, and hypercalcaemia",
-      "Hyperkalaemia, hyperphosphataemia, hyperuricaemia, and hypocalcaemia",
-      "Hypokalaemia, hypophosphataemia, hyperuricaemia, and hypercalcaemia",
-      "Hypernatraemia, hypercalcaemia, hypophosphataemia, and hypoglycaemia"
+      "Giant cell tumour of bone",
+      "Ewing's sarcoma",
+      "Osteosarcoma",
+      "Osteoid osteoma",
+      "Simple bone cyst"
     ],
-    "correct_answer": "Hyperkalaemia, hyperphosphataemia, hyperuricaemia, and hypocalcaemia",
-    "explanation": "Tumour lysis syndrome (TLS) follows rapid breakdown of malignant cells, releasing intracellular potassium, phosphate, and nucleic acids (metabolised to uric acid). This produces 'three ups and one down': hyperkalaemia, hyperphosphataemia, and hyperuricaemia, with secondary hypocalcaemia as calcium precipitates with excess phosphate."
+    "correct_answer": "Osteosarcoma",
+    "explanation": "Night-time metaphyseal bone pain around the knee in an adolescent combined with Codman's triangle and a 'sunburst' periosteal reaction on X-ray is the classic presentation of osteosarcoma (whereas Ewing's sarcoma typically shows diaphyseal 'onion-skinning')."
   },
   {
     "id": "q_25",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-    "scenario": "A 29-year-old woman at 16 weeks gestation spent 3 hours indoors yesterday with her nephew, who developed a chickenpox rash this morning. She is asymptomatic, recalls no past history of chickenpox, and is unvaccinated. What is the first step?",
+    "category": "Paediatrics",
+    "scenario": "An 8-month-old boy has episodes of inconsolable crying where he draws his knees up to his chest, a sausage-shaped RUQ mass, and passes 'redcurrant jelly' stool. Ultrasound shows a 'target' (doughnut) sign. What is the first-line treatment?",
     "options": [
-      "Give intramuscular VZIG today without blood testing",
-      "Start oral aciclovir 800 mg five times daily immediately",
-      "Check maternal serum for VZV IgG antibodies urgently",
-      "Admit immediately for intravenous aciclovir",
-      "Reassure her that chickenpox poses no risk at 16 weeks"
+      "Oral polyethylene glycol laxatives",
+      "Immediate laparotomy and bowel resection",
+      "Pneumatic (air) enema reduction",
+      "Rectal suction biopsy",
+      "Intravenous antibiotics and observation"
     ],
-    "correct_answer": "Check maternal serum for VZV IgG antibodies urgently",
-    "explanation": "Over 80% of UK adults with no recalled history of chickenpox are actually immune on serology. After significant exposure (>15 minutes in the same room or face-to-face contact), RCOG guidelines state the first step is urgent maternal VZV IgG testing; if seronegative, oral aciclovir (days 7–14 post-exposure) or VZIG is given."
+    "correct_answer": "Pneumatic (air) enema reduction",
+    "explanation": "Paroxysmal colicky pain with drawing up of the legs, 'redcurrant jelly' stool, and a target sign on ultrasound confirm intussusception (telescoping of bowel, usually ileocolic). In a stable child without peritonitis, pneumatic (air) enema reduction is first-line."
   },
   {
     "id": "q_26",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Musculoskeletal",
-    "scenario": "A 43-year-old man with lower back pain develops 24 hours of severe pain radiating down both legs, numbness when wiping his perineum, and difficulty initiating micturition. What is the immediate action?",
+    "category": "Paediatrics",
+    "scenario": "A 5-week-old boy has forceful, projectile non-bilious vomiting after every feed yet remains ravenously hungry. Examination reveals a palpable 'olive-shaped' mass in the right upper quadrant. What blood gas abnormality is classic?",
     "options": [
-      "Same-day emergency hospital transfer for urgent lumbosacral MRI",
-      "Urgent plain radiographs of the lumbar spine today",
-      "Oral naproxen and amitriptyline with review in 48 hours",
-      "Community musculoskeletal physiotherapy triage referral",
-      "Urgent 2-week wait outpatient lumbar spine MRI"
+      "Hypochloraemic, hypokalaemic metabolic alkalosis",
+      "Respiratory alkalosis with hyperkalaemia",
+      "High-anion-gap lactic acidosis",
+      "Hypernatraemic metabolic acidosis",
+      "Hyperchloraemic metabolic acidosis"
     ],
-    "correct_answer": "Same-day emergency hospital transfer for urgent lumbosacral MRI",
-    "explanation": "Bilateral sciatica with saddle/perineal sensory loss or bladder/bowel dysfunction indicates suspected cauda equina syndrome. This neurosurgical emergency requires immediate same-day hospital transfer for emergency MRI and surgical decompression to prevent permanent paraplegia and incontinence."
+    "correct_answer": "Hypochloraemic, hypokalaemic metabolic alkalosis",
+    "explanation": "Projectile non-bilious vomiting in a hungry 2–8-week-old infant with an 'olive' mass confirms hypertrophic pyloric stenosis. Persistent loss of gastric hydrochloric acid (H+ and Cl-) plus renal potassium exchange produces the classic hypochloraemic, hypokalaemic metabolic alkalosis."
   },
   {
     "id": "q_27",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Musculoskeletal",
-    "scenario": "A 72-year-old woman has 6 weeks of bilateral shoulder and hip aching with 2 hours of morning stiffness. She has no headache, visual symptoms, or jaw claudication. Supported muscle power is 5/5. Bloods show ESR 68 mm/hr, CRP 52 mg/L, and normal CK (78 U/L). What is the initial treatment?",
+    "category": "Paediatrics",
+    "scenario": "An unvaccinated 3-year-old boy presents with high fever, muffled voice, drooling, inspiratory stridor, and sits leaning forward in the 'tripod position'. What is the single most important immediate action?",
     "options": [
-      "Oral prednisolone 15 mg once daily",
-      "Oral prednisolone 60 mg once daily",
-      "Oral methotrexate 15 mg once weekly",
-      "Oral ibuprofen 400 mg three times daily",
-      "Single intramuscular methylprednisolone 120 mg injection"
+      "Do not examine the throat; call senior anaesthetics and ENT to secure the airway",
+      "Inspect the pharynx with a tongue depressor to exclude tonsillitis",
+      "Send him immediately to radiology for a lateral neck X-ray",
+      "Administer oral amoxicillin and observe in the waiting room",
+      "Obtain intravenous access and take blood cultures immediately"
     ],
-    "correct_answer": "Oral prednisolone 15 mg once daily",
-    "explanation": "Bilateral shoulder and pelvic girdle pain with morning stiffness >45 minutes in a patient >50 years, raised ESR/CRP, and normal CK (excluding polymyositis) is classic for polymyalgia rheumatica (PMR). Without giant cell arteritis symptoms (which need 40–60 mg), NICE recommends prednisolone 15 mg daily."
+    "correct_answer": "Do not examine the throat; call senior anaesthetics and ENT to secure the airway",
+    "explanation": "High fever, drooling, toxic appearance, muffled voice, and the tripod posture indicate acute epiglottitis (typically Haemophilus influenzae type b; 'thumbprint' sign on X-ray). Agitating the child with throat exams, cannulation, or X-rays can trigger fatal complete airway obstruction—secure the airway first."
   },
   {
     "id": "q_28",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Musculoskeletal",
-    "scenario": "A 69-year-old man wakes with an acutely painful, red, swollen right first MTP joint. He is afebrile. He has stage 4 CKD (eGFR 21 mL/min/1.73m²), hypertension, and a past peptic ulcer, and takes no urate-lowering therapy. What is the safest treatment for this acute flare?",
+    "category": "Paediatrics",
+    "scenario": "A 6-year-old girl develops a bright red 'slapped cheek' rash sparing her mouth and nasal bridge, followed 2 days later by a lacy, reticular rash on her arms and thighs. What is the causative virus?",
     "options": [
-      "Oral febuxostat 80 mg once daily",
-      "High-dose oral colchicine 500 mcg every 2 hours",
-      "Oral prednisolone 30–35 mg once daily for 5 days",
-      "Oral naproxen 500 mg twice daily with omeprazole",
-      "Oral allopurinol 100 mg once daily started today"
+      "Epstein-Barr virus",
+      "Measles morbillivirus",
+      "Parvovirus B19",
+      "Human herpesvirus 6 (HHV-6)",
+      "Coxsackievirus A16"
     ],
-    "correct_answer": "Oral prednisolone 30–35 mg once daily for 5 days",
-    "explanation": "In acute gout (podagra), NSAIDs are contraindicated by stage 4 CKD and peptic ulcer history, while colchicine carries severe toxicity risks in advanced renal impairment. A short course of oral prednisolone (30–35 mg daily for 5 days) is safest; allopurinol must never be started during an acute flare."
+    "correct_answer": "Parvovirus B19",
+    "explanation": "A fiery red 'slapped cheek' facial rash followed by a lacy reticular rash on the limbs confirms erythema infectiosum (fifth disease), caused by Parvovirus B19. Once the rash appears, the child is no longer infectious—though pregnant contacts and sickle cell patients require assessment."
   },
   {
     "id": "q_29",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Musculoskeletal",
-    "scenario": "A 76-year-old woman has a femoral neck T-score of -2.9 on DEXA after a wrist fracture. She has achalasia with delayed oesophageal emptying, normal calcium/vitamin D, and eGFR 66 mL/min/1.73m². Why is oral alendronic acid contraindicated?",
+    "category": "Pharmacology",
+    "scenario": "A 22-year-old woman presents 5 hours after ingesting 18 g of paracetamol. Her 4-hour plasma paracetamol level plots above the treatment line, so IV N-acetylcysteine is started. How does N-acetylcysteine protect the liver?",
     "options": [
-      "Bisphosphonates relax the lower oesophageal sphincter via calcium blockade",
-      "Achalasia prevents gastric acid conversion of alendronate to its active form",
-      "Alendronate causes cervical vertebral osteonecrosis in patients with dysphagia",
-      "Bisphosphonates destroy myenteric plexus ganglion cells",
-      "Delayed oesophageal emptying predisposes to severe chemical oesophagitis and ulceration"
+      "Inhibits gastric paracetamol absorption in the duodenum",
+      "Induces renal excretion of unchanged paracetamol",
+      "Directly chelates paracetamol in the bloodstream",
+      "Blocks hepatic glucuronidation enzymes",
+      "Replenishes hepatic glutathione stores to detoxify NAPQI"
     ],
-    "correct_answer": "Delayed oesophageal emptying predisposes to severe chemical oesophagitis and ulceration",
-    "explanation": "Oral bisphosphonates are direct mucosal irritants. They are strictly contraindicated in oesophageal abnormalities that delay emptying (achalasia, stricture) or when a patient cannot sit upright for 30 minutes; parenteral zoledronic acid or denosumab should be used instead."
+    "correct_answer": "Replenishes hepatic glutathione stores to detoxify NAPQI",
+    "explanation": "In paracetamol overdose, normal glucuronidation and sulfation pathways saturate, shunting metabolism via CYP450 to the toxic metabolite NAPQI. N-acetylcysteine provides cysteine to replenish hepatic glutathione stores, which conjugate and neutralise NAPQI before it causes centrilobular necrosis."
   },
   {
     "id": "q_30",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Musculoskeletal",
-    "scenario": "A 32-year-old mother 3 months postpartum has 4 weeks of radial right wrist pain when lifting her baby. She has tenderness over the radial styloid, and ulnar deviation of the wrist with the thumb tucked in the fist (Finkelstein's test) reproduces sharp pain. Which tendons are affected?",
+    "category": "Pharmacology",
+    "scenario": "A 45-year-old man becomes deeply sedated with respiratory depression (RR 6/min) after receiving intravenous midazolam for a colonoscopy. What is the specific pharmacological reversal agent?",
     "options": [
-      "Extensor digitorum and extensor indicis",
-      "Abductor pollicis longus and extensor pollicis brevis",
-      "Extensor pollicis longus and extensor carpi radialis brevis",
-      "Abductor pollicis brevis and opponens pollicis",
-      "Flexor pollicis longus and flexor carpi radialis"
+      "Intravenous glucagon",
+      "Intravenous flumazenil",
+      "Intravenous protamine sulfate",
+      "Intravenous atropine",
+      "Intravenous naloxone"
     ],
-    "correct_answer": "Abductor pollicis longus and extensor pollicis brevis",
-    "explanation": "Radial wrist pain in a new mother with radial styloid tenderness and a positive Finkelstein's test indicates De Quervain's tenosynovitis, caused by stenosing tenosynovitis of the first dorsal extensor compartment tendons: abductor pollicis longus (APL) and extensor pollicis brevis (EPB)."
+    "correct_answer": "Intravenous flumazenil",
+    "explanation": "Flumazenil is a competitive antagonist at the GABAA benzodiazepine binding site and rapidly reverses iatrogenic benzodiazepine sedation. (Note: it is avoided in mixed overdoses or chronic benzodiazepine users because it can precipitate refractory seizures.)"
   },
   {
     "id": "q_31",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Paediatrics",
-    "scenario": "A 6-year-old boy has 2 days of fever (38.9°C), exudative tonsillitis, a 'strawberry tongue', and a diffuse blanching 'sandpaper' rash over his trunk and axillae. He has no drug allergies. What is the correct antibiotic regimen and school exclusion advice?",
+    "category": "Pharmacology",
+    "scenario": "A 51-year-old farmer exposed to agricultural pesticide arrives with pinpoint pupils, profuse salivation, lacrimation, bronchorrhoea, bradycardia, and muscle fasciculations. What is the immediate first-line antidote?",
     "options": [
-      "Oral phenoxymethylpenicillin for 10 days; return to school 24 hours after starting antibiotics",
-      "Oral amoxicillin for 5 days; stay off school until the rash desquamates",
-      "Supportive care only; no school exclusion required",
-      "Hospital admission for IV immunoglobulin and high-dose aspirin",
-      "Oral clarithromycin for 7 days; stay off school for 5 days"
+      "Intravenous atropine",
+      "Intravenous naloxone",
+      "Intravenous flumazenil",
+      "Intravenous calcium gluconate",
+      "Intravenous N-acetylcysteine"
     ],
-    "correct_answer": "Oral phenoxymethylpenicillin for 10 days; return to school 24 hours after starting antibiotics",
-    "explanation": "Exudative tonsillitis, 'strawberry tongue', and a coarse 'sandpaper' rash indicate scarlet fever (Group A Streptococcus). NICE and UKHSA recommend 10 days of oral phenoxymethylpenicillin (Penicillin V), notification to public health, and school exclusion until 24 hours after starting antibiotics."
+    "correct_answer": "Intravenous atropine",
+    "explanation": "Organophosphate pesticides irreversibly inhibit acetylcholinesterase, flooding muscarinic and nicotinic synapses (SLUDGE: salivation, lacrimation, urination, diarrhoea, GI cramps, emesis + miosis and bronchorrhoea). High-dose IV atropine competitively blocks muscarinic receptors to dry lethal airway secretions (followed by pralidoxime)."
   },
   {
     "id": "q_32",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Paediatrics",
-    "scenario": "A 10-week-old formula-fed infant presents with frequent posseting, loose mucous stools, and facial/trunk eczema. He is thriving along the 50th centile. You suspect mild-to-moderate non-IgE cow's milk protein allergy (CMPA). What is the first-line formula in primary care?",
+    "category": "Pharmacology",
+    "scenario": "A 68-year-old man develops major bleeding shortly after starting an intravenous unfractionated heparin infusion, with an APTT ratio of 4.2. Which specific antidote immediately reverses unfractionated heparin?",
     "options": [
-      "Amino acid-based formula (AAF)",
-      "Extensively hydrolysed formula (eHF)",
-      "Lactose-free cow's milk formula",
-      "Soya-based infant formula",
-      "Goat's milk infant formula"
+      "Intravenous phytomenadione (vitamin K1)",
+      "Intravenous protamine sulfate",
+      "Intravenous tranexamic acid alone",
+      "Intravenous idarucizumab",
+      "Intravenous 4-factor prothrombin complex concentrate"
     ],
-    "correct_answer": "Extensively hydrolysed formula (eHF)",
-    "explanation": "In formula-fed infants with mild-to-moderate CMPA, an extensively hydrolysed formula (eHF) is first-line in primary care. Amino acid formulas (AAF) are reserved for severe CMPA (anaphylaxis, faltering growth, or eHF failure). Soya is avoided under 6 months, and goat/lactose-free formulas still trigger CMPA."
+    "correct_answer": "Intravenous protamine sulfate",
+    "explanation": "Protamine sulfate is a strongly basic (positively charged) protein that binds directly to acidic (negatively charged) unfractionated heparin, forming a stable inactive complex that immediately neutralises its anticoagulant activity."
   },
   {
     "id": "q_33",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Paediatrics",
-    "scenario": "A 4-year-old boy wakes with a right-sided limp 1 week after a viral cold. He is afebrile (36.6°C), looks well, and weight-bears with a mild limp and slight discomfort at extreme hip internal rotation. WCC is 7.6 x 10⁹/L, CRP 3 mg/L, and ESR 10 mm/hr. What is the diagnosis and management?",
+    "category": "Psychiatry / Neurology",
+    "scenario": "A 24-year-old cyclist struck on the temple briefly loses consciousness, recovers (lucid interval), then rapidly deteriorates with a fixed dilated ipsilateral pupil. CT head shows a biconvex 'lemon-shaped' hyperdensity that does not cross suture lines. Which vessel is torn?",
     "options": [
-      "Juvenile idiopathic arthritis; start oral methotrexate",
-      "Septic arthritis; immediate hip arthrotomy and IV ceftriaxone",
-      "Developmental dysplasia of the hip; apply a Pavlik harness",
-      "Slipped capital femoral epiphysis; nil by mouth for urgent pinning",
-      "Transient synovitis; rest, ibuprofen, and safety-netting for fever or inability to weight-bear"
+      "Superior sagittal sinus",
+      "Cortical bridging veins",
+      "Middle cerebral artery",
+      "Anterior communicating artery",
+      "Middle meningeal artery"
     ],
-    "correct_answer": "Transient synovitis; rest, ibuprofen, and safety-netting for fever or inability to weight-bear",
-    "explanation": "Transient synovitis (irritable hip) is the commonest cause of hip pain in children aged 3–8 years after a viral URTI. With 0/4 Kocher criteria (weight-bearing, afebrile, normal WCC and ESR/CRP), septic arthritis is <0.2% likely; management is rest, ibuprofen, and red-flag safety-netting."
+    "correct_answer": "Middle meningeal artery",
+    "explanation": "A lucid interval followed by rapid neurological decline and a biconvex ('lemon-shaped') haematoma bounded by suture lines confirms an acute extradural (epidural) haematoma, classically caused by a pterion fracture tearing the middle meningeal artery."
   },
   {
     "id": "q_34",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Paediatrics",
-    "scenario": "A 20-month-old girl presents with coryza, a hoarse voice, and a 'seal-like' barking cough. Sitting calmly, she has no stridor at rest, no chest wall recession, and SpO2 99% in air; faint stridor appears only when she cries. What is the appropriate treatment?",
+    "category": "Psychiatry / Neurology",
+    "scenario": "A 49-year-old woman develops a sudden 'thunderclap' headache peaking instantly, with neck stiffness. Non-contrast CT head at 14 hours is normal, so a lumbar puncture is performed, revealing yellow CSF supernatant (xanthochromia). What is the diagnosis?",
     "options": [
-      "Oral amoxicillin for 5 days",
-      "Inhaled salbutamol via spacer",
-      "Steam inhalation only, as steroids are reserved for stridor at rest",
-      "Nebulised adrenaline 1:1000 and emergency ambulance transfer",
-      "Single dose of oral dexamethasone (0.15 mg/kg)"
+      "Cerebral venous sinus thrombosis",
+      "Traumatic lumbar puncture tap",
+      "Bacterial meningitis",
+      "Idiopathic intracranial hypertension",
+      "Subarachnoid haemorrhage"
     ],
-    "correct_answer": "Single dose of oral dexamethasone (0.15 mg/kg)",
-    "explanation": "Barking cough with stridor only on agitation and no recession indicates mild croup. Crucially, NICE recommends that ALL children with croup—including mild cases managed at home—receive a single dose of oral dexamethasone (0.15 mg/kg) to reduce symptom duration and progression."
+    "correct_answer": "Subarachnoid haemorrhage",
+    "explanation": "CT sensitivity for subarachnoid haemorrhage drops after 6–12 hours. Xanthochromia—yellow discoloration of spun CSF from bilirubin breakdown of red cells, tested >12 hours after headache onset—confirms a true subarachnoid haemorrhage rather than a traumatic tap."
   },
   {
     "id": "q_35",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Paediatrics",
-    "scenario": "A 5-day-old term neonate presents with two episodes of dark green (bilious) vomiting over 3 hours. The abdomen is currently soft and non-distended, and observations are stable. Which urgent investigation is required to exclude the most time-critical surgical emergency?",
+    "category": "Psychiatry / Neurology",
+    "scenario": "A 34-year-old woman has drooping eyelids and double vision that worsen by evening and improve with rest. Sustained upward gaze for 60 seconds provokes progressive ptosis. Which autoantibody is positive in ~85% of cases?",
     "options": [
-      "24-hour oesophageal pH monitoring",
-      "Abdominal ultrasound for a pyloric 'olive' mass",
-      "Rectal suction biopsy for ganglion cells",
-      "Urgent upper gastrointestinal contrast study",
-      "Diagnostic pneumatic air enema"
+      "Anti-Jo-1 antibodies",
+      "Anti-voltage-gated calcium channel (VGCC) antibodies",
+      "Anti-aquaporin-4 antibodies",
+      "Anti-acetylcholine receptor (AChR) antibodies",
+      "Anti-NMDA receptor antibodies"
     ],
-    "correct_answer": "Urgent upper gastrointestinal contrast study",
-    "explanation": "Bilious vomiting in a neonate is intestinal malrotation with midgut volvulus until proven otherwise, which can cause total small-bowel necrosis within hours even before abdominal distension develops. An urgent upper GI contrast study is the gold standard to check the duodenojejunal flexure position."
+    "correct_answer": "Anti-acetylcholine receptor (AChR) antibodies",
+    "explanation": "Fatigable ocular and bulbar weakness that worsens with use and improves with rest is the signature of myasthenia gravis, caused in ~85% of cases by IgG autoantibodies blocking postsynaptic nicotinic acetylcholine receptors at the neuromuscular junction (and associated with thymoma)."
   },
   {
     "id": "q_36",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Pharmacology",
-    "scenario": "A 68-year-old woman taking weekly methotrexate for rheumatoid arthritis presents with an uncomplicated lower UTI (eGFR 68 mL/min/1.73m²). Why is trimethoprim strictly contraindicated?",
+    "category": "Psychiatry / Neurology",
+    "scenario": "A 31-year-old man develops progressive symmetrical ascending leg weakness and absent ankle and knee reflexes 2 weeks after Campylobacter gastroenteritis. What is the classic lumbar puncture finding?",
     "options": [
-      "Trimethoprim displaces methotrexate from haemoglobin, causing methaemoglobinaemia",
-      "Additive dihydrofolate reductase inhibition causes life-threatening pancytopenia",
-      "Co-administration causes acute uric acid renal cortical necrosis",
-      "Trimethoprim induces CYP3A4, triggering an acute rheumatoid flare",
-      "Combined therapy causes acute cholestatic liver failure"
+      "Xanthochromia with elevated red blood cells",
+      "Elevated CSF protein with a normal white cell count",
+      "Oligoclonal IgG bands absent from serum",
+      "Markedly raised CSF neutrophils with low glucose",
+      "Low CSF protein with high lymphocytes"
     ],
-    "correct_answer": "Additive dihydrofolate reductase inhibition causes life-threatening pancytopenia",
-    "explanation": "Both methotrexate and trimethoprim (and co-trimoxazole) inhibit dihydrofolate reductase, and trimethoprim also reduces renal tubular methotrexate excretion. Co-prescribing them causes potentially fatal bone marrow suppression (pancytopenia) and severe mucositis; nitrofurantoin is safe here."
+    "correct_answer": "Elevated CSF protein with a normal white cell count",
+    "explanation": "Ascending symmetrical weakness with areflexia following Campylobacter jejuni infection confirms Guillain-Barré syndrome (acute inflammatory demyelinating polyneuropathy). Lumbar puncture characteristically shows albuminocytologic dissociation: high CSF protein with a normal white cell count."
   },
   {
     "id": "q_37",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Pharmacology",
-    "scenario": "A 71-year-old man with penicillin anaphylaxis is prescribed clarithromycin for pneumonia. His regular medications are ramipril, amlodipine, and atorvastatin 40 mg nightly. What medication adjustment is required?",
+    "category": "Renal / Urology",
+    "scenario": "A 5-year-old boy presents with marked periorbital and leg oedema and frothy urine. Investigations show 4+ proteinuria, serum albumin 18 g/L, and hyperlipidaemia, with normal BP and renal function. What is the commonest underlying cause?",
     "options": [
-      "No adjustment is needed as atorvastatin is renally excreted",
-      "Switch amlodipine to verapamil during antibiotic therapy",
-      "Temporarily withhold atorvastatin during the clarithromycin course",
-      "Temporarily withhold ramipril to prevent hyperkalaemia",
-      "Double atorvastatin to 80 mg nightly due to enzyme induction"
+      "Diabetic nephropathy",
+      "Post-streptococcal glomerulonephritis",
+      "Minimal change disease",
+      "Membranous nephropathy",
+      "Focal segmental glomerulosclerosis"
     ],
-    "correct_answer": "Temporarily withhold atorvastatin during the clarithromycin course",
-    "explanation": "Clarithromycin and erythromycin potently inhibit hepatic CYP3A4, which metabolises atorvastatin and simvastatin. Co-administration markedly raises statin levels, risking severe myopathy and rhabdomyolysis; BNF advises pausing atorvastatin or simvastatin until the macrolide course finishes."
+    "correct_answer": "Minimal change disease",
+    "explanation": "Heavy proteinuria, hypoalbuminaemia (<25 g/L), oedema, and hyperlipidaemia define nephrotic syndrome. In children, ~90% of cases are caused by minimal change disease (podocyte foot-process effacement on electron microscopy), which responds dramatically to oral prednisolone."
   },
   {
     "id": "q_38",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Pharmacology",
-    "scenario": "A 59-year-old man taking sertraline 100 mg daily is prescribed oral naproxen (with lansoprazole) for an osteoarthritis flare. By what mechanism do SSRIs markedly increase upper GI bleeding risk when combined with NSAIDs?",
+    "category": "Renal / Urology",
+    "scenario": "A 44-year-old man with hypertension, haematuria, and bilaterally enlarged, ballotable flank masses has multiple bilateral renal cysts on ultrasound. Which life-threatening extrarenal complication is associated with this condition?",
     "options": [
-      "SSRIs displace naproxen from albumin, causing mucosal burns",
-      "SSRIs impair hepatic synthesis of vitamin K clotting factors",
-      "SSRIs inhibit gastric cyclooxygenase-1 (COX-1) prostaglandin synthesis",
-      "SSRIs block platelet serotonin uptake, depleting serotonin needed for platelet aggregation",
-      "SSRIs directly stimulate parietal cell H+/K+-ATPase acid secretion"
+      "Splenic artery rupture",
+      "Primary sclerosing cholangitis",
+      "Pulmonary fibrosis",
+      "Intracranial berry aneurysms (subarachnoid haemorrhage)",
+      "Acute aortic dissection"
     ],
-    "correct_answer": "SSRIs block platelet serotonin uptake, depleting serotonin needed for platelet aggregation",
-    "explanation": "Platelets cannot synthesise serotonin and rely on the serotonin transporter (SERT) to take it up from plasma to amplify ADP-mediated platelet aggregation during vascular injury. SSRIs block platelet SERT, impairing primary haemostasis and synergistically increasing NSAID GI bleeding risk."
+    "correct_answer": "Intracranial berry aneurysms (subarachnoid haemorrhage)",
+    "explanation": "Hypertension, haematuria, and bilaterally enlarged ballotable kidneys indicate autosomal dominant polycystic kidney disease (ADPKD, PKD1/PKD2 mutations). Important extrarenal associations include intracranial berry aneurysms (risking subarachnoid haemorrhage), hepatic cysts, and mitral valve prolapse."
   },
   {
     "id": "q_39",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Pharmacology",
-    "scenario": "A 52-year-old woman stable on lithium carbonate (trough 0.7 mmol/L) starts bendroflumethiazide 2.5 mg daily for hypertension. Two weeks later, she presents with coarse tremor, dysarthria, and ataxia, with a lithium level of 2.1 mmol/L. How did the thiazide cause lithium toxicity?",
+    "category": "Renal / Urology",
+    "scenario": "A 28-year-old male smoker presents with haemoptysis and rapidly progressive glomerulonephritis. Renal biopsy shows linear IgG deposits along the glomerular basement membrane. Which autoantibody causes this syndrome?",
     "options": [
-      "Hypokalaemia increases blood-brain barrier permeability to lithium",
-      "Thiazides inhibit hepatic glucuronidation of lithium",
-      "Metabolic alkalosis converts lithium into a lipid-soluble form",
-      "Distal sodium depletion triggers compensatory proximal tubular reabsorption of sodium and lithium",
-      "Thiazides compete with lithium for active secretion in the collecting duct"
+      "p-ANCA (anti-MPO) antibodies",
+      "c-ANCA (anti-PR3) antibodies",
+      "Anti-phospholipase A2 receptor antibodies",
+      "Anti-glomerular basement membrane (anti-GBM) antibodies",
+      "Anti-double-stranded DNA antibodies"
     ],
-    "correct_answer": "Distal sodium depletion triggers compensatory proximal tubular reabsorption of sodium and lithium",
-    "explanation": "The kidneys handle lithium like sodium, reabsorbing 70–80% in the proximal convoluted tubule. Thiazide-induced sodium depletion in the distal convoluted tubule triggers a compensatory surge in proximal tubular sodium—and lithium—reabsorption, cutting lithium clearance by up to 40%."
+    "correct_answer": "Anti-glomerular basement membrane (anti-GBM) antibodies",
+    "explanation": "Pulmonary haemorrhage plus rapidly progressive glomerulonephritis with linear IgG immunofluorescence along the glomerular basement membrane confirms Goodpasture's syndrome, caused by anti-GBM antibodies targeting type IV collagen in alveolar and glomerular basement membranes."
   },
   {
     "id": "q_40",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Pharmacology",
-    "scenario": "A 67-year-old man with type 2 diabetes and hypertension develops profuse vomiting and diarrhoea and cannot keep fluids down. He takes metformin, ramipril, and atorvastatin. Pausing metformin ('sick day rules') prevents which life-threatening metabolic complication?",
+    "category": "Renal / Urology",
+    "scenario": "A 10-year-old boy develops smoky-brown urine, periorbital oedema, and hypertension 2 weeks after impetigo. Urine microscopy shows dysmorphic red blood cells and red blood cell casts. What does the presence of red cell casts confirm?",
     "options": [
-      "Syndrome of inappropriate ADH secretion (SIADH)",
-      "Acute hepatic necrosis",
-      "Lactic acidosis",
-      "Hyperosmolar hyperglycaemic state (HHS)",
-      "Severe hypoglycaemic coma"
+      "Ureteric calculus",
+      "Acute tubular necrosis",
+      "Glomerular bleeding (glomerulonephritis)",
+      "Urothelial bladder carcinoma",
+      "Lower urinary tract infection"
     ],
-    "correct_answer": "Lactic acidosis",
-    "explanation": "Metformin inhibits hepatic gluconeogenesis from lactate and is excreted unchanged by the kidneys. Acute dehydration or AKI causes plasma metformin accumulation alongside tissue hypoperfusion, precipitating fatal metformin-associated lactic acidosis (MALA)."
+    "correct_answer": "Glomerular bleeding (glomerulonephritis)",
+    "explanation": "Red blood cell casts form when red cells leak through damaged glomeruli and become moulded inside renal tubules by Tamm-Horsfall protein. Together with dysmorphic RBCs, they confirm glomerular bleeding—here post-streptococcal glomerulonephritis."
   },
   {
     "id": "q_41",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Psychiatry / Neurology",
-    "scenario": "A 74-year-old man presents with a 9-month history of a broad-based 'magnetic' shuffling gait, urinary incontinence, and cognitive slowing, without tremor or rigidity. CT head shows ventriculomegaly out of proportion to sulcal atrophy. What is the definitive treatment?",
+    "category": "Reproductive / Obstetrics & Gynaecology",
+    "scenario": "A 26-year-old woman at 11 weeks gestation presents with severe hyperemesis, vaginal bleeding, a uterus larger than dates, and a beta-hCG of 180,000 IU/L. Pelvic ultrasound shows a classic 'snowstorm' appearance with no fetus. What is the diagnosis?",
     "options": [
-      "Bilateral decompressive craniectomy",
-      "Subthalamic nucleus deep brain stimulation",
-      "Carotid endarterectomy",
-      "Ventriculoperitoneal (VP) shunt insertion",
-      "Oral levodopa-carbidopa therapy"
+      "Tubal ectopic pregnancy",
+      "Incomplete miscarriage",
+      "Dichorionic twin pregnancy",
+      "Complete hydatidiform mole",
+      "Uterine leiomyoma"
     ],
-    "correct_answer": "Ventriculoperitoneal (VP) shunt insertion",
-    "explanation": "The triad of gait apraxia ('magnetic' gait), urinary incontinence, and cognitive decline ('wet, wobbly, and wacky') with disproportionate ventriculomegaly on CT indicates Normal Pressure Hydrocephalus (NPH). It is a reversible dementia treated with ventriculoperitoneal (VP) shunting."
+    "correct_answer": "Complete hydatidiform mole",
+    "explanation": "A uterus larger than gestational dates, markedly elevated beta-hCG, severe hyperemesis, and a 'snowstorm' (vesicular) ultrasound pattern confirm a complete hydatidiform mole. Management is suction evacuation with mandatory serial hCG follow-up to detect gestational trophoblastic neoplasia."
   },
   {
     "id": "q_42",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Psychiatry / Neurology",
-    "scenario": "A 28-year-old man on fluoxetine takes tramadol and dextromethorphan cough syrup. Six hours later he is agitated, sweaty, and febrile (38.9°C), with HR 132 bpm, BP 164/98 mmHg, dilated pupils, marked lower-limb hyperreflexia, and bilateral ankle clonus. What is the diagnosis?",
+    "category": "Reproductive / Obstetrics & Gynaecology",
+    "scenario": "A 24-year-old woman presents with frothy, offensive yellow-green vaginal discharge and vulval irritation. Speculum examination reveals punctate cervical haemorrhages ('strawberry cervix'). What is the first-line treatment?",
     "options": [
-      "Anticholinergic toxidrome",
-      "Malignant hyperthermia",
-      "Opioid toxicity",
-      "Neuroleptic malignant syndrome",
-      "Serotonin syndrome"
+      "Oral doxycycline",
+      "Intramuscular ceftriaxone",
+      "Topical clotrimazole pessary",
+      "Oral fluconazole",
+      "Oral metronidazole"
     ],
-    "correct_answer": "Serotonin syndrome",
-    "explanation": "Combining an SSRI (fluoxetine) with serotonergic agents like tramadol and dextromethorphan precipitates serotonin syndrome. Rapid onset (within hours), hyperreflexia, and inducible ankle clonus distinguish it from neuroleptic malignant syndrome (which causes slow-onset 'lead-pipe' rigidity and hyporeflexia)."
+    "correct_answer": "Oral metronidazole",
+    "explanation": "Frothy yellow-green discharge and a 'strawberry cervix' (colpitis macularis) point straight to Trichomonas vaginalis infection. First-line treatment is oral metronidazole (400 mg twice daily for 5–7 days or 2 g single dose), alongside partner notification and treatment."
   },
   {
     "id": "q_43",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Psychiatry / Neurology",
-    "scenario": "A 73-year-old woman has 10 days of right temporal headache, scalp tenderness, and jaw claudication, plus two episodes of transient right-eye visual loss today. The right temporal artery is tender and non-pulsatile. What is the immediate management?",
+    "category": "Reproductive / Obstetrics & Gynaecology",
+    "scenario": "A 27-year-old woman reports thin grey-white vaginal discharge with an unpleasant fishy odour worse after intercourse (vaginal pH 5.6). Microscopy shows vaginal epithelial cells heavily coated with bacteria ('clue cells'). What is the diagnosis?",
     "options": [
-      "Same-day ophthalmology referral for IV methylprednisolone (and 60 mg oral prednisolone immediately)",
-      "Oral aspirin 300 mg only and TIA clinic referral within 7 days",
-      "Withhold steroids until temporal artery biopsy is completed",
-      "Oral prednisolone 15 mg daily and routine temporal artery ultrasound",
-      "Oral sumatriptan 50 mg and review in 48 hours"
+      "Bacterial vaginosis",
+      "Chlamydia trachomatis",
+      "Neisseria gonorrhoeae",
+      "Vulvovaginal candidiasis",
+      "Atrophic vaginitis"
     ],
-    "correct_answer": "Same-day ophthalmology referral for IV methylprednisolone (and 60 mg oral prednisolone immediately)",
-    "explanation": "Jaw claudication and scalp tenderness indicate giant cell arteritis (GCA), and transient visual loss (amaurosis fugax) heralds imminent permanent blindness from anterior ischaemic optic neuropathy. GCA with visual symptoms requires immediate IV methylprednisolone (giving 60 mg oral prednisolone immediately if delayed)."
+    "correct_answer": "Bacterial vaginosis",
+    "explanation": "Thin grey-white discharge, vaginal pH >4.5, a fishy amine odour, and 'clue cells' on microscopy fulfil Amsel's criteria for bacterial vaginosis—caused by overgrowth of anaerobic bacteria (e.g. Gardnerella vaginalis) replacing normal lactobacilli."
   },
   {
     "id": "q_44",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Psychiatry / Neurology",
-    "scenario": "A 68-year-old man in sinus rhythm presents 10 hours after onset of an acute right MCA ischaemic stroke (haemorrhage excluded on CT; outside the thrombolysis window). Under NICE guidelines, what is the standard acute and long-term antiplatelet regimen?",
+    "category": "Reproductive / Obstetrics & Gynaecology",
+    "scenario": "A 32-year-old woman at 36 weeks gestation has BP 168/112 mmHg, 3+ proteinuria, severe frontal headache, flashing lights, and brisk reflexes with 3 beats of clonus. Which IV drug is given to prevent eclamptic seizures?",
     "options": [
-      "Aspirin 300 mg daily for 14 days, then clopidogrel 75 mg daily long-term",
-      "Apixaban 5 mg twice daily started immediately",
-      "Aspirin 75 mg plus dipyridamole 200 mg twice daily indefinitely",
-      "Aspirin 75 mg plus ticagrelor 90 mg twice daily for 12 months",
-      "Clopidogrel 75 mg daily immediately without initial aspirin"
+      "Intravenous magnesium sulfate",
+      "Intravenous labetalol alone",
+      "Intravenous phenytoin",
+      "Intravenous calcium gluconate",
+      "Intravenous diazepam"
     ],
-    "correct_answer": "Aspirin 300 mg daily for 14 days, then clopidogrel 75 mg daily long-term",
-    "explanation": "Once haemorrhage is excluded on CT, NICE NG128 recommends aspirin 300 mg daily (with gastroprotection) for 14 days in non-cardioembolic acute ischaemic stroke, switching after 14 days (or at discharge) to clopidogrel 75 mg once daily monotherapy for long-term secondary prevention."
+    "correct_answer": "Intravenous magnesium sulfate",
+    "explanation": "Severe hypertension, proteinuria, visual aura, headache, and clonus indicate severe pre-eclampsia with impending eclampsia. Intravenous magnesium sulfate (4 g loading dose followed by 1 g/hour infusion) is the first-line drug to prevent and treat eclamptic seizures."
   },
   {
     "id": "q_45",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Psychiatry / Neurology",
-    "scenario": "A 61-year-old man who had an anterior STEMI 6 weeks ago presents with a 1-month history of moderate-to-severe depression and wishes to start an antidepressant alongside CBT. Which antidepressant is the safest first-line choice post-MI?",
+    "category": "Respiratory",
+    "scenario": "After blunt chest trauma, a 29-year-old man becomes acutely hypoxic and hypotensive (BP 78/48 mmHg) with absent right breath sounds, right hyper-resonance, raised JVP, and tracheal deviation to the left. What is the immediate action?",
     "options": [
-      "Sertraline",
-      "Phenelzine",
-      "Citalopram",
-      "Amitriptyline",
-      "Venlafaxine"
+      "Immediate needle decompression before chest X-ray",
+      "Intravenous furosemide",
+      "Urgent portable chest X-ray to confirm the diagnosis",
+      "CT thorax with contrast",
+      "High-flow oxygen and observe for 30 minutes"
     ],
-    "correct_answer": "Sertraline",
-    "explanation": "Sertraline is the first-line SSRI after myocardial infarction or in unstable coronary disease (proven safe in the SADHART trial). Citalopram/escitalopram prolong the QT interval, tricyclics (amitriptyline) are cardiotoxic and pro-arrhythmic, and venlafaxine can worsen hypertension."
+    "correct_answer": "Immediate needle decompression before chest X-ray",
+    "explanation": "Hypoxia, obstructive shock, unilateral absent breath sounds with hyper-resonance, and contralateral tracheal deviation confirm a tension pneumothorax. This is a clinical diagnosis—never delay life-saving immediate needle decompression (followed by chest drain) for a chest X-ray."
   },
   {
     "id": "q_46",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Renal / Urology",
-    "scenario": "A 66-year-old man with hypertension and type 2 diabetes starts ramipril 2.5 mg daily. Baseline bloods were K+ 4.4 mmol/L, creatinine 100 umol/L, and eGFR 68. Two weeks later, bloods show K+ 4.8 mmol/L, creatinine 118 umol/L, and eGFR 56. What is the appropriate action?",
+    "category": "Respiratory",
+    "scenario": "Ten days after knee replacement, a 56-year-old woman develops sudden pleuritic chest pain, tachycardia, and SpO2 89%. Her ECG shows sinus tachycardia with a deep S wave in lead I, and a Q wave with inverted T wave in lead III (S1Q3T3). What is the definitive diagnostic scan?",
     "options": [
-      "Add oral sodium zirconium cyclosilicate",
-      "Switch ramipril to losartan as ARBs do not affect eGFR",
-      "Halve ramipril and start furosemide 40 mg daily",
-      "Stop ramipril immediately and request urgent CT renal angiography",
-      "Continue ramipril at the same dose and recheck U&Es in 1–2 weeks"
+      "High-resolution CT chest",
+      "Transthoracic echocardiogram",
+      "Plain chest X-ray",
+      "Serum D-dimer alone",
+      "CT pulmonary angiogram (CTPA)"
     ],
-    "correct_answer": "Continue ramipril at the same dose and recheck U&Es in 1–2 weeks",
-    "explanation": "ACE inhibitors dilate the glomerular efferent arteriole, reducing intraglomerular pressure. A creatinine rise of up to 30% (here 18%) or an eGFR drop of up to 25% (here 18%) with K+ <5.5 mmol/L is an expected renoprotective effect; NICE advises continuing the drug and rechecking U&Es."
+    "correct_answer": "CT pulmonary angiogram (CTPA)",
+    "explanation": "Recent orthopaedic surgery, acute pleuritic chest pain, hypoxia, and the classic right-heart-strain S1Q3T3 pattern on ECG point to acute pulmonary embolism. In a high-probability (Wells >4) haemodynamically stable patient, go straight to CTPA rather than D-dimer."
   },
   {
     "id": "q_47",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Renal / Urology",
-    "scenario": "A 15-year-old boy presents with 2 hours of sudden severe right scrotal and lower abdominal pain with vomiting. He is afebrile, the right testis lies high and transversely, and the right cremasteric reflex is absent. Urine dipstick is negative. What is the immediate action?",
+    "category": "Respiratory",
+    "scenario": "A 65-year-old heavy smoker presents with right shoulder and inner-arm pain, small hand muscle wasting, and right-sided ptosis, miosis, and facial anhidrosis (Horner's syndrome). Where is the underlying tumour located?",
     "options": [
-      "Urgent Doppler ultrasound of the testes to check blood flow",
-      "Manual detorsion and discharge if pain improves",
-      "Urgent non-contrast CT abdomen and pelvis",
-      "Immediate surgical exploration and bilateral orchidopexy",
-      "IM ceftriaxone and oral doxycycline for epididymo-orchitis"
+      "Left main bronchus",
+      "Right lower lobe",
+      "Anterior diaphragmatic pleura",
+      "Apex of the right lung (Pancoast tumour)",
+      "Posterior mediastinum"
     ],
-    "correct_answer": "Immediate surgical exploration and bilateral orchidopexy",
-    "explanation": "Sudden severe scrotal pain, a high-riding transverse testis, and an absent cremasteric reflex indicate acute testicular torsion. Testicular salvage drops sharply after 6 hours: immediate surgical exploration and bilateral orchidopexy are mandatory, without delaying for Doppler ultrasound."
+    "correct_answer": "Apex of the right lung (Pancoast tumour)",
+    "explanation": "Horner's syndrome (ptosis, miosis, anhidrosis from sympathetic chain invasion) plus C8–T1 brachial plexus hand wasting and shoulder pain in a smoker is the classic presentation of an apical lung cancer—a Pancoast tumour."
   },
   {
     "id": "q_48",
     "exam": "MSRA",
     "type": "sba",
-    "category": "Renal / Urology",
-    "scenario": "A 69-year-old man taking finasteride 5 mg daily for BPH for 9 months requests a PSA test. His PSA returns at 2.8 ng/mL (age-specific upper limit of normal is 4.0 ng/mL). How should this result be interpreted and managed?",
+    "category": "Respiratory",
+    "scenario": "A 74-year-old man wakes gasping for air with pink frothy sputum and bilateral basal crackles. Chest X-ray shows cardiomegaly, upper lobe venous diversion, Kerley B lines, and bilateral perihilar 'bat's wing' shadowing. What is the diagnosis?",
     "options": [
-      "Prescribe 4 weeks of ciprofloxacin and repeat PSA",
-      "Stop tamsulosin for 2 weeks and repeat PSA",
-      "Finasteride halves PSA; his corrected PSA is ~5.6 ng/mL, requiring a 2-week wait urology referral",
-      "Reassure him that 2.8 ng/mL is below the 4.0 ng/mL cut-off",
-      "Reassure him that finasteride prevents prostate cancer"
+      "Bilateral pulmonary emboli",
+      "Idiopathic pulmonary fibrosis",
+      "Acute cardiogenic pulmonary oedema",
+      "Community-acquired pneumonia",
+      "Mesothelioma"
     ],
-    "correct_answer": "Finasteride halves PSA; his corrected PSA is ~5.6 ng/mL, requiring a 2-week wait urology referral",
-    "explanation": "5-alpha-reductase inhibitors (finasteride, dutasteride) shrink prostatic epithelium and halve serum PSA after 6 months. The measured PSA must therefore be doubled (2.8 x 2 = 5.6 ng/mL); since 5.6 ng/mL exceeds the 4.0 ng/mL threshold, an urgent 2-week wait referral is required."
+    "correct_answer": "Acute cardiogenic pulmonary oedema",
+    "explanation": "Pink frothy sputum with the classic ABCDE chest X-ray findings—Alveolar 'bat's wing' oedema, Kerley B lines (interstitial septal lines), Cardiomegaly, upper lobe Diversion, and pleural Effusions—confirms acute cardiogenic pulmonary oedema."
   },
   {
     "id": "q_49",
     "exam": "MSRA",
-    "type": "sba",
-    "category": "Renal / Urology",
-    "scenario": "A 39-year-old man presents with 3 hours of excruciating waves of left loin-to-groin pain. He is afebrile, eGFR is >90 mL/min/1.73m², and urine dipstick shows 3+ blood with negative nitrites. According to NICE, what is the first-line analgesia and gold-standard imaging?",
+    "type": "ranking",
+    "category": "Professional Dilemmas",
+    "scenario": "You are a GP. A mature 15-year-old girl asks for the contraceptive pill without telling her parents. She understands your advice, refuses to inform them, will continue having sex with her 16-year-old boyfriend regardless, and there are no safeguarding concerns.\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
     "options": [
-      "Oral codeine and renal tract ultrasound within 72 hours",
-      "Oral tamsulosin for analgesia and a plain KUB X-ray",
-      "IV paracetamol only and contrast-enhanced CT abdomen",
-      "IV morphine first-line and an intravenous urogram (IVU)",
-      "An NSAID (any route) and low-dose non-contrast CT KUB within 24 hours"
+      "Refuse to prescribe contraception unless she brings a parent to her next appointment.",
+      "Arrange a confidential follow-up appointment to review side effects and support.",
+      "Phone her mother after she leaves to inform her that her daughter is sexually active.",
+      "Explore her sexual health risks, offer STI screening, and document her Fraser competence clearly in the notes.",
+      "Assess her against the Fraser guidelines, prescribe contraception confidentially, and encourage her gently to talk to her parents when ready."
     ],
-    "correct_answer": "An NSAID (any route) and low-dose non-contrast CT KUB within 24 hours",
-    "explanation": "NICE NG118 recommends an NSAID (e.g. diclofenac or ibuprofen by any route) as first-line analgesia for renal colic, as it reduces prostaglandin-mediated ureteric spasm and glomerular pressure better than opioids. Urgent low-dose non-contrast CT KUB within 24 hours is the diagnostic gold standard."
+    "correct_answer": [
+      "Assess her against the Fraser guidelines, prescribe contraception confidentially, and encourage her gently to talk to her parents when ready.",
+      "Explore her sexual health risks, offer STI screening, and document her Fraser competence clearly in the notes.",
+      "Arrange a confidential follow-up appointment to review side effects and support.",
+      "Refuse to prescribe contraception unless she brings a parent to her next appointment.",
+      "Phone her mother after she leaves to inform her that her daughter is sexually active."
+    ],
+    "explanation": "Under the Fraser guidelines (Gillick competence), a doctor may lawfully provide confidential contraception to an under-16 if she understands the advice, cannot be persuaded to tell her parents, is likely to continue having sex, her health would suffer without it, and it is in her best interests. Phoning her mother breaches confidentiality."
   },
   {
     "id": "q_50",
     "exam": "MSRA",
-    "type": "sba",
-    "category": "Renal / Urology",
-    "scenario": "A 22-year-old man passes painless frank red urine 36 hours after developing a viral sore throat. He had a similar self-limiting episode during a cold 18 months ago. BP is 124/76 mmHg, creatinine is 82 umol/L, and C3/C4 complement levels are normal. What is the diagnosis?",
+    "type": "ranking",
+    "category": "Professional Dilemmas",
+    "scenario": "Before an afternoon outpatient clinic, you smell alcohol on your registrar's breath and notice her speech is slightly slurred. When you speak to her privately, she insists she only had one glass at lunch and is fine to see patients.\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
     "options": [
-      "Post-streptococcal glomerulonephritis",
-      "Goodpasture's syndrome (anti-GBM disease)",
-      "Alport syndrome",
-      "IgA nephropathy (Berger's disease)",
-      "Minimal change disease"
+      "Ensure patients booked into her clinic are safely reviewed by other clinicians or appropriately rescheduled.",
+      "Allow her to run the clinic alone as long as she drinks black coffee first.",
+      "Gossip about her drinking to the nursing staff in the clinic corridor.",
+      "Express your concern calmly in private, advise her not to see patients, and escalate immediately to the clinic consultant or clinical director.",
+      "Document your objective observations factually and confidentially."
     ],
-    "correct_answer": "IgA nephropathy (Berger's disease)",
-    "explanation": "Recurrent painless macroscopic haematuria within 24–72 hours of a viral URTI ('synpharyngitic haematuria') with normal complement levels is classic for IgA nephropathy (Berger's disease). In contrast, post-streptococcal glomerulonephritis occurs 1–3 weeks post-infection with low C3."
+    "correct_answer": [
+      "Express your concern calmly in private, advise her not to see patients, and escalate immediately to the clinic consultant or clinical director.",
+      "Ensure patients booked into her clinic are safely reviewed by other clinicians or appropriately rescheduled.",
+      "Document your objective observations factually and confidentially.",
+      "Allow her to run the clinic alone as long as she drinks black coffee first.",
+      "Gossip about her drinking to the nursing staff in the clinic corridor."
+    ],
+    "explanation": "GMC Good Medical Practice requires doctors to act promptly if a colleague's health or performance puts patients at risk. Speak privately, escalate immediately to a senior clinician to protect patients, ensure safe clinic cover, and keep factual records rather than ignoring the risk or gossiping."
   },
   {
     "id": "q_51",
     "exam": "MSRA",
-    "type": "sba",
-    "category": "Reproductive / Obstetrics & Gynaecology",
-    "scenario": "A 26-year-old woman requests emergency contraception 84 hours (3.5 days) after unprotected intercourse on day 11 of a regular 28-day cycle. She declines a copper IUD and has no medical conditions. Which oral emergency contraceptive is indicated?",
+    "type": "selection",
+    "category": "Professional Dilemmas",
+    "scenario": "A 79-year-old man with terminal metastatic lung cancer and full capacity asks you about CPR if his heart stops. Before you answer, his daughter pulls you aside and demands you sign a DNACPR form without telling him.\n\nSelect the THREE most appropriate actions.",
     "options": [
-      "Levonorgestrel 1.5 mg single oral dose",
-      "Desogestrel 75 mcg daily started today",
-      "Ulipristal acetate 30 mg single oral dose",
-      "Oral mifepristone 200 mg",
-      "Levonorgestrel 3 mg double oral dose"
+      "Explain empathetically to the daughter that a capacitous patient must be involved in discussions about his own resuscitation status.",
+      "Avoid discussing resuscitation altogether and leave it for the night on-call team.",
+      "Document the discussion, his preferences, and any DNACPR decision clearly in the notes and inform the consultant.",
+      "Order the daughter to leave the hospital immediately.",
+      "Hold a sensitive, honest conversation with the patient about his prognosis, the realistic outcomes of CPR, and his wishes.",
+      "Sign the DNACPR form secretly without telling the patient to spare his feelings.",
+      "Promise the patient that CPR will definitely restart his heart and cure him.",
+      "Allow the daughter to sign the DNACPR form on her father's behalf."
     ],
-    "correct_answer": "Ulipristal acetate 30 mg single oral dose",
-    "explanation": "When a copper IUD is declined at 84 hours (3.5 days) post-UPSI, ulipristal acetate (ellaOne 30 mg) is the only effective oral option. Levonorgestrel is licensed only up to 72 hours and fails once the LH surge starts, whereas ulipristal works up to 120 hours (5 days) and up to the LH peak."
+    "correct_answer": [
+      "Explain empathetically to the daughter that a capacitous patient must be involved in discussions about his own resuscitation status.",
+      "Hold a sensitive, honest conversation with the patient about his prognosis, the realistic outcomes of CPR, and his wishes.",
+      "Document the discussion, his preferences, and any DNACPR decision clearly in the notes and inform the consultant."
+    ],
+    "explanation": "Following the Tracey judgement and GMC end-of-life guidance, clinicians have a legal and ethical duty to involve a capacitous patient when making a DNACPR decision—and relatives cannot override a capacitous patient's autonomy. Hold an empathetic, honest conversation with the patient and document it clearly."
   },
   {
     "id": "q_52",
     "exam": "MSRA",
-    "type": "sba",
-    "category": "Reproductive / Obstetrics & Gynaecology",
-    "scenario": "A 41-year-old woman in her first pregnancy attends her 10-week booking visit. Her BP is 120/74 mmHg, BMI is 36 kg/m², urine dipstick is negative, and she has no medical history. Under NICE guidelines, what pre-eclampsia prophylaxis is indicated?",
-    "options": [
-      "High-dose folic acid 5 mg daily as sole prophylaxis",
-      "Oral labetalol 100 mg twice daily starting immediately",
-      "Oral aspirin 75–150 mg daily from 12 weeks until birth",
-      "Subcutaneous enoxaparin 40 mg daily from 28 weeks only",
-      "No prophylaxis needed as booking BP is normal"
-    ],
-    "correct_answer": "Oral aspirin 75–150 mg daily from 12 weeks until birth",
-    "explanation": "NICE NG133 advises low-dose aspirin (75–150 mg daily from 12 weeks until birth) for women with 1 high-risk factor OR >=2 moderate-risk factors (primigravida, age >=40, pregnancy interval >10 years, BMI >=35, family history of pre-eclampsia, multiple pregnancy). She has three: first pregnancy, age 41, and BMI 36."
-  },
-  {
-    "id": "q_53",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Reproductive / Obstetrics & Gynaecology",
-    "scenario": "A stable 29-year-old woman at 6 weeks gestation has mild left iliac fossa discomfort and spotting. TVUS shows an unruptured 22 mm left tubal ectopic pregnancy with no fetal heartbeat and no free fluid; serum beta-hCG is 1,150 IU/L. Why is she eligible for systemic methotrexate?",
-    "options": [
-      "Only left-sided tubal ectopic pregnancies qualify for medical management",
-      "A visible fetal heartbeat is required for methotrexate to target trophoblasts",
-      "Unruptured mass <35 mm, no fetal heartbeat, beta-hCG <1,500 IU/L, and no significant pain",
-      "Any ectopic pregnancy qualifies provided there is no vaginal bleeding",
-      "Methotrexate is only used when beta-hCG exceeds 5,000 IU/L"
-    ],
-    "correct_answer": "Unruptured mass <35 mm, no fetal heartbeat, beta-hCG <1,500 IU/L, and no significant pain",
-    "explanation": "Under NICE NG126, single-dose IM methotrexate is first-line medical therapy for ectopic pregnancy when all criteria are met: haemodynamically stable without significant pain, unruptured adnexal mass <35 mm, no visible fetal heartbeat, beta-hCG <1,500 IU/L, no intrauterine pregnancy, and reliable follow-up."
-  },
-  {
-    "id": "q_54",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Reproductive / Obstetrics & Gynaecology",
-    "scenario": "A 49-year-old woman with an intact uterus has severe hot flushes and night sweats. Her periods have become irregular and her last period was 4 months ago. She has no contraindications to hormone replacement therapy (HRT). Which HRT regimen is appropriate?",
-    "options": [
-      "Sequential (cyclical) combined HRT",
-      "Oral tibolone started immediately",
-      "Continuous combined HRT",
-      "Unopposed transdermal oestradiol monotherapy",
-      "Topical vaginal oestriol cream alone"
-    ],
-    "correct_answer": "Sequential (cyclical) combined HRT",
-    "explanation": "With an intact uterus, progestogen must be given alongside oestrogen to prevent endometrial hyperplasia/cancer. Because her last period was <12 months ago (perimenopausal), sequential (cyclical) combined HRT is required; starting continuous combined HRT or tibolone within 12 months causes erratic breakthrough bleeding."
-  },
-  {
-    "id": "q_55",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Reproductive / Obstetrics & Gynaecology",
-    "scenario": "A 31-year-old woman at 9 weeks gestation presents with an uncomplicated lower UTI and is prescribed 7 days of nitrofurantoin. Why was trimethoprim avoided now, and when in pregnancy must nitrofurantoin be avoided?",
-    "options": [
-      "Trimethoprim causes neonatal haemolysis in the 1st trimester; nitrofurantoin causes neural tube defects at term",
-      "Both antibiotics are contraindicated throughout all three trimesters",
-      "Trimethoprim closes the ductus arteriosus; nitrofurantoin causes congenital deafness",
-      "Trimethoprim is a folate antagonist (1st trimester teratogen); nitrofurantoin risks neonatal haemolysis at term",
-      "Trimethoprim stains fetal teeth; nitrofurantoin causes maternal agranulocytosis at term"
-    ],
-    "correct_answer": "Trimethoprim is a folate antagonist (1st trimester teratogen); nitrofurantoin risks neonatal haemolysis at term",
-    "explanation": "Trimethoprim inhibits dihydrofolate reductase and is avoided in the 1st trimester due to neural tube defect risk. Nitrofurantoin is safe in the 1st and 2nd trimesters but avoided at term/late 3rd trimester because immature neonatal erythrocyte glutathione enzymes predispose to neonatal haemolysis."
-  },
-  {
-    "id": "q_56",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Respiratory",
-    "scenario": "A 24-year-old woman with acute asthma cannot complete sentences. She has RR 28/min, HR 118 bpm, PEF 38% predicted, and SpO2 93% on oxygen. ABG shows: pH 7.36, PaO2 9.6 kPa, and PaCO2 5.3 kPa (4.7–6.0). How is this exacerbation classified?",
-    "options": [
-      "Near-fatal asthma",
-      "Moderate asthma exacerbation",
-      "Acute severe asthma",
-      "Brittle asthma",
-      "Life-threatening asthma"
-    ],
-    "correct_answer": "Life-threatening asthma",
-    "explanation": "While PEF 33–50%, RR >=25/min, and HR >=110 bpm fit acute severe asthma, the critical clue is the 'normal' PaCO2 (5.3 kPa). Hyperventilation during an asthma attack should lower PaCO2 (<4.6 kPa); a normal PaCO2 (4.6–6.0 kPa) signals respiratory muscle exhaustion and defines life-threatening asthma."
-  },
-  {
-    "id": "q_57",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Respiratory",
-    "scenario": "A 68-year-old smoker with mild heart failure has a right pleural effusion. Results show: serum protein 66 g/L, serum LDH 200 U/L (ULN 210 U/L); pleural protein 28 g/L, pleural LDH 150 U/L. Using Light's criteria, how is this effusion classified?",
-    "options": [
-      "Exudate, only if all three of Light's criteria are met",
-      "Transudate, as pleural fluid protein is <30 g/L",
-      "Chylothorax, due to discordant protein and LDH",
-      "Transudate, as pleural-to-serum protein ratio is <0.5",
-      "Exudate, as pleural-to-serum LDH ratio is >0.6 (and pleural LDH >2/3 serum ULN)"
-    ],
-    "correct_answer": "Exudate, as pleural-to-serum LDH ratio is >0.6 (and pleural LDH >2/3 serum ULN)",
-    "explanation": "When pleural protein is borderline (25–35 g/L), Light's criteria classify an effusion as an EXUDATE if ANY ONE criterion is met: (1) pleural/serum protein >0.5 (28/66 = 0.42), (2) pleural/serum LDH >0.6 (150/200 = 0.75—positive), or (3) pleural LDH >2/3 serum ULN (150 > 140—positive)."
-  },
-  {
-    "id": "q_58",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Respiratory",
-    "scenario": "A 67-year-old non-smoking ex-smoker with stable COPD has two room-air ABGs taken 3 weeks apart showing PaO2 7.6 kPa and 7.5 kPa. Under NICE guidelines, which additional feature qualifies him for Long-Term Oxygen Therapy (LTOT)?",
-    "options": [
-      "More than two COPD exacerbations in the past year",
-      "FEV1 <50% of predicted",
-      "Peripheral oedema, pulmonary hypertension, or polycythaemia (haematocrit >55%)",
-      "Smoking <5 cigarettes per day",
-      "MRC dyspnoea scale score of 3"
-    ],
-    "correct_answer": "Peripheral oedema, pulmonary hypertension, or polycythaemia (haematocrit >55%)",
-    "explanation": "Under NICE NG115, stable non-smokers qualify for LTOT if PaO2 is <7.3 kPa on two readings >=3 weeks apart, OR if PaO2 is 7.3–8.0 kPa accompanied by secondary polycythaemia (haematocrit >55%), peripheral oedema, pulmonary hypertension (cor pulmonale), or nocturnal hypoxaemia."
-  },
-  {
-    "id": "q_59",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Respiratory",
-    "scenario": "A 66-year-old man presents with right lower lobe pneumonia. He is alert (AMTS 10/10) with RR 24/min, BP 126/78 mmHg, HR 92 bpm, and venous urea 8.4 mmol/L. What is his CURB-65 score and recommended management?",
-    "options": [
-      "CURB-65 score 0; manage conservatively without antibiotics",
-      "CURB-65 score 2; consider hospital-supervised treatment",
-      "CURB-65 score 4; intubate and transfer to ICU",
-      "CURB-65 score 3; admit to HDU for IV co-amoxiclav and clarithromycin",
-      "CURB-65 score 1; discharge home on oral amoxicillin"
-    ],
-    "correct_answer": "CURB-65 score 2; consider hospital-supervised treatment",
-    "explanation": "CURB-65 awards 1 point each for: Confusion (AMTS <=8) [0], Urea >7 mmol/L [1: 8.4], RR >=30/min [0], BP <90 systolic or <=60 diastolic [0], and Age >=65 [1: 66]. A score of 2 indicates moderate-severity CAP (~9% mortality), warranting hospital-supervised treatment."
-  },
-  {
-    "id": "q_60",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Respiratory",
-    "scenario": "A 22-year-old man with no lung disease presents with mild right pleuritic chest pain. He is not breathless on walking, observations are normal (SpO2 99% in air), and CXR shows a 2.4 cm primary spontaneous pneumothorax. Under BTS guidelines, what is the appropriate management?",
-    "options": [
-      "Immediate 28 Fr intercostal chest drain insertion",
-      "Inpatient admission for 100% oxygen for 5 days",
-      "Emergency needle decompression in the 2nd intercostal space",
-      "Urgent VATS pleurodesis today",
-      "Conservative outpatient management with safety-netting and review"
-    ],
-    "correct_answer": "Conservative outpatient management with safety-netting and review",
-    "explanation": "Under 2023 BTS pleural guidelines, management of primary spontaneous pneumothorax is guided by breathlessness and physiological stability rather than a rigid 2 cm size cut-off. Stable patients without breathlessness can be safely managed conservatively as outpatients with close follow-up."
-  },
-  {
-    "id": "q_61",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Cardiovascular",
-    "scenario": "A 66-year-old hypertensive man develops sudden, severe tearing interscapular pain. His BP is 188/104 mmHg in the right arm and 146/86 mmHg in the left arm. ECG shows LVH with lateral ST-T changes, and the nurse asks whether to give loading aspirin and ticagrelor. What is the immediate action?",
-    "options": [
-      "Give aspirin 300 mg and ticagrelor 180 mg and repeat ECG",
-      "Administer intravenous alteplase thrombolysis",
-      "Request a serum D-dimer before arranging imaging",
-      "Start an intravenous dobutamine infusion",
-      "Withhold antiplatelets and arrange an urgent CT aortogram"
-    ],
-    "correct_answer": "Withhold antiplatelets and arrange an urgent CT aortogram",
-    "explanation": "Sudden tearing interscapular pain with a >20 mmHg inter-arm systolic BP discrepancy indicates acute aortic dissection. Giving ACS antiplatelets or anticoagulants can trigger fatal haemorrhage; immediate CT aortography (and IV beta-blockade with labetalol) is the priority."
-  },
-  {
-    "id": "q_62",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Cardiovascular",
-    "scenario": "A 79-year-old woman on digoxin, ramipril, and furosemide presents with 4 days of nausea, anorexia, and yellow-green visual disturbance, 2 weeks after her furosemide dose was doubled. ECG shows AF at 52 bpm with down-sloping ST depression. Which electrolyte abnormality precipitated this?",
-    "options": [
-      "Hypokalaemia",
-      "Hypocalcaemia",
-      "Hypermagnesaemia",
-      "Hyponatraemia",
-      "Hyperkalaemia"
-    ],
-    "correct_answer": "Hypokalaemia",
-    "explanation": "Nausea, xanthopsia (yellow-green vision), and bradyarrhythmia indicate digoxin toxicity (whereas reverse-tick ST depression shows digoxin effect). Digoxin competes with potassium ions at the myocardial Na+/K+-ATPase pump; loop diuretic-induced hypokalaemia reduces potassium competition, markedly potentiating digoxin toxicity."
-  },
-  {
-    "id": "q_63",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Dermatology / Ophthalmology / ENT",
-    "scenario": "A 44-year-old man with mild plaque psoriasis becomes febrile (38.6°C) and tachycardic (114 bpm) 5 days after finishing a 5-day course of oral prednisolone for sinusitis. His skin is diffusely fiery red, tender, and covered in sheets of tiny sterile pinpoint yellow pustules. What is the diagnosis?",
-    "options": [
-      "Cellulitis with secondary impetiginisation",
-      "Stevens-Johnson syndrome secondary to prednisolone",
-      "Generalised pustular psoriasis triggered by steroid withdrawal",
-      "Eczema herpeticum",
-      "Staphylococcal scalded skin syndrome"
-    ],
-    "correct_answer": "Generalised pustular psoriasis triggered by steroid withdrawal",
-    "explanation": "Abrupt withdrawal of systemic corticosteroids in psoriasis can precipitate a life-threatening rebound flare of generalised pustular (von Zumbusch) or erythrodermic psoriasis. Urgent hospital admission is required due to the risk of sepsis, hypothermia, and high-output cardiac failure."
-  },
-  {
-    "id": "q_64",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Dermatology / Ophthalmology / ENT",
-    "scenario": "A 36-year-old woman wakes with right facial weakness, drooling, and right hyperacusis. She cannot wrinkle her right forehead or fully close her right eye. Otoscopy and limb neurology are normal. Presenting within 72 hours of onset, what is the appropriate management?",
-    "options": [
-      "Immediate surgical decompression of the facial nerve",
-      "Oral aciclovir monotherapy for 7 days",
-      "Urgent non-contrast CT head and stroke thrombolysis call",
-      "Oral prednisolone and lubricating eye drops with night-time eye taping",
-      "Oral amoxicillin for presumed acute otitis media"
-    ],
-    "correct_answer": "Oral prednisolone and lubricating eye drops with night-time eye taping",
-    "explanation": "Forehead involvement confirms a lower motor neuron CN VII lesion (unlike stroke, which spares the forehead), and normal otoscopy excludes Ramsay Hunt syndrome. NICE recommends oral prednisolone within 72 hours of Bell's palsy onset plus corneal protection (lubricating drops and night taping); antivirals alone are ineffective."
-  },
-  {
-    "id": "q_65",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Endocrinology / Metabolic",
-    "scenario": "A 52-year-old man with hereditary spherocytosis presents with polyuria and polydipsia. Two fasting venous glucose readings are 9.8 mmol/L and 10.4 mmol/L, but his HbA1c is 34 mmol/mol (normal <42). What explains this discrepancy?",
-    "options": [
-      "Shortened red cell lifespan in spherocytosis causes a falsely low HbA1c",
-      "HbA1c only detects post-prandial hyperglycaemia",
-      "Hereditary spherocytosis increases glycation, falsely elevating HbA1c",
-      "Fasting venous glucose is unreliable in haemolytic anaemia",
-      "He has benign renal glycosuria rather than diabetes"
-    ],
-    "correct_answer": "Shortened red cell lifespan in spherocytosis causes a falsely low HbA1c",
-    "explanation": "HbA1c reflects glucose exposure over the normal 120-day red cell lifespan. Conditions that shorten red cell survival—such as haemolytic anaemias (hereditary spherocytosis, sickle cell, G6PD deficiency) or blood loss—produce a falsely low HbA1c that can mask diabetes."
-  },
-  {
-    "id": "q_66",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Endocrinology / Metabolic",
-    "scenario": "An asymptomatic 29-year-old man has persistent mild hypercalcaemia (2.81 mmol/L), mildly low phosphate (0.76 mmol/L), normal renal function and vitamin D, and an unsuppressed PTH of 6.8 pmol/L (1.6–6.9). His 24-hour urinary calcium-to-creatinine clearance ratio is 0.006. What is the diagnosis?",
-    "options": [
-      "Tertiary hyperparathyroidism",
-      "Familial hypocalciuric hypercalcaemia",
-      "Humoral hypercalcaemia of malignancy",
-      "Vitamin D toxicity",
-      "Primary hyperparathyroidism (parathyroid adenoma)"
-    ],
-    "correct_answer": "Familial hypocalciuric hypercalcaemia",
-    "explanation": "Both primary hyperparathyroidism and familial hypocalciuric hypercalcaemia (FHH) cause hypercalcaemia with elevated or unsuppressed PTH. FHH (an inactivating CaSR mutation) causes avid renal calcium reabsorption, giving a urinary calcium-to-creatinine clearance ratio <0.01 and sparing the patient unnecessary parathyroidectomy."
-  },
-  {
-    "id": "q_67",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Gastroenterology / Clinical Nutrition",
-    "scenario": "A 76-year-old woman with atrial fibrillation who stopped apixaban 3 weeks ago presents with 3 hours of sudden, agonising central abdominal pain. She is writhing in pain (HR 118 bpm, AF), yet her abdomen is soft with minimal tenderness. ABG shows pH 7.26 and lactate 6.4 mmol/L. What is the definitive diagnostic test?",
-    "options": [
-      "Abdominal ultrasound of the biliary tree",
-      "Erect chest X-ray and plain abdominal X-ray",
-      "Urgent upper GI endoscopy",
-      "Serum amylase and conservative fluid therapy",
-      "Urgent CT angiography of the abdomen"
-    ],
-    "correct_answer": "Urgent CT angiography of the abdomen",
-    "explanation": "Severe abdominal pain out of proportion to examination findings in a patient with unanticoagulated AF and lactic acidosis is classic for acute mesenteric ischaemia (typically superior mesenteric artery embolism). Triphasic CT angiography is the definitive investigation."
-  },
-  {
-    "id": "q_68",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Gastroenterology / Clinical Nutrition",
-    "scenario": "A 23-year-old student develops mild scleral icterus while recovering from a viral cold and skipping meals. He has normal-coloured urine and stools. Bloods show: total bilirubin 54 µmol/L, conjugated bilirubin 6 µmol/L, normal ALT/ALP, Hb 152 g/L, and reticulocytes 1.1%. What is the next step?",
-    "options": [
-      "Perform an outpatient liver biopsy",
-      "Arrange an urgent MRCP to exclude bile duct stones",
-      "Request a direct antiglobulin (Coombs) test",
-      "Start oral ursodeoxycholic acid",
-      "Reassure him that this is benign Gilbert's syndrome requiring no treatment"
-    ],
-    "correct_answer": "Reassure him that this is benign Gilbert's syndrome requiring no treatment",
-    "explanation": "Isolated unconjugated hyperbilirubinaemia with normal liver enzymes and no haemolysis (normal Hb and reticulocytes) triggered by fasting or viral illness is classic for Gilbert's syndrome (reduced hepatic UGT1A1 activity). Reassurance is all that is needed."
-  },
-  {
-    "id": "q_69",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-    "scenario": "A 38-year-old woman presents with a painless, expanding 8 cm annular red rash with central clearing behind her knee, 12 days after a tick bite in the New Forest. She has mild myalgia and no neurological or cardiac features. Under NICE guidelines, what is the management?",
-    "options": [
-      "Prescribe oral flucloxacillin for 7 days",
-      "Prescribe topical terbinafine cream for 2 weeks",
-      "Diagnose Lyme disease clinically and start oral doxycycline for 21 days without waiting for serology",
-      "Request Borrelia ELISA serology and withhold antibiotics until confirmed",
-      "Give a single prophylactic 200 mg dose of doxycycline"
-    ],
-    "correct_answer": "Diagnose Lyme disease clinically and start oral doxycycline for 21 days without waiting for serology",
-    "explanation": "Erythema migrans is a clinical diagnosis of Lyme disease (*Borrelia burgdorferi*). NICE advises starting oral doxycycline (100 mg twice daily for 21 days) immediately without waiting for serology, as early antibody tests have a high false-negative rate."
-  },
-  {
-    "id": "q_70",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Infectious Diseases / Haematology / Immunology / Allergies / Genetics",
-    "scenario": "A 63-year-old man has intense generalized itching after hot showers, burning red toes relieved by aspirin, facial plethora, and splenomegaly (SpO2 98%). Bloods show: Hb 196 g/L, Hct 0.58, WCC 13.4 × 10⁹/L, platelets 540 × 10⁹/L, and low serum EPO. Which mutation is present in >95% of cases?",
-    "options": [
-      "Factor V Leiden mutation",
-      "HFE C282Y homozygosity",
-      "CALR exon 9 mutation",
-      "JAK2 V617F mutation",
-      "BCR-ABL1 fusion gene"
-    ],
-    "correct_answer": "JAK2 V617F mutation",
-    "explanation": "Aquagenic pruritus, erythromelalgia, splenomegaly, pancytosis (raised Hb, WCC, and platelets), and suppressed serum EPO indicate polycythaemia vera (PV). Over 95% of PV cases are driven by an activating *JAK2* V617F mutation causing EPO-independent erythroid proliferation."
-  },
-  {
-    "id": "q_71",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Musculoskeletal",
-    "scenario": "A 26-year-old man has 8 months of lower back and alternating buttock pain that wakes him in the second half of the night, with 60 minutes of morning stiffness that improves with cycling. He had anterior uveitis last year. Pelvic and lumbar X-rays are normal. What is the next step?",
-    "options": [
-      "Advise bed rest and prescribe modified-release morphine",
-      "Arrange an emergency lumbar MRI to exclude cauda equina syndrome",
-      "Refer to rheumatology for suspected axial spondyloarthritis (and MRI of sacroiliac joints)",
-      "Request rheumatoid factor and anti-CCP antibodies",
-      "Reassure him that normal X-rays exclude ankylosing spondylitis and refer for physiotherapy"
-    ],
-    "correct_answer": "Refer to rheumatology for suspected axial spondyloarthritis (and MRI of sacroiliac joints)",
-    "explanation": "Inflammatory back pain (<45 years, >3 months, night pain, morning stiffness >30 min easing with exercise) plus anterior uveitis strongly suggests axial spondyloarthritis. Plain X-rays are often normal for years; NICE advises rheumatology referral for sacroiliac/spinal MRI."
-  },
-  {
-    "id": "q_72",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Musculoskeletal",
-    "scenario": "A 68-year-old man with type 2 diabetes presents with 24 hours of a hot, swollen, agonising native right knee, fever (38.8°C), and inability to tolerate any passive joint movement. What is the most important investigation before starting empirical IV antibiotics?",
-    "options": [
-      "Plain AP and lateral radiographs of the right knee",
-      "MRI of the right knee to exclude osteomyelitis",
-      "Serum uric acid level",
-      "Urgent synovial fluid aspiration for microscopy, Gram stain, crystals, and culture",
-      "C-reactive protein and ESR"
-    ],
-    "correct_answer": "Urgent synovial fluid aspiration for microscopy, Gram stain, crystals, and culture",
-    "explanation": "An acutely hot, swollen monoarthritis with restricted passive movement is septic arthritis until proven otherwise. In a native joint, urgent needle aspiration (arthrocentesis) must be performed *before* starting empirical IV antibiotics so synovial fluid cultures are not sterilised."
-  },
-  {
-    "id": "q_73",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Paediatrics",
-    "scenario": "A 6-year-old boy presents 10 days after a cold with symmetrical palpable purpura over his buttocks and legs, ankle arthralgia, and colicky abdominal pain. BP is 96/60 mmHg, platelets are 310 × 10⁹/L, and urine dipstick is negative. What follow-up is essential?",
-    "options": [
-      "Prophylactic platelet transfusion",
-      "Regular urine dipstick and blood pressure monitoring for at least 6 months",
-      "Urgent bone marrow biopsy to exclude leukaemia",
-      "A 14-day course of oral prednisolone to prevent nephritis",
-      "Immediate intramuscular benzylpenicillin"
-    ],
-    "correct_answer": "Regular urine dipstick and blood pressure monitoring for at least 6 months",
-    "explanation": "Palpable purpura on the buttocks/legs with normal platelets, arthralgia, and abdominal pain indicates Henoch-Schönlein purpura (IgA vasculitis). Because HSP nephritis can develop weeks to months later, all children require urine dipstick and BP monitoring for 6–12 months."
-  },
-  {
-    "id": "q_74",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Paediatrics",
-    "scenario": "A 5-month-old infant presents in November with 3 days of coryza, dry wheezy cough, RR 46/min, SpO2 96% in air, mild subcostal recession, and widespread fine crackles and wheeze. He is alert and taking 75% of his normal feeds. Under NICE guidelines, what is the management?",
-    "options": [
-      "Supportive home care with smaller, more frequent feeds and red-flag safety-netting",
-      "Immediate hospital admission for NG feeding and oxygen",
-      "Single dose of oral dexamethasone",
-      "Inhaled salbutamol via a spacer",
-      "Oral amoxicillin for 5 days"
-    ],
-    "correct_answer": "Supportive home care with smaller, more frequent feeds and red-flag safety-netting",
-    "explanation": "Coryza followed by cough, fine crackles, and wheeze in an infant <1 year indicates viral bronchiolitis. With SpO2 >=92%, feeds >=50–75% of normal, and no apnoea or severe distress, management is supportive at home (smaller, frequent feeds). Salbutamol, steroids, and antibiotics are not recommended."
-  },
-  {
-    "id": "q_75",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Psychiatry / Neurology",
-    "scenario": "A 54-year-old man with alcohol dependence is brought in confused with an ataxic gait, horizontal nystagmus, and bilateral sixth nerve palsies. His capillary blood glucose is 2.9 mmol/L. What is the correct immediate IV treatment sequence?",
-    "options": [
-      "Give high-dose IV thiamine (Pabrinex) before or concurrently with IV glucose",
-      "Give IV naloxone followed by 0.9% sodium chloride",
-      "Give IV phenytoin and arrange an urgent CT head",
-      "Give IV chlordiazepoxide alone and withhold glucose",
-      "Give 20% IV dextrose immediately, then oral thiamine tomorrow"
-    ],
-    "correct_answer": "Give high-dose IV thiamine (Pabrinex) before or concurrently with IV glucose",
-    "explanation": "Confusion, ataxia, and ophthalmoplegia/nystagmus form the triad of Wernicke's encephalopathy (thiamine deficiency). Thiamine is a cofactor for glucose metabolism; giving IV glucose before thiamine exhausts remaining B1 stores and precipitates irreversible Korsakoff's psychosis."
-  },
-  {
-    "id": "q_76",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Psychiatry / Neurology",
-    "scenario": "A 27-year-old man presents with 5 weeks of depression requesting an antidepressant. Collateral history reveals a 9-day episode 8 months ago of sleeping 2 hours/night with boundless energy, pressured speech, reckless spending, and grandiose delusions. What is the appropriate management?",
-    "options": [
-      "Start oral amitriptyline 75 mg nightly for insomnia",
-      "Start lithium carbonate immediately in primary care without referral",
-      "Start oral sertraline 50 mg daily and review in 2 weeks",
-      "Reassure him and refer for low-intensity CBT only",
-      "Avoid antidepressant monotherapy and refer to secondary care mental health for suspected bipolar disorder"
-    ],
-    "correct_answer": "Avoid antidepressant monotherapy and refer to secondary care mental health for suspected bipolar disorder",
-    "explanation": "A past 9-day episode of reduced sleep need, pressured speech, reckless spending, and grandiose delusions indicates prior mania (Bipolar I disorder). Unopposed antidepressant monotherapy risks triggering a manic switch or rapid cycling; NICE advises specialist referral."
-  },
-  {
-    "id": "q_77",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Renal / Urology",
-    "scenario": "A 71-year-old man with AKI on ramipril and spironolactone has a serum potassium of 7.1 mmol/L. His ECG shows absent P waves, tall tented T waves, and QRS widening to 156 ms. Which IV medication must be given first?",
-    "options": [
-      "Intravenous furosemide 80 mg",
-      "Oral sodium zirconium cyclosilicate",
-      "Nebulised salbutamol 10 mg",
-      "10 units soluble insulin in 50 mL 20% glucose",
-      "10 mL of 10% calcium gluconate"
-    ],
-    "correct_answer": "10 mL of 10% calcium gluconate",
-    "explanation": "In severe hyperkalaemia (K+ >=6.5 mmol/L) with toxic ECG changes (absent P waves, tented T waves, QRS widening), the immediate life-saving step is myocardial membrane stabilisation with IV 10% calcium gluconate (or calcium chloride), followed by insulin-dextrose to shift K+ intracellularly."
-  },
-  {
-    "id": "q_78",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Renal / Urology",
-    "scenario": "A 48-year-old ex-smoker presents after passing painless, frankly blood-stained urine twice this week. She has no UTI symptoms, and urine culture shows red cells with no bacterial growth. Under NICE NG12 guidelines, what is the next step?",
-    "options": [
-      "Request serum CA-125 and pelvic ultrasound",
-      "Routine referral to nephrology",
-      "Urgent 2-week wait urological cancer referral",
-      "Reassure and repeat urine microscopy in 6 months",
-      "Prescribe 3 days of nitrofurantoin and repeat dipstick"
-    ],
-    "correct_answer": "Urgent 2-week wait urological cancer referral",
-    "explanation": "Under NICE NG12, patients aged >=45 with unexplained visible haematuria without UTI (or visible haematuria persisting/recurring after UTI treatment) require an urgent 2-week wait urological cancer referral to exclude bladder or renal malignancy."
-  },
-  {
-    "id": "q_79",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Reproductive / Obstetrics & Gynaecology",
-    "scenario": "A healthy, non-smoking 24-year-old woman (BP 112/70 mmHg, BMI 22) requests the combined oral contraceptive pill (COCP). Twice a year, she gets unilateral headaches preceded by 25 minutes of shimmering zig-zag visual lines. How does UKMEC classify the COCP for her?",
-    "options": [
-      "UKMEC Category 1 (no restriction)",
-      "UKMEC Category 3 (risks generally outweigh benefits)",
-      "UKMEC Category 4 (absolute contraindication)",
-      "Safe if a 20 mcg low-oestrogen pill is used",
-      "UKMEC Category 2 (benefits generally outweigh risks)"
-    ],
-    "correct_answer": "UKMEC Category 4 (absolute contraindication)",
-    "explanation": "Migraine *with aura* at any age is a UKMEC Category 4 (absolute contraindication) for all combined hormonal contraception due to the synergistically increased risk of ischaemic stroke from ethinylestradiol. Progestogen-only methods remain safe."
-  },
-  {
-    "id": "q_80",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Reproductive / Obstetrics & Gynaecology",
-    "scenario": "A 31-year-old woman at 33 weeks gestation presents with intense nocturnal itching of her palms and soles. Fetal movements, BP (118/72 mmHg), and urine dipstick are normal, and examination shows only scratch excoriations with no primary rash. What is the key diagnostic test?",
-    "options": [
-      "Skin scraping for microscopy in potassium hydroxide",
-      "Serum bile acids and liver function tests",
-      "Fasting venous plasma glucose",
-      "24-hour urinary protein and serum uric acid",
-      "Cutaneous patch testing"
-    ],
-    "correct_answer": "Serum bile acids and liver function tests",
-    "explanation": "Third-trimester palmar and plantar nocturnal pruritus without a primary rash indicates intrahepatic cholestasis of pregnancy (ICP). Serum total bile acids (>=19 µmol/L) and LFTs confirm the diagnosis; severe elevation (>=100 µmol/L) increases stillbirth risk and guides planned delivery."
-  },
-  {
-    "id": "q_81",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Respiratory",
-    "scenario": "A 28-year-old woman with childhood eczema presents with 4 months of episodic nocturnal cough and wheeze after cold-air exercise. Her chest is clear in clinic. Under NICE guidelines, how should suspected asthma be diagnosed?",
-    "options": [
-      "A 6-week empirical trial of an inhaled corticosteroid",
-      "Objective testing (blood eosinophils or FeNO, and bronchodilator reversibility spirometry)",
-      "High-resolution CT scan of the thorax",
-      "Clinical history alone and a salbutamol inhaler",
-      "Clinic room-air arterial blood gas"
-    ],
-    "correct_answer": "Objective testing (blood eosinophils or FeNO, and bronchodilator reversibility spirometry)",
-    "explanation": "Under joint BTS/NICE/SIGN asthma guidelines, asthma should not be diagnosed on history alone or via an inhaler 'trial of treatment'. Objective testing of airway inflammation (eosinophils or FeNO) and airflow variability (bronchodilator reversibility spirometry or PEF) is required."
-  },
-  {
-    "id": "q_82",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Respiratory",
-    "scenario": "A 64-year-old heavy smoker presents with 2 weeks of breathlessness, morning facial and periorbital swelling, headaches worse on stooping, dilated chest wall veins, and a fixed, non-pulsatile JVP raised at 9 cm. What is the underlying cause?",
-    "options": [
-      "Tension pneumothorax",
-      "Pancoast tumour invading the sympathetic chain",
-      "Superior vena cava obstruction from lung cancer or mediastinal lymphadenopathy",
-      "Acute right ventricular infarction",
-      "Cardiac tamponade from a malignant pericardial effusion"
-    ],
-    "correct_answer": "Superior vena cava obstruction from lung cancer or mediastinal lymphadenopathy",
-    "explanation": "Morning facial/periorbital oedema, plethora, stooping headaches, chest wall collateral veins, and a **fixed, non-pulsatile** raised JVP indicate superior vena cava obstruction (SVCO)—most commonly caused by bronchogenic carcinoma or lymphoma."
-  },
-  {
-    "id": "q_83",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Pharmacology",
-    "scenario": "A sexually active 22-year-old woman has juvenile myoclonic epilepsy controlled only on sodium valproate after other antiepileptics failed. Under MHRA safety regulations, what is mandatory if valproate is continued?",
-    "options": [
-      "Enrolment in the Pregnancy Prevention Programme (LARC contraception and Annual Risk Acknowledgement Form)",
-      "Low-dose folic acid 400 mcg daily instead of contraception",
-      "Monthly serum valproate trough levels",
-      "Immediate switch to phenytoin in primary care",
-      "Stopping valproate only after a positive pregnancy test"
-    ],
-    "correct_answer": "Enrolment in the Pregnancy Prevention Programme (LARC contraception and Annual Risk Acknowledgement Form)",
-    "explanation": "Valproate carries a ~10% congenital malformation risk and a 30–40% neurodevelopmental disorder risk. MHRA mandates enrolment in the Pregnancy Prevention Programme (PPP), requiring highly effective contraception (ideally LARC) and a signed Annual Risk Acknowledgement Form."
-  },
-  {
-    "id": "q_84",
-    "exam": "MSRA",
-    "type": "sba",
-    "category": "Pharmacology",
-    "scenario": "A 74-year-old woman on once-daily IV gentamicin for urosepsis has a pre-dose trough level of 2.4 mg/L (target <1.0 mg/L) at 20 hours, with creatinine rising from 88 to 124 µmol/L. How should her gentamicin regimen be adjusted?",
-    "options": [
-      "Withhold the next dose and extend the dosing interval until the trough is <1.0 mg/L",
-      "Continue the same 24-hourly dose as high troughs aid killing",
-      "Double the infusion rate to increase peak concentration",
-      "Give the next dose on time but halve the milligram dose",
-      "Add IV furosemide to flush gentamicin renally"
-    ],
-    "correct_answer": "Withhold the next dose and extend the dosing interval until the trough is <1.0 mg/L",
-    "explanation": "Aminoglycosides use peak concentration for bacterial killing, whereas nephrotoxicity and irreversible ototoxicity correlate with persistently raised trough levels. When the trough is high (>1.0 mg/L), withhold the next dose and extend the dosing interval."
-  },
-  {
-    "id": "q_85",
-    "exam": "MSRA",
-    "type": "ranking",
-    "category": "Professional Dilemmas",
-    "scenario": "You are a GP. A self-employed delivery driver who had a first unprovoked tonic-clonic seizure 2 weeks ago admits he has ignored hospital advice to stop driving and notify the DVLA because he cannot afford to lose income. Despite your explanation of the risks, he refuses to stop driving.\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
-    "options": [
-      "Inform him that if he continues driving, you must disclose his condition to the DVLA, and urge him one final time to self-report.",
-      "Take no further action to avoid breaching patient confidentiality.",
-      "Call 999 immediately to have him arrested in the waiting room.",
-      "Seek prompt advice from your Caldicott Guardian or defence union on making a public-interest disclosure.",
-      "Explore whether non-driving work or financial support is available and document the discussion thoroughly."
-    ],
-    "correct_answer": [
-      "Inform him that if he continues driving, you must disclose his condition to the DVLA, and urge him one final time to self-report.",
-      "Explore whether non-driving work or financial support is available and document the discussion thoroughly.",
-      "Seek prompt advice from your Caldicott Guardian or defence union on making a public-interest disclosure.",
-      "Call 999 immediately to have him arrested in the waiting room.",
-      "Take no further action to avoid breaching patient confidentiality."
-    ],
-    "explanation": "Under GMC DVLA guidance: (1) Explain clearly that you will have to notify the DVLA if he does not stop driving and self-report. (2) Explore practical/financial support and document fully. (3) Consult your Caldicott Guardian/defence union regarding disclosure. (4) Calling 999 for waiting-room arrest is disproportionate unless there is an acute crisis. (5) Doing nothing is least appropriate, as public safety overrides confidentiality."
-  },
-  {
-    "id": "q_86",
-    "exam": "MSRA",
-    "type": "ranking",
-    "category": "Professional Dilemmas",
-    "scenario": "You are an FY2 on an elderly care ward. An 84-year-old man recovering from pneumonia with mild resolving delirium becomes agitated and refuses his routine morning blood tests. Yesterday's results showed falling inflammatory markers and stable renal function.\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
-    "options": [
-      "Ask two staff members to hold his arm down to take the sample quickly.",
-      "If the test is needed, assess decision-specific capacity and re-offer it later with a familiar nurse or relative present.",
-      "Tell the patient his oral antibiotics will be stopped unless he allows the blood test.",
-      "Check if today's blood test is clinically necessary and speak calmly with the patient to understand his refusal.",
-      "Discuss stepping down daily routine bloods to every 48–72 hours with the registrar."
-    ],
-    "correct_answer": [
-      "Check if today's blood test is clinically necessary and speak calmly with the patient to understand his refusal.",
-      "If the test is needed, assess decision-specific capacity and re-offer it later with a familiar nurse or relative present.",
-      "Discuss stepping down daily routine bloods to every 48–72 hours with the registrar.",
-      "Tell the patient his oral antibiotics will be stopped unless he allows the blood test.",
-      "Ask two staff members to hold his arm down to take the sample quickly."
-    ],
-    "explanation": "(1) First verify whether today's routine blood test is even necessary and speak respectfully with the patient. (2) If needed, assess capacity and use the least restrictive approach (calmer timing/familiar staff). (3) Rationalise ongoing blood frequency with your senior. (4) Threatening to withhold antibiotics is coercive. (5) Restraining an agitated patient for routine bloods is disproportionate and unlawful."
-  },
-  {
-    "id": "q_87",
-    "exam": "MSRA",
-    "type": "ranking",
-    "category": "Professional Dilemmas",
-    "scenario": "You are a ward FY2. A distressed nurse tells you she gave a 78-year-old woman 320 mg of gliclazide instead of 80 mg 30 minutes ago because your handwritten drug chart entry was unclear.\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
-    "options": [
-      "Scrub out the original prescription heavily in black ink so your handwriting cannot be identified.",
-      "Rewrite the drug chart clearly and inform your medical registrar of the error and monitoring plan.",
-      "Advise the nurse not to mention the error to the patient unless hypoglycaemia develops.",
-      "Assess the patient immediately, check her capillary glucose, and start serial glucose monitoring with carbohydrate/IV dextrose cover.",
-      "Apologise openly to the patient, explain the error and monitoring plan (Duty of Candour), and submit a Datix."
-    ],
-    "correct_answer": [
-      "Assess the patient immediately, check her capillary glucose, and start serial glucose monitoring with carbohydrate/IV dextrose cover.",
-      "Rewrite the drug chart clearly and inform your medical registrar of the error and monitoring plan.",
-      "Apologise openly to the patient, explain the error and monitoring plan (Duty of Candour), and submit a Datix.",
-      "Advise the nurse not to mention the error to the patient unless hypoglycaemia develops.",
-      "Scrub out the original prescription heavily in black ink so your handwriting cannot be identified."
-    ],
-    "explanation": "(1) Patient safety comes first: sulfonylurea overdose causes prolonged hypoglycaemia, requiring immediate bedside assessment and serial glucose monitoring. (2) Correct the chart and escalate to your senior. (3) Fulfil the Duty of Candour and submit a Datix. (4) Concealing errors breaches honesty. (5) Falsifying/obliterating records is a severe probity breach."
-  },
-  {
-    "id": "q_88",
-    "exam": "MSRA",
-    "type": "ranking",
-    "category": "Professional Dilemmas",
-    "scenario": "At 03:00 on a night shift, you stop an FY1 colleague from drawing up undiluted concentrated potassium chloride (KCl) as an IV bolus. He breaks down crying, revealing his father died 3 days ago, he has barely slept, and he cannot concentrate.\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
-    "options": [
-      "Tell him to take a 20-minute coffee break and only clerk stable patients for the rest of the night.",
-      "Refer the FY1 to the GMC tonight for nearly administering a Never Event bolus.",
-      "Support the FY1, ask him to step down from clinical duties immediately, and contact the night registrar and site manager for cover.",
-      "Arrange safe transport home (e.g. a taxi) and encourage him to contact his Educational Supervisor and GP.",
-      "Review the other prescriptions and clinical tasks the FY1 completed earlier on the shift."
-    ],
-    "correct_answer": [
-      "Support the FY1, ask him to step down from clinical duties immediately, and contact the night registrar and site manager for cover.",
-      "Review the other prescriptions and clinical tasks the FY1 completed earlier on the shift.",
-      "Arrange safe transport home (e.g. a taxi) and encourage him to contact his Educational Supervisor and GP.",
-      "Tell him to take a 20-minute coffee break and only clerk stable patients for the rest of the night.",
-      "Refer the FY1 to the GMC tonight for nearly administering a Never Event bolus."
-    ],
-    "explanation": "(1) An acutely bereaved, exhausted doctor who just had a Never Event near-miss is unsafe to work: relieve him immediately and arrange night cover. (2) Check his earlier shift tasks to protect patients. (3) Ensure safe travel home and pastoral support. (4) Keeping him working after a brief break leaves patients at risk. (5) Immediate punitive GMC referral is inappropriate."
-  },
-  {
-    "id": "q_89",
-    "exam": "MSRA",
-    "type": "ranking",
-    "category": "Professional Dilemmas",
-    "scenario": "You are a male GP trainee. A 32-year-old woman requests a chaperone for a speculum examination, but all trained chaperones are busy for the next 30 minutes. She says, 'Just go ahead without one so I don't miss my bus.'\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
-    "options": [
-      "Complete the history, STI risk assessment, and any blood/ultrasound requests now so the visit remains productive.",
-      "Explain that for mutual safety and comfort, it is best to either wait 30 minutes for a chaperone or rebook a priority slot.",
-      "Speak to the practice manager after clinic about improving chaperone availability.",
-      "Proceed with the intimate examination alone after asking her to sign a waiver in the notes.",
-      "Ask another patient in the waiting room to step in as an informal chaperone."
-    ],
-    "correct_answer": [
-      "Explain that for mutual safety and comfort, it is best to either wait 30 minutes for a chaperone or rebook a priority slot.",
-      "Complete the history, STI risk assessment, and any blood/ultrasound requests now so the visit remains productive.",
-      "Speak to the practice manager after clinic about improving chaperone availability.",
-      "Proceed with the intimate examination alone after asking her to sign a waiver in the notes.",
-      "Ask another patient in the waiting room to step in as an informal chaperone."
-    ],
-    "explanation": "Under GMC chaperone guidance: (1) For a non-urgent intimate exam where a chaperone was requested, wait for a trained chaperone or rebook rather than letting time pressure force an unchaperoned exam. (2) Complete non-intimate elements of care now. (3) Address the staffing gap with management. (4) Proceeding alone with a 'waiver' is unsafe. (5) Using a stranger from the waiting room breaches confidentiality."
-  },
-  {
-    "id": "q_90",
-    "exam": "MSRA",
-    "type": "ranking",
-    "category": "Professional Dilemmas",
-    "scenario": "At 16:30 on Friday, a bed manager pressures you to sign the discharge for a 72-year-old man with COPD to free a bed. On reviewing him, you find his RR is 26/min, SpO2 has dropped to 85% on air (baseline 91%), and he is acutely breathless.\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
-    "options": [
-      "Inform your respiratory registrar or consultant of his deterioration and cancelled discharge.",
-      "Sign the discharge summary as requested, but tell the patient to call 999 if breathless at home.",
-      "Update the patient and his family on why he must stay in hospital.",
-      "Argue loudly with the bed manager in the ward bay about hospital targets.",
-      "Cancel the discharge, start controlled oxygen (88–92%) and acute medical reassessment, and inform the bed manager he is unsafe to go."
-    ],
-    "correct_answer": [
-      "Cancel the discharge, start controlled oxygen (88–92%) and acute medical reassessment, and inform the bed manager he is unsafe to go.",
-      "Inform your respiratory registrar or consultant of his deterioration and cancelled discharge.",
-      "Update the patient and his family on why he must stay in hospital.",
-      "Sign the discharge summary as requested, but tell the patient to call 999 if breathless at home.",
-      "Argue loudly with the bed manager in the ward bay about hospital targets."
-    ],
-    "explanation": "(1) Patient safety overrides bed pressures: treat the acute hypoxia (controlled oxygen 88–92%, ABG, review) and cancel the unsafe discharge. (2) Escalate to your senior team. (3) Keep the patient and family informed. (4) Discharging an acutely hypoxic patient is negligent. (5) Publicly arguing in the ward bay is unprofessional."
-  },
-  {
-    "id": "q_91",
-    "exam": "MSRA",
-    "type": "ranking",
-    "category": "Professional Dilemmas",
-    "scenario": "A 74-year-old woman with full capacity has a CT scan showing metastatic pancreatic cancer. Outside her room, her son begs you not to tell her it is cancer and asks you to tell him the results instead while telling her it is gallstones.\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
-    "options": [
-      "Arrange support from the hepatobiliary clinical nurse specialist for the patient and family.",
-      "Give the son the full CT report in the corridor first to calm him down.",
-      "Speak sensitively with the patient, check how much detail she wants to know, and ask if she wants her son present.",
-      "Acknowledge the son's distress empathetically, but explain you cannot deceive a capacitous patient or share her results without her consent.",
-      "Agree to the son's request and tell the patient she only has benign gallstones."
-    ],
-    "correct_answer": [
-      "Acknowledge the son's distress empathetically, but explain you cannot deceive a capacitous patient or share her results without her consent.",
-      "Speak sensitively with the patient, check how much detail she wants to know, and ask if she wants her son present.",
-      "Arrange support from the hepatobiliary clinical nurse specialist for the patient and family.",
-      "Give the son the full CT report in the corridor first to calm him down.",
-      "Agree to the son's request and tell the patient she only has benign gallstones."
-    ],
-    "explanation": "(1) Respond empathetically to the son while maintaining clear ethical boundaries: a capacitous patient has a right to honesty and confidentiality. (2) Explore the patient's wishes on information and family presence. (3) Involve the specialist nurse. (4) Disclosing results in the corridor without consent breaches confidentiality. (5) Lying to a capacitous patient breaches autonomy and probity."
-  },
-  {
-    "id": "q_92",
-    "exam": "MSRA",
-    "type": "ranking",
-    "category": "Professional Dilemmas",
-    "scenario": "You are a vascular FY1. Ten minutes before theatre, your consultant asks you to take written consent from a patient for a complex fenestrated endovascular aneurysm repair (fEVAR), a procedure you have never seen and do not understand.\n\nRank the appropriateness of the following actions (1 = Most appropriate; 5 = Least appropriate).",
-    "options": [
-      "Check that the patient's admissions paperwork, observations, group & save, and bloods are ready for theatre.",
-      "Ask the patient to sign a blank consent form for the consultant to fill in later.",
-      "Explain to the consultant that you are not trained to take valid consent for fEVAR and ask the consultant or registrar to consent him.",
-      "Offer to accompany the consultant or registrar during the consent discussion so you can learn.",
-      "Look up fEVAR on your phone and take written consent yourself."
-    ],
-    "correct_answer": [
-      "Explain to the consultant that you are not trained to take valid consent for fEVAR and ask the consultant or registrar to consent him.",
-      "Offer to accompany the consultant or registrar during the consent discussion so you can learn.",
-      "Check that the patient's admissions paperwork, observations, group & save, and bloods are ready for theatre.",
-      "Look up fEVAR on your phone and take written consent yourself.",
-      "Ask the patient to sign a blank consent form for the consultant to fill in later."
-    ],
-    "explanation": "Under GMC consent guidance: (1) Delegated consent may only be taken by someone suitably trained who understands the procedure's risks and alternatives—decline politely outside your competence. (2) Offer to shadow the consent discussion. (3) Expedite pre-op checks within your competence. (4) Guessing risks from a phone search invalidates consent. (5) Signing a blank form is unlawful."
-  },
-  {
-    "id": "q_93",
-    "exam": "MSRA",
     "type": "selection",
     "category": "Professional Dilemmas",
-    "scenario": "A 14-month-old boy presents with a spiral humerus fracture. His mother and her partner give conflicting accounts of how it happened 2 days ago, and full examination reveals three oval bruises over his lumbar spine and lower ribs.\n\nSelect the THREE most appropriate actions.",
+    "scenario": "Three times this week, your acute medical ward has been left dangerously understaffed overnight, directly contributing to delayed sepsis antibiotics and an unwitnessed patient fall.\n\nSelect the THREE most appropriate actions.",
     "options": [
-      "Accuse the partner directly of child abuse and demand a confession.",
-      "Wait 6 weeks until the fracture heals before raising safeguarding concerns.",
-      "Discharge the child home in a sling with fracture clinic follow-up in 1 week.",
-      "Admit the child to the paediatric ward as a place of safety for child protection assessment.",
-      "Document both histories verbatim and map the exact size, colour, and site of all bruises in the notes.",
-      "Escalate immediately to the paediatric registrar/consultant and the hospital safeguarding team.",
-      "Promise the mother you will not involve Children's Social Care.",
-      "Examine only the arm and avoid undressing the toddler."
+      "Say nothing because understaffing is normal across the NHS.",
+      "Prioritise sickest patients safely on shift and escalate immediately to the night site manager whenever staffing becomes unsafe.",
+      "Submit clinical incident reports (Datix) documenting the unsafe staffing levels and resulting patient safety incidents.",
+      "Escalate your concerns formally to the ward consultant, clinical director, and Freedom to Speak Up Guardian.",
+      "Walk off the ward mid-shift without handing over your patients.",
+      "Tell relatives to sue the hospital trust.",
+      "Falsify antibiotic administration times so the sepsis audit looks compliant.",
+      "Post details of the understaffed ward and patient fall publicly on social media to force change."
     ],
     "correct_answer": [
-      "Escalate immediately to the paediatric registrar/consultant and the hospital safeguarding team.",
-      "Admit the child to the paediatric ward as a place of safety for child protection assessment.",
-      "Document both histories verbatim and map the exact size, colour, and site of all bruises in the notes."
+      "Submit clinical incident reports (Datix) documenting the unsafe staffing levels and resulting patient safety incidents.",
+      "Escalate your concerns formally to the ward consultant, clinical director, and Freedom to Speak Up Guardian.",
+      "Prioritise sickest patients safely on shift and escalate immediately to the night site manager whenever staffing becomes unsafe."
     ],
-    "explanation": "A spiral humeral fracture in a toddler with delayed presentation, conflicting histories, and torso bruising strongly suggests non-accidental injury (NAI). You must: (1) escalate immediately to senior paediatrics and safeguarding, (2) admit to a place of safety, and (3) record verbatim histories and a detailed body map."
-  },
-  {
-    "id": "q_94",
-    "exam": "MSRA",
-    "type": "selection",
-    "category": "Professional Dilemmas",
-    "scenario": "While taking an arterial blood gas from a capacitous 34-year-old man with a history of intravenous drug use, your finger is punctured deeply by the used hollow-bore needle.\n\nSelect the THREE most appropriate actions.",
-    "options": [
-      "Scrub the puncture wound vigorously with neat bleach.",
-      "Test the blood already in the ABG syringe for HIV without consent.",
-      "Encourage gentle bleeding under running warm water and wash with soap without scrubbing.",
-      "Refuse to treat any further patients with substance misuse.",
-      "Send blood from the patient's arterial line for HIV testing without telling him.",
-      "Wait 3 months to see if symptoms develop before reporting.",
-      "Ask another clinician to approach the patient for informed consent to test his blood for HIV, HBV, and HCV.",
-      "Report immediately to Occupational Health (or ED out of hours) for BBV risk assessment and PEP."
-    ],
-    "correct_answer": [
-      "Encourage gentle bleeding under running warm water and wash with soap without scrubbing.",
-      "Report immediately to Occupational Health (or ED out of hours) for BBV risk assessment and PEP.",
-      "Ask another clinician to approach the patient for informed consent to test his blood for HIV, HBV, and HCV."
-    ],
-    "explanation": "After a needle-stick injury: (1) encourage gentle bleeding under running water and wash with soap, (2) contact Occupational Health/ED immediately (HIV PEP is best started within 1 hour), and (3) ask a colleague (not yourself) to seek the source patient's explicit consent for HIV/HBV/HCV serology."
-  },
-  {
-    "id": "q_95",
-    "exam": "MSRA",
-    "type": "selection",
-    "category": "Professional Dilemmas",
-    "scenario": "Halfway through a GP consultation with a 58-year-old man discussing newly diagnosed heart failure, you notice his smartphone on the desk is covertly audio-recording the conversation.\n\nSelect the THREE most appropriate actions.",
-    "options": [
-      "Communicate only by typing on your screen for the rest of the consultation.",
-      "Call security to confiscate his phone under the Data Protection Act.",
-      "Terminate the appointment immediately and remove him from the practice list.",
-      "Threaten legal action for recording without permission.",
-      "Reassure him that personal recording is welcome to help remember advice, and offer a written summary.",
-      "Acknowledge the recording calmly and ask what prompted him to record the consultation.",
-      "Demand he delete the recording before you prescribe his heart failure medication.",
-      "Continue the consultation professionally and note in the medical record that it was audio-recorded."
-    ],
-    "correct_answer": [
-      "Acknowledge the recording calmly and ask what prompted him to record the consultation.",
-      "Reassure him that personal recording is welcome to help remember advice, and offer a written summary.",
-      "Continue the consultation professionally and note in the medical record that it was audio-recorded."
-    ],
-    "explanation": "Consultation information is the patient's own personal data, and patients usually record out of anxiety or fear of forgetting complex advice. You should: (1) address it calmly and explore why, (2) reassure him open recording is fine and offer written leaflets, and (3) continue care professionally while documenting the recording."
-  },
-  {
-    "id": "q_96",
-    "exam": "MSRA",
-    "type": "selection",
-    "category": "Professional Dilemmas",
-    "scenario": "A police officer in the Emergency Department asks for the names, addresses, and notes of all patients treated for a dog bite in the last 48 hours after a local resident was bitten in a park. The officer has no court order or patient consent.\n\nSelect the THREE most appropriate actions.",
-    "options": [
-      "Consult the ED consultant or Caldicott Guardian and document the police request.",
-      "Tell the officer doctors can never speak to police even with a court order.",
-      "Phone the patients and threaten them with arrest if they do not contact police.",
-      "Print the last 48 hours of ED attendances and hand it to the officer.",
-      "Politely decline to release patient details or records without patient consent or a court order.",
-      "Leave the computer screen unlocked showing the dog-bite records while you get coffee.",
-      "Explain that disclosure without consent only applies to prevent or detect very serious crime (risk of death or serious harm).",
-      "Give the names and phone numbers verbally so there is no paper trail."
-    ],
-    "correct_answer": [
-      "Politely decline to release patient details or records without patient consent or a court order.",
-      "Explain that disclosure without consent only applies to prevent or detect very serious crime (risk of death or serious harm).",
-      "Consult the ED consultant or Caldicott Guardian and document the police request."
-    ],
-    "explanation": "Police have no automatic right to patient records without consent or a court order unless public-interest disclosure is justified by a risk of death or very serious harm (e.g. gun/knife crime). You should: (1) politely decline disclosure, (2) explain the threshold, and (3) consult your consultant/Caldicott Guardian and document."
-  },
-  {
-    "id": "q_97",
-    "exam": "MSRA",
-    "type": "selection",
-    "category": "Professional Dilemmas",
-    "scenario": "On Instagram, you see a public story posted 20 minutes ago by a medical student on your firm. Behind him at the nurses' station, the ward whiteboard is legible, showing patients' full names and diagnoses.\n\nSelect the THREE most appropriate actions.",
-    "options": [
-      "Tell the ward sister that you took the photo to protect the student.",
-      "Ignore it because Instagram stories expire after 24 hours.",
-      "Contact the student privately right away, explain that patient details are visible, and ask him to delete the post immediately.",
-      "Screenshot the post and share it in the junior doctors' WhatsApp group.",
-      "Discuss GMC social media and confidentiality guidance with the student.",
-      "Wipe the names off the physical ward whiteboard so they no longer match.",
-      "Inform your clinical supervisor and log the data breach via the hospital incident system (Datix).",
-      "Comment publicly on the post listing which patients' names are visible."
-    ],
-    "correct_answer": [
-      "Contact the student privately right away, explain that patient details are visible, and ask him to delete the post immediately.",
-      "Inform your clinical supervisor and log the data breach via the hospital incident system (Datix).",
-      "Discuss GMC social media and confidentiality guidance with the student."
-    ],
-    "explanation": "Visible patient data on social media is a serious confidentiality breach. You must: (1) contact the student privately to delete the post immediately, (2) escalate to your supervisor and file an information governance Datix, and (3) educate the student on GMC social media rules."
-  },
-  {
-    "id": "q_98",
-    "exam": "MSRA",
-    "type": "selection",
-    "category": "Professional Dilemmas",
-    "scenario": "In pre-op clinic for an elective hip replacement in 2 weeks, a capacitous 62-year-old Jehovah's Witness presents a valid Advance Decision (ADRT) refusing all blood products even if her life is at risk. Her Hb is 108 g/L with MCV 74 fL and low ferritin.\n\nSelect the THREE most appropriate actions.",
-    "options": [
-      "Ask her husband to consent to transfusion once she is anaesthetised.",
-      "Transfuse red cells in an opaque bag labelled as saline.",
-      "Cancel her operation permanently without consultant discussion.",
-      "Alert the consultant surgeon and anaesthetist early to agree a bloodless-surgery perioperative plan.",
-      "Tell her the anaesthetist will override her ADRT if life-threatening bleeding occurs in theatre.",
-      "Optimise her preoperative haemoglobin by treating her iron-deficiency anaemia.",
-      "Section her under the Mental Health Act so she can be transfused.",
-      "Respect her refusal, place her ADRT in the notes, and clarify which blood-conservation methods (e.g. cell salvage, tranexamic acid) she accepts."
-    ],
-    "correct_answer": [
-      "Respect her refusal, place her ADRT in the notes, and clarify which blood-conservation methods (e.g. cell salvage, tranexamic acid) she accepts.",
-      "Optimise her preoperative haemoglobin by treating her iron-deficiency anaemia.",
-      "Alert the consultant surgeon and anaesthetist early to agree a bloodless-surgery perioperative plan."
-    ],
-    "explanation": "A valid ADRT in a capacitous adult is legally binding. You should: (1) respect and document her ADRT and check acceptable blood-sparing techniques (cell salvage, tranexamic acid), (2) treat her preoperative iron-deficiency anaemia, and (3) involve the consultant surgeon and anaesthetist early."
-  },
-  {
-    "id": "q_99",
-    "exam": "MSRA",
-    "type": "selection",
-    "category": "Professional Dilemmas",
-    "scenario": "On discharge after an acute MI, a grateful businessman hands you an envelope containing £500 in cash and insists you use it for a holiday.\n\nSelect the THREE most appropriate actions.",
-    "options": [
-      "Thank him warmly, but politely decline the cash gift, explaining GMC and trust rules on personal gifts.",
-      "Explain that he is welcome to donate to the official hospital charity or ward fund if he wishes.",
-      "Withhold his discharge medications until he takes the envelope back.",
-      "Accept the £500 quietly so you do not offend him.",
-      "Ask him to send the £500 by bank transfer instead.",
-      "Keep £100 and put £400 in the staff room biscuit tin.",
-      "Inform your clinical supervisor and document the offered gift and refusal in the notes/gift register.",
-      "Accept the cash in exchange for giving him your personal mobile number."
-    ],
-    "correct_answer": [
-      "Thank him warmly, but politely decline the cash gift, explaining GMC and trust rules on personal gifts.",
-      "Explain that he is welcome to donate to the official hospital charity or ward fund if he wishes.",
-      "Inform your clinical supervisor and document the offered gift and refusal in the notes/gift register."
-    ],
-    "explanation": "Under GMC guidance, doctors must not accept cash or high-value personal gifts from patients. You should: (1) thank him graciously while declining the cash, (2) signpost official hospital charity/ward fund channels, and (3) inform your supervisor and document the refusal."
-  },
-  {
-    "id": "q_100",
-    "exam": "MSRA",
-    "type": "selection",
-    "category": "Professional Dilemmas",
-    "scenario": "A pharmaceutical representative offers you an all-expenses-paid luxury golf and spa weekend if you switch your GP practice's atrial fibrillation patients from generic apixaban to their expensive new branded DOAC.\n\nSelect the THREE most appropriate actions.",
-    "options": [
-      "Ask the representative to transfer the cash value to your bank account instead.",
-      "Accept the weekend and switch 50 patients to the new drug on Monday.",
-      "Accept the trip and omit it from the practice conflict-of-interest register.",
-      "Switch all patients to the branded drug without informing them.",
-      "Explain that practice prescribing is based strictly on clinical evidence and NICE/local formulary guidance.",
-      "Inform your fellow GP partners and governance lead about the inappropriate inducement.",
-      "Agree to switch patients only if the company buys new reception laptops.",
-      "Decline the luxury hotel weekend and refuse any link between hospitality and prescribing."
-    ],
-    "correct_answer": [
-      "Decline the luxury hotel weekend and refuse any link between hospitality and prescribing.",
-      "Explain that practice prescribing is based strictly on clinical evidence and NICE/local formulary guidance.",
-      "Inform your fellow GP partners and governance lead about the inappropriate inducement."
-    ],
-    "explanation": "GMC guidance and the ABPI Code strictly prohibit accepting inducements or excessive hospitality linked to prescribing decisions. You must: (1) decline the hospitality and quid-pro-quo offer, (2) reiterate that prescribing follows clinical evidence and local formulary rules, and (3) alert your GP partners."
+    "explanation": "Under GMC *Raising and acting on concerns about patient safety* guidance, you have a duty to report unsafe staffing through proper governance channels (Datix, senior clinical leaders, Freedom to Speak Up Guardian) while maintaining immediate patient safety on shift—never falsifying records or breaching confidentiality online."
   }
 ]
